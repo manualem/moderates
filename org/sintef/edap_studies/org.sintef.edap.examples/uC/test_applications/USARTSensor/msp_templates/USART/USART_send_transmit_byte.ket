@@ -1,0 +1,14 @@
+<%@ket
+package="edapuC"
+require="edap_USART.kmt"
+using="edap"
+isAspectClass="false"
+class="USART_send_transmit_byte inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void USART_send_transmit_byte()
+
+	UCA0TXBUF = b;
+	while (!(IFG2&UCA0TXIFG)); // USCI_A0 TX buffer ready?

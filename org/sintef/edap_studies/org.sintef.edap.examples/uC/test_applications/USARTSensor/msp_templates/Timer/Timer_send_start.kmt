@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_Timer.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class Timer_send_start inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void Timer_send_start()\n\ntimeouts[timer_id] = cpt + delay;\n")
+result := _res.toString
+end
+}

@@ -1,0 +1,13 @@
+<%@ket
+package="edapuC"
+require="edap_MSP430Sensor.kmt"
+using="edap"
+isAspectClass="false"
+class="MSP430Sensor_send_mesure_temperature inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void MSP430Sensor_send_mesure_temperature()
+
+	request |= TEMP_REQUEST; 

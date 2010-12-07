@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_USART.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class USART_send_transmit_Hex8 inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void USART_send_transmit_Hex8()\n\n\tstatic const char hex[] = \"0123456789ABCDEF\";\n\tUSART_send_transmit_byte( hex[(value>>4) & 0x0f] );\n\tUSART_send_transmit_byte( hex[value & 0x0f] );\n")
+result := _res.toString
+end
+}

@@ -1,0 +1,13 @@
+<%@ket
+package="edapuC"
+require="edap_Timer.kmt"
+using="edap"
+isAspectClass="false"
+class="Timer_send_start inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void Timer_send_start()
+
+timeouts[timer_id] = cpt + delay;

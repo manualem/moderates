@@ -1,0 +1,15 @@
+package edapuC;
+require kermeta
+require "edap_Button.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class poll_Button inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void poll_Button()\n\n\tint new_status = get_buttons_status();\n\tint diff = new_status ^ buttons_status;\n\tint i;\n\tfor(i=0; i<")
+_res.append(d.BUTTONs.size.toString)
+_res.append("; i++) {\n\t\tif(diff>>i & 0x01) {\n\t\t\tif(new_status>>i & 0x01) {\n\t\t\t\tButton_receive_release(i+1);\n\t\t\t}\n\t\t\telse {\n\t\t\t\tButton_receive_press(i+1);\n\t\t\t}\n\t\t}\n\t}\n\tbuttons_status = new_status;\n")
+result := _res.toString
+end
+}

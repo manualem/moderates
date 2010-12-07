@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_MSP430Sensor.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class globals_MSP430Sensor inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void globals_MSP430Sensor()\n\n\n#include <signal.h>\n\n#define TEMP_REQUEST \t1<<0\n#define VOLTAGE_REQUEST 1<<1\n#define ADC_REQUEST \t1<<2\n\nint request = 0;\nint request_channel = 0;\n\n#define\ttempOffset\t*((int*)0x10F4)\n\n// Returns the temperature of the device in degrees celsus\nint getTemperature() {\n \t\t//int tempOffset = *((int *)0x10F4); // Initialize temperature offset coefficient\n \t\tvolatile long result;\n \t\tint i;\n \t\tADC10CTL1 = INCH_10 + ADC10DIV_4;       // Temp Sensor ADC10CLK/5\n\t    ADC10CTL0 = SREF_1 + ADC10SHT_3 + REFON + ADC10ON + ADC10IE + ADC10SR;\n\t    for(i=0; i<250; i++) __no_operation();   // delay to allow reference to settle\n\t    ADC10CTL0 |= ENC + ADC10SC;             // Sampling and conversion start\n\t    __bis_SR_register(CPUOFF + GIE);        // LPM0 with interrupts enabled\n\t    result = ADC10MEM;\n\t    ADC10CTL0 &= ~ENC;\n\t    ADC10CTL0 &= ~(REFON + ADC10ON);        // turn off A/D to save power\n\t    // oC = ((A10/1024)*1500mV)-986mV)*1/3.55mV = A10*423/1024 - 278\n\t    // the temperature is transmitted as an integer where 32.1 = 321\n\t    // hence 4230 instead of 423\n\t    result = (((result - 673) * 4230) / 1024);\n\t    if (tempOffset != 0xFFFF) result += tempOffset;\n\t    return (int)result;\n}\n \nint getVoltage() {\n\t \tint result, i;\n\t \tADC10CTL1 = INCH_11;                     // AVcc/2\n\t    ADC10CTL0 = SREF_1 + ADC10SHT_2 + REFON + ADC10ON + ADC10IE + REF2_5V;\n\t    for(i=0; i<250; i++) __no_operation();  // delay to allow reference to settle\n\t    ADC10CTL0 |= ENC + ADC10SC;             // Sampling and conversion start\n\t    __bis_SR_register(CPUOFF + GIE);        // LPM0 with interrupts enabled\n\t    result = ADC10MEM;\n\t    ADC10CTL0 &= ~ENC;\n\t    ADC10CTL0 &= ~(REFON + ADC10ON);        // turn off A/D to save power\n\t    result = (result*25)/512;\n\t    return result;\n}\n \n// ADC10 interrupt service routine - Needed to mesure temperature and voltage\ninterrupt(ADC10_VECTOR) wakeup ADC10_ISR(void)\n{\n  __bic_SR_register_on_exit(CPUOFF);        // Clear CPUOFF bit from 0(SR)\n}\n \n")
+result := _res.toString
+end
+}

@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_USART.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class globals_USART inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void globals_USART()\n\n#include <signal.h>\n\n//-----------------------------------------------------------------------------\n// Implementation of the FIFO buffer for received characters\n//-----------------------------------------------------------------------------\n\n#define USART_BUFFER_SIZE 32\n\nvolatile char usart_buffer[USART_BUFFER_SIZE]; // circular buffer fifo\nvolatile int usart_buffer_front = 0;\nvolatile int usart_buffer_tail = 0;\n\nint usart_buffer_empty() {\n\tif (usart_buffer_front == usart_buffer_tail) return 1;\n\telse return 0;\n}\n\nint usart_buffer_full() {\n\tif ( (usart_buffer_tail + 1) % USART_BUFFER_SIZE == usart_buffer_front ) return 1;\n\telse return 0;\n}\n\nvoid usart_buffer_queue(char c) {\n\tif (!usart_buffer_full()) {\n\t\tusart_buffer[usart_buffer_tail] = c;\n\t\tusart_buffer_tail = (usart_buffer_tail + 1) % USART_BUFFER_SIZE;\n\t}\n}\n\nchar usart_buffer_dequeue() {\n\tchar result = 0;\n\tif (!usart_buffer_empty()) {\n\t\tresult = usart_buffer[usart_buffer_front];\n\t\tusart_buffer_front = (usart_buffer_front + 1) % USART_BUFFER_SIZE;\n\t}\n\treturn result;\n}\n\n//-----------------------------------------------------------------------------\n// Implementation of the USART interupt routine (Enqueue received characters)\n//-----------------------------------------------------------------------------\n\ninterrupt (USCIAB0RX_VECTOR) USCI0RX_ISR(void)\n{\n\tvolatile char c = UCA0RXBUF;\n\tusart_buffer_queue(c);\n}\n")
+result := _res.toString
+end
+}
