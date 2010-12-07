@@ -1,0 +1,4 @@
+datatype string;
+datatype int;
+datatype real;
+datatype boolean;

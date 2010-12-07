@@ -1,0 +1,31 @@
+package edapuC;
+require kermeta
+require "edap_LED.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class init_LED inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void init_LED()\n\n")
+d.LEDs.each{ b | 
+_res.append("\t")
+_res.append(b.PORT)
+_res.append("SEL &= ~(1 << ")
+_res.append(b.BIT)
+_res.append("); // use ")
+_res.append(b.LABEL)
+_res.append(" as digital IO\n\t")
+_res.append(b.PORT)
+_res.append("DIR |= (1 << ")
+_res.append(b.BIT)
+_res.append("); // output\n\t")
+_res.append(b.PORT)
+_res.append("OUT &= ~(1 << ")
+_res.append(b.BIT)
+_res.append("); // OFF\n")
+}
+_res.append("")
+result := _res.toString
+end
+}

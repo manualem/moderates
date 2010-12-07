@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_USART.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class poll_USART inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void poll_USART()\n\nwhile (!usart_buffer_empty()) {\n\tUSART_receive_receive_byte(usart_buffer_dequeue());\n}\n")
+result := _res.toString
+end
+}

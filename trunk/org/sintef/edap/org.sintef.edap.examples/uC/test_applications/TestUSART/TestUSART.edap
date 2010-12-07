@@ -1,0 +1,65 @@
+import "../../devices/Button.edap"
+import "../../devices/Led.edap"
+import "../../devices/Timer.edap"
+import "../../devices/USART.edap"
+
+component TestUSART {
+
+	// Define the devices used by the application
+	property leds : LED[2..2]
+	property button : Button[1..1]
+	property timers : Timer[2..2]
+	property usart : USART[1..1]
+
+	// Behaviour of the application
+	statechart TestUSART init INIT {
+	
+		state INIT {
+			on entry { 
+				send Timer.start('1', '10000')
+				send LED.light_on('1')
+				send LED.light_on('2')
+			}
+			
+			transition run -> Running {
+				event Timer#timeout
+				guard 'timer_id == 1'
+				action {
+					send LED.light_off('1')
+					send LED.light_off('2')
+				}
+			}
+		}
+	
+		state Running {
+			
+			transition green -> Running {
+				event USART#receive_byte
+				guard 'b == \'g\''
+				action {
+					send LED.toggle('2')
+					send USART.transmit('"Toggle GREEN"')
+				}
+			}
+			
+			transition green -> Running {
+				event USART#receive_byte
+				guard 'b == \'r\''
+				action {
+					send LED.toggle('1')
+					send USART.transmit('"Toggle RED"')
+				}
+			}
+			
+			transition error -> Running {
+				event USART#receive_byte
+				guard 'b != \'r\' && b != \'g\''
+				action {
+					send USART.transmit('"ERROR!"')
+				}
+			}
+			
+		}
+		
+	}
+}

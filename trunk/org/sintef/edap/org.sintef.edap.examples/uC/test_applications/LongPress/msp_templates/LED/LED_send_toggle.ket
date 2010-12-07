@@ -1,0 +1,19 @@
+<%@ket
+package="edapuC"
+require="edap_LED.kmt"
+using="edap"
+isAspectClass="false"
+class="LED_send_toggle inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void LED_send_toggle()
+
+	switch(led_id) {
+<%d.LEDs.each{ l | %>
+	case <%=l.ADDR%>: <%=l.PORT%>OUT ^= (1 << <%=l.BIT%>); // TOGGLE
+		break;
+<%}%>
+	default: break;
+	}

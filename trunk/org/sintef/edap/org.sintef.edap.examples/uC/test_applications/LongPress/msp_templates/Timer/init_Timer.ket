@@ -1,0 +1,15 @@
+<%@ket
+package="edapuC"
+require="edap_Timer.kmt"
+using="edap"
+isAspectClass="false"
+class="init_Timer inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void init_Timer()
+
+int i;
+cpt = 0;
+for(i=0; i<MAX_TIMERS; i++) timeouts[i] = 0;

@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_USART.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class init_USART inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void init_USART()\n\n \tP3SEL = 0x30;                             // P3.4,5 = USCI_A0 TXD/RXD\n\tUCA0CTL1 |= UCSSEL_2;                     // SMCLK\n\t\n\t//UCA0BR0 = 104;                            // 1MHz 9600\n\t//UCA0BR1 = 0;                              // 1MHz 9600\n\t\n\tUCA0BR0   = 0x41;     \t\t\t\t\t  // 9600 from 8Mhz\n    UCA0BR1   = 0x3;\n\t\n\tUCA0MCTL = UCBRS0;                        // Modulation UCBRSx = 1\n\tUCA0CTL1 &= ~UCSWRST;                     // **Initialize USCI state machine**\n\tIE2 |= UCA0RXIE;                          // Enable USCI_A0 RX interrupt\n\t// __bis_SR_register(LPM0_bits + GIE);       // Enter LPM0, interrupts enabled\n")
+result := _res.toString
+end
+}

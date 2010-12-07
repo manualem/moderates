@@ -1,0 +1,22 @@
+<%@ket
+package="edapuC"
+require="edap_MSP430Sensor.kmt"
+using="edap"
+isAspectClass="false"
+class="poll_MSP430Sensor inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void poll_MSP430Sensor()
+
+	if (request & TEMP_REQUEST) {
+		MSP430Sensor_receive_temperature_value(getTemperature());
+	}
+	if (request & VOLTAGE_REQUEST) {
+		MSP430Sensor_receive_voltage_value(getVoltage());
+	}
+	if (request & ADC_REQUEST) {
+		// NOT YET IMPLEMENTED
+	}
+	request = 0;

@@ -1,0 +1,59 @@
+<%@ket
+package="edapuC"
+require="edap_USART.kmt"
+using="edap"
+isAspectClass="false"
+class="globals_USART inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void globals_USART()
+
+#include <signal.h>
+
+//-----------------------------------------------------------------------------
+// Implementation of the FIFO buffer for received characters
+//-----------------------------------------------------------------------------
+
+#define USART_BUFFER_SIZE 32
+
+volatile char usart_buffer[USART_BUFFER_SIZE]; // circular buffer fifo
+volatile int usart_buffer_front = 0;
+volatile int usart_buffer_tail = 0;
+
+int usart_buffer_empty() {
+	if (usart_buffer_front == usart_buffer_tail) return 1;
+	else return 0;
+}
+
+int usart_buffer_full() {
+	if ( (usart_buffer_tail + 1) % USART_BUFFER_SIZE == usart_buffer_front ) return 1;
+	else return 0;
+}
+
+void usart_buffer_queue(char c) {
+	if (!usart_buffer_full()) {
+		usart_buffer[usart_buffer_tail] = c;
+		usart_buffer_tail = (usart_buffer_tail + 1) % USART_BUFFER_SIZE;
+	}
+}
+
+char usart_buffer_dequeue() {
+	char result = 0;
+	if (!usart_buffer_empty()) {
+		result = usart_buffer[usart_buffer_front];
+		usart_buffer_front = (usart_buffer_front + 1) % USART_BUFFER_SIZE;
+	}
+	return result;
+}
+
+//-----------------------------------------------------------------------------
+// Implementation of the USART interupt routine (Enqueue received characters)
+//-----------------------------------------------------------------------------
+
+interrupt (USCIAB0RX_VECTOR) USCI0RX_ISR(void)
+{
+	volatile char c = UCA0RXBUF;
+	usart_buffer_queue(c);
+}

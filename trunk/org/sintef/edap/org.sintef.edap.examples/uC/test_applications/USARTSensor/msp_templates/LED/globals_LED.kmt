@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_LED.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class globals_LED inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void globals_LED()\n")
+result := _res.toString
+end
+}

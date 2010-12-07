@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_MSP430Sensor.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class poll_MSP430Sensor inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void poll_MSP430Sensor()\n\n\tif (request & TEMP_REQUEST) {\n\t\tMSP430Sensor_receive_temperature_value(getTemperature());\n\t}\n\tif (request & VOLTAGE_REQUEST) {\n\t\tMSP430Sensor_receive_voltage_value(getVoltage());\n\t}\n\tif (request & ADC_REQUEST) {\n\t\t// NOT YET IMPLEMENTED\n\t}\n\trequest = 0;\n")
+result := _res.toString
+end
+}

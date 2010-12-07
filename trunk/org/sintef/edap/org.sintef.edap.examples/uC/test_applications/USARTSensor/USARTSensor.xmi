@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<edapuC:UCGenerator xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap" xmlns:edapuC="http://edapuC">
+  <imports href="../../devices/msp/MSP430Sensor.edapuC#/"/>
+  <imports href="../../devices/msp/Led.edapuC#/"/>
+  <imports href="../../devices/msp/Timer.edapuC#/"/>
+  <imports href="../../devices/msp/USART.edapuC#/"/>
+  <edap href="USARTSensor.edap#/"/>
+  <application>
+    <state_machine xsi:type="edap:SoftwareComponent" href="USARTSensor.edap#//@types.0"/>
+    <headers text="&#xA;#include  &quot;msp430x22x4.h&quot;&#xA;#include &lt;signal.h>&#xA;#include &lt;stdlib.h>&#xA;#include &lt;string.h>&#xA;"/>
+    <init text="&#xA;&#x9;int i;&#xA;&#x9;// Stop watchdog timer&#xA;&#x9;WDTCTL = WDTPW + WDTHOLD;&#xA;&#x9;&#xA;&#x9;// Set the clock&#xA;&#x9;BCSCTL1 = CALBC1_8MHZ;&#xA;&#x9;DCOCTL = CALDCO_8MHZ;&#xA;&#x9;BCSCTL3 |= LFXT1S_2;&#xA;&#xA;"/>
+    <poll text="&#xA;&#x9;// some sort of polling delay&#xA;&#x9;for(i=50000; i>0; i--) __no_operation();&#xA;"/>
+    <global text="&#xA;// convert a integer which is representing a float times 10 into a string&#xA;// e.g 674 becomes &quot;67.4&quot; (the integer may not be larger that 10000)&#xA;void int10_to_ascii(int inum,const char *prefixstr,char *outbuf){&#xA;&#x9;unsigned char i,l,j,minus;&#xA;&#x9;char chbuf[7];&#xA;&#x9;minus=0;&#xA;&#x9;j=0;&#xA;&#x9;if (inum&lt;0){&#xA;&#x9;&#x9;minus=1;&#xA;&#x9;&#x9;inum=inum * -1;&#xA;&#x9;}&#xA;&#x9;while(inum>9 &amp;&amp; j&lt;7){&#xA;&#x9;&#x9;// zero is ascii 48:&#xA;&#x9;&#x9;chbuf[j]=(char)48+ inum-((inum/10)*10);&#xA;&#x9;&#x9;inum=inum/10;&#xA;&#x9;&#x9;j++;&#xA;&#x9;}&#xA;&#x9;chbuf[j]=(char)48+inum; // most significant digit&#xA;&#x9;// now reverse the order in outbuf and put a &quot;.&quot; in there&#xA;&#x9;i=0;&#xA;&#x9;l=0;&#xA;&#x9;while(prefixstr[i]){&#xA;&#x9;&#x9;outbuf[i]=prefixstr[i];&#xA;&#x9;&#x9;i++;&#xA;&#x9;}&#xA;&#x9;if(minus){&#xA;&#x9;&#x9;outbuf[i]='-';&#xA;&#x9;&#x9;i++;&#xA;&#x9;}&#xA;&#x9;while(j>0){&#xA;&#x9;&#x9;outbuf[i]=chbuf[j];&#xA;&#x9;&#x9;j--;&#xA;&#x9;&#x9;i++;&#xA;&#x9;&#x9;l++;&#xA;&#x9;}&#xA;&#x9;// inum is less than 10, should be something like &quot;0.inum&quot;&#xA;&#x9;if (l==0){&#xA;&#x9;&#x9;outbuf[i]='0';&#xA;&#x9;&#x9;i++;&#xA;&#x9;}&#xA;&#x9;outbuf[i]='.';&#xA;&#x9;i++;&#xA;&#x9;outbuf[i]=chbuf[j];&#xA;&#x9;i++;&#xA;&#x9;outbuf[i]='\0';&#xA;}&#xA;"/>
+  </application>
+</edapuC:UCGenerator>

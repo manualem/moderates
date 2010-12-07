@@ -1,0 +1,25 @@
+package edapuC;
+
+require kermeta
+require "../Generator.kmt"
+require "MSP430Sensor_send_mesure_voltage.kmt"
+require "globals_MSP430Sensor.kmt"
+require "poll_MSP430Sensor.kmt"
+require "MSP430Sensor_send_mesure_temperature.kmt"
+
+using kermeta::standard
+using edap
+
+/*
+To register the code generator:
+require "MSP430Sensor/edap_MSP430Sensor.kmt"
+
+templates.put("MSP430Sensor_send_mesure_voltage", MSP430Sensor_send_mesure_voltage.new)
+templates.put("globals_MSP430Sensor", globals_MSP430Sensor.new)
+templates.put("poll_MSP430Sensor", poll_MSP430Sensor.new)
+templates.put("MSP430Sensor_send_mesure_temperature", MSP430Sensor_send_mesure_temperature.new)
+*/
+
+// Add here any accessors for specific platform annotations
+
+

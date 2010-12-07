@@ -1,0 +1,105 @@
+import "../../devices/Button.edap"
+import "../../devices/Led.edap"
+import "../../devices/Timer.edap"
+
+component LongPress {
+
+	// Define the devices used by the application
+	property leds : LED[2..2]
+	property button : Button[1..1]
+	property timers : Timer[2..2]
+
+	// Behaviour of the application
+	statechart LongPress init OFF {
+	
+		state OFF {
+			on entry { // All LEDs are OFF
+				send LED.light_off('1')
+				send LED.light_off('2')
+			}
+			transition button_press -> OFF {
+				event Button#press
+				guard 'button_id == 1'
+				action send Timer.start('1', '30')
+			}
+			transition button_release -> OFF {
+				event Button#release
+				guard 'button_id == 1'
+				action send Timer.cancel('1')
+			}
+			transition long_press -> Booting {
+				event Timer#timeout
+				guard 'timer_id == 1'
+			}
+		}
+		
+		state Booting { 
+			on entry { // Light up both LEDs
+				send LED.light_on('1')
+				send LED.light_on('2')
+			}
+			on exit { // Keep only LED 1 ON
+				send LED.light_off('2')
+			}
+			transition button_release -> ON {
+				event Button#release
+				guard 'button_id == 1'
+			}
+		}
+		
+		composite state ON init Running {
+			
+			// Transitions to turn off if the button is pressed for 3 sec
+			transition button_press -> ON {
+				event Button#press
+				guard 'button_id == 1'
+				action send Timer.start('1', '30')
+			}
+			transition button_release -> ON {
+				event Button#release
+				guard 'button_id == 1'
+				action send Timer.cancel('1')
+			}
+			transition long_press -> OFF {
+				event Timer#timeout
+				guard 'timer_id == 1'
+			}
+			
+			composite state Running init IDLE {
+				state IDLE {
+					on entry {
+						send Timer.start('2','5')
+					}
+					transition blink -> BLINK {
+						event Timer#timeout
+						guard 'timer_id == 2'
+					}
+				}
+				state BLINK {
+					on entry {
+						send LED.light_on('2')
+						send Timer.start('2', '5')
+					}
+					on exit {
+						send LED.light_off('2')
+					}
+					transition idle -> IDLE {
+						event Timer#timeout
+						guard 'timer_id == 2'
+					}
+				}
+				transition button_press -> Pause {
+					event Button#press
+					guard 'button_id == 1'
+				}
+			}
+			
+			state Pause {
+				transition button_press -> Running {
+					event Button#press
+					guard 'button_id == 1'
+				}
+			}
+		}
+	}
+}

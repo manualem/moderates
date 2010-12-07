@@ -1,0 +1,215 @@
+import "types.edap"
+import "timer.edap"
+
+//
+// Switch
+//
+component Switch @Composite "" 
+{
+	port swIn
+	port swOut
+	
+	connector (swIn, dm_dmIn)
+	connector (swc_swmOut, swOut)	
+	connector (dm_dm2p1, p1_psIn)
+	connector (dm_dm2p2, p2_psIn)
+	connector (p1_psOut, swc_swmIn)
+	connector (p2_psOut, swc_swmIn)
+	
+	property swc : SwitchController @val ""
+	property dm : DriveMotor @val ""
+	property p1 : ProximitySensor @val ""
+	property p2 : ProximitySensor @val ""
+	
+	message createSwitch ();
+	
+	message switchSignal (switchId : string);
+	message motorOn () @inherits "switchSignal";
+	message motorOff () @inherits "switchSignal";
+	message motorOnCCW () @inherits "switchSignal" ;
+	
+	message sensorSignal (sensorId : string) @inherits "switchSignal";	
+	message sensorOn () @inherits "sensorSignal" ;
+	message sensorOff () @inherits "sensorSignal" ;
+	
+	message sensorFail () @inherits "sensorSignal" ;
+	message sensorOk () @inherits "sensorSignal" ;	
+	message motorFail () @inherits "sensorSignal" ;
+	message motorOk () @inherits "sensorSignal" ;	
+	
+	
+	statechart dummy init idle { state idle {}} 	
+}
+
+
+//
+// SwitchSM
+//
+component SwitchController {
+	
+	port swmIn
+	port swmOut
+	statechart SwitchControllerSM init MainTrack {
+	
+		state MainTrack {
+			transition p1Off -> P1Off {
+				event Switch#sensorOff
+				guard 'sensorId.equals("p1")'
+			}
+			transition p2On -> P2On {
+				event Switch#sensorOn
+				guard 'sensorId.equals("p2")'
+			}		
+		}	
+			
+		state DeviationTrack {
+			transition p2Off -> P2Off {
+				event Switch#sensorOff
+				guard 'sensorId.equals("p2")'
+			}
+			transition p1On -> P1On {
+				event Switch#sensorOn
+				guard 'sensorId.equals("p1")'
+			}			
+		}	
+			
+		state P1On {
+			transition toMain -> MainTrack {
+				event Switch#sensorOff
+				guard 'sensorId.equals("p2")' 
+			} 
+		}
+		
+		state P1Off {
+			transition toDev -> DeviationTrack {	
+				event Switch#sensorOn
+				guard 'sensorId.equals("p2")'			
+			}
+		}
+		
+		state P2On {
+			transition toDev -> DeviationTrack {
+				event Switch#sensorOff
+				guard 'sensorId.equals("p1")'
+			}
+		}
+		
+		state P2Off {
+			transition toMain -> MainTrack {
+				event Switch#sensorOn
+				guard 'sensorId.equals("p1")' 
+			} 			
+		}
+	}
+}
+
+//
+// ProximitySensor
+//
+component ProximitySensor {
+
+	port psIn
+	port psOut
+
+	statechart ProximitySensorSM init start {
+		state start {
+			transition toOn -> On {
+				event Switch#sensorOn	
+			}
+			
+			transition toOff -> Off {
+				event Switch#sensorOff
+			}
+		}
+		
+		state On {
+			transition toOff -> Off {
+				event Switch#sensorOff
+				action send Switch.sensorOff() port psOut @forward ""
+			}		
+		}
+		
+		state Off {
+			transition toOn -> On {
+				event Switch#sensorOn
+				action send Switch.sensorOn() port psOut @forward ""	
+			}		
+		}
+		
+		state Failed {
+		}
+	}
+}
+
+//
+// DriveMotor
+//
+component DriveMotor {
+	
+	port dmIn
+	port dm2p1
+	port dm2p2
+	
+	property timer : Timer 
+	
+	statechart DriveMotorSM init Off {
+		on entry {
+			send Switch.sensorOn() port dm2p1
+			send Switch.sensorOff() port dm2p2 
+		}
+				
+		state Off {
+			transition toOn -> On {
+				event Switch#motorOn 
+				action send Switch.sensorOff() port dm2p2
+			}
+			transition toOnCCW -> OnCCW {
+				event Switch#motorOnCCW
+				action send Switch.sensorOff() port dm2p1
+			}
+			transition tofail -> Fail {
+				event Switch#motorFail
+			}			
+		}
+		
+		state On {
+			on entry {
+				send DriveMotor.timer.startTimer ('100')
+			}
+
+			transition tofail -> Fail {
+				event Switch#motorFail
+			}
+			transition timedOff -> Off {
+				event DriveMotor.timer#TimerMsg
+				action send Switch.sensorOn() port dm2p1
+			}
+		}
+		
+		state OnCCW {
+			transition toOff -> Off {
+				event Switch#motorOff
+			}
+			transition tofail -> Fail {
+				event Switch#motorFail
+			}
+			transition timedOff -> Off {
+				event DriveMotor.timer#TimerMsg
+				action send Switch.sensorOn() port dm2p2
+			}
+		}
+		
+		state Fail {
+			transition fixed -> Off {
+				event Switch#motorOk
+			}	
+		}
+	}
+}
+
+
+
+
+
+
+

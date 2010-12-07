@@ -1,0 +1,26 @@
+<%@ket
+package="edapuC"
+require="edap_Button.kmt"
+using="edap"
+isAspectClass="false"
+class="poll_Button inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void poll_Button()
+
+	int new_status = get_buttons_status();
+	int diff = new_status ^ buttons_status;
+	int i;
+	for(i=0; i<<%=d.BUTTONs.size.toString%>; i++) {
+		if(diff>>i & 0x01) {
+			if(new_status>>i & 0x01) {
+				Button_receive_release(i+1);
+			}
+			else {
+				Button_receive_press(i+1);
+			}
+		}
+	}
+	buttons_status = new_status;
