@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org:Aspect xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adaptations="http://SmartAdapters4ART/smartadapters/core/adaptations" xmlns:edap="http://edap" xmlns:org="http://SmartAdapters4MODERATES" xsi:schemaLocation="http://SmartAdapters4ART/smartadapters/core/adaptations ../metamodel/Edap_AOM_Framework.ecore#//adaptations http://edap ../metamodel/edapAOM.ecore http://SmartAdapters4MODERATES ../metamodel/Edap_AOM_Framework.ecore">
+  <pointcut>
+    <content xsi:type="edap:CompositeState">
+      <substate aspectID="PC_anyState">
+        <outgoing aspectID="PC_toIdle" target="//@pointcut/@content.0/@substate.1"/>
+      </substate>
+      <substate aspectID="PC_Idle" name="Idle" incoming="//@pointcut/@content.0/@substate.0/@outgoing.0"/>
+    </content>
+  </pointcut>
+  <advice>
+    <content xsi:type="edap:State" aspectID="AD_Off" name="Off" incoming="//@advice/@content.1">
+      <outgoing aspectID="AD_toIdle" name="Off->Idle"/>
+    </content>
+    <content xsi:type="edap:Transition" aspectID="AD_toOff" target="//@advice/@content.0"/>
+  </advice>
+  <strategies xsi:type="org:PerElementMatch" adviceElements="//@advice/@content.0 //@advice/@content.0/@outgoing.0" pointcutElements="//@pointcut/@content.0"/>
+  <adapt xsi:type="adaptations:SetCompositeState" CompositeStateToSet="//@pointcut/@content.0" substate="//@advice/@content.0"/>
+  <adapt xsi:type="adaptations:SetTransition" TransitionToSet="//@advice/@content.0/@outgoing.0" target="//@pointcut/@content.0/@substate.1"/>
+  <adapt xsi:type="adaptations:SetTransition" TransitionToSet="//@pointcut/@content.0/@substate.0/@outgoing.0" source="//@pointcut/@content.0/@substate.0"/>
+</org:Aspect>

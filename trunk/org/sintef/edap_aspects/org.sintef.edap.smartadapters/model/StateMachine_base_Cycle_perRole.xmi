@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<edap:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:edap="http://edap" name="Normal">
+  <substate name="A" incoming="//@substate.1/@outgoing.0 //@substate.2/@outgoing.0">
+    <outgoing name="A->B" target="//@substate.1"/>
+    <outgoing name="->X" target="//@substate.3"/>
+  </substate>
+  <substate name="B" incoming="//@substate.0/@outgoing.0 //@substate.3/@outgoing.0">
+    <outgoing name="B->A" target="//@substate.0"/>
+    <outgoing name="->X" target="//@substate.2"/>
+  </substate>
+  <substate name="X1" incoming="//@substate.1/@outgoing.1">
+    <outgoing name="X->" target="//@substate.0"/>
+  </substate>
+  <substate name="X2" incoming="//@substate.0/@outgoing.1">
+    <outgoing name="X->" target="//@substate.1"/>
+  </substate>
+</edap:StateMachine>
