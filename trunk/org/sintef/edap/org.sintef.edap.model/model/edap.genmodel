@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2010 SINTEF&#xD;&#xA; All rights reserved. This program and the accompanying materials&#xD;&#xA; are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA; which accompanies this distribution, and is available at&#xD;&#xA; http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA; &#xD;&#xA; Contributors:&#xD;&#xA;     SINTEF - initial API and implementation"
+    modelDirectory="/org.sintef.edap.model/src" modelPluginID="org.sintef.edap.model"
+    modelName="Edap" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>edap.ecore</foreignModel>
+  <genPackages prefix="Edap" disposableProviderFactory="true" ecorePackage="edap.ecore#/">
+    <genClasses ecoreClass="edap.ecore#//EdapModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//EdapModel/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//EdapModel/imports"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Message">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Message/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//Message/allowMulticast"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//Component">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Component/compositeComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Component/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//Component/partial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//Component/singleton"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Component/receives"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Component/sends"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Component/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Component/connectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Component/ports"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Parameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Parameter/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//EdapElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//EdapElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//Type"/>
+    <genClasses ecoreClass="edap.ecore#//Property">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Property/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//Property/changeable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//Property/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//Property/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//PlatformAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//PlatformAnnotation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Enumeration/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//PrimitiveType"/>
+    <genClasses ecoreClass="edap.ecore#//EnumerationLiteral"/>
+    <genClasses image="false" ecoreClass="edap.ecore#//AnnotatedElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//AnnotatedElement/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//StateMachine"/>
+    <genClasses ecoreClass="edap.ecore#//Transition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Transition/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Transition/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//Transition/action"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Transition/target"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference edap.ecore#//Transition/source"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//State">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//State/outgoing"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//State/incoming"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//State/entry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//State/exit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//State/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//CompositeState">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//CompositeState/substate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//CompositeState/initial"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//Action"/>
+    <genClasses ecoreClass="edap.ecore#//ActionBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ActionBlock/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//ExternStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//ExternStatement/statement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//Expression"/>
+    <genClasses ecoreClass="edap.ecore#//ExternExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//ExternExpression/expression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//SendAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//SendAction/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//SendAction/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//SendAction/message"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//SendAction/port"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Broadcast"/>
+    <genClasses ecoreClass="edap.ecore#//Unicast"/>
+    <genClasses ecoreClass="edap.ecore#//PropertyAssignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//PropertyAssignment/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//PropertyAssignment/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//SoftwareComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//SoftwareComponent/behaviour"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Device"/>
+    <genClasses image="false" ecoreClass="edap.ecore#//Event"/>
+    <genClasses ecoreClass="edap.ecore#//ReceiveMessage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ReceiveMessage/device"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//ReceiveMessage/message"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Simulator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Simulator/device"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Dictionary">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Dictionary/indexType"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//ComponentReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//ComponentReference/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ComponentReference/propertyNavigations"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//PropertyNavigation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//PropertyNavigation/property"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//DictionaryNavigation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//DictionaryNavigation/index"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Connector">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference edap.ecore#//Connector/owner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Connector/port1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Connector/port2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Connector/prop1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//Connector/prop2"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//Port">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference edap.ecore#//Port/owner"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//CreateAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//CreateAction/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//EventReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//EventReference/msgRef"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//EventReference/paramRef"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
