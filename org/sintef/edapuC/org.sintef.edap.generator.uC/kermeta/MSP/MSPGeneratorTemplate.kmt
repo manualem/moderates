@@ -1,0 +1,29 @@
+package edapuC;
+require kermeta
+require "MSPGenerator.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class MSPGeneratorTemplate inherits PSGeneratorTemplate {
+method generate(m: UCGenerator):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("package edapuC;\n\nrequire \"platform:/plugin/org.sintef.edap.generator.uC/kermeta/MSP/MSPGenerator.kmt\"\n\n")
+m.all_devices.each{ d |
+_res.append("require \"")
+_res.append(d.device.name)
+_res.append("/edap_")
+_res.append(d.device.name)
+_res.append(".kmt\"\n")
+}
+_res.append("\nrequire kermeta\n\nusing kermeta::utils\nusing kermeta::standard\nusing kermeta::io\nusing edap\n\nclass Main\n{\n\toperation generateDevices(uri : String, path : String) : Void is do\n\t\n\t\tvar generator : MSPGenerator init MSPGenerator.new\n")
+m.all_devices.each{ d | d.template_names.each{ t |
+_res.append("\t\tgenerator.registerTemplate(\"")
+_res.append(t)
+_res.append("\", ")
+_res.append(t)
+_res.append(".new)\n")
+}}
+_res.append("\t\tgenerator.generateDevices(uri, path)\n\n\tend\n}")
+result := _res.toString
+end
+}

@@ -1,0 +1,172 @@
+/* $Id:$ 
+ * Creation : November 13, 2009
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            franck
+ */
+
+package edapuC;
+
+require kermeta
+require "edap_impl.kmt"
+
+using kermeta::utils
+using kermeta::standard
+using kermeta::io
+using edap
+
+
+aspect class UCGenerator {
+	
+	property readonly all_devices : set UCDevice[*]
+		getter is do
+			result := Set<UCDevice>.new
+			result.addAll(devices)
+			imports.each{ i | 
+				result.addAll(i.all_devices)
+			}
+		end
+
+}
+
+
+abstract class DeviceCodeGenerator {
+	operation generate(d : UCDevice) : String is abstract
+}
+
+abstract class PSHeaderGenerator {
+	operation generate(e : EdapElement) : String is abstract
+}
+
+abstract class PSGeneratorTemplate {
+	operation generate(m: UCGenerator) : String is abstract
+}
+
+class PSMainGenerator {
+	operation generate(d : UCGenerator) : String is abstract
+}
+
+
+abstract class PSGenerator inherits TypeResolver {
+	
+		// operations to be implemented by platform specific generators
+	operation initialize() is abstract
+	// The initilaize operation should populate these fields:
+	attribute header : PSHeaderGenerator
+	attribute main : PSMainGenerator
+	attribute generator : PSGeneratorTemplate
+	
+	// Below this everything is generic
+	//--------------------------------------------------------------------
+	attribute templates : Hashtable<String, DeviceCodeGenerator>
+	
+	operation registerTemplate(name : String, generator : DeviceCodeGenerator) is do
+		if templates == void then templates := Hashtable<String, DeviceCodeGenerator>.new end
+		templates.put(name, generator)
+	end
+
+	operation globals_code(ucd : UCDevice) : String is do
+		result := "\t//TODO: Define global variables or utility functions here"
+		stdio.writeln("templates = " + templates.toString)
+		var template : DeviceCodeGenerator init templates.getValue("globals_" + ucd.device.name)
+		if template != void then
+			result := template.generate(ucd)
+		end
+	end
+
+	operation init_code(ucd : UCDevice) : String is do
+		result := "\t//TODO: initialize the driver here"
+		var template : DeviceCodeGenerator init templates.getValue("init_" + ucd.device.name)
+		if template != void then
+			result := template.generate(ucd)
+		end
+	end
+	
+	operation poll_code(ucd : UCDevice) : String is do
+		result := "\t//TODO: implement the pooling here"
+		var template : DeviceCodeGenerator init templates.getValue("poll_" + ucd.device.name)
+		if template != void then
+			result := template.generate(ucd)
+		end
+	end
+	
+	operation message_code(ucd : UCDevice, m : Message) : String is do
+		result := "\t//TODO: send message " + m.name
+		var template : DeviceCodeGenerator init templates.getValue(ucd.device.name + "_send_" + m.name )
+		if template != void then
+			result := template.generate(ucd)
+		end
+	end
+}
+
+aspect class UCMessage {
+
+	operation getParameterList(includeAddr : Boolean, g : PSGenerator) : String is do
+		result := message.getParameterList(false, g)
+	end
+
+	operation getParameterTypeList(includeAddr : Boolean, g : PSGenerator) : String is do
+		result := message.getParameterTypeList(false, g)
+	end
+	
+	operation getParameterNameList(includeAddr : Boolean) : String is do
+		result := message.getParameterNameList(false)
+	end
+	 
+}
+
+aspect class UCDevice {
+	
+	 property readonly init_required : Boolean 
+		getter is do
+			result := ~init != void
+		end
+		
+	property readonly polling_required : Boolean 
+		getter is do
+			result := poll != void
+		end
+		
+	property readonly globals_required : Boolean 
+		getter is do
+			result := global != void
+		end
+		
+	attribute __templates : Hashtable<String, String>
+	
+	property readonly templates :  Hashtable<String, String> 
+		getter is do
+			if __templates == void then
+				__templates := Hashtable<String, String>.new
+				if init_required then 
+					__templates.put("init_" + device.name, ~init.text)
+				end
+				if polling_required then 
+					__templates.put("poll_" + device.name, poll.text)
+				end
+				if globals_required then 
+					__templates.put("globals_" + device.name, global.text)
+				end
+				messages.each{ m |
+					__templates.put(device.name + "_send_" + m.message.name, m.send.text)
+				}
+			end
+			result := __templates
+		end
+		
+	property readonly template_names : set String[*]
+		getter is do
+			result := templates.keys
+		end
+}
+
+aspect class UCApplication inherits State {
+	
+	property readonly sm : StateMachine
+		getter is do
+			result := state_machine.asType(SoftwareComponent).behaviour
+		end 
+	
+}
+

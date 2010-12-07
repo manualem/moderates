@@ -1,0 +1,111 @@
+<%@ket
+package="edap"
+require="edapuC_impl.kmt"
+using="edapuC"
+isAspectClass="false"
+class="ApplicationGenerator"
+ismethod="false"operation="generate"
+parameters="ucg : UCGenerator, g : PSGenerator"
+%>
+<%var a : edap::StateMachine init ucg.application.sm%>
+
+<%=g.header.generate(a)%>
+
+<%=ucg.application.headers.text%>
+
+/******************************************************************************
+ *                           INCLUDE THE DEVICES
+ ******************************************************************************/
+ 
+<% a.all_devices.each{ d | %>
+#include "<%=d.name%>.h" 
+<%}%>
+
+/******************************************************************************
+ *                      CODE FROM THE GLOBALS TEMPLATE
+ ******************************************************************************/
+
+<%=ucg.application.global.text%>
+
+/******************************************************************************
+ *                            STATES DECLARATION
+ ******************************************************************************/
+<% a.populateSateIDs %>
+// Define all the states and their IDs
+#define <%=a.str_id%> 0	// fixed
+<% a.all_sub_states.each{ s | %>
+#define <%=s.str_id%> <%=s.id.toString%>
+<%}%>
+
+// Static variable to store the current state of the state machines and composites
+static int <%=a.str_id%>_Current_State[<%=a.sm_count.toString%>];
+
+/******************************************************************************
+ *                          PROTOTYPES DECLARATION
+ ******************************************************************************/
+
+// Prototypes for Entry actions
+<% a.all_sub_states.select{s | s.needs_entry }.each{ s | %>
+void <%=a.str_id%>_<%=s.str_id%>_On_Entry();
+<%}%>
+
+// Prototypes for Exit actions
+<% a.all_sub_states.select{s | s.needs_exit }.each{ s | %>
+void <%=a.str_id%>_<%=s.str_id%>_On_Exit();
+<%}%>
+
+// Prototypes for Events handlers
+<% a.all_incoming_events.each{ e | %>
+void <%=a.str_id%>_<%=e.name%>_Event_Handler(<%=a.formal_params_for(e, g)%>);
+<%}%>
+
+/******************************************************************************
+ *                    IMPLEMENTATION OF ENTRY AND EXIT
+ ******************************************************************************/
+ 
+// Entry actions
+<% a.all_composite_states.each{ s | %>
+void <%=a.str_id%>_<%=s.str_id%>_On_Entry() {
+	<%=a.str_id%>_Current_State[<%=s.str_id%>] = <%=s.initial.str_id%>; // no history
+	<%if s.entry != void then%><%=s.entry.uc_code%><%end%>
+	<%if s.initial.needs_entry then%><%=a.str_id%>_<%=s.initial.str_id%>_On_Entry();<%end%>
+}
+<%}%>
+<% a.all_simple_states.select{ s | s.needs_entry }.each{ s | %>
+void <%=a.str_id%>_<%=s.str_id%>_On_Entry() {
+	<%=s.entry.uc_code%>
+}
+<%}%>
+
+// Exit actions
+<% a.all_sub_states.select{s | s.needs_exit }.each{ s | %>
+void <%=a.str_id%>_<%=s.str_id%>_On_Exit(){
+	<%=s.exit.uc_code%>
+}
+<%}%>
+
+ /******************************************************************************
+ *                    IMPLEMENTATION OF EVENT HANDLING
+ ******************************************************************************/
+ 
+<% a.all_incoming_events.each{ e | %>
+void <%=a.str_id%>_<%=e.name%>_Event_Handler(<%=a.formal_params_for(e, g)%>){
+	<%a.events_transitions.getValue(e).select{ t | t.source == t.target }.each{ t |%>if ( <%=t.avr_condition_code%> ) {
+		<%if t.source.needs_exit then%><%=a.str_id%>_<%=t.source.str_id%>_On_Exit();<%end%>
+		<%if t.action != void then%><%=t.action.uc_code%><%end%>
+		<%if t.target.needs_entry then%><%=a.str_id%>_<%=t.target.str_id%>_On_Entry();<%end%>
+		return; // The event has been consumed
+	}
+	<%}%>
+	<%a.events_transitions.getValue(e).select{ t | t.source != t.target }.each{ t |%>if ( <%=t.avr_condition_code%> ) {
+		<%if t.source.needs_exit then%><%=a.str_id%>_<%=t.source.str_id%>_On_Exit();<%end%>
+		<%if t.action != void then%><%=t.action.uc_code%><%end%>
+		<%=a.str_id%>_Current_State[<%=t.source.parent.str_id%>] = <%=t.target.str_id%>; // change state
+		<%if t.target.needs_entry then%><%=a.str_id%>_<%=t.target.str_id%>_On_Entry();<%end%>
+		return; // The event has been consumed
+	}
+	<%}%>
+}
+<%}%>
+
+<%=g.main.generate(ucg)%>

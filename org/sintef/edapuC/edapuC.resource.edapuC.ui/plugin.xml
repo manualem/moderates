@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="edapuC.resource.edapuC.ui.EdapuCUIMetaInformation" id="edapuC.resource.edapuC.ui.EdapuCUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="edapuC.resource.edapuC.ui.EdapuCEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="edapuC" icon="icons/editor_icon.gif" id="edapuC.resource.edapuC.ui.EdapuCEditor" name="EMFText edapuC Editor">
+			<contentTypeBinding contentTypeId="edapuC.resource.edapuC"/>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="edapuC.resource.edapuC.ui.EdapuCPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="EdapuC Text Editor" id="edapuC.resource.edapuC.ui.EdapuCPreferencePage" class="edapuC.resource.edapuC.ui.EdapuCPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="edapuC.resource.edapuC.ui.EdapuCSyntaxColoringPreferencePage" class="edapuC.resource.edapuC.ui.EdapuCSyntaxColoringPreferencePage" category="edapuC.resource.edapuC.ui.EdapuCPreferencePage">
+		</page>
+		<page name="Brackets" id="edapuC.resource.edapuC.ui.EdapuCBracketPreferencePage" class="edapuC.resource.edapuC.ui.EdapuCBracketPreferencePage" category="edapuC.resource.edapuC.ui.EdapuCPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="edapuC.resource.edapuC.ui.EdapuCNewFileWizard" id="edapuC.resource.edapuC.ui.EdapuCNewFileWizard" name="EMFText .edapuC file">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="edapuC.resource.edapuC.ui.EdapuCMarkerResolutionGenerator" markerType="edapuC.resource.edapuC.problem" />
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="edapuC.resource.edapuC.ui.EdapuCAnnotationModelFactory" extensions="edapuC" />
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="edapuC.resource.edapuC" name=".edapuC File" base-type="org.eclipse.core.runtime.text" file-extensions="edapuC"/>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="edapuC" id="edapuC.resource.edapuC.ui.provider" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="edapuC.resource.edapuC.ui.occurences" />
+		<type name="edapuC.resource.edapuC.ui.occurences.declaration" super="edapuC.resource.edapuC.ui.occurences" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="edapuC.resource.edapuC.ui.occurences" label="Occurrences (in .edapuC files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="edapuC.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="edapuC.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="edapuC.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="edapuC.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="edapuC.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="edapuC.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="edapuC.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="edapuC.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="edapuC.occurrenceTextStyle" textStylePreferenceValue="NONE" />
+		<specification annotationType="edapuC.resource.edapuC.ui.occurences.declaration" label="Declarations (in .edapuC files)" textPreferenceKey="edapuC.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="edapuC.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="edapuC.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="edapuC.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="edapuC.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="edapuC.declarationTextStyle" textStylePreferenceValue="NONE" />
+	</extension>
+	
+</plugin>

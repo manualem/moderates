@@ -1,0 +1,180 @@
+package edap;
+require kermeta
+require "edapuC_impl.kmt"
+using kermeta::standard
+using kermeta::utils
+using edapuC
+class ApplicationGenerator{
+operation generate(ucg : UCGenerator, g : PSGenerator):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var a : edap::StateMachine init ucg.application.sm
+_res.append("\n")
+_res.append(g.header.generate(a))
+_res.append("\n\n")
+_res.append(ucg.application.headers.text)
+_res.append("\n\n/******************************************************************************\n *                           INCLUDE THE DEVICES\n ******************************************************************************/\n \n")
+ a.all_devices.each{ d | 
+_res.append("#include \"")
+_res.append(d.name)
+_res.append(".h\" \n")
+}
+_res.append("\n/******************************************************************************\n *                      CODE FROM THE GLOBALS TEMPLATE\n ******************************************************************************/\n\n")
+_res.append(ucg.application.global.text)
+_res.append("\n\n/******************************************************************************\n *                            STATES DECLARATION\n ******************************************************************************/\n")
+ a.populateSateIDs 
+_res.append("// Define all the states and their IDs\n#define ")
+_res.append(a.str_id)
+_res.append(" 0\t// fixed\n")
+ a.all_sub_states.each{ s | 
+_res.append("#define ")
+_res.append(s.str_id)
+_res.append(" ")
+_res.append(s.id.toString)
+_res.append("\n")
+}
+_res.append("\n// Static variable to store the current state of the state machines and composites\nstatic int ")
+_res.append(a.str_id)
+_res.append("_Current_State[")
+_res.append(a.sm_count.toString)
+_res.append("];\n\n/******************************************************************************\n *                          PROTOTYPES DECLARATION\n ******************************************************************************/\n\n// Prototypes for Entry actions\n")
+ a.all_sub_states.select{s | s.needs_entry }.each{ s | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(s.str_id)
+_res.append("_On_Entry();\n")
+}
+_res.append("\n// Prototypes for Exit actions\n")
+ a.all_sub_states.select{s | s.needs_exit }.each{ s | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(s.str_id)
+_res.append("_On_Exit();\n")
+}
+_res.append("\n// Prototypes for Events handlers\n")
+ a.all_incoming_events.each{ e | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(e.name)
+_res.append("_Event_Handler(")
+_res.append(a.formal_params_for(e, g))
+_res.append(");\n")
+}
+_res.append("\n/******************************************************************************\n *                    IMPLEMENTATION OF ENTRY AND EXIT\n ******************************************************************************/\n \n// Entry actions\n")
+ a.all_composite_states.each{ s | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(s.str_id)
+_res.append("_On_Entry() {\n\t")
+_res.append(a.str_id)
+_res.append("_Current_State[")
+_res.append(s.str_id)
+_res.append("] = ")
+_res.append(s.initial.str_id)
+_res.append("; // no history\n\t")
+if s.entry != void then
+_res.append(s.entry.uc_code)
+end
+_res.append("\n\t")
+if s.initial.needs_entry then
+_res.append(a.str_id)
+_res.append("_")
+_res.append(s.initial.str_id)
+_res.append("_On_Entry();")
+end
+_res.append("\n}\n")
+}
+_res.append("")
+ a.all_simple_states.select{ s | s.needs_entry }.each{ s | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(s.str_id)
+_res.append("_On_Entry() {\n\t")
+_res.append(s.entry.uc_code)
+_res.append("\n}\n")
+}
+_res.append("\n// Exit actions\n")
+ a.all_sub_states.select{s | s.needs_exit }.each{ s | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(s.str_id)
+_res.append("_On_Exit(){\n\t")
+_res.append(s.exit.uc_code)
+_res.append("\n}\n")
+}
+_res.append("\n /******************************************************************************\n *                    IMPLEMENTATION OF EVENT HANDLING\n ******************************************************************************/\n \n")
+ a.all_incoming_events.each{ e | 
+_res.append("void ")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(e.name)
+_res.append("_Event_Handler(")
+_res.append(a.formal_params_for(e, g))
+_res.append("){\n\t")
+a.events_transitions.getValue(e).select{ t | t.source == t.target }.each{ t |
+_res.append("if ( ")
+_res.append(t.avr_condition_code)
+_res.append(" ) {\n\t\t")
+if t.source.needs_exit then
+_res.append(a.str_id)
+_res.append("_")
+_res.append(t.source.str_id)
+_res.append("_On_Exit();")
+end
+_res.append("\n\t\t")
+if t.action != void then
+_res.append(t.action.uc_code)
+end
+_res.append("\n\t\t")
+if t.target.needs_entry then
+_res.append(a.str_id)
+_res.append("_")
+_res.append(t.target.str_id)
+_res.append("_On_Entry();")
+end
+_res.append("\n\t\treturn; // The event has been consumed\n\t}\n")
+}
+_res.append("\t")
+a.events_transitions.getValue(e).select{ t | t.source != t.target }.each{ t |
+_res.append("if ( ")
+_res.append(t.avr_condition_code)
+_res.append(" ) {\n\t\t")
+if t.source.needs_exit then
+_res.append(a.str_id)
+_res.append("_")
+_res.append(t.source.str_id)
+_res.append("_On_Exit();")
+end
+_res.append("\n\t\t")
+if t.action != void then
+_res.append(t.action.uc_code)
+end
+_res.append("\n\t\t")
+_res.append(a.str_id)
+_res.append("_Current_State[")
+_res.append(t.source.parent.str_id)
+_res.append("] = ")
+_res.append(t.target.str_id)
+_res.append("; // change state\n\t\t")
+if t.target.needs_entry then
+_res.append(a.str_id)
+_res.append("_")
+_res.append(t.target.str_id)
+_res.append("_On_Entry();")
+end
+_res.append("\n\t\treturn; // The event has been consumed\n\t}\n")
+}
+_res.append("}\n")
+}
+_res.append("\n")
+_res.append(g.main.generate(ucg))
+_res.append("\n")
+result := _res.toString
+end
+}
