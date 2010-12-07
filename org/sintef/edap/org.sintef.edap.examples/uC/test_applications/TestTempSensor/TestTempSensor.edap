@@ -1,0 +1,49 @@
+import "../../devices/Led.edap"
+import "../../devices/Timer.edap"
+import "../../devices/MSP430Sensor.edap"
+
+/* 
+Simple application which uses the temperature sensor and lights up
+the red led if the temperature is above 27 °C.
+Green LED blinks when the temperature is sampled
+*/
+
+component TestTempSensor {
+
+	// Define the devices used by the application
+	property leds : LED[2..2]
+	property timers : Timer[2..2]
+	property sensor : MSP430Sensor[1..1]
+
+	// Behaviour of the application
+	statechart TestTempSensor init IDLE {
+	
+		state IDLE {
+		
+			on entry send Timer.start('1', '100')
+			
+			transition timeout -> WaitingForSensor {
+				event Timer#timeout
+				guard 'timer_id == 1'
+				action send MSP430Sensor.mesure_temperature()
+			}
+		} // IDLE
+		
+		state WaitingForSensor { 
+		
+			// Light up the green LED in this state
+			on entry send LED.light_on('2')
+			on exit send LED.light_off('2')
+		
+			transition temperature_updated -> IDLE {
+				event MSP430Sensor#temperature_value
+				action {
+					// light up LED 2 if the temp is > 27°C
+					'if (v > 280)' send LED.light_on('1')
+					'else' send LED.light_off('1')
+				}
+			}
+		} //WaitingForSensor
+		
+	} // statechart
+}

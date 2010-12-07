@@ -1,0 +1,16 @@
+<%@ket
+package="edapuC"
+require="edap_Timer.kmt"
+using="edap"
+isAspectClass="false"
+class="globals_Timer inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void globals_Timer()
+
+#define MAX_TIMERS 8
+
+volatile long cpt;
+volatile long timeouts[MAX_TIMERS];

@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_Timer.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class poll_Timer inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void poll_Timer()\n\nint i;\nint active = 0;\nfor(i=0; i<MAX_TIMERS; i++) {\n\tif (timeouts[i] != 0) {\n\t\tactive = 1;\n\t\tif (timeouts[i] <= cpt) {\n\t\t\ttimeouts[i] = 0;\n\t\t\tTimer_receive_timeout(i);\n\t\t}\n\t}\n}\nif (active)\tcpt++;\nelse cpt = 0;\n")
+result := _res.toString
+end
+}

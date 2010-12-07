@@ -1,0 +1,87 @@
+edap "../Button.edap"
+
+device Button {
+
+	// MSP specific property (Change this to fit circuit)
+	property MSP_PIN = "P1.2" // The built-in push button
+
+	global 
+<generator>
+class BUTTON {
+	reference ADDR : String
+	reference PORT : String
+	reference BIT : String
+	reference LABEL : String
+	
+}
+
+aspect class UCDevice {
+	
+	reference _buttons : OrderedSet<BUTTON>
+	
+	property readonly BUTTONs : OrderedSet<BUTTON>
+		getter is do
+			if _buttons == void then
+				result := OrderedSet<BUTTON>.new
+				var pin : StaticProperty init properties.detect{p| p.name == "MSP_PIN"}
+				if pin != void then
+					var l : BUTTON
+					var i : Integer init 1
+					pin.~value.split(",").each { p |
+						l := BUTTON.new
+						p := p.replace(" ", "")
+						l.LABEL :=  p
+						//stdio.writeln("p=" + p + ";")
+						l.PORT := p.substring(0,2)
+						l.BIT :=  p.substring(3,4)
+						l.ADDR := i.toString
+						i := i + 1
+						result.add(l)
+					}
+					_buttons := result
+				end
+			else
+					result := _buttons
+			end
+		end
+	
+}
+</generator>
+<template>
+volatile int buttons_status;
+
+int get_buttons_status() {
+	int status = 0x0000;
+<%d.BUTTONs.each{ b | %>	if ( <%=b.PORT%>IN & ( 1 << <%=b.BIT%>) ) status |= 1 << <%=(b.ADDR.toInteger - 1).toString%>;
+	<%}%>
+	return status;
+}
+</template>
+
+	init 
+<template>
+<%d.BUTTONs.each{ b | %>	<%=b.PORT%>SEL &= ~(1 << <%=b.BIT%>); // use <%=b.LABEL%> as digital IO
+	<%=b.PORT%>DIR &= ~(1 << <%=b.BIT%>); // input
+	<%=b.PORT%>REN |= (1 << <%=b.BIT%>); // pull-up
+<%}%>
+	buttons_status = get_buttons_status();
+</template>
+
+	poll 
+<template>
+	int new_status = get_buttons_status();
+	int diff = new_status ^ buttons_status;
+	int i;
+	for(i=0; i<<%=d.BUTTONs.size.toString%>; i++) {
+		if(diff>>i & 0x01) {
+			if(new_status>>i & 0x01) {
+				Button_receive_release(i+1);
+			}
+			else {
+				Button_receive_press(i+1);
+			}
+		}
+	}
+	buttons_status = new_status;
+</template>
+}

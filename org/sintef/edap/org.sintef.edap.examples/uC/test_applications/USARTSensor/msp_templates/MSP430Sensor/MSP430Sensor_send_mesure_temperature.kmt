@@ -1,0 +1,13 @@
+package edapuC;
+require kermeta
+require "edap_MSP430Sensor.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class MSP430Sensor_send_mesure_temperature inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void MSP430Sensor_send_mesure_temperature()\n\n\trequest |= TEMP_REQUEST; \n")
+result := _res.toString
+end
+}

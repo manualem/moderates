@@ -1,0 +1,15 @@
+<%@ket
+package="edapuC"
+require="edap_USART.kmt"
+using="edap"
+isAspectClass="false"
+class="poll_USART inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void poll_USART()
+
+while (!usart_buffer_empty()) {
+	USART_receive_receive_byte(usart_buffer_dequeue());
+}

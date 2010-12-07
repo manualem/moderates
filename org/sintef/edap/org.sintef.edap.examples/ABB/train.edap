@@ -1,0 +1,53 @@
+import "types.edap"
+import "timer.edap"
+
+component Train 
+	@Composite ""	
+	{
+//		property id : string @id ""
+		property pos : int
+		property tc : TrainController @val "" @par "pos=10"	
+		port trainIn
+		port trainOut
+		connector (trainIn, tc_tcIn)
+		connector (tc_tcOut, trainOut)
+		
+		message trainSignal ();
+		message stopTrain () @inherits "trainSignal";
+		message startTrain () @inherits "trainSignal";
+		message createTrain (pos : int) @inherits "trainSignal";		
+		// message notifyTrainPos (posX : int, posY : int, length : int, trainId : string) @inherits "trainSignal";
+		message notifyTrainPos (posX : int, posY : int, length : int, trainId : string) @inherits "trainSignal" ; 
+		
+		receives stopTrain
+		receives startTrain
+		
+		statechart dummy init idle {
+			state idle {
+			}
+	 	}		
+}
+
+component TrainController {
+		port tcIn
+		port tcOut
+		
+		property timer : Timer
+		property pos : int
+		statechart TrainControllerSM init Stopped {	
+			state Stopped {
+				transition toRunning->Running { event Train#startTrain }
+			}
+		
+			state Running {
+				on entry send TrainController.timer.startTimer('300')
+				transition toStopped->Stopped {event Train#stopTrain }
+				transition moveTrain -> Running {
+					event TrainController.timer#TimerMsg
+					action '((Train_Composite)csm.owner).pos += 2;'
+				}
+				
+			}
+	 	}
+}
+

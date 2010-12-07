@@ -1,0 +1,20 @@
+<%@ket
+package="edapuC"
+require="edap_Button.kmt"
+using="edap"
+isAspectClass="false"
+class="globals_Button inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void globals_Button()
+
+volatile int buttons_status;
+
+int get_buttons_status() {
+	int status = 0x0000;
+<%d.BUTTONs.each{ b | %>	if ( <%=b.PORT%>IN & ( 1 << <%=b.BIT%>) ) status |= 1 << <%=(b.ADDR.toInteger - 1).toString%>;
+	<%}%>
+	return status;
+}

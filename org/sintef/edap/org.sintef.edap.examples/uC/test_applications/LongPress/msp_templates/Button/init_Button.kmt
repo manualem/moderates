@@ -1,0 +1,31 @@
+package edapuC;
+require kermeta
+require "edap_Button.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class init_Button inherits DeviceCodeGenerator {
+method generate(d : UCDevice):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("// Implemetation of void init_Button()\n\n")
+d.BUTTONs.each{ b | 
+_res.append("\t")
+_res.append(b.PORT)
+_res.append("SEL &= ~(1 << ")
+_res.append(b.BIT)
+_res.append("); // use ")
+_res.append(b.LABEL)
+_res.append(" as digital IO\n\t")
+_res.append(b.PORT)
+_res.append("DIR &= ~(1 << ")
+_res.append(b.BIT)
+_res.append("); // input\n\t")
+_res.append(b.PORT)
+_res.append("REN |= (1 << ")
+_res.append(b.BIT)
+_res.append("); // pull-up\n")
+}
+_res.append("\tbuttons_status = get_buttons_status();\n")
+result := _res.toString
+end
+}

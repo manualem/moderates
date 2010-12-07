@@ -1,0 +1,19 @@
+digraph finite_state_machine {
+	
+	rankdir=LR;
+	
+	node [shape = circle]; OFF; Booting;
+	node [shape = doublecircle]; ON;
+
+	
+	OFF -> OFF [ label = " button_press " ];
+	OFF -> OFF [ label = " button_release " ];
+	OFF -> Booting [ label = " long_press " ];
+	
+	Booting -> ON [ label = " button_release " ];
+	
+	ON -> ON [ label = " button_press " ];
+	ON -> ON [ label = " button_release " ];
+	ON -> OFF [ label = " long_press " ];
+	
+}

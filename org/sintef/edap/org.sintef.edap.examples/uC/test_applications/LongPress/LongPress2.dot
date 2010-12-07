@@ -1,0 +1,16 @@
+digraph finite_state_machine {
+	
+	node [shape = doublecircle]; ON;
+	node [shape = circle]; OFF; Booting;
+	
+	OFF -> OFF [ label = "button_press [Button#press]" ];
+	OFF -> OFF [ label = "button_release [Button#release]" ];
+	OFF -> Booting [ label = "long_press [Timer#timeout]" ];
+	
+	Booting -> ON [ label = "button_release [Button#release]" ];
+	
+	ON -> ON [ label = "button_press [Button#press]" ];
+	ON -> ON [ label = "button_release [Button#release]" ];
+	ON -> OFF [ label = "long_press [Timer#timeout]" ];
+	
+}

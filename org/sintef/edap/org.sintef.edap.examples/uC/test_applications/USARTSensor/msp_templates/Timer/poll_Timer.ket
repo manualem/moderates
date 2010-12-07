@@ -1,0 +1,25 @@
+<%@ket
+package="edapuC"
+require="edap_Timer.kmt"
+using="edap"
+isAspectClass="false"
+class="poll_Timer inherits DeviceCodeGenerator "
+isMethod="true"
+operation="generate"
+parameters="d : UCDevice"
+%>
+// Implemetation of void poll_Timer()
+
+int i;
+int active = 0;
+for(i=0; i<MAX_TIMERS; i++) {
+	if (timeouts[i] != 0) {
+		active = 1;
+		if (timeouts[i] <= cpt) {
+			timeouts[i] = 0;
+			Timer_receive_timeout(i);
+		}
+	}
+}
+if (active)	cpt++;
+else cpt = 0;

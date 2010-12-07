@@ -1,0 +1,62 @@
+package edapuC;
+
+require kermeta
+require "../Generator.kmt"
+require "globals_Button.kmt"
+require "init_Button.kmt"
+require "poll_Button.kmt"
+
+using kermeta::standard
+using edap
+
+/*
+To register the code generator:
+require "Button/edap_Button.kmt"
+
+templates.put("globals_Button", globals_Button.new)
+templates.put("init_Button", init_Button.new)
+templates.put("poll_Button", poll_Button.new)
+*/
+
+// Add here any accessors for specific platform annotations
+
+class BUTTON {
+	reference ADDR : String
+	reference PORT : String
+	reference BIT : String
+	reference LABEL : String
+	
+}
+
+aspect class UCDevice {
+	
+	reference _buttons : OrderedSet<BUTTON>
+	
+	property readonly BUTTONs : OrderedSet<BUTTON>
+		getter is do
+			if _buttons == void then
+				result := OrderedSet<BUTTON>.new
+				var pin : StaticProperty init properties.detect{p| p.name == "MSP_PIN"}
+				if pin != void then
+					var l : BUTTON
+					var i : Integer init 1
+					pin.~value.split(",").each { p |
+						l := BUTTON.new
+						p := p.replace(" ", "")
+						l.LABEL :=  p
+						//stdio.writeln("p=" + p + ";")
+						l.PORT := p.substring(0,2)
+						l.BIT :=  p.substring(3,4)
+						l.ADDR := i.toString
+						i := i + 1
+						result.add(l)
+					}
+					_buttons := result
+				end
+			else
+					result := _buttons
+			end
+		end
+	
+}
+
