@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org:Aspect xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adaptations="http://SmartAdapters4ART/smartadapters/core/adaptations" xmlns:edap="http://edap" xmlns:org="http://SmartAdapters4MODERATES" xsi:schemaLocation="http://SmartAdapters4ART/smartadapters/core/adaptations ../metamodel/Edap_AOM_Framework.ecore#//adaptations http://edap ../metamodel/edapAOM.ecore http://SmartAdapters4MODERATES ../metamodel/Edap_AOM_Framework.ecore">
+  <pointcut>
+    <content xsi:type="edap:CompositeState" aspectID="PC_composite">
+      <substate aspectID="PC_anyState" incoming="//@pointcut/@content.0/@substate.1/@outgoing.0">
+        <outgoing aspectID="PC_anyToAnother" target="//@pointcut/@content.0/@substate.1"/>
+      </substate>
+      <substate aspectID="PC_anotherState" incoming="//@pointcut/@content.0/@substate.0/@outgoing.0">
+        <outgoing aspectID="PC_anotherToAny" target="//@pointcut/@content.0/@substate.0"/>
+      </substate>
+    </content>
+  </pointcut>
+  <advice>
+    <content xsi:type="edap:State" aspectID="AD_X" name="X" incoming="//@advice/@content.1">
+      <outgoing aspectID="AD_fromX" name="X->"/>
+    </content>
+    <content xsi:type="edap:Transition" aspectID="AD_toX" name="->X" target="//@advice/@content.0"/>
+  </advice>
+  <strategies xsi:type="org:PerRoleMatch" adviceElements="//@advice/@content.0" pointcutElements="//@pointcut/@content.0/@substate.1 //@pointcut/@content.0/@substate.0"/>
+  <adapt xsi:type="adaptations:SetCompositeState" CompositeStateToSet="//@pointcut/@content.0" substate="//@advice/@content.0"/>
+  <adapt xsi:type="adaptations:SetTransition" TransitionToSet="//@advice/@content.1" source="//@pointcut/@content.0/@substate.1"/>
+  <adapt xsi:type="adaptations:SetTransition" TransitionToSet="//@advice/@content.0/@outgoing.0" target="//@pointcut/@content.0/@substate.0"/>
+  <adapt xsi:type="adaptations:SetState" StateToSet="//@pointcut/@content.0/@substate.1" outgoing="//@advice/@content.1"/>
+</org:Aspect>

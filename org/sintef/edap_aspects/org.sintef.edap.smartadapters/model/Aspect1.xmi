@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org:Aspect xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adaptations="http://SmartAdapters4ART/smartadapters/core/adaptations" xmlns:edap="http://edap" xmlns:org="http://SmartAdapters4MODERATES" xsi:schemaLocation="http://SmartAdapters4ART/smartadapters/core/adaptations ../metamodel/Edap_AOM_Framework.ecore#//adaptations http://edap ../metamodel/edapAOM.ecore http://SmartAdapters4MODERATES ../metamodel/Edap_AOM_Framework.ecore">
+  <pointcut>
+    <content xsi:type="edap:State" aspectID="PC_anyState">
+      <outgoing aspectID="PC_toIdle" target="//@pointcut/@content.1"/>
+    </content>
+    <content xsi:type="edap:State" aspectID="PC_Idle" name="Idle" incoming="//@pointcut/@content.0/@outgoing.0"/>
+  </pointcut>
+  <advice>
+    <content xsi:type="edap:PlatformAnnotation" aspectID="AD_annot" name="xyz" value="abc"/>
+  </advice>
+  <adapt xsi:type="adaptations:SetAnnotatedElement" AnnotatedElementToSet="//@pointcut/@content.0/@outgoing.0" annotations="//@advice/@content.0"/>
+</org:Aspect>
