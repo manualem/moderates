@@ -1,9 +1,0 @@
-
-import "types.edap"
-
-device Timer
-@FrameworkComponent "" @Timer ""
-{ 
-	message TimerMsg();
-	message startTimer(ms : int);
-}
