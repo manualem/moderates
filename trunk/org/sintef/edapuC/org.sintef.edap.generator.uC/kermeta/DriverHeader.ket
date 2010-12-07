@@ -1,0 +1,27 @@
+<%@ket
+package="edap"
+require="edapuC_impl.kmt"
+using="edapuC"
+isAspectClass="false"
+class="DriverHeader"
+ismethod="false"operation="generate"
+parameters="ucd : UCDevice, g : PSGenerator"
+%>
+<%var d : Component init ucd.device%>
+<%=g.header.generate(d)%>
+
+#ifndef <%=d.name.toUpperCase%>_H_
+#define <%=d.name.toUpperCase%>_H_
+
+<%if ucd.init_required then%>void init_<%=d.name%>();<%end%>
+<%if ucd.polling_required then%>void poll_<%=d.name%>();<%end%>
+
+<% d.receives.each{ m | %>
+void <%=d.name%>_send_<%=m.name%>(<%=m.getParameterList(true, g)%>);
+<%}%>
+
+<% d.sends.each{ m | %>
+void register_<%=d.name%>_receive_<%=m.name%>_listener(void(*listener)(<%=m.getParameterTypeList(true, g)%>));
+<%}%>
+
+#endif /* <%=d.name.toUpperCase%>_H_ */

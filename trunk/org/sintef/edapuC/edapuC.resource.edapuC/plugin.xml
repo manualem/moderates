@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="edapuC.resource.edapuC.mopp.EdapuCMetaInformation" id="edapuC.resource.edapuC.mopp.EdapuCMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="edapuC.resource.edapuC.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+	</extension>
+	
+	<extension id="edapuC.resource.edapuC.nature" name="edapuC nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="edapuC.resource.edapuC.mopp.EdapuCNature" />
+		</runtime>
+		<builder id="edapuC.resource.edapuC.builder" />
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="edapuC.resource.edapuC.builder" name="edapuC Builder">
+		<builder hasNature="true">
+			<run class="edapuC.resource.edapuC.mopp.EdapuCBuilderAdapter" />
+		</builder>
+	</extension>
+	
+	<extension-point id="edapuC.resource.edapuC.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd"/>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="edapuC.resource.edapuC.mopp.EdapuCResourceFactoryDelegator" type="edapuC">
+		</parser>
+	</extension>
+	
+	<extension-point id="edapuC.resource.edapuC.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd"/>
+	
+</plugin>

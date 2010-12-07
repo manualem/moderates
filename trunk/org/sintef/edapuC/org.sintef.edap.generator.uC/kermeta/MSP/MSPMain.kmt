@@ -1,0 +1,56 @@
+package edapuC;
+require kermeta
+require "MSPGenerator.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class MSPMain inherits PSMainGenerator {
+method generate(ucg : edapuC::UCGenerator):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var a : edap::StateMachine init ucg.application.sm
+_res.append(" /******************************************************************************\n *                        INITIALISATION AND MAIN\n ******************************************************************************/\n\nint main () {\n\n")
+_res.append(ucg.application.~init.text)
+_res.append("\n\t\n\t// initialize devices\n")
+ucg.all_devices.select{ d | d.init_required }.each{ d | 
+_res.append("\tinit_")
+_res.append(d.device.name)
+_res.append("();\n")
+}
+_res.append("\t\n\t// register state machine event handlers\n")
+ a.all_incoming_events.each{ m | 
+_res.append("\tregister_")
+_res.append(m.container.asType(EdapElement).name)
+_res.append("_receive_")
+_res.append(m.name)
+_res.append("_listener(")
+_res.append(a.str_id)
+_res.append("_")
+_res.append(m.name)
+_res.append("_Event_Handler);\n")
+}
+_res.append("\n\t// Initialize state machine\n\t")
+_res.append(a.str_id)
+_res.append("_Current_State[")
+_res.append(a.str_id)
+_res.append("] = ")
+_res.append(a.initial.str_id)
+_res.append("; // Set the initial state\n\t")
+if a.initial.needs_entry then
+_res.append(a.str_id)
+_res.append("_")
+_res.append(a.initial.str_id)
+_res.append("_On_Entry();")
+end
+_res.append("\n\t\n\t__enable_interrupt();  // IMPORTANT :-)\n\t\n\twhile(1) {\n\t\tint i;\n\t\t")
+_res.append(ucg.application.poll.text)
+_res.append("\n\t\t// poll the drivers\n")
+ucg.all_devices.select{ d | d.polling_required }.each{ d | 
+_res.append("\t\tpoll_")
+_res.append(d.device.name)
+_res.append("();\n")
+}
+_res.append("\t}\n}")
+result := _res.toString
+end
+}

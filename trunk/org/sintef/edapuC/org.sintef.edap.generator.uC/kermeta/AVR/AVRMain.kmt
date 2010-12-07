@@ -1,0 +1,12 @@
+package edap_application;
+require kermeta
+require "AVRGenerator.kmt"
+using kermeta::standard
+using kermeta::utils
+class AVRMain  inherits PSMainGenerator {
+method generate(a : Application):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("\n /******************************************************************************\n *                        INITIALISATION AND MAIN\n ******************************************************************************/\n\nvoid main {\n\t// TODO : Implement for AVR\n}")
+result := _res.toString
+end
+}

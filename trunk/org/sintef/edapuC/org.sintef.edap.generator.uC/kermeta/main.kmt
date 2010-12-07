@@ -1,0 +1,175 @@
+/* $Id:$ 
+ * Creation : November 13, 2009
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            franck
+ */
+
+package edapuC;
+
+require kermeta
+
+require "edapuC_impl.kmt"
+require "ApplicationGenerator.kmt"
+require "DeviceCodeGeneratorTemplate.kmt"
+require "DeviceGeneratorModuleTemplate.kmt"
+require "DriverHeader.kmt"
+require "DriverSkeleton.kmt"
+
+using kermeta::utils
+using kermeta::standard
+using kermeta::io
+using edap
+
+
+aspect class PSGenerator {
+
+	operation loadEDAPModel(uri : String) : EdapModel is do
+    	var inputRepository : kermeta::persistence::EMFRepository init kermeta::persistence::EMFRepository.new
+    	var inputResource : kermeta::persistence::EMFResource
+    	inputResource ?= inputRepository.getResource(uri)
+    	result ?= inputResource.contents.one
+	end
+	
+	operation loadUCModel(uri : String) : UCGenerator is do
+    	var inputRepository : kermeta::persistence::EMFRepository init kermeta::persistence::EMFRepository.new
+    	var inputResource : kermeta::persistence::EMFResource
+    	inputResource ?= inputRepository.getResource(uri)
+    	result ?= inputResource.contents.one
+	end
+	
+	
+	operation generateApplication(uri : String, path : String) is do
+		var file : FileIO init FileIO.new
+		var gen  : ApplicationGenerator init ApplicationGenerator.new
+		var model : UCGenerator init loadUCModel(uri)
+		initialize
+		stdio.writeln("\n------------------------------------------------------------------\n")
+		stdio.writeln(gen.generate(model, self))
+		stdio.writeln("\n******************************************************************\n")
+		file.writeTextFile( path + model.application.sm.name + ".c", gen.generate(model, self))
+	end
+	
+	/*
+	operation loadApplicationModel(uri : String) : edap_application::Application is do
+    	var inputRepository : kermeta::persistence::EMFRepository init kermeta::persistence::EMFRepository.new
+    	var inputResource : kermeta::persistence::EMFResource
+    	inputResource ?= inputRepository.getResource(uri)
+    	result ?= inputResource.instances.one
+	end
+	
+	operation generateApplication(uri : String, path : String) is do
+		var file : FileIO init FileIO.new
+		var gen  : ApplicationGenerator init ApplicationGenerator.new
+		var model : Application init loadApplicationModel(uri)
+		initialize
+		stdio.writeln("\n------------------------------------------------------------------\n")
+		stdio.writeln(gen.generate(model, self))
+		stdio.writeln("\n******************************************************************\n")
+		file.writeTextFile( path + model.name + ".c", gen.generate(model, self))
+	end
+	
+	
+	operation generateDeviceTemplates(uri : String, path : String) is do
+		var file : FileIO init FileIO.new
+		var module_gen  : DeviceGeneratorModuleTemplate init DeviceGeneratorModuleTemplate.new
+		var template_gen : DeviceCodeGeneratorTemplate init DeviceCodeGeneratorTemplate.new
+		//var generator_gen : GeneratorTemplate init GeneratorTemplate.new
+		var model : EdapModel init loadEDAPModel(uri)
+		initialize
+		stdio.writeln("Writing file: Generator.kmt")
+		file.writeTextFile( path + "/Generator.kmt", generator.generate(model) )
+		
+		model.devices.each{ p |
+			do 
+				file.readTextFile(path + "/" + p.name + "/edap_" + p.name + ".kmt")
+				stdio.writeln("File already exist: " + p.name + "/edap_" + p.name + ".kmt")
+			rescue
+				stdio.writeln("Writing file: " + p.name + "/edap_" + p.name + ".kmt")
+				file.writeTextFile( path + "/" + p.name + "/edap_" + p.name + ".kmt", module_gen.generate(p))
+			end
+			
+			p.template_names.each{ t |
+				do
+					file.readTextFile(path + "/" + p.name + "/" + t + ".ket")
+					stdio.writeln("File already exist: " + p.name + "/" + t + ".ket")
+				rescue
+					stdio.writeln("Writing file: "+ p.name + "/" + t + ".ket")
+					file.writeTextFile( path + "/" + p.name + "/" + t + ".ket", template_gen.generate(p, t))
+				end
+			}
+		}
+	end
+	
+	
+
+	operation generateDevices(uri : String, path : String) : Void is do
+		var file : FileIO init FileIO.new
+		var header_gen  : DriverHeader init DriverHeader.new
+		var impl_gen : DriverSkeleton init DriverSkeleton.new
+		var model : EdapModel init loadEDAPModel(uri)
+		initialize
+		model.devices.each{ p |
+			stdio.writeln(header_gen.generate(p, self))
+			file.writeTextFile( path + p.name + ".h", header_gen.generate(p, self))
+			stdio.writeln("\n------------------------------------------------------------------\n")
+			stdio.writeln(impl_gen.generate(p, self))
+			file.writeTextFile( path + p.name + ".c", impl_gen.generate(p, self))
+			stdio.writeln("\n******************************************************************\n")
+		}
+	end
+	*/
+	
+	operation generateDevices(uri : String, path : String) : Void is do
+		var file : FileIO init FileIO.new
+		var header_gen  : DriverHeader init DriverHeader.new
+		var impl_gen : DriverSkeleton init DriverSkeleton.new
+		var model : UCGenerator init loadUCModel(uri)
+		initialize
+		model.all_devices.each{ p |
+			stdio.writeln(header_gen.generate(p, self))
+			file.writeTextFile( path + p.device.name + ".h", header_gen.generate(p, self))
+			stdio.writeln("\n------------------------------------------------------------------\n")
+			stdio.writeln(impl_gen.generate(p, self))
+			file.writeTextFile( path + p.device.name + ".c", impl_gen.generate(p, self))
+			stdio.writeln("\n******************************************************************\n")
+		}
+	end
+	
+	
+	operation generateDeviceTemplates(uri : String, path : String) : String is do
+		var file : FileIO init FileIO.new
+		var module_gen  : DeviceGeneratorModuleTemplate init DeviceGeneratorModuleTemplate.new
+		var template_gen : DeviceCodeGeneratorTemplate init DeviceCodeGeneratorTemplate.new
+		//var generator_gen : GeneratorTemplate init GeneratorTemplate.new
+		var model : UCGenerator init loadUCModel(uri)
+		initialize
+		stdio.writeln("Writing file: " + path + "Generator.kmt")
+		file.writeTextFile( path + "Generator.kmt", generator.generate(model) )
+		
+		result := ""
+		
+		model.all_devices.each{ p |
+			do 
+				file.readTextFile(path + "/" + p.device.name + "/edap_" + p.device.name + ".kmt")
+				stdio.writeln("File already exist: " + p.device.name + "/edap_" + p.device.name + ".kmt")
+			rescue
+				stdio.writeln("Writing file: " + path + p.device.name + "/edap_" + p.device.name + ".kmt")
+				file.writeTextFile( path + "/" + p.device.name + "/edap_" + p.device.name + ".kmt", module_gen.generate(p))
+			end
+			
+			p.template_names.each{ t |
+				do
+					file.readTextFile(path + "/" + p.device.name + "/" + t + ".ket")
+					stdio.writeln("File already exist: " + p.device.name + "/" + t + ".ket")
+				rescue
+					stdio.writeln("Writing file: "+ path + p.device.name + "/" + t + ".ket")
+					file.writeTextFile( path + "/" + p.device.name + "/" + t + ".ket", template_gen.generate(p, t))
+					result := result + p.device.name + "/" + t + ".ket;"
+				end
+			}
+		}
+	end
+	
+}

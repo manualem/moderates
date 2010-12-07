@@ -1,0 +1,331 @@
+/* $Id:$ 
+ * Creation : November 13, 2009
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            franck
+ */
+
+package edap;
+
+require kermeta
+require "http://edapuC"
+
+using kermeta::utils
+using kermeta::standard
+using kermeta::io 
+
+abstract class TypeResolver {
+	// Retreve the platform specific type from annotations
+	operation platform_type(t : Type) : String is abstract
+}
+
+aspect class Message {
+
+	operation getParameterList(includeAddr : Boolean, g : TypeResolver) : String is do
+		result := ""
+		//if container.asType(Device).addressType == void then includeAddr := false end
+		//if includeAddr then	result := result + g.platform_type(container.asType(Device).addressType) + " " + container.asType(Device).name + "_addr" + ", " end
+		parameters.each{ f | result := result + g.platform_type(f.type) + " " + f.name + ", " }
+		if result.size > 2 then result := result.substring(0, result.size -2) end
+	end
+
+	operation getParameterTypeList(includeAddr : Boolean, g : TypeResolver) : String is do
+		result := ""
+		//if container.asType(Device).addressType == void then includeAddr := false end
+		//if includeAddr then	result := result + g.platform_type(container.asType(Device).addressType) + ", "  end
+		parameters.each{ f | result := result + g.platform_type(f.type) + ", " }
+		if result.size > 2 then result := result.substring(0, result.size -2) end
+	end
+	
+	operation getParameterNameList(includeAddr : Boolean) : String is do
+		result := ""
+		//if container.asType(Device).addressType == void then includeAddr := false end
+		//if includeAddr then	result := result + container.asType(Device).name + "_addr" + ", " end
+		parameters.each{ f | result := result + f.name + ", " }
+		if result.size > 2 then result := result.substring(0, result.size -2) end
+	end
+	 
+}
+
+aspect class Device {
+	
+}
+
+aspect class Action {
+	operation uc_code() : String is abstract
+	
+	operation collect_send_actions() : set SendAction[*] is do
+		result := Set<SendAction>.new
+	end
+}
+
+aspect class Expression {
+	operation uc_code() : String is abstract
+}
+
+aspect class ExternStatement {
+	method uc_code() : String is do
+		result := statement
+	end
+}
+
+//aspect class DeviceReference {
+/*
+	operation leaf_device() : Device is do
+		var ref : DeviceReference
+		from ref := self
+		until ref.child == void
+		loop ref := ref.child
+		end
+		result := ref.device
+	end
+	*/
+
+//}
+
+aspect class SendAction {
+	method uc_code() : String is do
+		
+		// TODO: This does not support properties and navigation
+		
+		var ref : ComponentReference
+		ref ?= target
+		
+		if ref == void then result := "// ERROR: Only Component References are supported as target expressions" 
+		else
+			result := ref.component.name + "_send_" + message.name + "(" 
+			from var i : Integer init 0
+			until i == parameters.size()
+			loop
+				result := result + parameters.elementAt(i).uc_code
+				if i != parameters.size() -1 then result := result + ", " end
+				i := i + 1
+			end
+			result := result + ");"
+		end
+	end
+	
+	method collect_send_actions() : set SendAction[*] is do
+		result := Set<SendAction>.new
+		result.add(self)
+	end
+}
+
+aspect class ActionBlock {
+	method uc_code() : String is do
+		result := "{\n"
+		actions.each { a | result := result + a.uc_code + "\n"  }
+		result := result + "}"
+	end
+	
+	method collect_send_actions() : set SendAction[*] is do
+		result := Set<SendAction>.new
+		actions.each { a | result.addAll(a.collect_send_actions) }
+	end
+}
+
+aspect class ExternExpression {
+	method uc_code() : String is do
+		result := expression
+	end
+}
+
+aspect class State {
+	
+	attribute id : Integer
+	
+	property readonly str_id : String
+		getter is do
+			result := "EDAP_STATE_" + name.toUpperCase + "_" + id.toString
+		end
+	
+	operation all_sub_states() : State[*] is do 
+		result :=  OrderedSet<State>.new
+	end
+	
+	operation needs_entry() : Boolean is do
+		result := entry != void
+	end
+	
+	operation needs_exit() : Boolean is do
+		result := exit != void
+	end
+	
+	operation parent() : State is do
+		result ?= container
+	end
+	
+	operation parents() : seq State[*] is do
+		result := Sequence<State>.new
+		from var s : State init self
+		until s.container == void or not s.container.isInstanceOf(State)
+		loop
+			s := s.container.asType(State)
+			result.add(s)
+		end
+	end
+}
+
+aspect class CompositeState {
+	
+	method all_sub_states() : State[*] is do 
+		result :=  super
+		substate.each{ s | 
+			result.add(s)
+			result.addAll(s.all_sub_states)
+		}
+	end
+	
+	method needs_entry() : Boolean is do
+		result := super or not substate.empty
+	end
+}
+
+aspect class Transition {
+
+	property readonly sm : StateMachine
+		getter is do
+			var o : Object
+			from o := self
+			until o.isKindOf(StateMachine)
+			loop
+				o := o.container
+			end
+			result ?= o
+		end
+
+	operation avr_condition_code() : String is do
+		// get the full condition for firing the transition:
+		// Test the current state and the guard
+		var conds : Sequence<String> init Sequence<String>.new
+		var prec : State init source
+		source.parents.each{ p |
+			conds.add(sm.str_id +"_Current_State[" + p.str_id +"] == " + prec.str_id )
+			prec := p
+		}
+		if (guard != void) then conds.add(guard.uc_code) end
+		
+		result := ""
+		from var i : Integer init 0
+		until i == conds.size
+		loop
+			result := result + conds.elementAt(i)
+			i := i + 1
+			if i < conds.size then result := result + " &&\n\t\t" end
+		end
+		if conds.size == 0 then result := "1" end
+	end
+
+}
+
+aspect class StateMachine {
+
+	property readonly all_simple_states : seq State[*]
+		getter is result := all_sub_states.select{ s | s.isKindOf(State) }
+	
+	property readonly all_composite_states : seq CompositeState[*]
+		getter is result := all_sub_states.select{ s | s.isKindOf(CompositeState) }.collect{ s | s.asType(CompositeState) }
+		
+	property readonly sm_count : Integer
+		getter is result := all_composite_states.size + 1 // +1 for the application itself
+	
+	
+	/*
+	property readonly all_send_actions : set SendAction[*] 
+		getter is do
+			result := Set<SendAction>.new
+			
+		end
+	*/
+	
+	property readonly all_incoming_events : set Message[*]
+		getter is result := events_transitions.keys
+	
+	property readonly all_actions : set Action[*]
+		getter is do
+			result := Set<Action>.new
+			all_sub_states.each { s | 
+				if s.entry != void then result.add(s.entry) end
+				if s.exit != void then result.add(s.exit) end
+				s.outgoing.each{ t |
+					if (t.action != void) then result.add(t.action) end
+				}
+			}
+		end
+		
+	property readonly all_outgoing_msg : set Message[*]
+		getter is  do
+			result := Set<Message>.new
+			var all_send_actions : Set<SendAction> init Set<SendAction>.new
+			all_actions.each{ a | all_send_actions.addAll(a.collect_send_actions) }
+			all_send_actions.each{ a |
+				if not result.contains(a.message) then result.add(a.message) end
+			}
+		end
+	
+	property readonly all_messages : set Message[*]
+		getter is  do
+			result := Set<Message>.new
+			all_incoming_events.each{ m | result.add(m) }
+			all_outgoing_msg.each{ m | result.add(m) }
+		end
+		
+	property readonly all_devices : set Device[*]
+		getter is do
+			result := Set<Device>.new
+			var d : Device
+			all_messages.each{ m |
+				d := m.container.asType(Device)
+				if not result.contains(d) then result.add(d) end
+			}
+		end
+		
+	attribute __events_transitions : Hashtable<Message, Set<Transition>>
+	property readonly events_transitions : Hashtable<Message, Set<Transition>>
+		getter is do
+			if __events_transitions == void then
+				__events_transitions := Hashtable<Message, Set<Transition>>.new
+				all_sub_states.each{ s | s.outgoing.select{ t | t.event != void }.each{ t | t.event.select{ e | e.msg != void }.each{ e |
+				if not __events_transitions.containsKey(e.msg) then
+					__events_transitions.put(e.msg, Set<Transition>.new)
+				end
+				__events_transitions.getValue(e.msg).add(t)
+			}}}
+			end
+			result := __events_transitions
+		end
+	
+	operation populateSateIDs() is do
+		self.id := 0 // Application has always ID 0
+		var i : Integer init 1
+		all_composite_states.each { // composite sm must have the fist consecutive IDs
+			s | s.id := i
+			i:= i + 1
+		}
+		all_simple_states.each { // The simple states just need to have a unique id
+			s | s.id := i
+			i:= i + 1
+		}
+	end
+	
+	operation formal_params_for(e : Message, g : TypeResolver) : String is do
+		result := e.getParameterList(false, g)
+	end
+}
+
+aspect class Event {
+
+	property readonly msg : Message 
+		getter is do
+			var rm : ReceiveMessage
+			rm ?= self
+			if rm != void then result := rm.message
+			else result := void
+			end
+		end
+
+}
+
+
+
