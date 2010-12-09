@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TableLayout android:id="@+id/TableLayout01" android:layout_height="wrap_content" android:layout_width="fill_parent">
+
+<TableRow android:id="@+id/TableRowSensorID" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sensor :" android:id="@+id/TextViewSensorID"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextSensorID" android:text="N/A" android:layout_weight="1"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewSensorIDUnit"></TextView>
+	
+	
+</TableRow>
+
+<TableRow android:id="@+id/TableRowSensorName" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewSensorName" android:text="Name :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextSensorName" android:text="N/A" android:layout_weight="1"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewSensorNameUnit"></TextView>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonSensorNameSet"></Button>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonSensorNameUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowTemperature" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewTemperature" android:text="Temperature :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextTemperature" android:text="N/A" android:layout_weight="1" android:editable="false"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewTemperatureUnit" android:text="°C"></TextView>
+	
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonTemperatureUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowTempMin" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewTempMin" android:text="Min :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextTempMin" android:text="N/A" android:layout_weight="1" android:editable="false"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewTempMinUnit" android:text="°C"></TextView>
+	
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonTempMinUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowTempMax" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewTempMax" android:text="Max :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextTempMax" android:text="N/A" android:layout_weight="1" android:editable="false"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewTempMaxUnit" android:text="°C"></TextView>
+	
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonTempMaxUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowAlarmMin" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewAlarmMin" android:text="Low Alarm :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextAlarmMin" android:text="N/A" android:layout_weight="1" android:inputType="numberSigned|numberDecimal"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewAlarmMinUnit" android:text="°C"></TextView>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonAlarmMinSet"></Button>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonAlarmMinUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowAlarmMax" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewAlarmMax" android:text="High Alarm :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextAlarmMax" android:text="N/A" android:layout_weight="1" android:inputType="numberSigned|numberDecimal"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewAlarmMaxUnit" android:text="°C"></TextView>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonAlarmMaxSet"></Button>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonAlarmMaxUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowBatt" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewBatt" android:text="Battery :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextBatt" android:text="N/A" android:layout_weight="1" android:editable="false"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewBattUnit" android:text=" V"></TextView>
+	
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonBattUpdate"></Button>
+</TableRow>
+
+<TableRow android:id="@+id/TableRowAlarmBatt" android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewAlarmBatt" android:text="Batt Alarm :"></TextView>
+	<EditText android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EditTextAlarmBatt" android:text="N/A" android:layout_weight="1" android:inputType="numberSigned|numberDecimal"></EditText>
+	<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextViewAlarmBattUnit" android:text=" V"></TextView>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Set" android:id="@+id/ButtonAlarmBattSet"></Button>
+	<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update" android:id="@+id/ButtonAlarmBattUpdate"></Button>
+</TableRow>
+
+</TableLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>
