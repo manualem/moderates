@@ -1,0 +1,70 @@
+//import "../devices/msp/Button.edapuC"
+import "lib/msp/Led.edapuC"
+import "lib/msp/Timer.edapuC"
+import "lib/msp/RF2500.edapuC"
+import "lib/msp/MSP430Sensor.edapuC"
+
+edap "WTS.edap"
+
+application WTS {
+
+headers <template>
+#include  "msp430x22x4.h"
+#include <signal.h>
+#include <stdlib.h>
+#include <string.h>
+</template>
+
+init <template>
+	int i;
+	// Stop watchdog timer
+	WDTCTL = WDTPW + WDTHOLD;
+	
+	// Set the clock
+	BCSCTL1 = CALBC1_8MHZ;
+	DCOCTL = CALDCO_8MHZ;
+	BCSCTL3 |= LFXT1S_2;
+
+</template>
+
+poll <template>
+	// some sort of polling delay
+	for(i=50000; i>0; i--) __no_operation();
+</template>
+
+global <template>
+
+char name[8];
+
+static int temp;
+static int batt;
+
+static int min;
+static int max;
+static int interval;
+
+static int interval_cpt;
+
+static int min_alarm;
+static int max_alarm;
+static int bat_alarm;
+
+</template>
+
+}
+
+device WTSClient {
+	global 
+<generator>
+</generator>
+<template>
+</template>
+
+	init 
+<template>
+</template>
+
+	poll 
+<template>
+</template>
+}
