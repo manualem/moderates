@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectUIMetaInformation" id="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="edap_aspect" icon="icons/editor_icon.gif" id="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectEditor" name="EMFText edap_aspect Editor">
+			<contentTypeBinding contentTypeId="smartadapters4MODERATES.resource.edap_aspect"/>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="Edap_aspect Text Editor" id="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectPreferencePage" class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectSyntaxColoringPreferencePage" class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectSyntaxColoringPreferencePage" category="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectPreferencePage">
+		</page>
+		<page name="Brackets" id="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectBracketPreferencePage" class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectBracketPreferencePage" category="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectNewFileWizard" id="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectNewFileWizard" name="EMFText .edap_aspect file">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectMarkerResolutionGenerator" markerType="smartadapters4MODERATES.resource.edap_aspect.problem" />
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="smartadapters4MODERATES.resource.edap_aspect.ui.Edap_aspectAnnotationModelFactory" extensions="edap_aspect" />
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="smartadapters4MODERATES.resource.edap_aspect" name=".edap_aspect File" base-type="org.eclipse.core.runtime.text" file-extensions="edap_aspect"/>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="edap_aspect" id="smartadapters4MODERATES.resource.edap_aspect.ui.provider" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="smartadapters4MODERATES.resource.edap_aspect.ui.occurences" />
+		<type name="smartadapters4MODERATES.resource.edap_aspect.ui.occurences.declaration" super="smartadapters4MODERATES.resource.edap_aspect.ui.occurences" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="smartadapters4MODERATES.resource.edap_aspect.ui.occurences" label="Occurrences (in .edap_aspect files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="edap_aspect.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="edap_aspect.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="edap_aspect.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="edap_aspect.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="edap_aspect.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="edap_aspect.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="edap_aspect.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="edap_aspect.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="edap_aspect.occurrenceTextStyle" textStylePreferenceValue="NONE" />
+		<specification annotationType="smartadapters4MODERATES.resource.edap_aspect.ui.occurences.declaration" label="Declarations (in .edap_aspect files)" textPreferenceKey="edap_aspect.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="edap_aspect.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="edap_aspect.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="edap_aspect.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="edap_aspect.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="edap_aspect.declarationTextStyle" textStylePreferenceValue="NONE" />
+	</extension>
+	
+</plugin>
