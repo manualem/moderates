@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="edap.resource.edap.ui.EdapUIMetaInformation" id="edap.resource.edap.ui.EdapUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="edap.resource.edap.ui.EdapEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="edap" icon="icons/editor_icon.gif" id="edap.resource.edap.ui.EdapEditor" name="EMFText edap Editor">
+			<contentTypeBinding contentTypeId="edap.resource.edap"/>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="edap.resource.edap.ui.EdapPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="Edap Text Editor" id="edap.resource.edap.ui.EdapPreferencePage" class="edap.resource.edap.ui.EdapPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="edap.resource.edap.ui.EdapSyntaxColoringPreferencePage" class="edap.resource.edap.ui.EdapSyntaxColoringPreferencePage" category="edap.resource.edap.ui.EdapPreferencePage">
+		</page>
+		<page name="Brackets" id="edap.resource.edap.ui.EdapBracketPreferencePage" class="edap.resource.edap.ui.EdapBracketPreferencePage" category="edap.resource.edap.ui.EdapPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="edap.resource.edap.ui.EdapNewFileWizard" id="edap.resource.edap.ui.EdapNewFileWizard" name="EMFText .edap file">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="edap.resource.edap.ui.EdapMarkerResolutionGenerator" markerType="edap.resource.edap.problem" />
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="edap.resource.edap.ui.EdapAnnotationModelFactory" extensions="edap" />
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="edap.resource.edap" name=".edap File" base-type="org.eclipse.core.runtime.text" file-extensions="edap"/>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="edap" id="edap.resource.edap.ui.provider" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="edap.resource.edap.ui.occurences" />
+		<type name="edap.resource.edap.ui.occurences.declaration" super="edap.resource.edap.ui.occurences" />
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="edap.resource.edap.ui.occurences" label="Occurrences (in .edap files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="edap.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="edap.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="edap.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="edap.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="edap.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="edap.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="edap.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="edap.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="edap.occurrenceTextStyle" textStylePreferenceValue="NONE" />
+		<specification annotationType="edap.resource.edap.ui.occurences.declaration" label="Declarations (in .edap files)" textPreferenceKey="edap.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="edap.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="edap.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="edap.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="edap.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="edap.declarationTextStyle" textStylePreferenceValue="NONE" />
+	</extension>
+	
+</plugin>
