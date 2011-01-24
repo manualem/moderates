@@ -6,8 +6,6 @@ OPTIONS {
 	memoize = "true";
 	tokenspace = "0";
 	usePredefinedTokens = "false";
-	
-	licenceHeader="license.txt";
 }
 
 TOKENS{
@@ -16,6 +14,10 @@ TOKENS{
 		
 		DEFINE ANNOTATION $'@'('A'..'Z' | 'a'..'z' | '0'..'9' | '_' | '-' )+$;
 		
+		DEFINE BOOLEAN_LITERAL $'true'|'false'$;
+		
+		DEFINE INTEGER_LITERAL $('1'..'9') ('0'..'9')* | '0'$;
+		//DEFINE REAL_LITERAL $ (('1'..'9') ('0'..'9')* | '0') '.' ('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')*)?$;
 		DEFINE STRING_LITERAL $'"'('\\'('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')|('\\''u'('0'..'9'|'a'..'f'|'A'..'F')('0'..'9'|'a'..'f'|'A'..'F')('0'..'9'|'a'..'f'|'A'..'F')('0'..'9'|'a'..'f'|'A'..'F'))|'\\'('0'..'7')|~('\\'|'"'))*'"'$;
 
 		DEFINE STRING_EXT $'\''('\\'('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')|('\\''u'('0'..'9'|'a'..'f'|'A'..'F')('0'..'9'|'a'..'f'|'A'..'F')('0'..'9'|'a'..'f'|'A'..'F')('0'..'9'|'a'..'f'|'A'..'F'))|'\\'('0'..'7')|~('\\'|'\''))*'\''$;
@@ -29,7 +31,8 @@ TOKENS{
 		DEFINE WHITESPACE $(' '|'\t'|'\f')$;
 		DEFINE LINEBREAKS $('\r\n'|'\r'|'\n')$;
 		
-		DEFINE MULTIPLICITY $( ('*') | (('0'..'9')+) )$;
+		//DEFINE MULTIPLICITY $(('0'..'9')+) '\.' '\.' ( ('*') | (('1'..'9')+) )$;
+		//DEFINE MULTIPLICITY $( ('*') | (('1'..'9')+) )$;
 		
 		//DEFINE TEXT $('A'..'Z' | 'a'..'z' | '0'..'9' | '_' | '-' )+$;
 		DEFINE TEXT $('A'..'Z' | 'a'..'z' | '0'..'9' | '_' )+ (':' ':' ('A'..'Z' | 'a'..'z' | '0'..'9' | '_')+ )* $;
@@ -102,9 +105,9 @@ RULES{
 	
 	Simulator ::= "simulator" #1 name[] "for" device[] (annotations)* !0 "{" ( messages | properties |  "receives" #1 receives[] (","  #1 receives[])* | "sends" #1 sends[] (","  #1 sends[])* | (!1 compositeComponent) )* (!1 behaviour) !0 "}" ;
 
-	Property::= !1 (changeable[T_READONLY])? "property" #1 name[]  ":"  type[] ("[" lowerBound[MULTIPLICITY] ".." upperBound[MULTIPLICITY] "]")?(annotations)*;
+	Property::= !1 (changeable[T_READONLY])? "property" #1 name[]  ":"  type[] ("[" lowerBound[INTEGER_LITERAL] ".." upperBound[INTEGER_LITERAL] "]")?(annotations)*;
 	
-	Dictionary::= !1 (changeable[T_READONLY])? "dictionary" #1 name[]  ":"  indexType[] "->" type[] ("[" lowerBound[MULTIPLICITY] ".." upperBound[MULTIPLICITY] "]")?(annotations)*;
+	Dictionary::= !1 (changeable[T_READONLY])? "dictionary" #1 name[]  ":"  indexType[] "->" type[] ("[" lowerBound[INTEGER_LITERAL] ".." upperBound[INTEGER_LITERAL] "]")?(annotations)*;
 	
 	Parameter::= name[]  ":"  type[];
 	
@@ -122,25 +125,17 @@ RULES{
 	
 	CompositeState::= "composite" #1 "state" #1 name[] #1 "init" #1 initial[] (annotations)* #1 "{" ( !1 properties )* ( !1 "on" #1 "entry" #1 entry )? ( !1 "on" #1 "exit" #1 exit )? ( outgoing | (!1 substate) )* !0 "}"  ;
 	
-	ActionBlock::= "{" ( !1 actions )* !0 "}"  ;
 	
-	ExternStatement::= statement[STRING_EXT] ;
 	
 	PropertyAssignment ::= "set" #1 property[] #1 "=" #1 expression ; 
-	
-	ExternExpression::= expression[STRING_EXT] ;
 
-	ComponentReference ::= component[] (propertyNavigations)* ;
+	ComponentReference ::= component[];
 	
 	EventReference ::= "eventref" #1 msgRef[] "." paramRef[];	
 	
-	PropertyNavigation ::= "." property[] ;
+	Unicast::= "send" #1 target "#" message[] "(" (parameters ("," #1 parameters)* )? ")"  ("port" port[])? (annotations)*;
 	
-	DictionaryNavigation ::= "." property[] "[" index "]";
-	
-	Unicast::= "send" #1 target "." message[] "(" (parameters ("," #1 parameters)* )? ")"  ("port" port[])? (annotations)*;
-	
-	Broadcast::= "broadcast" #1 target "." message[] "(" (parameters ("," #1 parameters)* )? ")"  ;	
+	Broadcast::= "broadcast" #1 target "#" message[] "(" (parameters ("," #1 parameters)* )? ")"  ;	
 
 	Transition::= !1 "transition" #1 name[] #1 "->" #1 target[] (annotations)* #1 "{" ( !1 "event" #1 event )*  ( !1 "guard" #1 guard)? (!1 "action" #1 action)? !0 "}"  ;
 
@@ -151,5 +146,85 @@ RULES{
 	Port ::= "port" !1 name[] (annotations)* ;
 	
 	CreateAction ::= "create" ref (annotations)* ;
+	
+	// Actions
+	ActionBlock::= "{" ( !1 actions )* !0 "}"  ;
+	
+	ExternStatement::= statement[STRING_EXT] ;
+	
+	ConditionalAction ::= "if" "(" condition ")" action;
+	
+	LoopAction ::= "while" "(" condition ")" action;
+	
+	// The Expressions
+	
+	
+	@Operator(type="binary_left_associative", weight="1", superclass="Expression")
+	OrExpression ::= lhs #1 "or" #1 rhs;
+	
+	@Operator(type="binary_left_associative", weight="2", superclass="Expression")
+	AndExpression ::= lhs #1 "and" #1 rhs;
+	
+	
+	@Operator(type="binary_left_associative", weight="3", superclass="Expression")
+	LowerExpression ::= lhs #1 "<" #1  rhs;
+	
+	@Operator(type="binary_left_associative", weight="3", superclass="Expression")
+	GreaterExpression ::= lhs #1 ">" #1  rhs;
+	
+	@Operator(type="binary_left_associative", weight="3", superclass="Expression")
+	EqualsExpression ::= lhs #1 "==" #1  rhs;
+	
+	@Operator(type="binary_left_associative", weight="4", superclass="Expression")
+	PlusExpression ::= lhs #1 "+" #1  rhs;
+	
+	@Operator(type="binary_left_associative", weight="4", superclass="Expression")
+	MinusExpression ::= lhs #1 "-" #1 rhs;
+	
+
+
+	@Operator(type="binary_left_associative", weight="5", superclass="Expression")
+	TimesExpression ::= lhs #1 "*" #1 rhs;
+	
+	@Operator(type="binary_left_associative", weight="5", superclass="Expression")
+	DivExpression ::= lhs #1 "/" #1 rhs;
+	
+	@Operator(type="binary_right_associative", weight="5", superclass="Expression")
+	ModExpression ::= lhs #1 "%" #1 rhs;
+	
+ 	@Operator(type="unary_prefix", weight="6", superclass="Expression")	
+	UnaryMinus ::= "-" #1 term;
+	
+	@Operator(type="unary_prefix", weight="6", superclass="Expression")	
+	NotExpression ::= "not" #1 term;
+	
+	//@Operator(type="primitive", weight="6", superclass="Expression")
+	//DictionaryNavigation ::= target "." property[] "[" index "]";
+	
+	//@Operator(type="unary_postfix", weight="6", superclass="Expression")
+	//PropertyNavigation ::= target #0 ("." #0 property[]) ;
+	
+	@Operator(type="primitive", weight="8", superclass="Expression")
+	ExpressionGroup ::= "(" exp ")";
+	 
+	@Operator(type="primitive", weight="8", superclass="Expression")
+	PropertyReference ::= property[] ;
+
+	@Operator(type="primitive", weight="8", superclass="Expression")
+	IntegerLitteral ::= intValue[INTEGER_LITERAL];
+
+	//@Operator(type="primitive", weight="7", superclass="Expression")
+	//DoubleLitteral ::= doubleValue[REAL_LITERAL];
+	
+	@Operator(type="primitive", weight="8", superclass="Expression")
+	StringLitteral ::= stringValue[STRING_LITERAL];
+	
+	@Operator(type="primitive", weight="8", superclass="Expression")
+	BooleanLitteral ::= boolValue[BOOLEAN_LITERAL];
+	
+	@Operator(type="primitive", weight="8", superclass="Expression")
+	ExternExpression::= expression[STRING_EXT] ;
+	
+	
 	
 }

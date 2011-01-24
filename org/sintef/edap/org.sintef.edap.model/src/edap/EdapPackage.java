@@ -1,12 +1,8 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap;
 
@@ -1992,16 +1988,7 @@ public interface EdapPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_REFERENCE__COMPONENT = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Property Navigations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_REFERENCE__PROPERTY_NAVIGATIONS = EXPRESSION_FEATURE_COUNT + 1;
+	int COMPONENT_REFERENCE__COMPONENT = 0;
 
 	/**
 	 * The number of structural features of the '<em>Component Reference</em>' class.
@@ -2010,7 +1997,7 @@ public interface EdapPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_REFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+	int COMPONENT_REFERENCE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link edap.impl.PropertyNavigationImpl <em>Property Navigation</em>}' class.
@@ -2023,13 +2010,22 @@ public interface EdapPackage extends EPackage {
 	int PROPERTY_NAVIGATION = 32;
 
 	/**
+	 * The feature id for the '<em><b>Target</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_NAVIGATION__TARGET = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_NAVIGATION__PROPERTY = 0;
+	int PROPERTY_NAVIGATION__PROPERTY = EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Property Navigation</em>' class.
@@ -2038,7 +2034,7 @@ public interface EdapPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY_NAVIGATION_FEATURE_COUNT = 1;
+	int PROPERTY_NAVIGATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link edap.impl.DictionaryNavigationImpl <em>Dictionary Navigation</em>}' class.
@@ -2049,6 +2045,15 @@ public interface EdapPackage extends EPackage {
 	 * @generated
 	 */
 	int DICTIONARY_NAVIGATION = 33;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DICTIONARY_NAVIGATION__TARGET = PROPERTY_NAVIGATION__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Property</b></em>' reference.
@@ -2287,6 +2292,849 @@ public interface EdapPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_REFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.LitteralImpl <em>Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.LitteralImpl
+	 * @see edap.impl.EdapPackageImpl#getLitteral()
+	 * @generated
+	 */
+	int LITTERAL = 38;
+
+	/**
+	 * The number of structural features of the '<em>Litteral</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITTERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.IntegerLitteralImpl <em>Integer Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.IntegerLitteralImpl
+	 * @see edap.impl.EdapPackageImpl#getIntegerLitteral()
+	 * @generated
+	 */
+	int INTEGER_LITTERAL = 39;
+
+	/**
+	 * The feature id for the '<em><b>Int Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITTERAL__INT_VALUE = LITTERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Integer Litteral</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_LITTERAL_FEATURE_COUNT = LITTERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.BooleanLitteralImpl <em>Boolean Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.BooleanLitteralImpl
+	 * @see edap.impl.EdapPackageImpl#getBooleanLitteral()
+	 * @generated
+	 */
+	int BOOLEAN_LITTERAL = 40;
+
+	/**
+	 * The feature id for the '<em><b>Bool Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITTERAL__BOOL_VALUE = LITTERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Boolean Litteral</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_LITTERAL_FEATURE_COUNT = LITTERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.StringLitteralImpl <em>String Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.StringLitteralImpl
+	 * @see edap.impl.EdapPackageImpl#getStringLitteral()
+	 * @generated
+	 */
+	int STRING_LITTERAL = 41;
+
+	/**
+	 * The feature id for the '<em><b>String Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITTERAL__STRING_VALUE = LITTERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>String Litteral</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_LITTERAL_FEATURE_COUNT = LITTERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.DoubleLitteralImpl <em>Double Litteral</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.DoubleLitteralImpl
+	 * @see edap.impl.EdapPackageImpl#getDoubleLitteral()
+	 * @generated
+	 */
+	int DOUBLE_LITTERAL = 42;
+
+	/**
+	 * The feature id for the '<em><b>Double Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITTERAL__DOUBLE_VALUE = LITTERAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Double Litteral</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOUBLE_LITTERAL_FEATURE_COUNT = LITTERAL_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.UnaryExpressionImpl <em>Unary Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.UnaryExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getUnaryExpression()
+	 * @generated
+	 */
+	int UNARY_EXPRESSION = 43;
+
+	/**
+	 * The feature id for the '<em><b>Term</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_EXPRESSION__TERM = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unary Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.NotExpressionImpl <em>Not Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.NotExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getNotExpression()
+	 * @generated
+	 */
+	int NOT_EXPRESSION = 44;
+
+	/**
+	 * The feature id for the '<em><b>Term</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EXPRESSION__TERM = UNARY_EXPRESSION__TERM;
+
+	/**
+	 * The number of structural features of the '<em>Not Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NOT_EXPRESSION_FEATURE_COUNT = UNARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.UnaryMinusImpl <em>Unary Minus</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.UnaryMinusImpl
+	 * @see edap.impl.EdapPackageImpl#getUnaryMinus()
+	 * @generated
+	 */
+	int UNARY_MINUS = 45;
+
+	/**
+	 * The feature id for the '<em><b>Term</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_MINUS__TERM = UNARY_EXPRESSION__TERM;
+
+	/**
+	 * The number of structural features of the '<em>Unary Minus</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_MINUS_FEATURE_COUNT = UNARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.BinaryExpressionImpl <em>Binary Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.BinaryExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getBinaryExpression()
+	 * @generated
+	 */
+	int BINARY_EXPRESSION = 46;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_EXPRESSION__LHS = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_EXPRESSION__RHS = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Binary Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.PlusExpressionImpl <em>Plus Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.PlusExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getPlusExpression()
+	 * @generated
+	 */
+	int PLUS_EXPRESSION = 47;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Plus Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLUS_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.MinusExpressionImpl <em>Minus Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.MinusExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getMinusExpression()
+	 * @generated
+	 */
+	int MINUS_EXPRESSION = 48;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Minus Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINUS_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.TimesExpressionImpl <em>Times Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.TimesExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getTimesExpression()
+	 * @generated
+	 */
+	int TIMES_EXPRESSION = 49;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMES_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMES_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Times Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIMES_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.DivExpressionImpl <em>Div Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.DivExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getDivExpression()
+	 * @generated
+	 */
+	int DIV_EXPRESSION = 50;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Div Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIV_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.ModExpressionImpl <em>Mod Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.ModExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getModExpression()
+	 * @generated
+	 */
+	int MOD_EXPRESSION = 51;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Mod Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MOD_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.EqualsExpressionImpl <em>Equals Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.EqualsExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getEqualsExpression()
+	 * @generated
+	 */
+	int EQUALS_EXPRESSION = 52;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Equals Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALS_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.GreaterExpressionImpl <em>Greater Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.GreaterExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getGreaterExpression()
+	 * @generated
+	 */
+	int GREATER_EXPRESSION = 53;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GREATER_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GREATER_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Greater Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GREATER_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.LowerExpressionImpl <em>Lower Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.LowerExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getLowerExpression()
+	 * @generated
+	 */
+	int LOWER_EXPRESSION = 54;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Lower Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOWER_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.AndExpressionImpl <em>And Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.AndExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getAndExpression()
+	 * @generated
+	 */
+	int AND_EXPRESSION = 55;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>And Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AND_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.OrExpressionImpl <em>Or Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.OrExpressionImpl
+	 * @see edap.impl.EdapPackageImpl#getOrExpression()
+	 * @generated
+	 */
+	int OR_EXPRESSION = 56;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_EXPRESSION__LHS = BINARY_EXPRESSION__LHS;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_EXPRESSION__RHS = BINARY_EXPRESSION__RHS;
+
+	/**
+	 * The number of structural features of the '<em>Or Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OR_EXPRESSION_FEATURE_COUNT = BINARY_EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.ControlStructureImpl <em>Control Structure</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.ControlStructureImpl
+	 * @see edap.impl.EdapPackageImpl#getControlStructure()
+	 * @generated
+	 */
+	int CONTROL_STRUCTURE = 57;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_STRUCTURE__NAME = ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_STRUCTURE__ANNOTATIONS = ACTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_STRUCTURE__ACTION = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_STRUCTURE__CONDITION = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Control Structure</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_STRUCTURE_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.LoopActionImpl <em>Loop Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.LoopActionImpl
+	 * @see edap.impl.EdapPackageImpl#getLoopAction()
+	 * @generated
+	 */
+	int LOOP_ACTION = 58;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_ACTION__NAME = CONTROL_STRUCTURE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_ACTION__ANNOTATIONS = CONTROL_STRUCTURE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_ACTION__ACTION = CONTROL_STRUCTURE__ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_ACTION__CONDITION = CONTROL_STRUCTURE__CONDITION;
+
+	/**
+	 * The number of structural features of the '<em>Loop Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOOP_ACTION_FEATURE_COUNT = CONTROL_STRUCTURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.ConditionalActionImpl <em>Conditional Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.ConditionalActionImpl
+	 * @see edap.impl.EdapPackageImpl#getConditionalAction()
+	 * @generated
+	 */
+	int CONDITIONAL_ACTION = 59;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_ACTION__NAME = CONTROL_STRUCTURE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_ACTION__ANNOTATIONS = CONTROL_STRUCTURE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_ACTION__ACTION = CONTROL_STRUCTURE__ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_ACTION__CONDITION = CONTROL_STRUCTURE__CONDITION;
+
+	/**
+	 * The number of structural features of the '<em>Conditional Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITIONAL_ACTION_FEATURE_COUNT = CONTROL_STRUCTURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.PropertyReferenceImpl <em>Property Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.PropertyReferenceImpl
+	 * @see edap.impl.EdapPackageImpl#getPropertyReference()
+	 * @generated
+	 */
+	int PROPERTY_REFERENCE = 60;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_REFERENCE__PROPERTY = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Property Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_REFERENCE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.ExpressionGroupImpl <em>Expression Group</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.ExpressionGroupImpl
+	 * @see edap.impl.EdapPackageImpl#getExpressionGroup()
+	 * @generated
+	 */
+	int EXPRESSION_GROUP = 61;
+
+	/**
+	 * The feature id for the '<em><b>Exp</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_GROUP__EXP = EXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Expression Group</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_GROUP_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 
 	/**
@@ -3149,17 +3997,6 @@ public interface EdapPackage extends EPackage {
 	EReference getComponentReference_Component();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link edap.ComponentReference#getPropertyNavigations <em>Property Navigations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Property Navigations</em>'.
-	 * @see edap.ComponentReference#getPropertyNavigations()
-	 * @see #getComponentReference()
-	 * @generated
-	 */
-	EReference getComponentReference_PropertyNavigations();
-
-	/**
 	 * Returns the meta object for class '{@link edap.PropertyNavigation <em>Property Navigation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3168,6 +4005,17 @@ public interface EdapPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPropertyNavigation();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.PropertyNavigation#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Target</em>'.
+	 * @see edap.PropertyNavigation#getTarget()
+	 * @see #getPropertyNavigation()
+	 * @generated
+	 */
+	EReference getPropertyNavigation_Target();
 
 	/**
 	 * Returns the meta object for the reference '{@link edap.PropertyNavigation#getProperty <em>Property</em>}'.
@@ -3339,6 +4187,367 @@ public interface EdapPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEventReference_ParamRef();
+
+	/**
+	 * Returns the meta object for class '{@link edap.Litteral <em>Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Litteral</em>'.
+	 * @see edap.Litteral
+	 * @generated
+	 */
+	EClass getLitteral();
+
+	/**
+	 * Returns the meta object for class '{@link edap.IntegerLitteral <em>Integer Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer Litteral</em>'.
+	 * @see edap.IntegerLitteral
+	 * @generated
+	 */
+	EClass getIntegerLitteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edap.IntegerLitteral#getIntValue <em>Int Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Int Value</em>'.
+	 * @see edap.IntegerLitteral#getIntValue()
+	 * @see #getIntegerLitteral()
+	 * @generated
+	 */
+	EAttribute getIntegerLitteral_IntValue();
+
+	/**
+	 * Returns the meta object for class '{@link edap.BooleanLitteral <em>Boolean Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Litteral</em>'.
+	 * @see edap.BooleanLitteral
+	 * @generated
+	 */
+	EClass getBooleanLitteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edap.BooleanLitteral#isBoolValue <em>Bool Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bool Value</em>'.
+	 * @see edap.BooleanLitteral#isBoolValue()
+	 * @see #getBooleanLitteral()
+	 * @generated
+	 */
+	EAttribute getBooleanLitteral_BoolValue();
+
+	/**
+	 * Returns the meta object for class '{@link edap.StringLitteral <em>String Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Litteral</em>'.
+	 * @see edap.StringLitteral
+	 * @generated
+	 */
+	EClass getStringLitteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edap.StringLitteral#getStringValue <em>String Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String Value</em>'.
+	 * @see edap.StringLitteral#getStringValue()
+	 * @see #getStringLitteral()
+	 * @generated
+	 */
+	EAttribute getStringLitteral_StringValue();
+
+	/**
+	 * Returns the meta object for class '{@link edap.DoubleLitteral <em>Double Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Double Litteral</em>'.
+	 * @see edap.DoubleLitteral
+	 * @generated
+	 */
+	EClass getDoubleLitteral();
+
+	/**
+	 * Returns the meta object for the attribute '{@link edap.DoubleLitteral#getDoubleValue <em>Double Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Double Value</em>'.
+	 * @see edap.DoubleLitteral#getDoubleValue()
+	 * @see #getDoubleLitteral()
+	 * @generated
+	 */
+	EAttribute getDoubleLitteral_DoubleValue();
+
+	/**
+	 * Returns the meta object for class '{@link edap.UnaryExpression <em>Unary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unary Expression</em>'.
+	 * @see edap.UnaryExpression
+	 * @generated
+	 */
+	EClass getUnaryExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.UnaryExpression#getTerm <em>Term</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Term</em>'.
+	 * @see edap.UnaryExpression#getTerm()
+	 * @see #getUnaryExpression()
+	 * @generated
+	 */
+	EReference getUnaryExpression_Term();
+
+	/**
+	 * Returns the meta object for class '{@link edap.NotExpression <em>Not Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Not Expression</em>'.
+	 * @see edap.NotExpression
+	 * @generated
+	 */
+	EClass getNotExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.UnaryMinus <em>Unary Minus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unary Minus</em>'.
+	 * @see edap.UnaryMinus
+	 * @generated
+	 */
+	EClass getUnaryMinus();
+
+	/**
+	 * Returns the meta object for class '{@link edap.BinaryExpression <em>Binary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Expression</em>'.
+	 * @see edap.BinaryExpression
+	 * @generated
+	 */
+	EClass getBinaryExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.BinaryExpression#getLhs <em>Lhs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lhs</em>'.
+	 * @see edap.BinaryExpression#getLhs()
+	 * @see #getBinaryExpression()
+	 * @generated
+	 */
+	EReference getBinaryExpression_Lhs();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.BinaryExpression#getRhs <em>Rhs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Rhs</em>'.
+	 * @see edap.BinaryExpression#getRhs()
+	 * @see #getBinaryExpression()
+	 * @generated
+	 */
+	EReference getBinaryExpression_Rhs();
+
+	/**
+	 * Returns the meta object for class '{@link edap.PlusExpression <em>Plus Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Plus Expression</em>'.
+	 * @see edap.PlusExpression
+	 * @generated
+	 */
+	EClass getPlusExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.MinusExpression <em>Minus Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Minus Expression</em>'.
+	 * @see edap.MinusExpression
+	 * @generated
+	 */
+	EClass getMinusExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.TimesExpression <em>Times Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Times Expression</em>'.
+	 * @see edap.TimesExpression
+	 * @generated
+	 */
+	EClass getTimesExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.DivExpression <em>Div Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Div Expression</em>'.
+	 * @see edap.DivExpression
+	 * @generated
+	 */
+	EClass getDivExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.ModExpression <em>Mod Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Mod Expression</em>'.
+	 * @see edap.ModExpression
+	 * @generated
+	 */
+	EClass getModExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.EqualsExpression <em>Equals Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Equals Expression</em>'.
+	 * @see edap.EqualsExpression
+	 * @generated
+	 */
+	EClass getEqualsExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.GreaterExpression <em>Greater Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Greater Expression</em>'.
+	 * @see edap.GreaterExpression
+	 * @generated
+	 */
+	EClass getGreaterExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.LowerExpression <em>Lower Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Lower Expression</em>'.
+	 * @see edap.LowerExpression
+	 * @generated
+	 */
+	EClass getLowerExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.AndExpression <em>And Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>And Expression</em>'.
+	 * @see edap.AndExpression
+	 * @generated
+	 */
+	EClass getAndExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.OrExpression <em>Or Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Or Expression</em>'.
+	 * @see edap.OrExpression
+	 * @generated
+	 */
+	EClass getOrExpression();
+
+	/**
+	 * Returns the meta object for class '{@link edap.ControlStructure <em>Control Structure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Control Structure</em>'.
+	 * @see edap.ControlStructure
+	 * @generated
+	 */
+	EClass getControlStructure();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.ControlStructure#getAction <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Action</em>'.
+	 * @see edap.ControlStructure#getAction()
+	 * @see #getControlStructure()
+	 * @generated
+	 */
+	EReference getControlStructure_Action();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.ControlStructure#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Condition</em>'.
+	 * @see edap.ControlStructure#getCondition()
+	 * @see #getControlStructure()
+	 * @generated
+	 */
+	EReference getControlStructure_Condition();
+
+	/**
+	 * Returns the meta object for class '{@link edap.LoopAction <em>Loop Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Loop Action</em>'.
+	 * @see edap.LoopAction
+	 * @generated
+	 */
+	EClass getLoopAction();
+
+	/**
+	 * Returns the meta object for class '{@link edap.ConditionalAction <em>Conditional Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conditional Action</em>'.
+	 * @see edap.ConditionalAction
+	 * @generated
+	 */
+	EClass getConditionalAction();
+
+	/**
+	 * Returns the meta object for class '{@link edap.PropertyReference <em>Property Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Property Reference</em>'.
+	 * @see edap.PropertyReference
+	 * @generated
+	 */
+	EClass getPropertyReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link edap.PropertyReference#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Property</em>'.
+	 * @see edap.PropertyReference#getProperty()
+	 * @see #getPropertyReference()
+	 * @generated
+	 */
+	EReference getPropertyReference_Property();
+
+	/**
+	 * Returns the meta object for class '{@link edap.ExpressionGroup <em>Expression Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression Group</em>'.
+	 * @see edap.ExpressionGroup
+	 * @generated
+	 */
+	EClass getExpressionGroup();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.ExpressionGroup#getExp <em>Exp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Exp</em>'.
+	 * @see edap.ExpressionGroup#getExp()
+	 * @see #getExpressionGroup()
+	 * @generated
+	 */
+	EReference getExpressionGroup_Exp();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -4075,14 +5284,6 @@ public interface EdapPackage extends EPackage {
 		EReference COMPONENT_REFERENCE__COMPONENT = eINSTANCE.getComponentReference_Component();
 
 		/**
-		 * The meta object literal for the '<em><b>Property Navigations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COMPONENT_REFERENCE__PROPERTY_NAVIGATIONS = eINSTANCE.getComponentReference_PropertyNavigations();
-
-		/**
 		 * The meta object literal for the '{@link edap.impl.PropertyNavigationImpl <em>Property Navigation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4091,6 +5292,14 @@ public interface EdapPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PROPERTY_NAVIGATION = eINSTANCE.getPropertyNavigation();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY_NAVIGATION__TARGET = eINSTANCE.getPropertyNavigation_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
@@ -4229,6 +5438,334 @@ public interface EdapPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EVENT_REFERENCE__PARAM_REF = eINSTANCE.getEventReference_ParamRef();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.LitteralImpl <em>Litteral</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.LitteralImpl
+		 * @see edap.impl.EdapPackageImpl#getLitteral()
+		 * @generated
+		 */
+		EClass LITTERAL = eINSTANCE.getLitteral();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.IntegerLitteralImpl <em>Integer Litteral</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.IntegerLitteralImpl
+		 * @see edap.impl.EdapPackageImpl#getIntegerLitteral()
+		 * @generated
+		 */
+		EClass INTEGER_LITTERAL = eINSTANCE.getIntegerLitteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Int Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_LITTERAL__INT_VALUE = eINSTANCE.getIntegerLitteral_IntValue();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.BooleanLitteralImpl <em>Boolean Litteral</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.BooleanLitteralImpl
+		 * @see edap.impl.EdapPackageImpl#getBooleanLitteral()
+		 * @generated
+		 */
+		EClass BOOLEAN_LITTERAL = eINSTANCE.getBooleanLitteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Bool Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BOOLEAN_LITTERAL__BOOL_VALUE = eINSTANCE.getBooleanLitteral_BoolValue();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.StringLitteralImpl <em>String Litteral</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.StringLitteralImpl
+		 * @see edap.impl.EdapPackageImpl#getStringLitteral()
+		 * @generated
+		 */
+		EClass STRING_LITTERAL = eINSTANCE.getStringLitteral();
+
+		/**
+		 * The meta object literal for the '<em><b>String Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_LITTERAL__STRING_VALUE = eINSTANCE.getStringLitteral_StringValue();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.DoubleLitteralImpl <em>Double Litteral</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.DoubleLitteralImpl
+		 * @see edap.impl.EdapPackageImpl#getDoubleLitteral()
+		 * @generated
+		 */
+		EClass DOUBLE_LITTERAL = eINSTANCE.getDoubleLitteral();
+
+		/**
+		 * The meta object literal for the '<em><b>Double Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOUBLE_LITTERAL__DOUBLE_VALUE = eINSTANCE.getDoubleLitteral_DoubleValue();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.UnaryExpressionImpl <em>Unary Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.UnaryExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getUnaryExpression()
+		 * @generated
+		 */
+		EClass UNARY_EXPRESSION = eINSTANCE.getUnaryExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Term</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNARY_EXPRESSION__TERM = eINSTANCE.getUnaryExpression_Term();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.NotExpressionImpl <em>Not Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.NotExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getNotExpression()
+		 * @generated
+		 */
+		EClass NOT_EXPRESSION = eINSTANCE.getNotExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.UnaryMinusImpl <em>Unary Minus</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.UnaryMinusImpl
+		 * @see edap.impl.EdapPackageImpl#getUnaryMinus()
+		 * @generated
+		 */
+		EClass UNARY_MINUS = eINSTANCE.getUnaryMinus();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.BinaryExpressionImpl <em>Binary Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.BinaryExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getBinaryExpression()
+		 * @generated
+		 */
+		EClass BINARY_EXPRESSION = eINSTANCE.getBinaryExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Lhs</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINARY_EXPRESSION__LHS = eINSTANCE.getBinaryExpression_Lhs();
+
+		/**
+		 * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BINARY_EXPRESSION__RHS = eINSTANCE.getBinaryExpression_Rhs();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.PlusExpressionImpl <em>Plus Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.PlusExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getPlusExpression()
+		 * @generated
+		 */
+		EClass PLUS_EXPRESSION = eINSTANCE.getPlusExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.MinusExpressionImpl <em>Minus Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.MinusExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getMinusExpression()
+		 * @generated
+		 */
+		EClass MINUS_EXPRESSION = eINSTANCE.getMinusExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.TimesExpressionImpl <em>Times Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.TimesExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getTimesExpression()
+		 * @generated
+		 */
+		EClass TIMES_EXPRESSION = eINSTANCE.getTimesExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.DivExpressionImpl <em>Div Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.DivExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getDivExpression()
+		 * @generated
+		 */
+		EClass DIV_EXPRESSION = eINSTANCE.getDivExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.ModExpressionImpl <em>Mod Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.ModExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getModExpression()
+		 * @generated
+		 */
+		EClass MOD_EXPRESSION = eINSTANCE.getModExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.EqualsExpressionImpl <em>Equals Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.EqualsExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getEqualsExpression()
+		 * @generated
+		 */
+		EClass EQUALS_EXPRESSION = eINSTANCE.getEqualsExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.GreaterExpressionImpl <em>Greater Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.GreaterExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getGreaterExpression()
+		 * @generated
+		 */
+		EClass GREATER_EXPRESSION = eINSTANCE.getGreaterExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.LowerExpressionImpl <em>Lower Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.LowerExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getLowerExpression()
+		 * @generated
+		 */
+		EClass LOWER_EXPRESSION = eINSTANCE.getLowerExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.AndExpressionImpl <em>And Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.AndExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getAndExpression()
+		 * @generated
+		 */
+		EClass AND_EXPRESSION = eINSTANCE.getAndExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.OrExpressionImpl <em>Or Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.OrExpressionImpl
+		 * @see edap.impl.EdapPackageImpl#getOrExpression()
+		 * @generated
+		 */
+		EClass OR_EXPRESSION = eINSTANCE.getOrExpression();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.ControlStructureImpl <em>Control Structure</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.ControlStructureImpl
+		 * @see edap.impl.EdapPackageImpl#getControlStructure()
+		 * @generated
+		 */
+		EClass CONTROL_STRUCTURE = eINSTANCE.getControlStructure();
+
+		/**
+		 * The meta object literal for the '<em><b>Action</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTROL_STRUCTURE__ACTION = eINSTANCE.getControlStructure_Action();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTROL_STRUCTURE__CONDITION = eINSTANCE.getControlStructure_Condition();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.LoopActionImpl <em>Loop Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.LoopActionImpl
+		 * @see edap.impl.EdapPackageImpl#getLoopAction()
+		 * @generated
+		 */
+		EClass LOOP_ACTION = eINSTANCE.getLoopAction();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.ConditionalActionImpl <em>Conditional Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.ConditionalActionImpl
+		 * @see edap.impl.EdapPackageImpl#getConditionalAction()
+		 * @generated
+		 */
+		EClass CONDITIONAL_ACTION = eINSTANCE.getConditionalAction();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.PropertyReferenceImpl <em>Property Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.PropertyReferenceImpl
+		 * @see edap.impl.EdapPackageImpl#getPropertyReference()
+		 * @generated
+		 */
+		EClass PROPERTY_REFERENCE = eINSTANCE.getPropertyReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY_REFERENCE__PROPERTY = eINSTANCE.getPropertyReference_Property();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.ExpressionGroupImpl <em>Expression Group</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.ExpressionGroupImpl
+		 * @see edap.impl.EdapPackageImpl#getExpressionGroup()
+		 * @generated
+		 */
+		EClass EXPRESSION_GROUP = eINSTANCE.getExpressionGroup();
+
+		/**
+		 * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSION_GROUP__EXP = eINSTANCE.getExpressionGroup_Exp();
 
 	}
 

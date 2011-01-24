@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2010 SINTEF&#xD;&#xA; All rights reserved. This program and the accompanying materials&#xD;&#xA; are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA; which accompanies this distribution, and is available at&#xD;&#xA; http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA; &#xD;&#xA; Contributors:&#xD;&#xA;     SINTEF - initial API and implementation"
-    modelDirectory="/org.sintef.edap.model/src" modelPluginID="org.sintef.edap.model"
-    modelName="Edap" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
-    copyrightFields="false">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.sintef.edap.model/src"
+    modelPluginID="org.sintef.edap.model" modelName="Edap" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
   <foreignModel>edap.ecore</foreignModel>
   <genPackages prefix="Edap" disposableProviderFactory="true" ecorePackage="edap.ecore#/">
     <genClasses ecoreClass="edap.ecore#//EdapModel">
@@ -109,9 +108,9 @@
     </genClasses>
     <genClasses ecoreClass="edap.ecore#//ComponentReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//ComponentReference/component"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ComponentReference/propertyNavigations"/>
     </genClasses>
     <genClasses ecoreClass="edap.ecore#//PropertyNavigation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//PropertyNavigation/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//PropertyNavigation/property"/>
     </genClasses>
     <genClasses ecoreClass="edap.ecore#//DictionaryNavigation">
@@ -133,6 +132,50 @@
     <genClasses ecoreClass="edap.ecore#//EventReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//EventReference/msgRef"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//EventReference/paramRef"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//Litteral"/>
+    <genClasses ecoreClass="edap.ecore#//IntegerLitteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//IntegerLitteral/intValue"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//BooleanLitteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//BooleanLitteral/boolValue"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//StringLitteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//StringLitteral/stringValue"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//DoubleLitteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute edap.ecore#//DoubleLitteral/doubleValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="edap.ecore#//UnaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//UnaryExpression/term"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//NotExpression"/>
+    <genClasses ecoreClass="edap.ecore#//UnaryMinus"/>
+    <genClasses image="false" ecoreClass="edap.ecore#//BinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//BinaryExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//BinaryExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//PlusExpression"/>
+    <genClasses ecoreClass="edap.ecore#//MinusExpression"/>
+    <genClasses ecoreClass="edap.ecore#//TimesExpression"/>
+    <genClasses ecoreClass="edap.ecore#//DivExpression"/>
+    <genClasses ecoreClass="edap.ecore#//ModExpression"/>
+    <genClasses ecoreClass="edap.ecore#//EqualsExpression"/>
+    <genClasses ecoreClass="edap.ecore#//GreaterExpression"/>
+    <genClasses ecoreClass="edap.ecore#//LowerExpression"/>
+    <genClasses ecoreClass="edap.ecore#//AndExpression"/>
+    <genClasses ecoreClass="edap.ecore#//OrExpression"/>
+    <genClasses image="false" ecoreClass="edap.ecore#//ControlStructure">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ControlStructure/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ControlStructure/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//LoopAction"/>
+    <genClasses ecoreClass="edap.ecore#//ConditionalAction"/>
+    <genClasses ecoreClass="edap.ecore#//PropertyReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference edap.ecore#//PropertyReference/property"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//ExpressionGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ExpressionGroup/exp"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -1,12 +1,8 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap.util;
 
@@ -351,13 +347,13 @@ public class EdapSwitch<T> {
 			case EdapPackage.COMPONENT_REFERENCE: {
 				ComponentReference componentReference = (ComponentReference)theEObject;
 				T result = caseComponentReference(componentReference);
-				if (result == null) result = caseExpression(componentReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case EdapPackage.PROPERTY_NAVIGATION: {
 				PropertyNavigation propertyNavigation = (PropertyNavigation)theEObject;
 				T result = casePropertyNavigation(propertyNavigation);
+				if (result == null) result = caseExpression(propertyNavigation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -365,6 +361,7 @@ public class EdapSwitch<T> {
 				DictionaryNavigation dictionaryNavigation = (DictionaryNavigation)theEObject;
 				T result = caseDictionaryNavigation(dictionaryNavigation);
 				if (result == null) result = casePropertyNavigation(dictionaryNavigation);
+				if (result == null) result = caseExpression(dictionaryNavigation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -397,6 +394,198 @@ public class EdapSwitch<T> {
 				EventReference eventReference = (EventReference)theEObject;
 				T result = caseEventReference(eventReference);
 				if (result == null) result = caseExpression(eventReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.LITTERAL: {
+				Litteral litteral = (Litteral)theEObject;
+				T result = caseLitteral(litteral);
+				if (result == null) result = caseExpression(litteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.INTEGER_LITTERAL: {
+				IntegerLitteral integerLitteral = (IntegerLitteral)theEObject;
+				T result = caseIntegerLitteral(integerLitteral);
+				if (result == null) result = caseLitteral(integerLitteral);
+				if (result == null) result = caseExpression(integerLitteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.BOOLEAN_LITTERAL: {
+				BooleanLitteral booleanLitteral = (BooleanLitteral)theEObject;
+				T result = caseBooleanLitteral(booleanLitteral);
+				if (result == null) result = caseLitteral(booleanLitteral);
+				if (result == null) result = caseExpression(booleanLitteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.STRING_LITTERAL: {
+				StringLitteral stringLitteral = (StringLitteral)theEObject;
+				T result = caseStringLitteral(stringLitteral);
+				if (result == null) result = caseLitteral(stringLitteral);
+				if (result == null) result = caseExpression(stringLitteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.DOUBLE_LITTERAL: {
+				DoubleLitteral doubleLitteral = (DoubleLitteral)theEObject;
+				T result = caseDoubleLitteral(doubleLitteral);
+				if (result == null) result = caseLitteral(doubleLitteral);
+				if (result == null) result = caseExpression(doubleLitteral);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.UNARY_EXPRESSION: {
+				UnaryExpression unaryExpression = (UnaryExpression)theEObject;
+				T result = caseUnaryExpression(unaryExpression);
+				if (result == null) result = caseExpression(unaryExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.NOT_EXPRESSION: {
+				NotExpression notExpression = (NotExpression)theEObject;
+				T result = caseNotExpression(notExpression);
+				if (result == null) result = caseUnaryExpression(notExpression);
+				if (result == null) result = caseExpression(notExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.UNARY_MINUS: {
+				UnaryMinus unaryMinus = (UnaryMinus)theEObject;
+				T result = caseUnaryMinus(unaryMinus);
+				if (result == null) result = caseUnaryExpression(unaryMinus);
+				if (result == null) result = caseExpression(unaryMinus);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.BINARY_EXPRESSION: {
+				BinaryExpression binaryExpression = (BinaryExpression)theEObject;
+				T result = caseBinaryExpression(binaryExpression);
+				if (result == null) result = caseExpression(binaryExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.PLUS_EXPRESSION: {
+				PlusExpression plusExpression = (PlusExpression)theEObject;
+				T result = casePlusExpression(plusExpression);
+				if (result == null) result = caseBinaryExpression(plusExpression);
+				if (result == null) result = caseExpression(plusExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.MINUS_EXPRESSION: {
+				MinusExpression minusExpression = (MinusExpression)theEObject;
+				T result = caseMinusExpression(minusExpression);
+				if (result == null) result = caseBinaryExpression(minusExpression);
+				if (result == null) result = caseExpression(minusExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.TIMES_EXPRESSION: {
+				TimesExpression timesExpression = (TimesExpression)theEObject;
+				T result = caseTimesExpression(timesExpression);
+				if (result == null) result = caseBinaryExpression(timesExpression);
+				if (result == null) result = caseExpression(timesExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.DIV_EXPRESSION: {
+				DivExpression divExpression = (DivExpression)theEObject;
+				T result = caseDivExpression(divExpression);
+				if (result == null) result = caseBinaryExpression(divExpression);
+				if (result == null) result = caseExpression(divExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.MOD_EXPRESSION: {
+				ModExpression modExpression = (ModExpression)theEObject;
+				T result = caseModExpression(modExpression);
+				if (result == null) result = caseBinaryExpression(modExpression);
+				if (result == null) result = caseExpression(modExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.EQUALS_EXPRESSION: {
+				EqualsExpression equalsExpression = (EqualsExpression)theEObject;
+				T result = caseEqualsExpression(equalsExpression);
+				if (result == null) result = caseBinaryExpression(equalsExpression);
+				if (result == null) result = caseExpression(equalsExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.GREATER_EXPRESSION: {
+				GreaterExpression greaterExpression = (GreaterExpression)theEObject;
+				T result = caseGreaterExpression(greaterExpression);
+				if (result == null) result = caseBinaryExpression(greaterExpression);
+				if (result == null) result = caseExpression(greaterExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.LOWER_EXPRESSION: {
+				LowerExpression lowerExpression = (LowerExpression)theEObject;
+				T result = caseLowerExpression(lowerExpression);
+				if (result == null) result = caseBinaryExpression(lowerExpression);
+				if (result == null) result = caseExpression(lowerExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.AND_EXPRESSION: {
+				AndExpression andExpression = (AndExpression)theEObject;
+				T result = caseAndExpression(andExpression);
+				if (result == null) result = caseBinaryExpression(andExpression);
+				if (result == null) result = caseExpression(andExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.OR_EXPRESSION: {
+				OrExpression orExpression = (OrExpression)theEObject;
+				T result = caseOrExpression(orExpression);
+				if (result == null) result = caseBinaryExpression(orExpression);
+				if (result == null) result = caseExpression(orExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.CONTROL_STRUCTURE: {
+				ControlStructure controlStructure = (ControlStructure)theEObject;
+				T result = caseControlStructure(controlStructure);
+				if (result == null) result = caseAction(controlStructure);
+				if (result == null) result = caseAnnotatedElement(controlStructure);
+				if (result == null) result = caseEdapElement(controlStructure);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.LOOP_ACTION: {
+				LoopAction loopAction = (LoopAction)theEObject;
+				T result = caseLoopAction(loopAction);
+				if (result == null) result = caseControlStructure(loopAction);
+				if (result == null) result = caseAction(loopAction);
+				if (result == null) result = caseAnnotatedElement(loopAction);
+				if (result == null) result = caseEdapElement(loopAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.CONDITIONAL_ACTION: {
+				ConditionalAction conditionalAction = (ConditionalAction)theEObject;
+				T result = caseConditionalAction(conditionalAction);
+				if (result == null) result = caseControlStructure(conditionalAction);
+				if (result == null) result = caseAction(conditionalAction);
+				if (result == null) result = caseAnnotatedElement(conditionalAction);
+				if (result == null) result = caseEdapElement(conditionalAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.PROPERTY_REFERENCE: {
+				PropertyReference propertyReference = (PropertyReference)theEObject;
+				T result = casePropertyReference(propertyReference);
+				if (result == null) result = caseExpression(propertyReference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.EXPRESSION_GROUP: {
+				ExpressionGroup expressionGroup = (ExpressionGroup)theEObject;
+				T result = caseExpressionGroup(expressionGroup);
+				if (result == null) result = caseExpression(expressionGroup);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -971,6 +1160,366 @@ public class EdapSwitch<T> {
 	 * @generated
 	 */
 	public T caseEventReference(EventReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Litteral</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLitteral(Litteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Litteral</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerLitteral(IntegerLitteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Litteral</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBooleanLitteral(BooleanLitteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Litteral</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringLitteral(StringLitteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Double Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Double Litteral</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDoubleLitteral(DoubleLitteral object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unary Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unary Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnaryExpression(UnaryExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Not Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Not Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNotExpression(NotExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unary Minus</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unary Minus</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnaryMinus(UnaryMinus object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Binary Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Binary Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBinaryExpression(BinaryExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Plus Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Plus Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePlusExpression(PlusExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Minus Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Minus Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMinusExpression(MinusExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Times Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Times Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTimesExpression(TimesExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Div Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Div Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDivExpression(DivExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Mod Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Mod Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModExpression(ModExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Equals Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Equals Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEqualsExpression(EqualsExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Greater Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Greater Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGreaterExpression(GreaterExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Lower Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Lower Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLowerExpression(LowerExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>And Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>And Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAndExpression(AndExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Or Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Or Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrExpression(OrExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Control Structure</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Control Structure</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseControlStructure(ControlStructure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Loop Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Loop Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLoopAction(LoopAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Conditional Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Conditional Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConditionalAction(ConditionalAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Property Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Property Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePropertyReference(PropertyReference object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Expression Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Expression Group</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExpressionGroup(ExpressionGroup object) {
 		return null;
 	}
 

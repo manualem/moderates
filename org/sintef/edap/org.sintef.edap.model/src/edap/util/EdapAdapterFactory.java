@@ -1,12 +1,8 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap.util;
 
@@ -226,6 +222,102 @@ public class EdapAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseEventReference(EventReference object) {
 				return createEventReferenceAdapter();
+			}
+			@Override
+			public Adapter caseLitteral(Litteral object) {
+				return createLitteralAdapter();
+			}
+			@Override
+			public Adapter caseIntegerLitteral(IntegerLitteral object) {
+				return createIntegerLitteralAdapter();
+			}
+			@Override
+			public Adapter caseBooleanLitteral(BooleanLitteral object) {
+				return createBooleanLitteralAdapter();
+			}
+			@Override
+			public Adapter caseStringLitteral(StringLitteral object) {
+				return createStringLitteralAdapter();
+			}
+			@Override
+			public Adapter caseDoubleLitteral(DoubleLitteral object) {
+				return createDoubleLitteralAdapter();
+			}
+			@Override
+			public Adapter caseUnaryExpression(UnaryExpression object) {
+				return createUnaryExpressionAdapter();
+			}
+			@Override
+			public Adapter caseNotExpression(NotExpression object) {
+				return createNotExpressionAdapter();
+			}
+			@Override
+			public Adapter caseUnaryMinus(UnaryMinus object) {
+				return createUnaryMinusAdapter();
+			}
+			@Override
+			public Adapter caseBinaryExpression(BinaryExpression object) {
+				return createBinaryExpressionAdapter();
+			}
+			@Override
+			public Adapter casePlusExpression(PlusExpression object) {
+				return createPlusExpressionAdapter();
+			}
+			@Override
+			public Adapter caseMinusExpression(MinusExpression object) {
+				return createMinusExpressionAdapter();
+			}
+			@Override
+			public Adapter caseTimesExpression(TimesExpression object) {
+				return createTimesExpressionAdapter();
+			}
+			@Override
+			public Adapter caseDivExpression(DivExpression object) {
+				return createDivExpressionAdapter();
+			}
+			@Override
+			public Adapter caseModExpression(ModExpression object) {
+				return createModExpressionAdapter();
+			}
+			@Override
+			public Adapter caseEqualsExpression(EqualsExpression object) {
+				return createEqualsExpressionAdapter();
+			}
+			@Override
+			public Adapter caseGreaterExpression(GreaterExpression object) {
+				return createGreaterExpressionAdapter();
+			}
+			@Override
+			public Adapter caseLowerExpression(LowerExpression object) {
+				return createLowerExpressionAdapter();
+			}
+			@Override
+			public Adapter caseAndExpression(AndExpression object) {
+				return createAndExpressionAdapter();
+			}
+			@Override
+			public Adapter caseOrExpression(OrExpression object) {
+				return createOrExpressionAdapter();
+			}
+			@Override
+			public Adapter caseControlStructure(ControlStructure object) {
+				return createControlStructureAdapter();
+			}
+			@Override
+			public Adapter caseLoopAction(LoopAction object) {
+				return createLoopActionAdapter();
+			}
+			@Override
+			public Adapter caseConditionalAction(ConditionalAction object) {
+				return createConditionalActionAdapter();
+			}
+			@Override
+			public Adapter casePropertyReference(PropertyReference object) {
+				return createPropertyReferenceAdapter();
+			}
+			@Override
+			public Adapter caseExpressionGroup(ExpressionGroup object) {
+				return createExpressionGroupAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -776,6 +868,342 @@ public class EdapAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEventReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.Litteral <em>Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.Litteral
+	 * @generated
+	 */
+	public Adapter createLitteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.IntegerLitteral <em>Integer Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.IntegerLitteral
+	 * @generated
+	 */
+	public Adapter createIntegerLitteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.BooleanLitteral <em>Boolean Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.BooleanLitteral
+	 * @generated
+	 */
+	public Adapter createBooleanLitteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.StringLitteral <em>String Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.StringLitteral
+	 * @generated
+	 */
+	public Adapter createStringLitteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.DoubleLitteral <em>Double Litteral</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.DoubleLitteral
+	 * @generated
+	 */
+	public Adapter createDoubleLitteralAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.UnaryExpression <em>Unary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.UnaryExpression
+	 * @generated
+	 */
+	public Adapter createUnaryExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.NotExpression <em>Not Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.NotExpression
+	 * @generated
+	 */
+	public Adapter createNotExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.UnaryMinus <em>Unary Minus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.UnaryMinus
+	 * @generated
+	 */
+	public Adapter createUnaryMinusAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.BinaryExpression <em>Binary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.BinaryExpression
+	 * @generated
+	 */
+	public Adapter createBinaryExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.PlusExpression <em>Plus Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.PlusExpression
+	 * @generated
+	 */
+	public Adapter createPlusExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.MinusExpression <em>Minus Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.MinusExpression
+	 * @generated
+	 */
+	public Adapter createMinusExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.TimesExpression <em>Times Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.TimesExpression
+	 * @generated
+	 */
+	public Adapter createTimesExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.DivExpression <em>Div Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.DivExpression
+	 * @generated
+	 */
+	public Adapter createDivExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.ModExpression <em>Mod Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.ModExpression
+	 * @generated
+	 */
+	public Adapter createModExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.EqualsExpression <em>Equals Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.EqualsExpression
+	 * @generated
+	 */
+	public Adapter createEqualsExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.GreaterExpression <em>Greater Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.GreaterExpression
+	 * @generated
+	 */
+	public Adapter createGreaterExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.LowerExpression <em>Lower Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.LowerExpression
+	 * @generated
+	 */
+	public Adapter createLowerExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.AndExpression <em>And Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.AndExpression
+	 * @generated
+	 */
+	public Adapter createAndExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.OrExpression <em>Or Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.OrExpression
+	 * @generated
+	 */
+	public Adapter createOrExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.ControlStructure <em>Control Structure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.ControlStructure
+	 * @generated
+	 */
+	public Adapter createControlStructureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.LoopAction <em>Loop Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.LoopAction
+	 * @generated
+	 */
+	public Adapter createLoopActionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.ConditionalAction <em>Conditional Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.ConditionalAction
+	 * @generated
+	 */
+	public Adapter createConditionalActionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.PropertyReference <em>Property Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.PropertyReference
+	 * @generated
+	 */
+	public Adapter createPropertyReferenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.ExpressionGroup <em>Expression Group</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.ExpressionGroup
+	 * @generated
+	 */
+	public Adapter createExpressionGroupAdapter() {
 		return null;
 	}
 

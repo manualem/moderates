@@ -1,54 +1,74 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap.impl;
 
 import edap.Action;
 import edap.ActionBlock;
+import edap.AndExpression;
 import edap.AnnotatedElement;
+import edap.BinaryExpression;
+import edap.BooleanLitteral;
 import edap.Broadcast;
 import edap.Component;
 import edap.ComponentReference;
 import edap.CompositeState;
+import edap.ConditionalAction;
 import edap.Connector;
+import edap.ControlStructure;
 import edap.CreateAction;
 import edap.Device;
 import edap.Dictionary;
 import edap.DictionaryNavigation;
+import edap.DivExpression;
+import edap.DoubleLitteral;
 import edap.EdapElement;
 import edap.EdapFactory;
 import edap.EdapModel;
 import edap.EdapPackage;
 import edap.Enumeration;
 import edap.EnumerationLiteral;
+import edap.EqualsExpression;
 import edap.Event;
 import edap.EventReference;
 import edap.Expression;
+import edap.ExpressionGroup;
 import edap.ExternExpression;
 import edap.ExternStatement;
+import edap.GreaterExpression;
+import edap.IntegerLitteral;
+import edap.Litteral;
+import edap.LoopAction;
+import edap.LowerExpression;
 import edap.Message;
+import edap.MinusExpression;
+import edap.ModExpression;
+import edap.NotExpression;
+import edap.OrExpression;
 import edap.Parameter;
 import edap.PlatformAnnotation;
+import edap.PlusExpression;
 import edap.Port;
 import edap.PrimitiveType;
 import edap.Property;
 import edap.PropertyAssignment;
 import edap.PropertyNavigation;
+import edap.PropertyReference;
 import edap.ReceiveMessage;
 import edap.SendAction;
 import edap.Simulator;
 import edap.SoftwareComponent;
 import edap.State;
 import edap.StateMachine;
+import edap.StringLitteral;
+import edap.TimesExpression;
 import edap.Transition;
 import edap.Type;
+import edap.UnaryExpression;
+import edap.UnaryMinus;
 import edap.Unicast;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -330,6 +350,174 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 	 * @generated
 	 */
 	private EClass eventReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass litteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass integerLitteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass booleanLitteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringLitteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass doubleLitteralEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unaryExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass notExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unaryMinusEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass binaryExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass plusExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass minusExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass timesExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass divExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass equalsExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass greaterExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lowerExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass andExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass controlStructureEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass loopActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conditionalActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass propertyReferenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressionGroupEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1126,15 +1314,6 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getComponentReference_PropertyNavigations() {
-		return (EReference)componentReferenceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPropertyNavigation() {
 		return propertyNavigationEClass;
 	}
@@ -1144,8 +1323,17 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPropertyNavigation_Property() {
+	public EReference getPropertyNavigation_Target() {
 		return (EReference)propertyNavigationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPropertyNavigation_Property() {
+		return (EReference)propertyNavigationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1288,6 +1476,321 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLitteral() {
+		return litteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIntegerLitteral() {
+		return integerLitteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIntegerLitteral_IntValue() {
+		return (EAttribute)integerLitteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBooleanLitteral() {
+		return booleanLitteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBooleanLitteral_BoolValue() {
+		return (EAttribute)booleanLitteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStringLitteral() {
+		return stringLitteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getStringLitteral_StringValue() {
+		return (EAttribute)stringLitteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDoubleLitteral() {
+		return doubleLitteralEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDoubleLitteral_DoubleValue() {
+		return (EAttribute)doubleLitteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUnaryExpression() {
+		return unaryExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnaryExpression_Term() {
+		return (EReference)unaryExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNotExpression() {
+		return notExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUnaryMinus() {
+		return unaryMinusEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBinaryExpression() {
+		return binaryExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBinaryExpression_Lhs() {
+		return (EReference)binaryExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getBinaryExpression_Rhs() {
+		return (EReference)binaryExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPlusExpression() {
+		return plusExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMinusExpression() {
+		return minusExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTimesExpression() {
+		return timesExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDivExpression() {
+		return divExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModExpression() {
+		return modExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEqualsExpression() {
+		return equalsExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGreaterExpression() {
+		return greaterExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLowerExpression() {
+		return lowerExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAndExpression() {
+		return andExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrExpression() {
+		return orExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getControlStructure() {
+		return controlStructureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getControlStructure_Action() {
+		return (EReference)controlStructureEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getControlStructure_Condition() {
+		return (EReference)controlStructureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLoopAction() {
+		return loopActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConditionalAction() {
+		return conditionalActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPropertyReference() {
+		return propertyReferenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPropertyReference_Property() {
+		return (EReference)propertyReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExpressionGroup() {
+		return expressionGroupEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpressionGroup_Exp() {
+		return (EReference)expressionGroupEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EdapFactory getEdapFactory() {
 		return (EdapFactory)getEFactoryInstance();
 	}
@@ -1423,9 +1926,9 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 
 		componentReferenceEClass = createEClass(COMPONENT_REFERENCE);
 		createEReference(componentReferenceEClass, COMPONENT_REFERENCE__COMPONENT);
-		createEReference(componentReferenceEClass, COMPONENT_REFERENCE__PROPERTY_NAVIGATIONS);
 
 		propertyNavigationEClass = createEClass(PROPERTY_NAVIGATION);
+		createEReference(propertyNavigationEClass, PROPERTY_NAVIGATION__TARGET);
 		createEReference(propertyNavigationEClass, PROPERTY_NAVIGATION__PROPERTY);
 
 		dictionaryNavigationEClass = createEClass(DICTIONARY_NAVIGATION);
@@ -1447,6 +1950,65 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 		eventReferenceEClass = createEClass(EVENT_REFERENCE);
 		createEReference(eventReferenceEClass, EVENT_REFERENCE__MSG_REF);
 		createEReference(eventReferenceEClass, EVENT_REFERENCE__PARAM_REF);
+
+		litteralEClass = createEClass(LITTERAL);
+
+		integerLitteralEClass = createEClass(INTEGER_LITTERAL);
+		createEAttribute(integerLitteralEClass, INTEGER_LITTERAL__INT_VALUE);
+
+		booleanLitteralEClass = createEClass(BOOLEAN_LITTERAL);
+		createEAttribute(booleanLitteralEClass, BOOLEAN_LITTERAL__BOOL_VALUE);
+
+		stringLitteralEClass = createEClass(STRING_LITTERAL);
+		createEAttribute(stringLitteralEClass, STRING_LITTERAL__STRING_VALUE);
+
+		doubleLitteralEClass = createEClass(DOUBLE_LITTERAL);
+		createEAttribute(doubleLitteralEClass, DOUBLE_LITTERAL__DOUBLE_VALUE);
+
+		unaryExpressionEClass = createEClass(UNARY_EXPRESSION);
+		createEReference(unaryExpressionEClass, UNARY_EXPRESSION__TERM);
+
+		notExpressionEClass = createEClass(NOT_EXPRESSION);
+
+		unaryMinusEClass = createEClass(UNARY_MINUS);
+
+		binaryExpressionEClass = createEClass(BINARY_EXPRESSION);
+		createEReference(binaryExpressionEClass, BINARY_EXPRESSION__LHS);
+		createEReference(binaryExpressionEClass, BINARY_EXPRESSION__RHS);
+
+		plusExpressionEClass = createEClass(PLUS_EXPRESSION);
+
+		minusExpressionEClass = createEClass(MINUS_EXPRESSION);
+
+		timesExpressionEClass = createEClass(TIMES_EXPRESSION);
+
+		divExpressionEClass = createEClass(DIV_EXPRESSION);
+
+		modExpressionEClass = createEClass(MOD_EXPRESSION);
+
+		equalsExpressionEClass = createEClass(EQUALS_EXPRESSION);
+
+		greaterExpressionEClass = createEClass(GREATER_EXPRESSION);
+
+		lowerExpressionEClass = createEClass(LOWER_EXPRESSION);
+
+		andExpressionEClass = createEClass(AND_EXPRESSION);
+
+		orExpressionEClass = createEClass(OR_EXPRESSION);
+
+		controlStructureEClass = createEClass(CONTROL_STRUCTURE);
+		createEReference(controlStructureEClass, CONTROL_STRUCTURE__ACTION);
+		createEReference(controlStructureEClass, CONTROL_STRUCTURE__CONDITION);
+
+		loopActionEClass = createEClass(LOOP_ACTION);
+
+		conditionalActionEClass = createEClass(CONDITIONAL_ACTION);
+
+		propertyReferenceEClass = createEClass(PROPERTY_REFERENCE);
+		createEReference(propertyReferenceEClass, PROPERTY_REFERENCE__PROPERTY);
+
+		expressionGroupEClass = createEClass(EXPRESSION_GROUP);
+		createEReference(expressionGroupEClass, EXPRESSION_GROUP__EXP);
 	}
 
 	/**
@@ -1504,12 +2066,36 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 		receiveMessageEClass.getESuperTypes().add(this.getEvent());
 		simulatorEClass.getESuperTypes().add(this.getSoftwareComponent());
 		dictionaryEClass.getESuperTypes().add(this.getProperty());
-		componentReferenceEClass.getESuperTypes().add(this.getExpression());
+		propertyNavigationEClass.getESuperTypes().add(this.getExpression());
 		dictionaryNavigationEClass.getESuperTypes().add(this.getPropertyNavigation());
 		connectorEClass.getESuperTypes().add(this.getAnnotatedElement());
 		portEClass.getESuperTypes().add(this.getAnnotatedElement());
 		createActionEClass.getESuperTypes().add(this.getAction());
 		eventReferenceEClass.getESuperTypes().add(this.getExpression());
+		litteralEClass.getESuperTypes().add(this.getExpression());
+		integerLitteralEClass.getESuperTypes().add(this.getLitteral());
+		booleanLitteralEClass.getESuperTypes().add(this.getLitteral());
+		stringLitteralEClass.getESuperTypes().add(this.getLitteral());
+		doubleLitteralEClass.getESuperTypes().add(this.getLitteral());
+		unaryExpressionEClass.getESuperTypes().add(this.getExpression());
+		notExpressionEClass.getESuperTypes().add(this.getUnaryExpression());
+		unaryMinusEClass.getESuperTypes().add(this.getUnaryExpression());
+		binaryExpressionEClass.getESuperTypes().add(this.getExpression());
+		plusExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		minusExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		timesExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		divExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		modExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		equalsExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		greaterExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		lowerExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		andExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		orExpressionEClass.getESuperTypes().add(this.getBinaryExpression());
+		controlStructureEClass.getESuperTypes().add(this.getAction());
+		loopActionEClass.getESuperTypes().add(this.getControlStructure());
+		conditionalActionEClass.getESuperTypes().add(this.getControlStructure());
+		propertyReferenceEClass.getESuperTypes().add(this.getExpression());
+		expressionGroupEClass.getESuperTypes().add(this.getExpression());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(edapModelEClass, EdapModel.class, "EdapModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1624,9 +2210,9 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 
 		initEClass(componentReferenceEClass, ComponentReference.class, "ComponentReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponentReference_Component(), this.getComponent(), null, "component", null, 1, 1, ComponentReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComponentReference_PropertyNavigations(), this.getPropertyNavigation(), null, "propertyNavigations", null, 0, -1, ComponentReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyNavigationEClass, PropertyNavigation.class, "PropertyNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPropertyNavigation_Target(), this.getExpression(), null, "target", null, 1, 1, PropertyNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertyNavigation_Property(), this.getProperty(), null, "property", null, 1, 1, PropertyNavigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dictionaryNavigationEClass, DictionaryNavigation.class, "DictionaryNavigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1648,6 +2234,65 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 		initEClass(eventReferenceEClass, EventReference.class, "EventReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEventReference_MsgRef(), this.getReceiveMessage(), null, "msgRef", null, 0, 1, EventReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEventReference_ParamRef(), this.getParameter(), null, "paramRef", null, 0, 1, EventReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(litteralEClass, Litteral.class, "Litteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(integerLitteralEClass, IntegerLitteral.class, "IntegerLitteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntegerLitteral_IntValue(), ecorePackage.getEInt(), "intValue", null, 1, 1, IntegerLitteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(booleanLitteralEClass, BooleanLitteral.class, "BooleanLitteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBooleanLitteral_BoolValue(), ecorePackage.getEBoolean(), "boolValue", null, 1, 1, BooleanLitteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stringLitteralEClass, StringLitteral.class, "StringLitteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringLitteral_StringValue(), ecorePackage.getEString(), "stringValue", null, 1, 1, StringLitteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(doubleLitteralEClass, DoubleLitteral.class, "DoubleLitteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDoubleLitteral_DoubleValue(), ecorePackage.getEDouble(), "doubleValue", null, 1, 1, DoubleLitteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(unaryExpressionEClass, UnaryExpression.class, "UnaryExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnaryExpression_Term(), this.getExpression(), null, "term", null, 1, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(notExpressionEClass, NotExpression.class, "NotExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(unaryMinusEClass, UnaryMinus.class, "UnaryMinus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(binaryExpressionEClass, BinaryExpression.class, "BinaryExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBinaryExpression_Lhs(), this.getExpression(), null, "lhs", null, 1, 1, BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBinaryExpression_Rhs(), this.getExpression(), null, "rhs", null, 1, 1, BinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(plusExpressionEClass, PlusExpression.class, "PlusExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(minusExpressionEClass, MinusExpression.class, "MinusExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(timesExpressionEClass, TimesExpression.class, "TimesExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(divExpressionEClass, DivExpression.class, "DivExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(modExpressionEClass, ModExpression.class, "ModExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(equalsExpressionEClass, EqualsExpression.class, "EqualsExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(greaterExpressionEClass, GreaterExpression.class, "GreaterExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(lowerExpressionEClass, LowerExpression.class, "LowerExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(andExpressionEClass, AndExpression.class, "AndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orExpressionEClass, OrExpression.class, "OrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(controlStructureEClass, ControlStructure.class, "ControlStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getControlStructure_Action(), this.getAction(), null, "action", null, 1, 1, ControlStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getControlStructure_Condition(), this.getExpression(), null, "condition", null, 1, 1, ControlStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(loopActionEClass, LoopAction.class, "LoopAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(conditionalActionEClass, ConditionalAction.class, "ConditionalAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(propertyReferenceEClass, PropertyReference.class, "PropertyReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPropertyReference_Property(), this.getProperty(), null, "property", null, 1, 1, PropertyReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressionGroupEClass, ExpressionGroup.class, "ExpressionGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExpressionGroup_Exp(), this.getExpression(), null, "exp", null, 1, 1, ExpressionGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

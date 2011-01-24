@@ -1,12 +1,8 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap.impl;
 
@@ -94,6 +90,26 @@ public class EdapFactoryImpl extends EFactoryImpl implements EdapFactory {
 			case EdapPackage.PORT: return createPort();
 			case EdapPackage.CREATE_ACTION: return createCreateAction();
 			case EdapPackage.EVENT_REFERENCE: return createEventReference();
+			case EdapPackage.INTEGER_LITTERAL: return createIntegerLitteral();
+			case EdapPackage.BOOLEAN_LITTERAL: return createBooleanLitteral();
+			case EdapPackage.STRING_LITTERAL: return createStringLitteral();
+			case EdapPackage.DOUBLE_LITTERAL: return createDoubleLitteral();
+			case EdapPackage.NOT_EXPRESSION: return createNotExpression();
+			case EdapPackage.UNARY_MINUS: return createUnaryMinus();
+			case EdapPackage.PLUS_EXPRESSION: return createPlusExpression();
+			case EdapPackage.MINUS_EXPRESSION: return createMinusExpression();
+			case EdapPackage.TIMES_EXPRESSION: return createTimesExpression();
+			case EdapPackage.DIV_EXPRESSION: return createDivExpression();
+			case EdapPackage.MOD_EXPRESSION: return createModExpression();
+			case EdapPackage.EQUALS_EXPRESSION: return createEqualsExpression();
+			case EdapPackage.GREATER_EXPRESSION: return createGreaterExpression();
+			case EdapPackage.LOWER_EXPRESSION: return createLowerExpression();
+			case EdapPackage.AND_EXPRESSION: return createAndExpression();
+			case EdapPackage.OR_EXPRESSION: return createOrExpression();
+			case EdapPackage.LOOP_ACTION: return createLoopAction();
+			case EdapPackage.CONDITIONAL_ACTION: return createConditionalAction();
+			case EdapPackage.PROPERTY_REFERENCE: return createPropertyReference();
+			case EdapPackage.EXPRESSION_GROUP: return createExpressionGroup();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -397,6 +413,206 @@ public class EdapFactoryImpl extends EFactoryImpl implements EdapFactory {
 	public EventReference createEventReference() {
 		EventReferenceImpl eventReference = new EventReferenceImpl();
 		return eventReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IntegerLitteral createIntegerLitteral() {
+		IntegerLitteralImpl integerLitteral = new IntegerLitteralImpl();
+		return integerLitteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BooleanLitteral createBooleanLitteral() {
+		BooleanLitteralImpl booleanLitteral = new BooleanLitteralImpl();
+		return booleanLitteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StringLitteral createStringLitteral() {
+		StringLitteralImpl stringLitteral = new StringLitteralImpl();
+		return stringLitteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DoubleLitteral createDoubleLitteral() {
+		DoubleLitteralImpl doubleLitteral = new DoubleLitteralImpl();
+		return doubleLitteral;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotExpression createNotExpression() {
+		NotExpressionImpl notExpression = new NotExpressionImpl();
+		return notExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnaryMinus createUnaryMinus() {
+		UnaryMinusImpl unaryMinus = new UnaryMinusImpl();
+		return unaryMinus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlusExpression createPlusExpression() {
+		PlusExpressionImpl plusExpression = new PlusExpressionImpl();
+		return plusExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MinusExpression createMinusExpression() {
+		MinusExpressionImpl minusExpression = new MinusExpressionImpl();
+		return minusExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimesExpression createTimesExpression() {
+		TimesExpressionImpl timesExpression = new TimesExpressionImpl();
+		return timesExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DivExpression createDivExpression() {
+		DivExpressionImpl divExpression = new DivExpressionImpl();
+		return divExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModExpression createModExpression() {
+		ModExpressionImpl modExpression = new ModExpressionImpl();
+		return modExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EqualsExpression createEqualsExpression() {
+		EqualsExpressionImpl equalsExpression = new EqualsExpressionImpl();
+		return equalsExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GreaterExpression createGreaterExpression() {
+		GreaterExpressionImpl greaterExpression = new GreaterExpressionImpl();
+		return greaterExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LowerExpression createLowerExpression() {
+		LowerExpressionImpl lowerExpression = new LowerExpressionImpl();
+		return lowerExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AndExpression createAndExpression() {
+		AndExpressionImpl andExpression = new AndExpressionImpl();
+		return andExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OrExpression createOrExpression() {
+		OrExpressionImpl orExpression = new OrExpressionImpl();
+		return orExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LoopAction createLoopAction() {
+		LoopActionImpl loopAction = new LoopActionImpl();
+		return loopAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConditionalAction createConditionalAction() {
+		ConditionalActionImpl conditionalAction = new ConditionalActionImpl();
+		return conditionalAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PropertyReference createPropertyReference() {
+		PropertyReferenceImpl propertyReference = new PropertyReferenceImpl();
+		return propertyReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExpressionGroup createExpressionGroup() {
+		ExpressionGroupImpl expressionGroup = new ExpressionGroupImpl();
+		return expressionGroup;
 	}
 
 	/**

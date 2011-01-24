@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<edap:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap" xsi:schemaLocation="http://edap ../../org.sintef.edap.model/model/edap.ecore">
-  <substate>
-    <outgoing target="//@substate.1"/>
-  </substate>
-  <substate name="Idle" incoming="//@substate.0/@outgoing.0"/>
-</edap:StateMachine>

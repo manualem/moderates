@@ -1,16 +1,12 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap;
 
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link edap.ComponentReference#getComponent <em>Component</em>}</li>
- *   <li>{@link edap.ComponentReference#getPropertyNavigations <em>Property Navigations</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ComponentReference extends Expression {
+public interface ComponentReference extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Component</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -55,21 +50,5 @@ public interface ComponentReference extends Expression {
 	 * @generated
 	 */
 	void setComponent(Component value);
-
-	/**
-	 * Returns the value of the '<em><b>Property Navigations</b></em>' containment reference list.
-	 * The list contents are of type {@link edap.PropertyNavigation}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Property Navigations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Property Navigations</em>' containment reference list.
-	 * @see edap.EdapPackage#getComponentReference_PropertyNavigations()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<PropertyNavigation> getPropertyNavigations();
 
 } // ComponentReference

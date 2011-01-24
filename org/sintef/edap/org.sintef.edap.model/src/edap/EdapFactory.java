@@ -1,12 +1,8 @@
 /**
- *  Copyright (c) 2010 SINTEF
- *  All rights reserved. This program and the accompanying materials
- *  are made available under the terms of the Eclipse Public License v1.0
- *  which accompanies this distribution, and is available at
- *  http://www.eclipse.org/legal/epl-v10.html
- *  
- *  Contributors:
- *      SINTEF - initial API and implementation
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
  */
 package edap;
 
@@ -298,6 +294,186 @@ public interface EdapFactory extends EFactory {
 	 * @generated
 	 */
 	EventReference createEventReference();
+
+	/**
+	 * Returns a new object of class '<em>Integer Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Integer Litteral</em>'.
+	 * @generated
+	 */
+	IntegerLitteral createIntegerLitteral();
+
+	/**
+	 * Returns a new object of class '<em>Boolean Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Boolean Litteral</em>'.
+	 * @generated
+	 */
+	BooleanLitteral createBooleanLitteral();
+
+	/**
+	 * Returns a new object of class '<em>String Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Litteral</em>'.
+	 * @generated
+	 */
+	StringLitteral createStringLitteral();
+
+	/**
+	 * Returns a new object of class '<em>Double Litteral</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Double Litteral</em>'.
+	 * @generated
+	 */
+	DoubleLitteral createDoubleLitteral();
+
+	/**
+	 * Returns a new object of class '<em>Not Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Not Expression</em>'.
+	 * @generated
+	 */
+	NotExpression createNotExpression();
+
+	/**
+	 * Returns a new object of class '<em>Unary Minus</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unary Minus</em>'.
+	 * @generated
+	 */
+	UnaryMinus createUnaryMinus();
+
+	/**
+	 * Returns a new object of class '<em>Plus Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Plus Expression</em>'.
+	 * @generated
+	 */
+	PlusExpression createPlusExpression();
+
+	/**
+	 * Returns a new object of class '<em>Minus Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Minus Expression</em>'.
+	 * @generated
+	 */
+	MinusExpression createMinusExpression();
+
+	/**
+	 * Returns a new object of class '<em>Times Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Times Expression</em>'.
+	 * @generated
+	 */
+	TimesExpression createTimesExpression();
+
+	/**
+	 * Returns a new object of class '<em>Div Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Div Expression</em>'.
+	 * @generated
+	 */
+	DivExpression createDivExpression();
+
+	/**
+	 * Returns a new object of class '<em>Mod Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Mod Expression</em>'.
+	 * @generated
+	 */
+	ModExpression createModExpression();
+
+	/**
+	 * Returns a new object of class '<em>Equals Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Equals Expression</em>'.
+	 * @generated
+	 */
+	EqualsExpression createEqualsExpression();
+
+	/**
+	 * Returns a new object of class '<em>Greater Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Greater Expression</em>'.
+	 * @generated
+	 */
+	GreaterExpression createGreaterExpression();
+
+	/**
+	 * Returns a new object of class '<em>Lower Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Lower Expression</em>'.
+	 * @generated
+	 */
+	LowerExpression createLowerExpression();
+
+	/**
+	 * Returns a new object of class '<em>And Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>And Expression</em>'.
+	 * @generated
+	 */
+	AndExpression createAndExpression();
+
+	/**
+	 * Returns a new object of class '<em>Or Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Or Expression</em>'.
+	 * @generated
+	 */
+	OrExpression createOrExpression();
+
+	/**
+	 * Returns a new object of class '<em>Loop Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Loop Action</em>'.
+	 * @generated
+	 */
+	LoopAction createLoopAction();
+
+	/**
+	 * Returns a new object of class '<em>Conditional Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Conditional Action</em>'.
+	 * @generated
+	 */
+	ConditionalAction createConditionalAction();
+
+	/**
+	 * Returns a new object of class '<em>Property Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Property Reference</em>'.
+	 * @generated
+	 */
+	PropertyReference createPropertyReference();
+
+	/**
+	 * Returns a new object of class '<em>Expression Group</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expression Group</em>'.
+	 * @generated
+	 */
+	ExpressionGroup createExpressionGroup();
 
 	/**
 	 * Returns the package supported by this factory.
