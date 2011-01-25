@@ -121,7 +121,7 @@ public static Component findContainingComponent(EObject object) {
 		ArrayList<Type> result = new ArrayList<Type>();
 		for (EdapModel m : allEdapModels(model)) {
 			for (Type t : m.getTypes()) {
-				if (t.getName().startsWith(name)) result.add(t);
+				if (t.getName().startsWith(name) && !result.contains(t)) result.add(t);
 				
 				if (t instanceof Component) {
 					addRecursiveTypes(result, name, (Component)t);
@@ -134,7 +134,7 @@ public static Component findContainingComponent(EObject object) {
 	protected static void addRecursiveTypes (ArrayList<Type> result, String name, Component t) {
 		if (t instanceof Component) {
 			for (Component contained : ((Component) t).getCompositeComponent()) {
-				if (contained.getName().startsWith(name)) result.add(contained);
+				if (contained.getName().startsWith(name) && !result.contains(contained)) result.add(contained);
 				addRecursiveTypes (result, name, contained);
 			}
 		}

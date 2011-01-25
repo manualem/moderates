@@ -23,7 +23,9 @@ public class PropertyTypeReferenceResolver implements edap.resource.edap.IEdapRe
 		ArrayList<Type> ts = EDAPHelpers.allType(identifier, root);
 		for (Type t : ts) {
 			if (resolveFuzzy) result.addMapping(t.getName(), t);
-			else if (t.getName().equals(identifier)) result.addMapping(t.getName(), t);
+			else if (t.getName().equals(identifier)) {
+				result.addMapping(t.getName(), t);
+			}
 		}
 		if(!result.wasResolved()) result.setErrorMessage("Cannot resolve type " + identifier);
 	}

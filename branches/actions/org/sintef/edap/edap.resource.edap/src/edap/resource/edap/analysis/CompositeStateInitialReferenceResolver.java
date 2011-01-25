@@ -16,6 +16,7 @@ public class CompositeStateInitialReferenceResolver implements edap.resource.eda
 		
 		for(State s : container.getSubstate()) {
 			if (s.getName().startsWith(identifier)) {
+				if (resolveFuzzy || s.getName().equals(identifier))
 				result.addMapping(s.getName(), s);
 			}
 		}

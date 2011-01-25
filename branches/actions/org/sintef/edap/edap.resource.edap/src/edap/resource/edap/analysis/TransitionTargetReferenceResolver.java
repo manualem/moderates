@@ -20,7 +20,8 @@ public class TransitionTargetReferenceResolver implements edap.resource.edap.IEd
 				CompositeState cs = (CompositeState)s.eContainer();
 				for(State t : cs.getSubstate()) {
 					if (t.getName().startsWith(identifier))
-						result.addMapping(t.getName(), t);
+						if (resolveFuzzy || t.getName().equals(identifier))
+							result.addMapping(t.getName(), t);
 				}
 			}
 		}
