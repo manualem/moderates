@@ -7,6 +7,8 @@ import edap.BooleanLitteral;
 import edap.DictionaryNavigation;
 import edap.DivExpression;
 import edap.DoubleLitteral;
+import edap.EdapFactory;
+import edap.EdapPackage;
 import edap.EqualsExpression;
 import edap.Expression;
 import edap.ExpressionGroup;
@@ -25,6 +27,7 @@ import edap.StringLitteral;
 import edap.TimesExpression;
 import edap.Type;
 import edap.UnaryMinus;
+import edap.impl.EdapPackageImpl;
 import edap.util.EdapSwitch;
 
 public class TypeChecker extends EdapSwitch<Type> {
@@ -35,8 +38,19 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public static Type STRING_TYPE;
 	public static Type REAL_TYPE;
 	
-	public Hashtable<Expression, String> errors;
-	
+	static {
+		EdapFactory factory = EdapPackageImpl.init().getEdapFactory();
+		ANY_TYPE = factory.createPrimitiveType();
+		ANY_TYPE.setName("Any");
+		INTEGER_TYPE = factory.createPrimitiveType();
+		INTEGER_TYPE.setName("Integer");
+		BOOLEAN_TYPE = factory.createPrimitiveType();
+		BOOLEAN_TYPE.setName("Boolean");
+		STRING_TYPE = factory.createPrimitiveType();
+		STRING_TYPE.setName("String");
+		REAL_TYPE = factory.createPrimitiveType();
+		REAL_TYPE.setName("Real");
+	}
 	
 	public Type computeTypeOf(Expression exp) {
 		Type result = null;
@@ -88,18 +102,18 @@ public class TypeChecker extends EdapSwitch<Type> {
 	@Override
 	public Type caseNotExpression(NotExpression object) {
 		Type t = computeTypeOf(object.getTerm());
-		if (!t.equals(BOOLEAN_TYPE)) {
-			errors.put(object.getTerm(), "Expected Boolean, found " + t.getName() + ".");
-		}
+//		if (!t.equals(BOOLEAN_TYPE)) {
+//			errors.put(object.getTerm(), "Expected Boolean, found " + t.getName() + ".");
+//		}
 		return BOOLEAN_TYPE;
 	}
 
 	@Override
 	public Type caseUnaryMinus(UnaryMinus object) {
 		Type t = computeTypeOf(object.getTerm());
-		if (!t.equals(INTEGER_TYPE)) {
-			errors.put(object.getTerm(), "Expected Integer, found " + t.getName() + ".");
-		}
+//		if (!t.equals(INTEGER_TYPE)) {
+//			errors.put(object.getTerm(), "Expected Integer, found " + t.getName() + ".");
+//		}
 		return INTEGER_TYPE;
 	}
 
@@ -107,12 +121,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type casePlusExpression(PlusExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return INTEGER_TYPE;
 	}
 
@@ -120,12 +134,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseMinusExpression(MinusExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return INTEGER_TYPE;
 	}
 
@@ -133,12 +147,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseTimesExpression(TimesExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return INTEGER_TYPE;
 	}
 
@@ -146,12 +160,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseDivExpression(DivExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return INTEGER_TYPE;
 	}
 
@@ -159,12 +173,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseModExpression(ModExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return INTEGER_TYPE;
 	}
 
@@ -180,12 +194,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseGreaterExpression(GreaterExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return BOOLEAN_TYPE;
 	}
 
@@ -193,12 +207,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseAndExpression(AndExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(BOOLEAN_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(BOOLEAN_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(BOOLEAN_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(BOOLEAN_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return BOOLEAN_TYPE;
 	}
 
@@ -206,12 +220,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseOrExpression(OrExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(BOOLEAN_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(BOOLEAN_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(BOOLEAN_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(BOOLEAN_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return BOOLEAN_TYPE;
 	}
 
@@ -229,12 +243,12 @@ public class TypeChecker extends EdapSwitch<Type> {
 	public Type caseLowerExpression(LowerExpression object) {
 		Type t1 = computeTypeOf(object.getLhs());
 		Type t2 = computeTypeOf(object.getRhs());
-		if (!t1.equals(INTEGER_TYPE)) {
-			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
-		}
-		if (!t2.equals(INTEGER_TYPE)) {
-			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
-		}
+//		if (!t1.equals(INTEGER_TYPE)) {
+//			errors.put(object.getLhs(), "Expected Integer, found " + t1.getName() + ".");
+//		}
+//		if (!t2.equals(INTEGER_TYPE)) {
+//			errors.put(object.getRhs(), "Expected Integer, found " + t2.getName() + ".");
+//		}
 		return BOOLEAN_TYPE;
 	}
 	
