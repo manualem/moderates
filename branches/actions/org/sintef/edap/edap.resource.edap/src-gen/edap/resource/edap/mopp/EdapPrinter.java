@@ -155,6 +155,14 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 			print_edap_LoopAction((edap.LoopAction) element, globaltab, out);
 			return;
 		}
+		if (element instanceof edap.PrintAction) {
+			print_edap_PrintAction((edap.PrintAction) element, globaltab, out);
+			return;
+		}
+		if (element instanceof edap.ErrorAction) {
+			print_edap_ErrorAction((edap.ErrorAction) element, globaltab, out);
+			return;
+		}
 		if (element instanceof edap.OrExpression) {
 			print_edap_OrExpression((edap.OrExpression) element, globaltab, out);
 			return;
@@ -4574,8 +4582,12 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 		int count;
 		// DEFINITION PART BEGINS (CsString)
 		out.print("if");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print("(");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("condition");
 		if (count > 0) {
@@ -4585,8 +4597,14 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 			}
 			printCountingMap.put("condition", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
+		// DEFINITION PART BEGINS (LineBreak)
+		localtab += "	";
+		out.println();
+		out.print(localtab);
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("action");
 		if (count > 0) {
@@ -4620,8 +4638,12 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 		int count;
 		// DEFINITION PART BEGINS (CsString)
 		out.print("while");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print("(");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("condition");
 		if (count > 0) {
@@ -4631,8 +4653,14 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 			}
 			printCountingMap.put("condition", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
 		out.print(")");
+		// DEFINITION PART BEGINS (LineBreak)
+		localtab += "	";
+		out.println();
+		out.print(localtab);
 		// DEFINITION PART BEGINS (Containment)
 		count = printCountingMap.get("action");
 		if (count > 0) {
@@ -4641,6 +4669,72 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
 			printCountingMap.put("action", count - 1);
+		}
+	}
+	
+	
+	public void print_edap_PrintAction(edap.PrintAction element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PRINT_ACTION__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PRINT_ACTION__ANNOTATIONS));
+		printCountingMap.put("annotations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PRINT_ACTION__MSG));
+		printCountingMap.put("msg", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (CsString)
+		out.print("print");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("msg");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PRINT_ACTION__MSG));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("msg", count - 1);
+		}
+	}
+	
+	
+	public void print_edap_ErrorAction(edap.ErrorAction element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.ERROR_ACTION__NAME));
+		printCountingMap.put("name", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.ERROR_ACTION__ANNOTATIONS));
+		printCountingMap.put("annotations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.ERROR_ACTION__MSG));
+		printCountingMap.put("msg", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (CsString)
+		out.print("error");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("msg");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.ERROR_ACTION__MSG));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("msg", count - 1);
 		}
 	}
 	

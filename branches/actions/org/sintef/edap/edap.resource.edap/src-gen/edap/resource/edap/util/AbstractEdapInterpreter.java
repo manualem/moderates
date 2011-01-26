@@ -44,6 +44,18 @@ public class AbstractEdapInterpreter<ResultType, ContextType> {
 	
 	public ResultType interprete(org.eclipse.emf.ecore.EObject object, ContextType context) {
 		ResultType result = null;
+		if (object instanceof edap.ErrorAction) {
+			result = interprete_edap_ErrorAction((edap.ErrorAction) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof edap.PrintAction) {
+			result = interprete_edap_PrintAction((edap.PrintAction) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		if (object instanceof edap.ExpressionGroup) {
 			result = interprete_edap_ExpressionGroup((edap.ExpressionGroup) object, context);
 		}
@@ -320,12 +332,6 @@ public class AbstractEdapInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
-		if (object instanceof edap.CompositeState) {
-			result = interprete_edap_CompositeState((edap.CompositeState) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
 		if (object instanceof edap.Transition) {
 			result = interprete_edap_Transition((edap.Transition) object, context);
 		}
@@ -334,6 +340,12 @@ public class AbstractEdapInterpreter<ResultType, ContextType> {
 		}
 		if (object instanceof edap.StateMachine) {
 			result = interprete_edap_StateMachine((edap.StateMachine) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof edap.CompositeState) {
+			result = interprete_edap_CompositeState((edap.CompositeState) object, context);
 		}
 		if (result != null) {
 			return result;
@@ -362,24 +374,6 @@ public class AbstractEdapInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
-		if (object instanceof edap.Property) {
-			result = interprete_edap_Property((edap.Property) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
-		if (object instanceof edap.Component) {
-			result = interprete_edap_Component((edap.Component) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
-		if (object instanceof edap.Type) {
-			result = interprete_edap_Type((edap.Type) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
 		if (object instanceof edap.AnnotatedElement) {
 			result = interprete_edap_AnnotatedElement((edap.AnnotatedElement) object, context);
 		}
@@ -392,8 +386,26 @@ public class AbstractEdapInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof edap.Property) {
+			result = interprete_edap_Property((edap.Property) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof edap.Type) {
+			result = interprete_edap_Type((edap.Type) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		if (object instanceof edap.Parameter) {
 			result = interprete_edap_Parameter((edap.Parameter) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof edap.Component) {
+			result = interprete_edap_Component((edap.Component) object, context);
 		}
 		if (result != null) {
 			return result;
@@ -664,6 +676,14 @@ public class AbstractEdapInterpreter<ResultType, ContextType> {
 	}
 	
 	public ResultType interprete_edap_ExpressionGroup(edap.ExpressionGroup object, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_edap_PrintAction(edap.PrintAction object, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_edap_ErrorAction(edap.ErrorAction object, ContextType context) {
 		return null;
 	}
 	

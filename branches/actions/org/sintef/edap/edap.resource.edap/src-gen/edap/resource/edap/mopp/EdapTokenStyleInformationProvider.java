@@ -156,6 +156,12 @@ public class EdapTokenStyleInformationProvider {
 		if ("while".equals(tokenName)) {
 			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
+		if ("print".equals(tokenName)) {
+			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
+		}
+		if ("error".equals(tokenName)) {
+			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
+		}
 		if ("or".equals(tokenName)) {
 			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}

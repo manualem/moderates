@@ -320,6 +320,14 @@ public class EdapAdapterFactory extends AdapterFactoryImpl {
 				return createExpressionGroupAdapter();
 			}
 			@Override
+			public Adapter casePrintAction(PrintAction object) {
+				return createPrintActionAdapter();
+			}
+			@Override
+			public Adapter caseErrorAction(ErrorAction object) {
+				return createErrorActionAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -1204,6 +1212,34 @@ public class EdapAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createExpressionGroupAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.PrintAction <em>Print Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.PrintAction
+	 * @generated
+	 */
+	public Adapter createPrintActionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link edap.ErrorAction <em>Error Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see edap.ErrorAction
+	 * @generated
+	 */
+	public Adapter createErrorActionAdapter() {
 		return null;
 	}
 

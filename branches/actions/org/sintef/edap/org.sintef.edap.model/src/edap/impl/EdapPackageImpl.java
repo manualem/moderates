@@ -32,6 +32,7 @@ import edap.EdapPackage;
 import edap.Enumeration;
 import edap.EnumerationLiteral;
 import edap.EqualsExpression;
+import edap.ErrorAction;
 import edap.Event;
 import edap.EventReference;
 import edap.Expression;
@@ -53,6 +54,7 @@ import edap.PlatformAnnotation;
 import edap.PlusExpression;
 import edap.Port;
 import edap.PrimitiveType;
+import edap.PrintAction;
 import edap.Property;
 import edap.PropertyAssignment;
 import edap.PropertyNavigation;
@@ -518,6 +520,20 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 	 * @generated
 	 */
 	private EClass expressionGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass printActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass errorActionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1791,6 +1807,42 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPrintAction() {
+		return printActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPrintAction_Msg() {
+		return (EReference)printActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getErrorAction() {
+		return errorActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getErrorAction_Msg() {
+		return (EReference)errorActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EdapFactory getEdapFactory() {
 		return (EdapFactory)getEFactoryInstance();
 	}
@@ -2009,6 +2061,12 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 
 		expressionGroupEClass = createEClass(EXPRESSION_GROUP);
 		createEReference(expressionGroupEClass, EXPRESSION_GROUP__EXP);
+
+		printActionEClass = createEClass(PRINT_ACTION);
+		createEReference(printActionEClass, PRINT_ACTION__MSG);
+
+		errorActionEClass = createEClass(ERROR_ACTION);
+		createEReference(errorActionEClass, ERROR_ACTION__MSG);
 	}
 
 	/**
@@ -2096,6 +2154,8 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 		conditionalActionEClass.getESuperTypes().add(this.getControlStructure());
 		propertyReferenceEClass.getESuperTypes().add(this.getExpression());
 		expressionGroupEClass.getESuperTypes().add(this.getExpression());
+		printActionEClass.getESuperTypes().add(this.getAction());
+		errorActionEClass.getESuperTypes().add(this.getAction());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(edapModelEClass, EdapModel.class, "EdapModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2293,6 +2353,12 @@ public class EdapPackageImpl extends EPackageImpl implements EdapPackage {
 
 		initEClass(expressionGroupEClass, ExpressionGroup.class, "ExpressionGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExpressionGroup_Exp(), this.getExpression(), null, "exp", null, 1, 1, ExpressionGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(printActionEClass, PrintAction.class, "PrintAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPrintAction_Msg(), this.getExpression(), null, "msg", null, 1, 1, PrintAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(errorActionEClass, ErrorAction.class, "ErrorAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getErrorAction_Msg(), this.getExpression(), null, "msg", null, 1, 1, ErrorAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
