@@ -75,8 +75,6 @@ public class EdapLexer extends Lexer {
     public static final int T__39=39;
     public static final int INTEGER_LITERAL=10;
     public static final int SL_COMMENT=14;
-    public static final int T__76=76;
-    public static final int T__75=75;
     public static final int T_SINGLETON=8;
     public static final int T__74=74;
     public static final int T__73=73;
@@ -729,10 +727,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:46:7: ( 'set' )
-            // Edap.g:46:9: 'set'
+            // Edap.g:46:7: ( 'eventref' )
+            // Edap.g:46:9: 'eventref'
             {
-            match("set"); 
+            match("eventref"); 
 
 
             }
@@ -750,10 +748,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:47:7: ( '=' )
-            // Edap.g:47:9: '='
+            // Edap.g:47:7: ( '.' )
+            // Edap.g:47:9: '.'
             {
-            match('='); 
+            match('.'); 
 
             }
 
@@ -770,10 +768,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:48:7: ( 'eventref' )
-            // Edap.g:48:9: 'eventref'
+            // Edap.g:48:7: ( 'send' )
+            // Edap.g:48:9: 'send'
             {
-            match("eventref"); 
+            match("send"); 
 
 
             }
@@ -791,10 +789,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:49:7: ( '.' )
-            // Edap.g:49:9: '.'
+            // Edap.g:49:7: ( '#' )
+            // Edap.g:49:9: '#'
             {
-            match('.'); 
+            match('#'); 
 
             }
 
@@ -811,10 +809,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:50:7: ( 'send' )
-            // Edap.g:50:9: 'send'
+            // Edap.g:50:7: ( 'port' )
+            // Edap.g:50:9: 'port'
             {
-            match("send"); 
+            match("port"); 
 
 
             }
@@ -832,10 +830,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:51:7: ( '#' )
-            // Edap.g:51:9: '#'
+            // Edap.g:51:7: ( 'broadcast' )
+            // Edap.g:51:9: 'broadcast'
             {
-            match('#'); 
+            match("broadcast"); 
+
 
             }
 
@@ -852,10 +851,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:52:7: ( 'port' )
-            // Edap.g:52:9: 'port'
+            // Edap.g:52:7: ( 'transition' )
+            // Edap.g:52:9: 'transition'
             {
-            match("port"); 
+            match("transition"); 
 
 
             }
@@ -873,10 +872,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:53:7: ( 'broadcast' )
-            // Edap.g:53:9: 'broadcast'
+            // Edap.g:53:7: ( 'event' )
+            // Edap.g:53:9: 'event'
             {
-            match("broadcast"); 
+            match("event"); 
 
 
             }
@@ -894,10 +893,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:54:7: ( 'transition' )
-            // Edap.g:54:9: 'transition'
+            // Edap.g:54:7: ( 'guard' )
+            // Edap.g:54:9: 'guard'
             {
-            match("transition"); 
+            match("guard"); 
 
 
             }
@@ -915,10 +914,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:55:7: ( 'event' )
-            // Edap.g:55:9: 'event'
+            // Edap.g:55:7: ( 'action' )
+            // Edap.g:55:9: 'action'
             {
-            match("event"); 
+            match("action"); 
 
 
             }
@@ -936,10 +935,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:56:7: ( 'guard' )
-            // Edap.g:56:9: 'guard'
+            // Edap.g:56:7: ( 'set' )
+            // Edap.g:56:9: 'set'
             {
-            match("guard"); 
+            match("set"); 
 
 
             }
@@ -957,11 +956,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:57:7: ( 'action' )
-            // Edap.g:57:9: 'action'
+            // Edap.g:57:7: ( '=' )
+            // Edap.g:57:9: '='
             {
-            match("action"); 
-
+            match('='); 
 
             }
 
@@ -978,10 +976,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:58:7: ( 'connector' )
-            // Edap.g:58:9: 'connector'
+            // Edap.g:58:7: ( 'if' )
+            // Edap.g:58:9: 'if'
             {
-            match("connector"); 
+            match("if"); 
 
 
             }
@@ -999,10 +997,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:59:7: ( 'create' )
-            // Edap.g:59:9: 'create'
+            // Edap.g:59:7: ( 'while' )
+            // Edap.g:59:9: 'while'
             {
-            match("create"); 
+            match("while"); 
 
 
             }
@@ -1020,10 +1018,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:60:7: ( 'if' )
-            // Edap.g:60:9: 'if'
+            // Edap.g:60:7: ( 'print' )
+            // Edap.g:60:9: 'print'
             {
-            match("if"); 
+            match("print"); 
 
 
             }
@@ -1041,10 +1039,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:61:7: ( 'while' )
-            // Edap.g:61:9: 'while'
+            // Edap.g:61:7: ( 'error' )
+            // Edap.g:61:9: 'error'
             {
-            match("while"); 
+            match("error"); 
 
 
             }
@@ -1062,10 +1060,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:62:7: ( 'print' )
-            // Edap.g:62:9: 'print'
+            // Edap.g:62:7: ( 'or' )
+            // Edap.g:62:9: 'or'
             {
-            match("print"); 
+            match("or"); 
 
 
             }
@@ -1083,10 +1081,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:63:7: ( 'error' )
-            // Edap.g:63:9: 'error'
+            // Edap.g:63:7: ( 'and' )
+            // Edap.g:63:9: 'and'
             {
-            match("error"); 
+            match("and"); 
 
 
             }
@@ -1104,11 +1102,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:64:7: ( 'or' )
-            // Edap.g:64:9: 'or'
+            // Edap.g:64:7: ( '<' )
+            // Edap.g:64:9: '<'
             {
-            match("or"); 
-
+            match('<'); 
 
             }
 
@@ -1125,11 +1122,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:65:7: ( 'and' )
-            // Edap.g:65:9: 'and'
+            // Edap.g:65:7: ( '>' )
+            // Edap.g:65:9: '>'
             {
-            match("and"); 
-
+            match('>'); 
 
             }
 
@@ -1146,10 +1142,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:66:7: ( '<' )
-            // Edap.g:66:9: '<'
+            // Edap.g:66:7: ( '==' )
+            // Edap.g:66:9: '=='
             {
-            match('<'); 
+            match("=="); 
+
 
             }
 
@@ -1166,10 +1163,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:67:7: ( '>' )
-            // Edap.g:67:9: '>'
+            // Edap.g:67:7: ( '+' )
+            // Edap.g:67:9: '+'
             {
-            match('>'); 
+            match('+'); 
 
             }
 
@@ -1186,11 +1183,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:68:7: ( '==' )
-            // Edap.g:68:9: '=='
+            // Edap.g:68:7: ( '-' )
+            // Edap.g:68:9: '-'
             {
-            match("=="); 
-
+            match('-'); 
 
             }
 
@@ -1207,10 +1203,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:69:7: ( '+' )
-            // Edap.g:69:9: '+'
+            // Edap.g:69:7: ( '*' )
+            // Edap.g:69:9: '*'
             {
-            match('+'); 
+            match('*'); 
 
             }
 
@@ -1227,10 +1223,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:70:7: ( '-' )
-            // Edap.g:70:9: '-'
+            // Edap.g:70:7: ( '/' )
+            // Edap.g:70:9: '/'
             {
-            match('-'); 
+            match('/'); 
 
             }
 
@@ -1247,10 +1243,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:71:7: ( '*' )
-            // Edap.g:71:9: '*'
+            // Edap.g:71:7: ( '\\u0025' )
+            // Edap.g:71:9: '\\u0025'
             {
-            match('*'); 
+            match('%'); 
 
             }
 
@@ -1267,48 +1263,8 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:72:7: ( '/' )
-            // Edap.g:72:9: '/'
-            {
-            match('/'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__74"
-
-    // $ANTLR start "T__75"
-    public final void mT__75() throws RecognitionException {
-        try {
-            int _type = T__75;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:73:7: ( '\\u0025' )
-            // Edap.g:73:9: '\\u0025'
-            {
-            match('%'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__75"
-
-    // $ANTLR start "T__76"
-    public final void mT__76() throws RecognitionException {
-        try {
-            int _type = T__76;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:74:7: ( 'not' )
-            // Edap.g:74:9: 'not'
+            // Edap.g:72:7: ( 'not' )
+            // Edap.g:72:9: 'not'
             {
             match("not"); 
 
@@ -1321,22 +1277,22 @@ public class EdapLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__76"
+    // $ANTLR end "T__74"
 
     // $ANTLR start "SL_COMMENT"
     public final void mSL_COMMENT() throws RecognitionException {
         try {
             int _type = SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10507:11: ( ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
-            // Edap.g:10508:1: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // Edap.g:9898:11: ( ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
+            // Edap.g:9899:1: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
             {
-            // Edap.g:10508:1: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
-            // Edap.g:10508:2: '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // Edap.g:9899:1: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // Edap.g:9899:2: '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             {
             match("//"); 
 
-            // Edap.g:10508:6: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // Edap.g:9899:6: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -1349,7 +1305,7 @@ public class EdapLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // Edap.g:10508:7: ~ ( '\\n' | '\\r' | '\\uffff' )
+            	    // Edap.g:9899:7: ~ ( '\\n' | '\\r' | '\\uffff' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -1389,15 +1345,15 @@ public class EdapLexer extends Lexer {
         try {
             int _type = ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10511:11: ( ( '/*' ( . )* '*/' ) )
-            // Edap.g:10512:1: ( '/*' ( . )* '*/' )
+            // Edap.g:9902:11: ( ( '/*' ( . )* '*/' ) )
+            // Edap.g:9903:1: ( '/*' ( . )* '*/' )
             {
-            // Edap.g:10512:1: ( '/*' ( . )* '*/' )
-            // Edap.g:10512:2: '/*' ( . )* '*/'
+            // Edap.g:9903:1: ( '/*' ( . )* '*/' )
+            // Edap.g:9903:2: '/*' ( . )* '*/'
             {
             match("/*"); 
 
-            // Edap.g:10512:6: ( . )*
+            // Edap.g:9903:6: ( . )*
             loop2:
             do {
                 int alt2=2;
@@ -1422,7 +1378,7 @@ public class EdapLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // Edap.g:10512:6: .
+            	    // Edap.g:9903:6: .
             	    {
             	    matchAny(); 
 
@@ -1456,14 +1412,14 @@ public class EdapLexer extends Lexer {
         try {
             int _type = ANNOTATION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10515:11: ( ( '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ ) )
-            // Edap.g:10516:1: ( '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // Edap.g:9906:11: ( ( '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ ) )
+            // Edap.g:9907:1: ( '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
             {
-            // Edap.g:10516:1: ( '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
-            // Edap.g:10516:2: '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // Edap.g:9907:1: ( '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // Edap.g:9907:2: '@' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             {
             match('@'); 
-            // Edap.g:10516:5: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // Edap.g:9907:5: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             int cnt3=0;
             loop3:
             do {
@@ -1520,10 +1476,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = BOOLEAN_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10518:16: ( ( 'true' | 'false' ) )
-            // Edap.g:10519:1: ( 'true' | 'false' )
+            // Edap.g:9909:16: ( ( 'true' | 'false' ) )
+            // Edap.g:9910:1: ( 'true' | 'false' )
             {
-            // Edap.g:10519:1: ( 'true' | 'false' )
+            // Edap.g:9910:1: ( 'true' | 'false' )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1541,7 +1497,7 @@ public class EdapLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // Edap.g:10519:2: 'true'
+                    // Edap.g:9910:2: 'true'
                     {
                     match("true"); 
 
@@ -1549,7 +1505,7 @@ public class EdapLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Edap.g:10519:9: 'false'
+                    // Edap.g:9910:9: 'false'
                     {
                     match("false"); 
 
@@ -1575,10 +1531,10 @@ public class EdapLexer extends Lexer {
         try {
             int _type = INTEGER_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10521:16: ( ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) )
-            // Edap.g:10522:1: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // Edap.g:9912:16: ( ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) )
+            // Edap.g:9913:1: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             {
-            // Edap.g:10522:1: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // Edap.g:9913:1: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1596,16 +1552,16 @@ public class EdapLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // Edap.g:10522:2: ( '1' .. '9' ) ( '0' .. '9' )*
+                    // Edap.g:9913:2: ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // Edap.g:10522:2: ( '1' .. '9' )
-                    // Edap.g:10522:3: '1' .. '9'
+                    // Edap.g:9913:2: ( '1' .. '9' )
+                    // Edap.g:9913:3: '1' .. '9'
                     {
                     matchRange('1','9'); 
 
                     }
 
-                    // Edap.g:10522:13: ( '0' .. '9' )*
+                    // Edap.g:9913:13: ( '0' .. '9' )*
                     loop5:
                     do {
                         int alt5=2;
@@ -1618,7 +1574,7 @@ public class EdapLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // Edap.g:10522:14: '0' .. '9'
+                    	    // Edap.g:9913:14: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -1634,7 +1590,7 @@ public class EdapLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Edap.g:10522:27: '0'
+                    // Edap.g:9913:27: '0'
                     {
                     match('0'); 
 
@@ -1659,14 +1615,14 @@ public class EdapLexer extends Lexer {
         try {
             int _type = STRING_LITERAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10524:15: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' ) )
-            // Edap.g:10525:1: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
+            // Edap.g:9915:15: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' ) )
+            // Edap.g:9916:1: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
             {
-            // Edap.g:10525:1: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
-            // Edap.g:10525:2: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"'
+            // Edap.g:9916:1: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"' )
+            // Edap.g:9916:2: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
-            // Edap.g:10525:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )*
+            // Edap.g:9916:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\"' ) )*
             loop7:
             do {
                 int alt7=5;
@@ -1714,7 +1670,7 @@ public class EdapLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // Edap.g:10525:6: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            	    // Edap.g:9916:6: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             	    {
             	    match('\\'); 
             	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1730,10 +1686,10 @@ public class EdapLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // Edap.g:10525:47: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            	    // Edap.g:9916:47: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
             	    {
-            	    // Edap.g:10525:47: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            	    // Edap.g:10525:48: '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            	    // Edap.g:9916:47: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            	    // Edap.g:9916:48: '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             	    {
             	    match('\\'); 
             	    match('u'); 
@@ -1780,11 +1736,11 @@ public class EdapLexer extends Lexer {
             	    }
             	    break;
             	case 3 :
-            	    // Edap.g:10525:169: '\\\\' ( '0' .. '7' )
+            	    // Edap.g:9916:169: '\\\\' ( '0' .. '7' )
             	    {
             	    match('\\'); 
-            	    // Edap.g:10525:173: ( '0' .. '7' )
-            	    // Edap.g:10525:174: '0' .. '7'
+            	    // Edap.g:9916:173: ( '0' .. '7' )
+            	    // Edap.g:9916:174: '0' .. '7'
             	    {
             	    matchRange('0','7'); 
 
@@ -1794,7 +1750,7 @@ public class EdapLexer extends Lexer {
             	    }
             	    break;
             	case 4 :
-            	    // Edap.g:10525:184: ~ ( '\\\\' | '\"' )
+            	    // Edap.g:9916:184: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1834,14 +1790,14 @@ public class EdapLexer extends Lexer {
         try {
             int _type = STRING_EXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10527:11: ( ( '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\'' ) )
-            // Edap.g:10528:1: ( '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\'' )
+            // Edap.g:9918:11: ( ( '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\'' ) )
+            // Edap.g:9919:1: ( '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\'' )
             {
-            // Edap.g:10528:1: ( '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\'' )
-            // Edap.g:10528:2: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\''
+            // Edap.g:9919:1: ( '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\'' )
+            // Edap.g:9919:2: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )* '\\''
             {
             match('\''); 
-            // Edap.g:10528:6: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )*
+            // Edap.g:9919:6: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ) | '\\\\' ( '0' .. '7' ) | ~ ( '\\\\' | '\\'' ) )*
             loop8:
             do {
                 int alt8=5;
@@ -1889,7 +1845,7 @@ public class EdapLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // Edap.g:10528:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            	    // Edap.g:9919:7: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             	    {
             	    match('\\'); 
             	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1905,10 +1861,10 @@ public class EdapLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // Edap.g:10528:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            	    // Edap.g:9919:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
             	    {
-            	    // Edap.g:10528:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            	    // Edap.g:10528:49: '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
+            	    // Edap.g:9919:48: ( '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            	    // Edap.g:9919:49: '\\\\' 'u' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )
             	    {
             	    match('\\'); 
             	    match('u'); 
@@ -1955,11 +1911,11 @@ public class EdapLexer extends Lexer {
             	    }
             	    break;
             	case 3 :
-            	    // Edap.g:10528:170: '\\\\' ( '0' .. '7' )
+            	    // Edap.g:9919:170: '\\\\' ( '0' .. '7' )
             	    {
             	    match('\\'); 
-            	    // Edap.g:10528:174: ( '0' .. '7' )
-            	    // Edap.g:10528:175: '0' .. '7'
+            	    // Edap.g:9919:174: ( '0' .. '7' )
+            	    // Edap.g:9919:175: '0' .. '7'
             	    {
             	    matchRange('0','7'); 
 
@@ -1969,7 +1925,7 @@ public class EdapLexer extends Lexer {
             	    }
             	    break;
             	case 4 :
-            	    // Edap.g:10528:185: ~ ( '\\\\' | '\\'' )
+            	    // Edap.g:9919:185: ~ ( '\\\\' | '\\'' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2009,11 +1965,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T_MULTICAST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10530:12: ( ( 'multicast' ) )
-            // Edap.g:10531:1: ( 'multicast' )
+            // Edap.g:9921:12: ( ( 'multicast' ) )
+            // Edap.g:9922:1: ( 'multicast' )
             {
-            // Edap.g:10531:1: ( 'multicast' )
-            // Edap.g:10531:2: 'multicast'
+            // Edap.g:9922:1: ( 'multicast' )
+            // Edap.g:9922:2: 'multicast'
             {
             match("multicast"); 
 
@@ -2036,11 +1992,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T_READONLY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10533:11: ( ( 'readonly' ) )
-            // Edap.g:10534:1: ( 'readonly' )
+            // Edap.g:9924:11: ( ( 'readonly' ) )
+            // Edap.g:9925:1: ( 'readonly' )
             {
-            // Edap.g:10534:1: ( 'readonly' )
-            // Edap.g:10534:2: 'readonly'
+            // Edap.g:9925:1: ( 'readonly' )
+            // Edap.g:9925:2: 'readonly'
             {
             match("readonly"); 
 
@@ -2063,11 +2019,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T_ASPECT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10536:9: ( ( 'aspect' ) )
-            // Edap.g:10537:1: ( 'aspect' )
+            // Edap.g:9927:9: ( ( 'aspect' ) )
+            // Edap.g:9928:1: ( 'aspect' )
             {
-            // Edap.g:10537:1: ( 'aspect' )
-            // Edap.g:10537:2: 'aspect'
+            // Edap.g:9928:1: ( 'aspect' )
+            // Edap.g:9928:2: 'aspect'
             {
             match("aspect"); 
 
@@ -2090,11 +2046,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = T_SINGLETON;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10539:12: ( ( 'singleton' ) )
-            // Edap.g:10540:1: ( 'singleton' )
+            // Edap.g:9930:12: ( ( 'singleton' ) )
+            // Edap.g:9931:1: ( 'singleton' )
             {
-            // Edap.g:10540:1: ( 'singleton' )
-            // Edap.g:10540:2: 'singleton'
+            // Edap.g:9931:1: ( 'singleton' )
+            // Edap.g:9931:2: 'singleton'
             {
             match("singleton"); 
 
@@ -2117,11 +2073,11 @@ public class EdapLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10542:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
-            // Edap.g:10543:1: ( ( ' ' | '\\t' | '\\f' ) )
+            // Edap.g:9933:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
+            // Edap.g:9934:1: ( ( ' ' | '\\t' | '\\f' ) )
             {
-            // Edap.g:10543:1: ( ( ' ' | '\\t' | '\\f' ) )
-            // Edap.g:10543:2: ( ' ' | '\\t' | '\\f' )
+            // Edap.g:9934:1: ( ( ' ' | '\\t' | '\\f' ) )
+            // Edap.g:9934:2: ( ' ' | '\\t' | '\\f' )
             {
             if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
                 input.consume();
@@ -2152,13 +2108,13 @@ public class EdapLexer extends Lexer {
         try {
             int _type = LINEBREAKS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10546:11: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
-            // Edap.g:10547:1: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // Edap.g:9937:11: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
+            // Edap.g:9938:1: ( ( '\\r\\n' | '\\r' | '\\n' ) )
             {
-            // Edap.g:10547:1: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-            // Edap.g:10547:2: ( '\\r\\n' | '\\r' | '\\n' )
+            // Edap.g:9938:1: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // Edap.g:9938:2: ( '\\r\\n' | '\\r' | '\\n' )
             {
-            // Edap.g:10547:2: ( '\\r\\n' | '\\r' | '\\n' )
+            // Edap.g:9938:2: ( '\\r\\n' | '\\r' | '\\n' )
             int alt9=3;
             int LA9_0 = input.LA(1);
 
@@ -2182,7 +2138,7 @@ public class EdapLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // Edap.g:10547:3: '\\r\\n'
+                    // Edap.g:9938:3: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -2190,14 +2146,14 @@ public class EdapLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Edap.g:10547:10: '\\r'
+                    // Edap.g:9938:10: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 3 :
-                    // Edap.g:10547:15: '\\n'
+                    // Edap.g:9938:15: '\\n'
                     {
                     match('\n'); 
 
@@ -2226,13 +2182,13 @@ public class EdapLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Edap.g:10550:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )* ) )
-            // Edap.g:10551:1: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )* )
+            // Edap.g:9941:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )* ) )
+            // Edap.g:9942:1: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )* )
             {
-            // Edap.g:10551:1: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )* )
-            // Edap.g:10551:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )*
+            // Edap.g:9942:1: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )* )
+            // Edap.g:9942:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )*
             {
-            // Edap.g:10551:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+
+            // Edap.g:9942:2: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+
             int cnt10=0;
             loop10:
             do {
@@ -2270,7 +2226,7 @@ public class EdapLexer extends Lexer {
                 cnt10++;
             } while (true);
 
-            // Edap.g:10551:43: ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )*
+            // Edap.g:9942:43: ( ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+ )*
             loop12:
             do {
                 int alt12=2;
@@ -2283,11 +2239,11 @@ public class EdapLexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // Edap.g:10551:44: ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+
+            	    // Edap.g:9942:44: ':' ':' ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+
             	    {
             	    match(':'); 
             	    match(':'); 
-            	    // Edap.g:10551:52: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+
+            	    // Edap.g:9942:52: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' )+
             	    int cnt11=0;
             	    loop11:
             	    do {
@@ -2349,8 +2305,8 @@ public class EdapLexer extends Lexer {
     // $ANTLR end "TEXT"
 
     public void mTokens() throws RecognitionException {
-        // Edap.g:1:8: ( T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | SL_COMMENT | ML_COMMENT | ANNOTATION | BOOLEAN_LITERAL | INTEGER_LITERAL | STRING_LITERAL | STRING_EXT | T_MULTICAST | T_READONLY | T_ASPECT | T_SINGLETON | WHITESPACE | LINEBREAKS | TEXT )
-        int alt13=73;
+        // Edap.g:1:8: ( T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | SL_COMMENT | ML_COMMENT | ANNOTATION | BOOLEAN_LITERAL | INTEGER_LITERAL | STRING_LITERAL | STRING_EXT | T_MULTICAST | T_READONLY | T_ASPECT | T_SINGLETON | WHITESPACE | LINEBREAKS | TEXT )
+        int alt13=71;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
@@ -2753,112 +2709,98 @@ public class EdapLexer extends Lexer {
                 }
                 break;
             case 58 :
-                // Edap.g:1:352: T__75
-                {
-                mT__75(); 
-
-                }
-                break;
-            case 59 :
-                // Edap.g:1:358: T__76
-                {
-                mT__76(); 
-
-                }
-                break;
-            case 60 :
-                // Edap.g:1:364: SL_COMMENT
+                // Edap.g:1:352: SL_COMMENT
                 {
                 mSL_COMMENT(); 
 
                 }
                 break;
-            case 61 :
-                // Edap.g:1:375: ML_COMMENT
+            case 59 :
+                // Edap.g:1:363: ML_COMMENT
                 {
                 mML_COMMENT(); 
 
                 }
                 break;
-            case 62 :
-                // Edap.g:1:386: ANNOTATION
+            case 60 :
+                // Edap.g:1:374: ANNOTATION
                 {
                 mANNOTATION(); 
 
                 }
                 break;
-            case 63 :
-                // Edap.g:1:397: BOOLEAN_LITERAL
+            case 61 :
+                // Edap.g:1:385: BOOLEAN_LITERAL
                 {
                 mBOOLEAN_LITERAL(); 
 
                 }
                 break;
-            case 64 :
-                // Edap.g:1:413: INTEGER_LITERAL
+            case 62 :
+                // Edap.g:1:401: INTEGER_LITERAL
                 {
                 mINTEGER_LITERAL(); 
 
                 }
                 break;
-            case 65 :
-                // Edap.g:1:429: STRING_LITERAL
+            case 63 :
+                // Edap.g:1:417: STRING_LITERAL
                 {
                 mSTRING_LITERAL(); 
 
                 }
                 break;
-            case 66 :
-                // Edap.g:1:444: STRING_EXT
+            case 64 :
+                // Edap.g:1:432: STRING_EXT
                 {
                 mSTRING_EXT(); 
 
                 }
                 break;
-            case 67 :
-                // Edap.g:1:455: T_MULTICAST
+            case 65 :
+                // Edap.g:1:443: T_MULTICAST
                 {
                 mT_MULTICAST(); 
 
                 }
                 break;
-            case 68 :
-                // Edap.g:1:467: T_READONLY
+            case 66 :
+                // Edap.g:1:455: T_READONLY
                 {
                 mT_READONLY(); 
 
                 }
                 break;
-            case 69 :
-                // Edap.g:1:478: T_ASPECT
+            case 67 :
+                // Edap.g:1:466: T_ASPECT
                 {
                 mT_ASPECT(); 
 
                 }
                 break;
-            case 70 :
-                // Edap.g:1:487: T_SINGLETON
+            case 68 :
+                // Edap.g:1:475: T_SINGLETON
                 {
                 mT_SINGLETON(); 
 
                 }
                 break;
-            case 71 :
-                // Edap.g:1:499: WHITESPACE
+            case 69 :
+                // Edap.g:1:487: WHITESPACE
                 {
                 mWHITESPACE(); 
 
                 }
                 break;
-            case 72 :
-                // Edap.g:1:510: LINEBREAKS
+            case 70 :
+                // Edap.g:1:498: LINEBREAKS
                 {
                 mLINEBREAKS(); 
 
                 }
                 break;
-            case 73 :
-                // Edap.g:1:521: TEXT
+            case 71 :
+                // Edap.g:1:509: TEXT
                 {
                 mTEXT(); 
 
@@ -2873,96 +2815,93 @@ public class EdapLexer extends Lexer {
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
         "\1\uffff\2\53\4\uffff\1\53\1\uffff\2\53\1\uffff\3\53\2\uffff\1"+
-        "\77\1\uffff\1\101\2\53\1\111\1\uffff\5\53\4\uffff\1\123\1\uffff"+
-        "\1\53\1\uffff\2\126\5\uffff\2\53\1\131\17\53\4\uffff\4\53\1\163"+
-        "\1\164\2\uffff\7\53\3\uffff\1\53\1\126\1\uffff\2\53\1\uffff\10\53"+
-        "\1\u0088\6\53\1\u008f\11\53\2\uffff\5\53\1\u009e\2\53\1\u00a1\1"+
-        "\53\1\u00a3\7\53\1\u00ac\1\uffff\6\53\1\uffff\3\53\1\u00b6\2\53"+
-        "\1\u00b9\4\53\1\u00be\2\53\1\uffff\2\53\1\uffff\1\53\1\uffff\7\53"+
-        "\1\u00cb\1\uffff\2\53\1\u00cf\3\53\1\u00be\1\53\1\u00d5\1\uffff"+
-        "\1\53\1\u00d7\1\uffff\1\u00d9\1\u00da\2\53\1\uffff\1\u00dd\2\53"+
-        "\1\u00e0\1\u00e1\2\53\1\u00e4\4\53\1\uffff\3\53\1\uffff\3\53\1\u00ef"+
-        "\1\53\1\uffff\1\53\1\uffff\1\53\2\uffff\2\53\1\uffff\1\u00f5\1\u00f6"+
-        "\2\uffff\1\u00f7\1\53\1\uffff\12\53\1\uffff\5\53\3\uffff\2\53\1"+
-        "\u010a\1\u010b\1\u010c\6\53\1\u0113\1\53\1\u0115\2\53\1\u0118\1"+
-        "\53\3\uffff\1\u011a\1\u011b\1\53\1\u011d\1\u011e\1\u011f\1\uffff"+
-        "\1\53\1\uffff\1\u0121\1\53\1\uffff\1\u0123\2\uffff\1\u0124\3\uffff"+
-        "\1\53\1\uffff\1\u0126\2\uffff\1\u0127\2\uffff";
+        "\76\1\uffff\1\100\2\53\1\uffff\4\53\1\116\1\53\4\uffff\1\122\1\uffff"+
+        "\1\53\1\uffff\2\125\5\uffff\2\53\1\130\16\53\4\uffff\4\53\1\160"+
+        "\1\161\6\53\2\uffff\1\53\3\uffff\1\53\1\125\1\uffff\2\53\1\uffff"+
+        "\10\53\1\u0085\4\53\1\u008a\11\53\2\uffff\5\53\1\u0099\2\53\1\u009c"+
+        "\1\53\1\u009e\7\53\1\u00a7\1\uffff\4\53\1\uffff\3\53\1\u00af\2\53"+
+        "\1\u00b2\4\53\1\u00b7\2\53\1\uffff\2\53\1\uffff\1\53\1\uffff\7\53"+
+        "\1\u00c4\1\uffff\2\53\1\u00c8\1\53\1\u00b7\1\53\1\u00cc\1\uffff"+
+        "\1\53\1\u00ce\1\uffff\1\u00d0\1\u00d1\2\53\1\uffff\1\u00d4\2\53"+
+        "\1\u00d7\1\u00d8\2\53\1\u00db\4\53\1\uffff\3\53\1\uffff\3\53\1\uffff"+
+        "\1\53\1\uffff\1\53\2\uffff\2\53\1\uffff\1\u00ea\1\u00eb\2\uffff"+
+        "\1\u00ec\1\53\1\uffff\16\53\3\uffff\2\53\1\u00fe\1\u00ff\1\u0100"+
+        "\5\53\1\u0106\1\53\1\u0108\2\53\1\u010b\1\53\3\uffff\1\u010d\1\u010e"+
+        "\1\53\1\u0110\1\u0111\1\uffff\1\53\1\uffff\1\u0113\1\53\1\uffff"+
+        "\1\u0115\2\uffff\1\u0116\2\uffff\1\53\1\uffff\1\u0118\2\uffff\1"+
+        "\u0119\2\uffff";
     static final String DFA13_eofS =
-        "\u0128\uffff";
+        "\u011a\uffff";
     static final String DFA13_minS =
         "\1\11\1\146\1\145\4\uffff\1\141\1\uffff\2\145\1\uffff\1\157\1\141"+
-        "\1\157\2\uffff\1\56\1\uffff\1\76\2\156\1\75\1\uffff\2\162\1\165"+
-        "\1\143\1\150\4\uffff\1\52\1\uffff\1\157\1\uffff\2\60\5\uffff\1\160"+
+        "\1\157\2\uffff\1\56\1\uffff\1\76\2\156\1\uffff\2\162\1\165\1\143"+
+        "\1\75\1\150\4\uffff\1\52\1\uffff\1\157\1\uffff\2\60\5\uffff\1\160"+
         "\1\151\1\60\1\163\1\154\1\166\1\143\1\164\1\141\1\156\1\155\1\141"+
-        "\1\155\1\145\1\162\1\154\1\151\1\162\4\uffff\1\164\1\151\1\145\1"+
-        "\162\2\60\2\uffff\1\157\2\141\1\164\1\144\1\160\1\151\3\uffff\1"+
-        "\164\1\60\1\uffff\1\157\1\164\1\uffff\1\163\1\164\1\151\1\164\1"+
-        "\141\1\145\2\144\1\60\1\165\1\147\1\164\1\160\1\156\1\141\1\60\1"+
-        "\163\1\160\1\156\1\164\1\155\1\162\1\164\1\156\1\157\2\uffff\1\141"+
-        "\1\156\1\145\1\162\1\151\1\60\1\145\1\154\1\60\1\162\1\60\1\141"+
-        "\1\151\1\143\1\151\1\164\1\151\1\157\1\60\1\uffff\2\154\1\145\1"+
-        "\157\1\145\1\164\1\uffff\2\145\1\164\1\60\1\145\1\171\1\60\1\164"+
-        "\1\162\1\144\1\163\1\60\1\144\1\157\1\uffff\1\143\1\145\1\uffff"+
-        "\1\164\1\uffff\1\147\1\143\1\145\1\157\1\171\1\166\1\156\1\60\1"+
-        "\uffff\1\141\1\145\1\60\1\156\1\143\1\145\1\60\1\162\1\60\1\uffff"+
-        "\1\162\1\60\1\uffff\2\60\1\143\1\151\1\uffff\1\60\1\156\1\164\2"+
-        "\60\1\145\1\141\1\60\1\156\1\160\1\145\1\154\1\uffff\2\164\1\150"+
-        "\1\uffff\1\145\1\151\1\164\1\60\1\164\1\uffff\1\141\1\uffff\1\145"+
-        "\2\uffff\1\141\1\164\1\uffff\2\60\2\uffff\1\60\1\163\1\uffff\1\141"+
-        "\1\145\1\163\1\171\2\157\1\141\1\156\1\164\1\157\1\uffff\1\171\1"+
-        "\164\1\146\1\163\1\151\3\uffff\1\164\1\162\3\60\1\162\1\156\1\162"+
-        "\1\164\1\145\1\162\1\60\1\151\1\60\1\164\1\157\1\60\1\171\3\uffff"+
-        "\2\60\1\164\3\60\1\uffff\1\157\1\uffff\1\60\1\156\1\uffff\1\60\2"+
-        "\uffff\1\60\3\uffff\1\156\1\uffff\1\60\2\uffff\1\60\2\uffff";
+        "\1\155\1\162\1\154\1\151\1\162\4\uffff\1\164\1\151\1\145\1\162\2"+
+        "\60\1\157\2\141\1\164\1\144\1\160\2\uffff\1\151\3\uffff\1\164\1"+
+        "\60\1\uffff\1\157\1\164\1\uffff\1\163\1\164\1\151\1\164\1\141\1"+
+        "\145\2\144\1\60\1\165\1\147\1\164\1\160\1\60\1\163\1\160\1\156\1"+
+        "\164\1\155\1\162\1\164\1\156\1\157\2\uffff\1\141\1\156\1\145\1\162"+
+        "\1\151\1\60\1\145\1\154\1\60\1\162\1\60\1\141\1\151\1\143\1\151"+
+        "\1\164\1\151\1\157\1\60\1\uffff\2\154\1\145\1\157\1\uffff\2\145"+
+        "\1\164\1\60\1\145\1\171\1\60\1\164\1\162\1\144\1\163\1\60\1\144"+
+        "\1\157\1\uffff\1\143\1\145\1\uffff\1\164\1\uffff\1\147\1\143\1\145"+
+        "\1\157\1\171\1\166\1\156\1\60\1\uffff\1\141\1\145\1\60\1\156\1\60"+
+        "\1\162\1\60\1\uffff\1\162\1\60\1\uffff\2\60\1\143\1\151\1\uffff"+
+        "\1\60\1\156\1\164\2\60\1\145\1\141\1\60\1\156\1\160\1\145\1\154"+
+        "\1\uffff\2\164\1\150\1\uffff\1\145\1\151\1\164\1\uffff\1\141\1\uffff"+
+        "\1\145\2\uffff\1\141\1\164\1\uffff\2\60\2\uffff\1\60\1\163\1\uffff"+
+        "\1\141\1\145\1\163\1\171\2\157\1\141\1\156\1\164\1\171\1\164\1\146"+
+        "\1\163\1\151\3\uffff\1\164\1\162\3\60\1\162\1\156\1\162\1\164\1"+
+        "\145\1\60\1\151\1\60\1\164\1\157\1\60\1\171\3\uffff\2\60\1\164\2"+
+        "\60\1\uffff\1\157\1\uffff\1\60\1\156\1\uffff\1\60\2\uffff\1\60\2"+
+        "\uffff\1\156\1\uffff\1\60\2\uffff\1\60\2\uffff";
     static final String DFA13_maxS =
-        "\1\175\1\156\1\165\4\uffff\1\151\1\uffff\1\145\1\164\1\uffff\1"+
-        "\162\1\157\1\162\2\uffff\1\56\1\uffff\1\76\1\170\1\162\1\75\1\uffff"+
-        "\2\162\1\165\1\163\1\150\4\uffff\1\57\1\uffff\1\157\1\uffff\2\172"+
-        "\5\uffff\1\160\1\151\1\172\1\163\1\154\1\166\1\143\1\164\1\143\1"+
-        "\164\1\156\1\141\1\156\1\145\1\162\1\154\1\157\1\162\4\uffff\1\165"+
-        "\1\151\1\145\1\162\2\172\2\uffff\1\157\1\165\1\141\1\164\1\144\1"+
-        "\160\1\151\3\uffff\1\164\1\172\1\uffff\1\157\1\164\1\uffff\1\163"+
-        "\1\164\1\151\1\164\1\141\1\145\2\144\1\172\1\165\1\147\1\164\1\160"+
-        "\1\156\1\141\1\172\1\163\1\160\1\156\1\164\1\155\1\162\1\164\1\156"+
-        "\1\157\2\uffff\1\141\1\156\1\145\1\162\1\151\1\172\1\145\1\154\1"+
-        "\172\1\162\1\172\1\141\1\151\1\143\1\151\1\164\1\151\1\157\1\172"+
-        "\1\uffff\2\154\1\145\1\157\1\145\1\164\1\uffff\2\145\1\164\1\172"+
-        "\1\145\1\171\1\172\1\164\1\162\1\144\1\163\1\172\1\144\1\157\1\uffff"+
-        "\1\143\1\145\1\uffff\1\164\1\uffff\1\147\1\143\1\145\1\157\1\171"+
-        "\1\166\1\156\1\172\1\uffff\1\141\1\145\1\172\1\163\1\143\1\145\1"+
-        "\172\1\162\1\172\1\uffff\1\162\1\172\1\uffff\2\172\1\143\1\151\1"+
-        "\uffff\1\172\1\156\1\164\2\172\1\145\1\141\1\172\1\156\1\160\1\145"+
-        "\1\154\1\uffff\2\164\1\150\1\uffff\1\145\1\151\1\164\1\172\1\164"+
-        "\1\uffff\1\141\1\uffff\1\145\2\uffff\1\141\1\164\1\uffff\2\172\2"+
-        "\uffff\1\172\1\163\1\uffff\1\141\1\145\1\163\1\171\2\157\1\141\1"+
-        "\156\1\164\1\157\1\uffff\1\171\1\164\1\146\1\163\1\151\3\uffff\1"+
-        "\164\1\162\3\172\1\162\1\156\1\162\1\164\1\145\1\162\1\172\1\151"+
-        "\1\172\1\164\1\157\1\172\1\171\3\uffff\2\172\1\164\3\172\1\uffff"+
-        "\1\157\1\uffff\1\172\1\156\1\uffff\1\172\2\uffff\1\172\3\uffff\1"+
-        "\156\1\uffff\1\172\2\uffff\1\172\2\uffff";
+        "\1\175\1\156\1\165\4\uffff\1\151\1\uffff\1\145\1\164\1\uffff\2"+
+        "\157\1\162\2\uffff\1\56\1\uffff\1\76\1\170\1\162\1\uffff\2\162\1"+
+        "\165\1\163\1\75\1\150\4\uffff\1\57\1\uffff\1\157\1\uffff\2\172\5"+
+        "\uffff\1\160\1\151\1\172\1\163\1\154\1\166\1\143\1\164\1\143\1\164"+
+        "\1\156\1\141\1\155\1\162\1\154\1\157\1\162\4\uffff\1\165\1\151\1"+
+        "\145\1\162\2\172\1\157\1\165\1\141\1\164\1\144\1\160\2\uffff\1\151"+
+        "\3\uffff\1\164\1\172\1\uffff\1\157\1\164\1\uffff\1\163\1\164\1\151"+
+        "\1\164\1\141\1\145\2\144\1\172\1\165\1\147\1\164\1\160\1\172\1\163"+
+        "\1\160\1\156\1\164\1\155\1\162\1\164\1\156\1\157\2\uffff\1\141\1"+
+        "\156\1\145\1\162\1\151\1\172\1\145\1\154\1\172\1\162\1\172\1\141"+
+        "\1\151\1\143\1\151\1\164\1\151\1\157\1\172\1\uffff\2\154\1\145\1"+
+        "\157\1\uffff\2\145\1\164\1\172\1\145\1\171\1\172\1\164\1\162\1\144"+
+        "\1\163\1\172\1\144\1\157\1\uffff\1\143\1\145\1\uffff\1\164\1\uffff"+
+        "\1\147\1\143\1\145\1\157\1\171\1\166\1\156\1\172\1\uffff\1\141\1"+
+        "\145\1\172\1\163\1\172\1\162\1\172\1\uffff\1\162\1\172\1\uffff\2"+
+        "\172\1\143\1\151\1\uffff\1\172\1\156\1\164\2\172\1\145\1\141\1\172"+
+        "\1\156\1\160\1\145\1\154\1\uffff\2\164\1\150\1\uffff\1\145\1\151"+
+        "\1\164\1\uffff\1\141\1\uffff\1\145\2\uffff\1\141\1\164\1\uffff\2"+
+        "\172\2\uffff\1\172\1\163\1\uffff\1\141\1\145\1\163\1\171\2\157\1"+
+        "\141\1\156\1\164\1\171\1\164\1\146\1\163\1\151\3\uffff\1\164\1\162"+
+        "\3\172\1\162\1\156\1\162\1\164\1\145\1\172\1\151\1\172\1\164\1\157"+
+        "\1\172\1\171\3\uffff\2\172\1\164\2\172\1\uffff\1\157\1\uffff\1\172"+
+        "\1\156\1\uffff\1\172\2\uffff\1\172\2\uffff\1\156\1\uffff\1\172\2"+
+        "\uffff\1\172\2\uffff";
     static final String DFA13_acceptS =
         "\3\uffff\1\3\1\4\1\5\1\6\1\uffff\1\10\2\uffff\1\13\3\uffff\1\20"+
-        "\1\21\1\uffff\1\23\4\uffff\1\44\5\uffff\1\63\1\64\1\66\1\70\1\uffff"+
-        "\1\72\1\uffff\1\76\2\uffff\1\101\1\102\1\107\1\110\1\111\22\uffff"+
-        "\1\22\1\42\1\25\1\67\6\uffff\1\65\1\40\7\uffff\1\74\1\75\1\71\2"+
-        "\uffff\1\100\2\uffff\1\55\31\uffff\1\32\1\61\23\uffff\1\37\6\uffff"+
-        "\1\16\16\uffff\1\62\2\uffff\1\73\1\uffff\1\31\10\uffff\1\43\11\uffff"+
-        "\1\45\2\uffff\1\34\4\uffff\1\77\14\uffff\1\12\3\uffff\1\35\5\uffff"+
-        "\1\57\1\uffff\1\33\1\uffff\1\50\1\60\2\uffff\1\51\2\uffff\1\56\1"+
-        "\1\2\uffff\1\7\12\uffff\1\54\5\uffff\1\52\1\105\1\2\22\uffff\1\26"+
-        "\1\11\1\104\6\uffff\1\17\1\uffff\1\41\2\uffff\1\103\1\uffff\1\15"+
-        "\1\106\1\uffff\1\14\1\36\1\53\1\uffff\1\46\1\uffff\1\24\1\30\1\uffff"+
-        "\1\47\1\27";
+        "\1\21\1\uffff\1\23\3\uffff\1\42\6\uffff\1\61\1\62\1\64\1\66\1\uffff"+
+        "\1\70\1\uffff\1\74\2\uffff\1\77\1\100\1\105\1\106\1\107\21\uffff"+
+        "\1\22\1\40\1\25\1\65\14\uffff\1\63\1\52\1\uffff\1\72\1\73\1\67\2"+
+        "\uffff\1\76\2\uffff\1\53\27\uffff\1\32\1\57\23\uffff\1\51\4\uffff"+
+        "\1\16\16\uffff\1\60\2\uffff\1\71\1\uffff\1\31\10\uffff\1\41\7\uffff"+
+        "\1\43\2\uffff\1\34\4\uffff\1\75\14\uffff\1\12\3\uffff\1\35\3\uffff"+
+        "\1\55\1\uffff\1\33\1\uffff\1\46\1\56\2\uffff\1\47\2\uffff\1\54\1"+
+        "\1\2\uffff\1\7\16\uffff\1\50\1\103\1\2\21\uffff\1\26\1\11\1\102"+
+        "\5\uffff\1\17\1\uffff\1\37\2\uffff\1\101\1\uffff\1\15\1\104\1\uffff"+
+        "\1\14\1\36\1\uffff\1\44\1\uffff\1\24\1\30\1\uffff\1\45\1\27";
     static final String DFA13_specialS =
-        "\u0128\uffff}>";
+        "\u011a\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\1\51\1\52\1\uffff\1\51\1\52\22\uffff\1\51\1\uffff\1\47\1\27"+
+            "\1\51\1\52\1\uffff\1\51\1\52\22\uffff\1\51\1\uffff\1\47\1\26"+
             "\1\uffff\1\42\1\uffff\1\50\1\3\1\5\1\40\1\37\1\4\1\23\1\21\1"+
-            "\41\1\46\11\45\1\17\1\6\1\35\1\26\1\36\1\uffff\1\44\32\53\1"+
-            "\20\1\uffff\1\22\1\uffff\1\53\1\uffff\1\33\1\30\1\14\1\7\1\24"+
-            "\1\15\1\32\1\53\1\1\3\53\1\2\1\43\1\25\1\16\1\53\1\11\1\12\1"+
-            "\31\2\53\1\34\3\53\1\10\1\uffff\1\13",
+            "\41\1\46\11\45\1\17\1\6\1\35\1\33\1\36\1\uffff\1\44\32\53\1"+
+            "\20\1\uffff\1\22\1\uffff\1\53\1\uffff\1\32\1\27\1\14\1\7\1\24"+
+            "\1\15\1\31\1\53\1\1\3\53\1\2\1\43\1\25\1\16\1\53\1\11\1\12\1"+
+            "\30\2\53\1\34\3\53\1\10\1\uffff\1\13",
             "\1\56\6\uffff\1\54\1\55",
             "\1\57\17\uffff\1\60",
             "",
@@ -2974,286 +2913,272 @@ public class EdapLexer extends Lexer {
             "\1\64",
             "\1\65\3\uffff\1\66\12\uffff\1\67",
             "",
-            "\1\70\2\uffff\1\71",
-            "\1\73\15\uffff\1\72",
-            "\1\75\2\uffff\1\74",
+            "\1\70",
+            "\1\72\15\uffff\1\71",
+            "\1\74\2\uffff\1\73",
             "",
             "",
-            "\1\76",
+            "\1\75",
             "",
-            "\1\100",
-            "\1\102\3\uffff\1\105\3\uffff\1\104\1\uffff\1\103",
-            "\1\106\3\uffff\1\107",
+            "\1\77",
+            "\1\101\3\uffff\1\104\3\uffff\1\103\1\uffff\1\102",
+            "\1\105\3\uffff\1\106",
+            "",
+            "\1\107",
             "\1\110",
-            "",
-            "\1\112",
-            "\1\113",
-            "\1\114",
-            "\1\115\12\uffff\1\116\4\uffff\1\117",
-            "\1\120",
+            "\1\111",
+            "\1\112\12\uffff\1\113\4\uffff\1\114",
+            "\1\115",
+            "\1\117",
             "",
             "",
             "",
             "",
-            "\1\122\4\uffff\1\121",
+            "\1\121\4\uffff\1\120",
             "",
-            "\1\124",
+            "\1\123",
             "",
-            "\12\125\1\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\124\1\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
             "",
             "",
             "",
             "",
+            "\1\126",
             "\1\127",
-            "\1\130",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\131",
             "\1\132",
             "\1\133",
             "\1\134",
             "\1\135",
-            "\1\136",
-            "\1\140\1\uffff\1\137",
-            "\1\141\5\uffff\1\142",
-            "\1\143\1\144",
+            "\1\137\1\uffff\1\136",
+            "\1\140\5\uffff\1\141",
+            "\1\142\1\143",
+            "\1\144",
             "\1\145",
-            "\1\146\1\147",
-            "\1\150",
-            "\1\151",
+            "\1\146",
+            "\1\147",
+            "\1\151\5\uffff\1\150",
             "\1\152",
-            "\1\154\5\uffff\1\153",
+            "",
+            "",
+            "",
+            "",
+            "\1\154\1\153",
             "\1\155",
-            "",
-            "",
-            "",
-            "",
-            "\1\157\1\156",
-            "\1\160",
-            "\1\161",
+            "\1\156",
+            "\1\157",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\162",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "",
+            "\1\163\23\uffff\1\164",
             "\1\165",
-            "\1\166\23\uffff\1\167",
+            "\1\166",
+            "\1\167",
             "\1\170",
+            "",
+            "",
             "\1\171",
+            "",
+            "",
+            "",
             "\1\172",
+            "\12\124\1\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
             "\1\173",
             "\1\174",
             "",
-            "",
-            "",
             "\1\175",
-            "\12\125\1\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
             "\1\176",
             "\1\177",
-            "",
             "\1\u0080",
             "\1\u0081",
             "\1\u0082",
             "\1\u0083",
             "\1\u0084",
-            "\1\u0085",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0086",
             "\1\u0087",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0088",
             "\1\u0089",
-            "\1\u008a",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u008b",
             "\1\u008c",
             "\1\u008d",
             "\1\u008e",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u008f",
             "\1\u0090",
             "\1\u0091",
             "\1\u0092",
             "\1\u0093",
+            "",
+            "",
             "\1\u0094",
             "\1\u0095",
             "\1\u0096",
             "\1\u0097",
             "\1\u0098",
-            "",
-            "",
-            "\1\u0099",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u009a",
             "\1\u009b",
-            "\1\u009c",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u009d",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u009f",
             "\1\u00a0",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00a1",
             "\1\u00a2",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00a3",
             "\1\u00a4",
             "\1\u00a5",
-            "\1\u00a6",
-            "\1\u00a7",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\22\53\1\u00a6\7"+
+            "\53",
+            "",
             "\1\u00a8",
             "\1\u00a9",
             "\1\u00aa",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\22\53\1\u00ab\7"+
-            "\53",
+            "\1\u00ab",
             "",
+            "\1\u00ac",
             "\1\u00ad",
             "\1\u00ae",
-            "\1\u00af",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00b0",
             "\1\u00b1",
-            "\1\u00b2",
-            "",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00b3",
             "\1\u00b4",
             "\1\u00b5",
+            "\1\u00b6",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u00b7",
             "\1\u00b8",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00b9",
+            "",
             "\1\u00ba",
             "\1\u00bb",
+            "",
             "\1\u00bc",
+            "",
             "\1\u00bd",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00be",
             "\1\u00bf",
             "\1\u00c0",
-            "",
             "\1\u00c1",
             "\1\u00c2",
-            "",
             "\1\u00c3",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
-            "\1\u00c4",
             "\1\u00c5",
             "\1\u00c6",
-            "\1\u00c7",
-            "\1\u00c8",
-            "\1\u00c9",
-            "\1\u00ca",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\2\53\1\u00c7\27"+
+            "\53",
+            "\1\u00c9\4\uffff\1\u00ca",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00cb",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
-            "\1\u00cc",
             "\1\u00cd",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\2\53\1\u00ce\27"+
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\21\53\1\u00cf\10"+
             "\53",
-            "\1\u00d0\4\uffff\1\u00d1",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00d2",
             "\1\u00d3",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u00d4",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00d5",
             "\1\u00d6",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\21\53\1\u00d8\10"+
-            "\53",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u00db",
+            "\1\u00d9",
+            "\1\u00da",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u00dc",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00dd",
             "\1\u00de",
             "\1\u00df",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
+            "\1\u00e0",
+            "\1\u00e1",
             "\1\u00e2",
+            "",
             "\1\u00e3",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00e4",
             "\1\u00e5",
+            "",
             "\1\u00e6",
+            "",
             "\1\u00e7",
+            "",
+            "",
             "\1\u00e8",
-            "",
             "\1\u00e9",
-            "\1\u00ea",
-            "\1\u00eb",
             "",
-            "\1\u00ec",
-            "\1\u00ed",
-            "\1\u00ee",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
+            "",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00ed",
+            "",
+            "\1\u00ee",
+            "\1\u00ef",
             "\1\u00f0",
-            "",
             "\1\u00f1",
-            "",
             "\1\u00f2",
-            "",
-            "",
             "\1\u00f3",
             "\1\u00f4",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u00f5",
+            "\1\u00f6",
+            "\1\u00f7",
             "\1\u00f8",
-            "",
             "\1\u00f9",
             "\1\u00fa",
             "\1\u00fb",
+            "",
+            "",
+            "",
             "\1\u00fc",
             "\1\u00fd",
-            "\1\u00fe",
-            "\1\u00ff",
-            "\1\u0100",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0101",
             "\1\u0102",
-            "",
             "\1\u0103",
             "\1\u0104",
             "\1\u0105",
-            "\1\u0106",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0107",
-            "",
-            "",
-            "",
-            "\1\u0108",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0109",
+            "\1\u010a",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u010c",
+            "",
+            "",
+            "",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u010d",
-            "\1\u010e",
             "\1\u010f",
-            "\1\u0110",
-            "\1\u0111",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
             "\1\u0112",
+            "",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0114",
+            "",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0116",
+            "",
+            "",
+            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
+            "",
             "\1\u0117",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0119",
-            "",
-            "",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u011c",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "\1\u0120",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0122",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "",
-            "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "",
-            "",
-            "\1\u0125",
             "",
             "\13\53\6\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
@@ -3293,7 +3218,7 @@ public class EdapLexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | SL_COMMENT | ML_COMMENT | ANNOTATION | BOOLEAN_LITERAL | INTEGER_LITERAL | STRING_LITERAL | STRING_EXT | T_MULTICAST | T_READONLY | T_ASPECT | T_SINGLETON | WHITESPACE | LINEBREAKS | TEXT );";
+            return "1:1: Tokens : ( T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | SL_COMMENT | ML_COMMENT | ANNOTATION | BOOLEAN_LITERAL | INTEGER_LITERAL | STRING_LITERAL | STRING_EXT | T_MULTICAST | T_READONLY | T_ASPECT | T_SINGLETON | WHITESPACE | LINEBREAKS | TEXT );";
         }
     }
  

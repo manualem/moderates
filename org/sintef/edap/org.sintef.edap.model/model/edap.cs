@@ -91,8 +91,6 @@ TOKENSTYLES{
 
 RULES{
 	
-	
-	
 	//TODO: Add import component if the messages are scoped 
 	
 	EdapModel::= ( !0 "import" #1 imports[STRING_LITERAL] )* ( !0 (types) )* ;
@@ -101,7 +99,9 @@ RULES{
 	
 	Device::= (partial[T_ASPECT])? (singleton[T_SINGLETON])? "device" #1 name[] (annotations)*  !0 "{" ( messages | properties | "receives" #1 receives[] (","  #1 receives[])* | "sends" #1 sends[] (","  #1 sends[])* | (!1 compositeComponent) )* !0 "}" ;
 	
-	SoftwareComponent ::= (partial[T_ASPECT])? (singleton[T_SINGLETON])? "component" #1 name[] (annotations)*  !0 "{" (ports | connectors | messages | properties | "receives" #1 receives[] (","  #1 receives[])* | "sends" #1 sends[] (","  #1 sends[])* | (!1 compositeComponent) )* (!1 behaviour)? !0 "}" ;
+//	SoftwareComponent ::= (partial[T_ASPECT])? (singleton[T_SINGLETON])? "component" #1 name[] (annotations)*  !0 "{" (ports | connectors | messages | properties | "receives" #1 receives[] (","  #1 receives[])* | "sends" #1 sends[] (","  #1 sends[])* | (!1 compositeComponent) )* (!1 behaviour)? !0 "}" ;
+	
+	SoftwareComponent ::= (partial[T_ASPECT])? (singleton[T_SINGLETON])? "component" #1 name[] (annotations)*  !0 "{" ( messages | properties | "receives" #1 receives[] (","  #1 receives[])* | "sends" #1 sends[] (","  #1 sends[])* | (!1 compositeComponent) )* (!1 behaviour)? !0 "}" ;
 	
 	Simulator ::= "simulator" #1 name[] "for" device[] (annotations)* !0 "{" ( messages | properties |  "receives" #1 receives[] (","  #1 receives[])* | "sends" #1 sends[] (","  #1 sends[])* | (!1 compositeComponent) )* (!1 behaviour) !0 "}" ;
 
@@ -125,11 +125,7 @@ RULES{
 	
 	CompositeState::= "composite" #1 "state" #1 name[] #1 "init" #1 initial[] (annotations)* #1 "{" ( !1 properties )* ( !1 "on" #1 "entry" #1 entry )? ( !1 "on" #1 "exit" #1 exit )? ( outgoing | (!1 substate) )* !0 "}"  ;
 	
-	
-	
-	PropertyAssignment ::= "set" #1 property[] #1 "=" #1 expression ; 
-
-	ComponentReference ::= component[];
+	// ComponentReference ::= component[];
 	
 	EventReference ::= "eventref" #1 msgRef[] "." paramRef[];	
 	
@@ -141,13 +137,18 @@ RULES{
 
 	ReceiveMessage ::= device "#" message[] ;
 	
-	Connector ::= "connector" "(" port1[] "," port2[] ")" (annotations)* ;
+	// Connector ::= "connector" #1 "(" port1[] "," #1 port2[] ")" (annotations)* ;
 	
-	Port ::= "port" !1 name[] (annotations)* ;
+	// Port ::= "port" !1 name[] (annotations)* ;
 	
-	CreateAction ::= "create" ref (annotations)* ;
+	// CreateAction ::= "create" #1 ref (annotations)* ;
 	
-	// Actions
+	// *********************
+	// * Actions
+	// *********************
+	
+	PropertyAssignment ::= "set" #1 property[] #1 "=" #1 expression ; 
+	
 	ActionBlock::= "{" ( !1 actions )* !0 "}"  ;
 	
 	ExternStatement::= statement[STRING_EXT] ;
@@ -160,8 +161,9 @@ RULES{
 	
 	ErrorAction ::= "error" #1 msg;
 	
-	// The Expressions
-	
+	// *********************
+	// * The Expressions
+	// *********************
 	
 	@Operator(type="binary_left_associative", weight="1", superclass="Expression")
 	OrExpression ::= lhs #1 "or" #1 rhs;
@@ -205,8 +207,8 @@ RULES{
 	//@Operator(type="primitive", weight="6", superclass="Expression")
 	//DictionaryNavigation ::= target "." property[] "[" index "]";
 	
-	//@Operator(type="unary_postfix", weight="6", superclass="Expression")
-	//PropertyNavigation ::= target #0 ("." #0 property[]) ;
+	@Operator(type="unary_postfix", weight="7", superclass="Expression")
+	PropertyNavigation ::= target #0 ("." #0 property[]) ;
 	
 	@Operator(type="primitive", weight="8", superclass="Expression")
 	ExpressionGroup ::= "(" exp ")";

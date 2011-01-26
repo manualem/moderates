@@ -157,140 +157,128 @@ public class EdapPrinter2 implements edap.resource.edap.IEdapTextPrinter {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_14, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.PropertyAssignment) {
+		if (element instanceof edap.EventReference) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ComponentReference) {
+		if (element instanceof edap.Unicast) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.EventReference) {
+		if (element instanceof edap.Broadcast) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.Unicast) {
+		if (element instanceof edap.Transition) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.Broadcast) {
+		if (element instanceof edap.ReceiveMessage) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.Transition) {
+		if (element instanceof edap.PropertyAssignment) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ReceiveMessage) {
+		if (element instanceof edap.ActionBlock) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.Connector) {
+		if (element instanceof edap.ExternStatement) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.Port) {
+		if (element instanceof edap.ConditionalAction) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.CreateAction) {
+		if (element instanceof edap.LoopAction) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ActionBlock) {
+		if (element instanceof edap.PrintAction) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_25, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ExternStatement) {
+		if (element instanceof edap.ErrorAction) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_26, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ConditionalAction) {
+		if (element instanceof edap.OrExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.LoopAction) {
+		if (element instanceof edap.AndExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.PrintAction) {
+		if (element instanceof edap.LowerExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_29, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ErrorAction) {
+		if (element instanceof edap.GreaterExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_30, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.OrExpression) {
+		if (element instanceof edap.EqualsExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.AndExpression) {
+		if (element instanceof edap.PlusExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.LowerExpression) {
+		if (element instanceof edap.MinusExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.GreaterExpression) {
+		if (element instanceof edap.TimesExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.EqualsExpression) {
+		if (element instanceof edap.DivExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.PlusExpression) {
+		if (element instanceof edap.ModExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.MinusExpression) {
+		if (element instanceof edap.UnaryMinus) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_37, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.TimesExpression) {
+		if (element instanceof edap.NotExpression) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_38, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.DivExpression) {
+		if (element instanceof edap.PropertyNavigation) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ModExpression) {
+		if (element instanceof edap.ExpressionGroup) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.UnaryMinus) {
+		if (element instanceof edap.PropertyReference) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_41, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.NotExpression) {
+		if (element instanceof edap.IntegerLitteral) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_42, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.ExpressionGroup) {
+		if (element instanceof edap.StringLitteral) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_43, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.PropertyReference) {
+		if (element instanceof edap.BooleanLitteral) {
 			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_44, foundFormattingElements);
 			return;
 		}
-		if (element instanceof edap.IntegerLitteral) {
-			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_45, foundFormattingElements);
-			return;
-		}
-		if (element instanceof edap.StringLitteral) {
-			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_46, foundFormattingElements);
-			return;
-		}
-		if (element instanceof edap.BooleanLitteral) {
-			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_47, foundFormattingElements);
-			return;
-		}
 		if (element instanceof edap.ExternExpression) {
-			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_48, foundFormattingElements);
+			printInternal(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_45, foundFormattingElements);
 			return;
 		}
 		if (element instanceof edap.SoftwareComponent) {
