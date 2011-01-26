@@ -141,13 +141,10 @@ public class EdapTokenStyleInformationProvider {
 		if ("dictionary".equals(tokenName)) {
 			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
-		if ("set".equals(tokenName)) {
-			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
-		}
 		if ("broadcast".equals(tokenName)) {
 			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
-		if ("create".equals(tokenName)) {
+		if ("set".equals(tokenName)) {
 			return new edap.resource.edap.mopp.EdapTokenStyle(new int[] {0x80, 0x00, 0x55}, null, true, false, false, false);
 		}
 		if ("if".equals(tokenName)) {

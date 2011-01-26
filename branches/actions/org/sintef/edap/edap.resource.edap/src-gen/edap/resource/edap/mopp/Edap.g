@@ -309,12 +309,6 @@ options {
 			if (type.getInstanceClass() == edap.CompositeState.class) {
 				return parse_edap_CompositeState();
 			}
-			if (type.getInstanceClass() == edap.PropertyAssignment.class) {
-				return parse_edap_PropertyAssignment();
-			}
-			if (type.getInstanceClass() == edap.ComponentReference.class) {
-				return parse_edap_ComponentReference();
-			}
 			if (type.getInstanceClass() == edap.EventReference.class) {
 				return parse_edap_EventReference();
 			}
@@ -330,14 +324,8 @@ options {
 			if (type.getInstanceClass() == edap.ReceiveMessage.class) {
 				return parse_edap_ReceiveMessage();
 			}
-			if (type.getInstanceClass() == edap.Connector.class) {
-				return parse_edap_Connector();
-			}
-			if (type.getInstanceClass() == edap.Port.class) {
-				return parse_edap_Port();
-			}
-			if (type.getInstanceClass() == edap.CreateAction.class) {
-				return parse_edap_CreateAction();
+			if (type.getInstanceClass() == edap.PropertyAssignment.class) {
+				return parse_edap_PropertyAssignment();
 			}
 			if (type.getInstanceClass() == edap.ActionBlock.class) {
 				return parse_edap_ActionBlock();
@@ -468,7 +456,7 @@ options {
 				break;
 			}
 		}
-		int followSetID = 323;
+		int followSetID = 307;
 		int i;
 		for (i = tokenIndexOfLastCompleteElement; i < tokenStream.size(); i++) {
 			org.antlr.runtime3_2_0.CommonToken nextToken = (org.antlr.runtime3_2_0.CommonToken) tokenStream.get(i);
@@ -1135,14 +1123,12 @@ parse_edap_Message returns [edap.Message element = null]
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 20);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 20);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 20);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 20);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 20);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 20);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 20);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 20);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 20);
 	}
 	
 ;
@@ -1254,7 +1240,7 @@ parse_edap_Device returns [edap.Device element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_35, 25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 25);
 	}
 	
 	(
@@ -1291,7 +1277,7 @@ parse_edap_Device returns [edap.Device element = null]
 	{
 		// expected elements (follow set)
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 26, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 26);
 	}
 	
 	(
@@ -1320,7 +1306,7 @@ parse_edap_Device returns [edap.Device element = null]
 			{
 				// expected elements (follow set)
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 27, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 27);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 27);
 			}
 			
 		)
@@ -1328,7 +1314,7 @@ parse_edap_Device returns [edap.Device element = null]
 	)*	{
 		// expected elements (follow set)
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 28, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 28);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 28);
 	}
 	
 	a5 = '{' {
@@ -1457,7 +1443,7 @@ parse_edap_Device returns [edap.Device element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_37, 32);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_35, 32);
 			}
 			
 			(
@@ -1497,7 +1483,7 @@ parse_edap_Device returns [edap.Device element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_38, 33);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 33);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 33, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 33, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 33, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
@@ -1529,7 +1515,7 @@ parse_edap_Device returns [edap.Device element = null]
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_39, 34);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_37, 34);
 					}
 					
 					(
@@ -1569,7 +1555,7 @@ parse_edap_Device returns [edap.Device element = null]
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_38, 35);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 35);
 						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 35, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 35, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 35, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
@@ -1592,7 +1578,7 @@ parse_edap_Device returns [edap.Device element = null]
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_38, 36);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 36);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 36, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 36, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 36, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
@@ -1623,7 +1609,7 @@ parse_edap_Device returns [edap.Device element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_40, 37);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_38, 37);
 			}
 			
 			(
@@ -1663,7 +1649,7 @@ parse_edap_Device returns [edap.Device element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_41, 38);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_39, 38);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 38, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 38, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 38, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
@@ -1695,7 +1681,7 @@ parse_edap_Device returns [edap.Device element = null]
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_42, 39);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_40, 39);
 					}
 					
 					(
@@ -1735,7 +1721,7 @@ parse_edap_Device returns [edap.Device element = null]
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_41, 40);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_39, 40);
 						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 40, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 40, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 40, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
@@ -1758,7 +1744,7 @@ parse_edap_Device returns [edap.Device element = null]
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_41, 41);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_39, 41);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 41, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 41, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 41, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
@@ -1892,14 +1878,12 @@ parse_edap_Device returns [edap.Device element = null]
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 45);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 45);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 45);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 45, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 45, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 45);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 45);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 45);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 45, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 45);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 45, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 45);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 45);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 45);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 45);
 	}
 	
 ;
@@ -2011,7 +1995,7 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_43, 50);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_41, 50);
 	}
 	
 	(
@@ -2048,7 +2032,7 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 	{
 		// expected elements (follow set)
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 51, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 51);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_42, 51);
 	}
 	
 	(
@@ -2077,7 +2061,7 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 			{
 				// expected elements (follow set)
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 52, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 52);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_42, 52);
 			}
 			
 		)
@@ -2085,7 +2069,7 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 	)*	{
 		// expected elements (follow set)
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 53, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 53);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_42, 53);
 	}
 	
 	a5 = '{' {
@@ -2099,16 +2083,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 54);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 54);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 54);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 54);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
@@ -2116,14 +2098,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 54);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 54, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 54);
 	}
 	
 	(
 		(
 			(
-				a6_0 = parse_edap_Port				{
+				a6_0 = parse_edap_Message				{
 					if (terminateParsing) {
 						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 					}
@@ -2134,7 +2116,7 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 					if (a6_0 != null) {
 						if (a6_0 != null) {
 							Object value = a6_0;
-							addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__PORTS, value);
+							addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__MESSAGES, value);
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
@@ -2145,16 +2127,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 55);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 55);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 55);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 55);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
@@ -2162,13 +2142,13 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 55);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 55, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 55);
 			}
 			
 			
 			|			(
-				a7_0 = parse_edap_Connector				{
+				a7_0 = parse_edap_Property				{
 					if (terminateParsing) {
 						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 					}
@@ -2179,7 +2159,7 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 					if (a7_0 != null) {
 						if (a7_0 != null) {
 							Object value = a7_0;
-							addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__CONNECTORS, value);
+							addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__PROPERTIES, value);
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
@@ -2190,16 +2170,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 56);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 56);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 56);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 56);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
@@ -2207,117 +2185,27 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
 				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 56);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 56, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 56);
 			}
 			
 			
-			|			(
-				a8_0 = parse_edap_Message				{
-					if (terminateParsing) {
-						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-					}
-					if (element == null) {
-						element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
-						incompleteObjects.push(element);
-					}
-					if (a8_0 != null) {
-						if (a8_0 != null) {
-							Object value = a8_0;
-							addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__MESSAGES, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_2_0, a8_0, true);
-						copyLocalizationInfos(a8_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 57);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 57);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 57, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 57);
-			}
-			
-			
-			|			(
-				a9_0 = parse_edap_Property				{
-					if (terminateParsing) {
-						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-					}
-					if (element == null) {
-						element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
-						incompleteObjects.push(element);
-					}
-					if (a9_0 != null) {
-						if (a9_0 != null) {
-							Object value = a9_0;
-							addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__PROPERTIES, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_3_0, a9_0, true);
-						copyLocalizationInfos(a9_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 58);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 58);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 58);
-			}
-			
-			
-			|			a10 = 'receives' {
+			|			a8 = 'receives' {
 				if (element == null) {
 					element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 					incompleteObjects.push(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_4_0, null, true);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a10, element);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_2_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a8, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_45, 59);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_43, 57);
 			}
 			
 			(
-				a11 = TEXT				
+				a9 = TEXT				
 				{
 					if (terminateParsing) {
 						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
@@ -2326,14 +2214,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 						element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 						incompleteObjects.push(element);
 					}
-					if (a11 != null) {
+					if (a9 != null) {
 						edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 						tokenResolver.setOptions(getOptions());
 						edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-						tokenResolver.resolve(a11.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__RECEIVES), result);
+						tokenResolver.resolve(a9.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__RECEIVES), result);
 						Object resolvedObject = result.getResolvedToken();
 						if (resolvedObject == null) {
-							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a11).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a11).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a11).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a11).getStopIndex());
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a9).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a9).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a9).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a9).getStopIndex());
 						}
 						String resolved = (String) resolvedObject;
 						edap.Message proxy = edap.EdapFactory.eINSTANCE.createMessage();
@@ -2345,54 +2233,52 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_4_2, proxy, true);
-						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a11, element);
-						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a11, proxy);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_2_2, proxy, true);
+						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a9, element);
+						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a9, proxy);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_46, 60);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 60);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 60);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 60);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 58);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 58);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 58);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 58, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 58);
 			}
 			
 			(
 				(
-					a12 = ',' {
+					a10 = ',' {
 						if (element == null) {
 							element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 							incompleteObjects.push(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_4_3_0_0_0, null, true);
-						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a12, element);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_2_3_0_0_0, null, true);
+						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a10, element);
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_47, 61);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_45, 59);
 					}
 					
 					(
-						a13 = TEXT						
+						a11 = TEXT						
 						{
 							if (terminateParsing) {
 								throw new edap.resource.edap.mopp.EdapTerminateParsingException();
@@ -2401,14 +2287,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 								element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 								incompleteObjects.push(element);
 							}
-							if (a13 != null) {
+							if (a11 != null) {
 								edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 								tokenResolver.setOptions(getOptions());
 								edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-								tokenResolver.resolve(a13.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__RECEIVES), result);
+								tokenResolver.resolve(a11.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__RECEIVES), result);
 								Object resolvedObject = result.getResolvedToken();
 								if (resolvedObject == null) {
-									addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a13).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a13).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a13).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a13).getStopIndex());
+									addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a11).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a11).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a11).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a11).getStopIndex());
 								}
 								String resolved = (String) resolvedObject;
 								edap.Message proxy = edap.EdapFactory.eINSTANCE.createMessage();
@@ -2420,79 +2306,75 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 									completedElement(value, false);
 								}
 								collectHiddenTokens(element);
-								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_4_3_0_0_2, proxy, true);
-								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a13, element);
-								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a13, proxy);
+								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_2_3_0_0_2, proxy, true);
+								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a11, element);
+								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a11, proxy);
 							}
 						}
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_46, 62);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 62);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 62);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 62, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 62);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 60);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 60);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 60);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 60, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 60);
 					}
 					
 				)
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_46, 63);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 63);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 63);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 63);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 61);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 61);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 61);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 61, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 61);
 			}
 			
 			
-			|			a14 = 'sends' {
+			|			a12 = 'sends' {
 				if (element == null) {
 					element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 					incompleteObjects.push(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_5_0, null, true);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a14, element);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_3_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a12, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_48, 64);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_46, 62);
 			}
 			
 			(
-				a15 = TEXT				
+				a13 = TEXT				
 				{
 					if (terminateParsing) {
 						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
@@ -2501,14 +2383,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 						element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 						incompleteObjects.push(element);
 					}
-					if (a15 != null) {
+					if (a13 != null) {
 						edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 						tokenResolver.setOptions(getOptions());
 						edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-						tokenResolver.resolve(a15.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__SENDS), result);
+						tokenResolver.resolve(a13.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__SENDS), result);
 						Object resolvedObject = result.getResolvedToken();
 						if (resolvedObject == null) {
-							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a15).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a15).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a15).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a15).getStopIndex());
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a13).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a13).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a13).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a13).getStopIndex());
 						}
 						String resolved = (String) resolvedObject;
 						edap.Message proxy = edap.EdapFactory.eINSTANCE.createMessage();
@@ -2520,54 +2402,52 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_5_2, proxy, true);
-						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a15, element);
-						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a15, proxy);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_3_2, proxy, true);
+						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a13, element);
+						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a13, proxy);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_49, 65);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 65);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 65);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 65);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_47, 63);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 63);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 63);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 63, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 63);
 			}
 			
 			(
 				(
-					a16 = ',' {
+					a14 = ',' {
 						if (element == null) {
 							element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 							incompleteObjects.push(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_5_3_0_0_0, null, true);
-						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a16, element);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_3_3_0_0_0, null, true);
+						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a14, element);
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_50, 66);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_48, 64);
 					}
 					
 					(
-						a17 = TEXT						
+						a15 = TEXT						
 						{
 							if (terminateParsing) {
 								throw new edap.resource.edap.mopp.EdapTerminateParsingException();
@@ -2576,14 +2456,14 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 								element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 								incompleteObjects.push(element);
 							}
-							if (a17 != null) {
+							if (a15 != null) {
 								edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 								tokenResolver.setOptions(getOptions());
 								edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-								tokenResolver.resolve(a17.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__SENDS), result);
+								tokenResolver.resolve(a15.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__SENDS), result);
 								Object resolvedObject = result.getResolvedToken();
 								if (resolvedObject == null) {
-									addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a17).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a17).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a17).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a17).getStopIndex());
+									addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a15).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a15).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a15).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a15).getStopIndex());
 								}
 								String resolved = (String) resolvedObject;
 								edap.Message proxy = edap.EdapFactory.eINSTANCE.createMessage();
@@ -2595,66 +2475,62 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 									completedElement(value, false);
 								}
 								collectHiddenTokens(element);
-								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_5_3_0_0_2, proxy, true);
-								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a17, element);
-								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a17, proxy);
+								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_3_3_0_0_2, proxy, true);
+								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a15, element);
+								copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a15, proxy);
 							}
 						}
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_49, 67);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 67);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 67);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 67);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_47, 65);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 65);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 65);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 65, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 65);
 					}
 					
 				)
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_49, 68);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 68);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 68);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 68);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_47, 66);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 66);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 66);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 66, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 66);
 			}
 			
 			
 			|			(
 				(
-					a18_0 = parse_edap_Component					{
+					a16_0 = parse_edap_Component					{
 						if (terminateParsing) {
 							throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 						}
@@ -2662,94 +2538,88 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 							element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 							incompleteObjects.push(element);
 						}
-						if (a18_0 != null) {
-							if (a18_0 != null) {
-								Object value = a18_0;
+						if (a16_0 != null) {
+							if (a16_0 != null) {
+								Object value = a16_0;
 								addObjectToList(element, edap.EdapPackage.SOFTWARE_COMPONENT__COMPOSITE_COMPONENT, value);
 								completedElement(value, true);
 							}
 							collectHiddenTokens(element);
-							retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_6_0_0_0_1, a18_0, true);
-							copyLocalizationInfos(a18_0, element);
+							retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_8_0_4_0_0_0_1, a16_0, true);
+							copyLocalizationInfos(a16_0, element);
 						}
 					}
 				)
 				{
 					// expected elements (follow set)
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 69);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 69);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 69);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 67);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 67);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 67, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 67);
 				}
 				
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 70);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 70);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 70, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 70);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 68);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 68);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 68, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 68);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 71);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 71);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 71, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 71);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 69);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 69);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 69, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 69);
 	}
 	
 	(
 		(
 			(
-				a19_0 = parse_edap_StateMachine				{
+				a17_0 = parse_edap_StateMachine				{
 					if (terminateParsing) {
 						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 					}
@@ -2757,67 +2627,65 @@ parse_edap_SoftwareComponent returns [edap.SoftwareComponent element = null]
 						element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 						incompleteObjects.push(element);
 					}
-					if (a19_0 != null) {
-						if (a19_0 != null) {
-							Object value = a19_0;
+					if (a17_0 != null) {
+						if (a17_0 != null) {
+							Object value = a17_0;
 							element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__BEHAVIOUR), value);
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_9_0_0_1, a19_0, true);
-						copyLocalizationInfos(a19_0, element);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_9_0_0_1, a17_0, true);
+						copyLocalizationInfos(a17_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 72);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 70);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 73);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 71);
 	}
 	
-	a20 = '}' {
+	a18 = '}' {
 		if (element == null) {
 			element = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
 		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_3_0_0_11, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a20, element);
+		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a18, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 74, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 74);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 74);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 72, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 72);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 72);
 	}
 	
 	|//derived choice rules for sub-classes: 
@@ -2841,7 +2709,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_51, 75);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_49, 73);
 	}
 	
 	(
@@ -2877,7 +2745,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_52, 76);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_50, 74);
 	}
 	
 	a2 = 'for' {
@@ -2891,7 +2759,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_53, 77);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_51, 75);
 	}
 	
 	(
@@ -2931,8 +2799,8 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 78, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 78);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 76, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_52, 76);
 	}
 	
 	(
@@ -2960,16 +2828,16 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 79);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 77, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_52, 77);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 80);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 78, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_52, 78);
 	}
 	
 	a5 = '{' {
@@ -2983,22 +2851,22 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 81);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 81);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 79);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 79);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 79, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 	}
 	
 	(
@@ -3026,22 +2894,22 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 82);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 82);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 82, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 80);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 80);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 80, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 			
@@ -3068,22 +2936,22 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 83);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 83);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 81);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 81);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 81, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 			
@@ -3098,7 +2966,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_55, 84);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_53, 82);
 			}
 			
 			(
@@ -3138,23 +3006,23 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_56, 85);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 85);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 85);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 83);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 83);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 83);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 83, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 			(
@@ -3170,7 +3038,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_57, 86);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_55, 84);
 					}
 					
 					(
@@ -3210,46 +3078,46 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_56, 87);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 87);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 87);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 87, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 85);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 85);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 85);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 85, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 					}
 					
 				)
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_56, 88);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 88);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 88);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 86);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 86);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 86);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 86, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 			
@@ -3264,7 +3132,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_58, 89);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_56, 87);
 			}
 			
 			(
@@ -3304,23 +3172,23 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_59, 90);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 90);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 90);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_57, 88);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 88);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 88);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 88, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 			(
@@ -3336,7 +3204,7 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_60, 91);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_58, 89);
 					}
 					
 					(
@@ -3376,46 +3244,46 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_59, 92);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 92);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 92);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_57, 90);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 90);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 90);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 90, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 					}
 					
 				)
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_59, 93);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 93);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 93);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_57, 91);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 91);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 91);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 91, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 			
@@ -3443,65 +3311,65 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 				)
 				{
 					// expected elements (follow set)
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 94);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 94);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 92);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 92);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 92, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 				}
 				
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 95);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 95);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 95, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 93);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 93);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 93, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 96);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 96);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 96, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 94);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 94);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 94, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
 	}
 	
 	(
@@ -3528,13 +3396,13 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 		)
 		{
 			// expected elements (follow set)
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_61, 97);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_59, 95);
 		}
 		
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_61, 98);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_59, 96);
 	}
 	
 	a18 = '}' {
@@ -3548,32 +3416,30 @@ parse_edap_Simulator returns [edap.Simulator element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 99, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 99);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 99);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 97, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 97);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 97);
 	}
 	
 ;
@@ -3617,14 +3483,14 @@ parse_edap_Property returns [edap.Property element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 100);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 98);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 101);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 99);
 	}
 	
 	a1 = 'property' {
@@ -3638,7 +3504,7 @@ parse_edap_Property returns [edap.Property element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_62, 102);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_60, 100);
 	}
 	
 	(
@@ -3674,7 +3540,7 @@ parse_edap_Property returns [edap.Property element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_63, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_61, 101);
 	}
 	
 	a3 = ':' {
@@ -3688,7 +3554,7 @@ parse_edap_Property returns [edap.Property element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 104);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_62, 102);
 	}
 	
 	(
@@ -3728,44 +3594,42 @@ parse_edap_Property returns [edap.Property element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 105, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 105);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 105);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_63, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 103, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 103);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 103);
 	}
 	
 	(
@@ -3781,7 +3645,7 @@ parse_edap_Property returns [edap.Property element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_78, 106);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 104);
 			}
 			
 			(
@@ -3817,7 +3681,7 @@ parse_edap_Property returns [edap.Property element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_79, 107);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 105);
 			}
 			
 			a7 = '..' {
@@ -3831,7 +3695,7 @@ parse_edap_Property returns [edap.Property element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_80, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_78, 106);
 			}
 			
 			(
@@ -3867,7 +3731,7 @@ parse_edap_Property returns [edap.Property element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_81, 109);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_79, 107);
 			}
 			
 			a9 = ']' {
@@ -3881,86 +3745,82 @@ parse_edap_Property returns [edap.Property element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 110);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 108, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 108);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 108);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 111);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 109, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 109);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 109);
 	}
 	
 	(
@@ -3988,86 +3848,82 @@ parse_edap_Property returns [edap.Property element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 112, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 112);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 112);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 110, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 110);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 110);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 113, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 113);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 113);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 111, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 111);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 111);
 	}
 	
 	|//derived choice rules for sub-classes: 
@@ -4115,14 +3971,14 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 114);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 112);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 115);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 113);
 	}
 	
 	a1 = 'dictionary' {
@@ -4136,7 +3992,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_82, 116);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_80, 114);
 	}
 	
 	(
@@ -4172,7 +4028,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_83, 117);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_81, 115);
 	}
 	
 	a3 = ':' {
@@ -4186,7 +4042,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_84, 118);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_82, 116);
 	}
 	
 	(
@@ -4226,7 +4082,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_85, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_83, 117);
 	}
 	
 	a5 = '->' {
@@ -4240,7 +4096,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_86, 120);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_84, 118);
 	}
 	
 	(
@@ -4280,44 +4136,42 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_87, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 121, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 121);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 121);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_85, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 119, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 119);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 119);
 	}
 	
 	(
@@ -4333,7 +4187,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_88, 122);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_86, 120);
 			}
 			
 			(
@@ -4369,7 +4223,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_89, 123);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_87, 121);
 			}
 			
 			a9 = '..' {
@@ -4383,7 +4237,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_90, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_88, 122);
 			}
 			
 			(
@@ -4419,7 +4273,7 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_91, 125);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_89, 123);
 			}
 			
 			a11 = ']' {
@@ -4433,86 +4287,82 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 126);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 124, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 124);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 124);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 127);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 125, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 125);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 125);
 	}
 	
 	(
@@ -4540,86 +4390,82 @@ parse_edap_Dictionary returns [edap.Dictionary element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 128, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 128);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 128);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 126, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 126);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 126);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_33, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 129, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 129);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 129);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_24, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_25, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_26, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 127, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 127);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 127);
 	}
 	
 ;
@@ -4661,7 +4507,7 @@ parse_edap_Parameter returns [edap.Parameter element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_92, 130);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_90, 128);
 	}
 	
 	a1 = ':' {
@@ -4675,7 +4521,7 @@ parse_edap_Parameter returns [edap.Parameter element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_93, 131);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_91, 129);
 	}
 	
 	(
@@ -4715,8 +4561,8 @@ parse_edap_Parameter returns [edap.Parameter element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_17, 132);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_16, 132);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_17, 130);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_16, 130);
 	}
 	
 ;
@@ -4736,7 +4582,7 @@ parse_edap_PrimitiveType returns [edap.PrimitiveType element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_94, 133);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_92, 131);
 	}
 	
 	(
@@ -4772,8 +4618,8 @@ parse_edap_PrimitiveType returns [edap.PrimitiveType element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 134, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 134);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 132, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_93, 132);
 	}
 	
 	(
@@ -4801,16 +4647,16 @@ parse_edap_PrimitiveType returns [edap.PrimitiveType element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 135);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 133, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_93, 133);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 136, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 136);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 134, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_93, 134);
 	}
 	
 	a3 = ';' {
@@ -4824,15 +4670,15 @@ parse_edap_PrimitiveType returns [edap.PrimitiveType element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 135, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
 	}
 	
 ;
@@ -4852,7 +4698,7 @@ parse_edap_Enumeration returns [edap.Enumeration element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 138);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_94, 136);
 	}
 	
 	(
@@ -4888,8 +4734,8 @@ parse_edap_Enumeration returns [edap.Enumeration element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 139, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 139);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 137, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 137);
 	}
 	
 	(
@@ -4917,16 +4763,16 @@ parse_edap_Enumeration returns [edap.Enumeration element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 140, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 140);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 138, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 138);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 141, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 141);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 139, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 139);
 	}
 	
 	a3 = '{' {
@@ -4940,8 +4786,8 @@ parse_edap_Enumeration returns [edap.Enumeration element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 142, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 142);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 140, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 140);
 	}
 	
 	(
@@ -4969,16 +4815,16 @@ parse_edap_Enumeration returns [edap.Enumeration element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 143);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 141, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 141);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 144, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 144);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 142, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 142);
 	}
 	
 	a5 = '}' {
@@ -4992,15 +4838,15 @@ parse_edap_Enumeration returns [edap.Enumeration element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_8, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_9, 143, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_0);
 	}
 	
 ;
@@ -5042,9 +4888,9 @@ parse_edap_EnumerationLiteral returns [edap.EnumerationLiteral element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 146, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 146, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 146);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 144, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 144, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 144);
 	}
 	
 	(
@@ -5072,18 +4918,18 @@ parse_edap_EnumerationLiteral returns [edap.EnumerationLiteral element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 147, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 147, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 147);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 145, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 145);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 146, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_96, 146, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 146);
 	}
 	
 ;
@@ -5125,7 +4971,7 @@ parse_edap_PlatformAnnotation returns [edap.PlatformAnnotation element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 149);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_98, 147);
 	}
 	
 	(
@@ -5161,42 +5007,41 @@ parse_edap_PlatformAnnotation returns [edap.PlatformAnnotation element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_19, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_36, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_44, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_54, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_97, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 150);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 150, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 150);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_19, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_34, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_42, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_52, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_93, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_95, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 148);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 148, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 148);
 	}
 	
 ;
@@ -5216,7 +5061,7 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_113, 151);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 149);
 	}
 	
 	(
@@ -5252,7 +5097,7 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_114, 152);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 150);
 	}
 	
 	a2 = 'init' {
@@ -5266,7 +5111,7 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_115, 153);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 151);
 	}
 	
 	(
@@ -5306,8 +5151,8 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 154, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_116, 154);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 152, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_113, 152);
 	}
 	
 	(
@@ -5335,16 +5180,16 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_116, 155);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 153, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_113, 153);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_116, 156);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 154, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_113, 154);
 	}
 	
 	a5 = '{' {
@@ -5358,16 +5203,16 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 157);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 157);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 157);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 155);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 155);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 155, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 155);
 	}
 	
 	(
@@ -5395,32 +5240,32 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 158);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 158);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 158, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 158);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 156);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 156);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 156, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 156);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 159);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 159);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 159);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_64, 157);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 157);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 157, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 157);
 	}
 	
 	(
@@ -5436,7 +5281,7 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_117, 160);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_114, 158);
 			}
 			
 			a8 = 'entry' {
@@ -5450,16 +5295,15 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 159, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
 			}
 			
 			(
@@ -5485,22 +5329,22 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 162);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 162, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 162, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 162, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 162);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 160);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 160, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 160, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 160, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 160);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 163);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 163);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 161);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 161, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 161);
 	}
 	
 	(
@@ -5516,7 +5360,7 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_118, 164);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_115, 162);
 			}
 			
 			a11 = 'exit' {
@@ -5530,16 +5374,15 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 163, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
 			}
 			
 			(
@@ -5565,20 +5408,20 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 166, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 166, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 166, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 166);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 164, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 164, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 164, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 164);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 167, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 167, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 167, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 167);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 165, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 165);
 	}
 	
 	(
@@ -5606,20 +5449,20 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 168);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 166, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 166, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 166, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 166);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 169, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 169, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 169, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 169);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 167, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 167, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 167, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 167);
 	}
 	
 	a14 = '}' {
@@ -5633,14 +5476,14 @@ parse_edap_StateMachine returns [edap.StateMachine element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 170);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_61, 170);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 170, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 170, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 170, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 170);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 170, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 170);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 168);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_59, 168);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 168);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 168, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 168);
 	}
 	
 ;
@@ -5660,7 +5503,7 @@ parse_edap_State returns [edap.State element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_119, 171);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_116, 169);
 	}
 	
 	(
@@ -5696,8 +5539,8 @@ parse_edap_State returns [edap.State element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 172, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_120, 172);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 170, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_117, 170);
 	}
 	
 	(
@@ -5725,16 +5568,16 @@ parse_edap_State returns [edap.State element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 173, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_120, 173);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 171, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_117, 171);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 174, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_120, 174);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 172, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_117, 172);
 	}
 	
 	a3 = '{' {
@@ -5748,14 +5591,14 @@ parse_edap_State returns [edap.State element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 175);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 175);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 175);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 173, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 173, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 173, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 173, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 173);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 173);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 173, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 173);
 	}
 	
 	(
@@ -5783,28 +5626,28 @@ parse_edap_State returns [edap.State element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 176, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 176, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 176, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 176, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 176);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 176);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 176, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 176);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 174, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 174, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 174, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 174, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 174);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 174);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 174, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 174);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 177);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 177);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 177);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 175);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 175);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 175, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 175);
 	}
 	
 	(
@@ -5820,7 +5663,7 @@ parse_edap_State returns [edap.State element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_121, 178);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_118, 176);
 			}
 			
 			a6 = 'entry' {
@@ -5834,16 +5677,15 @@ parse_edap_State returns [edap.State element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 177, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
 			}
 			
 			(
@@ -5869,18 +5711,18 @@ parse_edap_State returns [edap.State element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 180);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 180, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 180);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 178);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 178, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 178);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 181);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 181);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 179);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 179, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 179);
 	}
 	
 	(
@@ -5896,7 +5738,7 @@ parse_edap_State returns [edap.State element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_122, 182);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_119, 180);
 			}
 			
 			a9 = 'exit' {
@@ -5910,16 +5752,15 @@ parse_edap_State returns [edap.State element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 181, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
 			}
 			
 			(
@@ -5945,16 +5786,16 @@ parse_edap_State returns [edap.State element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 184, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 184);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 182, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 182);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 185, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 185);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 183, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 183);
 	}
 	
 	(
@@ -5982,16 +5823,16 @@ parse_edap_State returns [edap.State element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 186, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 186);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 184, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 184);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 187, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 187);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 185, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 185);
 	}
 	
 	a12 = '}' {
@@ -6005,12 +5846,12 @@ parse_edap_State returns [edap.State element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 188, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 188, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 188, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 188);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 188, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 188);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 186, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 186, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 186, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 186);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 186, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 186);
 	}
 	
 	|//derived choice rules for sub-classes: 
@@ -6035,7 +5876,7 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_123, 189);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_120, 187);
 	}
 	
 	a1 = 'state' {
@@ -6049,7 +5890,7 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_124, 190);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_121, 188);
 	}
 	
 	(
@@ -6085,7 +5926,7 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_125, 191);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_122, 189);
 	}
 	
 	a3 = 'init' {
@@ -6099,7 +5940,7 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_126, 192);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_123, 190);
 	}
 	
 	(
@@ -6139,8 +5980,8 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 193, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 193);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 191, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_124, 191);
 	}
 	
 	(
@@ -6168,16 +6009,16 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 194);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 192, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_124, 192);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 195);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 193, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_124, 193);
 	}
 	
 	a6 = '{' {
@@ -6191,17 +6032,17 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 196);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 196);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 196);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 194);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 194);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 194, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 194);
 	}
 	
 	(
@@ -6229,34 +6070,34 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 197);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 197);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 197, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 197);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 195);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 195);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 195, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 195);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 198);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 198);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 198);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 196);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 196);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 196, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 196);
 	}
 	
 	(
@@ -6272,7 +6113,7 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_128, 199);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_125, 197);
 			}
 			
 			a9 = 'entry' {
@@ -6286,16 +6127,15 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 198, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_12);
 			}
 			
 			(
@@ -6321,24 +6161,24 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 201);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 201, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 201, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 201, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 201, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 201);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 199);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 199, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 199, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 199, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 199, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 199);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 202);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 202);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 200);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 200, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 200);
 	}
 	
 	(
@@ -6354,7 +6194,7 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_129, 203);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_126, 201);
 			}
 			
 			a12 = 'exit' {
@@ -6368,16 +6208,15 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 202, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
 			}
 			
 			(
@@ -6403,22 +6242,22 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 205);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 203, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 203, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 203, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 203, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 203);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 206);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 204, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 204);
 	}
 	
 	(
@@ -6446,11 +6285,11 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 207);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 205, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 205);
 			}
 			
 			
@@ -6478,32 +6317,32 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 				)
 				{
 					// expected elements (follow set)
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 208);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 206, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+					addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 206);
 				}
 				
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 209);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 207, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 207);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 210, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 210, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 210, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 210, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 210);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 208, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 208);
 	}
 	
 	a16 = '}' {
@@ -6517,214 +6356,17 @@ parse_edap_CompositeState returns [edap.CompositeState element = null]
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 211, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 211, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 211, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 211);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 211, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 211);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 209);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 209, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 209);
 	}
 	
 	|//derived choice rules for sub-classes: 
 	
 	c0 = parse_edap_StateMachine{ element = c0; /* this is a subclass or primitive expression choice */ }
-	
-;
-
-parse_edap_PropertyAssignment returns [edap.PropertyAssignment element = null]
-@init{
-}
-:
-	a0 = 'set' {
-		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
-			incompleteObjects.push(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_0, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_130, 212);
-	}
-	
-	(
-		a1 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-			}
-			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
-				incompleteObjects.push(element);
-			}
-			if (a1 != null) {
-				edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a1.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a1).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a1).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a1).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a1).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				edap.Property proxy = edap.EdapFactory.eINSTANCE.createProperty();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new edap.resource.edap.mopp.EdapContextDependentURIFragmentFactory<edap.PropertyAssignment, edap.Property>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropertyAssignmentPropertyReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_2, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, element);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 213);
-	}
-	
-	a2 = '=' {
-		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
-			incompleteObjects.push(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_4, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16);
-	}
-	
-	(
-		a3_0 = parse_edap_Expression		{
-			if (terminateParsing) {
-				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-			}
-			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
-				incompleteObjects.push(element);
-			}
-			if (a3_0 != null) {
-				if (a3_0 != null) {
-					Object value = a3_0;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__EXPRESSION), value);
-					completedElement(value, true);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_6, a3_0, true);
-				copyLocalizationInfos(a3_0, element);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 215);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 215, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 215);
-	}
-	
-;
-
-parse_edap_ComponentReference returns [edap.ComponentReference element = null]
-@init{
-}
-:
-	(
-		a0 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-			}
-			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createComponentReference();
-				incompleteObjects.push(element);
-			}
-			if (a0 != null) {
-				edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a0.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a0).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a0).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a0).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a0).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				edap.Component proxy = edap.EdapFactory.eINSTANCE.createSoftwareComponent();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new edap.resource.edap.mopp.EdapContextDependentURIFragmentFactory<edap.ComponentReference, edap.Component>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getComponentReferenceComponentReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_0, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 216);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 216, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 216);
-	}
 	
 ;
 
@@ -6738,12 +6380,12 @@ parse_edap_EventReference returns [edap.EventReference element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 217);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_128, 210);
 	}
 	
 	(
@@ -6775,7 +6417,7 @@ parse_edap_EventReference returns [edap.EventReference element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_2, proxy, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_2, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, element);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, proxy);
 			}
@@ -6783,7 +6425,7 @@ parse_edap_EventReference returns [edap.EventReference element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 218);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_129, 211);
 	}
 	
 	a2 = '.' {
@@ -6792,12 +6434,12 @@ parse_edap_EventReference returns [edap.EventReference element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_3, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 219);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_130, 212);
 	}
 	
 	(
@@ -6829,7 +6471,7 @@ parse_edap_EventReference returns [edap.EventReference element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_4, proxy, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_15_0_0_4, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, element);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, proxy);
 			}
@@ -6837,42 +6479,43 @@ parse_edap_EventReference returns [edap.EventReference element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 220);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 220);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 213, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 213);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 213);
 	}
 	
 ;
@@ -6887,20 +6530,20 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 221, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 214, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
 	}
 	
 	(
@@ -6919,14 +6562,14 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_2, a1_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_2, a1_0, true);
 				copyLocalizationInfos(a1_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 222);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 215);
 	}
 	
 	a2 = '#' {
@@ -6935,12 +6578,12 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_3, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_159, 223);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 216);
 	}
 	
 	(
@@ -6972,7 +6615,7 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_4, proxy, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_4, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, element);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, proxy);
 			}
@@ -6980,7 +6623,7 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_160, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 217);
 	}
 	
 	a4 = '(' {
@@ -6989,21 +6632,21 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_5, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_5, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a4, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 225, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_161, 225);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 218, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 218);
 	}
 	
 	(
@@ -7024,15 +6667,15 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_6_0_0_0, a5_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_6_0_0_0, a5_0, true);
 						copyLocalizationInfos(a5_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_162, 226);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_161, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 219);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 219);
 			}
 			
 			(
@@ -7043,20 +6686,20 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 							incompleteObjects.push(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_6_0_0_1_0_0_0, null, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_6_0_0_1_0_0_0, null, true);
 						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a6, element);
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 220, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
 					}
 					
 					(
@@ -7075,30 +6718,30 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 									completedElement(value, true);
 								}
 								collectHiddenTokens(element);
-								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_6_0_0_1_0_0_2, a7_0, true);
+								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_6_0_0_1_0_0_2, a7_0, true);
 								copyLocalizationInfos(a7_0, element);
 							}
 						}
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_162, 228);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_161, 228);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 221);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 221);
 					}
 					
 				)
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_162, 229);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_161, 229);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 222);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 222);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_161, 230);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 223);
 	}
 	
 	a8 = ')' {
@@ -7107,35 +6750,34 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_7, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_7, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a8, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_163, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 231);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 231, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 231);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_159, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 224);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 224, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 224);
 	}
 	
 	(
@@ -7146,12 +6788,12 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 					incompleteObjects.push(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_8_0_0_0, null, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_8_0_0_0, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a9, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_164, 232);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_160, 225);
 			}
 			
 			(
@@ -7183,7 +6825,7 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_8_0_0_1, proxy, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_8_0_0_1, proxy, true);
 						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a10, element);
 						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a10, proxy);
 					}
@@ -7191,58 +6833,56 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 233);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 233, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 233);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 226);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 226, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 226);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 234);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 234);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 227);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 227, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 227);
 	}
 	
 	(
@@ -7263,65 +6903,63 @@ parse_edap_Unicast returns [edap.Unicast element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_9_0_0_0, a11_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_16_0_0_9_0_0_0, a11_0, true);
 						copyLocalizationInfos(a11_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 235);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 235, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 235);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 228);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 228, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 228);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 236);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 236);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 229);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 229, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 229);
 	}
 	
 ;
@@ -7336,20 +6974,20 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 237, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 230, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_14);
 	}
 	
 	(
@@ -7368,14 +7006,14 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_2, a1_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_2, a1_0, true);
 				copyLocalizationInfos(a1_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 238);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 231);
 	}
 	
 	a2 = '#' {
@@ -7384,12 +7022,12 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_3, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_165, 239);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_161, 232);
 	}
 	
 	(
@@ -7421,7 +7059,7 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_4, proxy, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_4, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, element);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, proxy);
 			}
@@ -7429,7 +7067,7 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_166, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_162, 233);
 	}
 	
 	a4 = '(' {
@@ -7438,21 +7076,21 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_5, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_5, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a4, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 241, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_167, 241);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 234, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_163, 234);
 	}
 	
 	(
@@ -7473,15 +7111,15 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_6_0_0_0, a5_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_6_0_0_0, a5_0, true);
 						copyLocalizationInfos(a5_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_168, 242);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_167, 242);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_164, 235);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_163, 235);
 			}
 			
 			(
@@ -7492,20 +7130,20 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 							incompleteObjects.push(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_6_0_0_1_0_0_0, null, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_6_0_0_1_0_0_0, null, true);
 						copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a6, element);
 					}
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 243, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 236, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17);
 					}
 					
 					(
@@ -7524,30 +7162,30 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 									completedElement(value, true);
 								}
 								collectHiddenTokens(element);
-								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_6_0_0_1_0_0_2, a7_0, true);
+								retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_6_0_0_1_0_0_2, a7_0, true);
 								copyLocalizationInfos(a7_0, element);
 							}
 						}
 					)
 					{
 						// expected elements (follow set)
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_168, 244);
-						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_167, 244);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_164, 237);
+						addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_163, 237);
 					}
 					
 				)
 				
 			)*			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_168, 245);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_167, 245);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_164, 238);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_163, 238);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_167, 246);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_163, 239);
 	}
 	
 	a8 = ')' {
@@ -7556,33 +7194,32 @@ parse_edap_Broadcast returns [edap.Broadcast element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_7, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_17_0_0_7, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a8, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 247);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 247, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 247);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 240);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 240, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 240);
 	}
 	
 ;
@@ -7597,12 +7234,12 @@ parse_edap_Transition returns [edap.Transition element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_1, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_1, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_169, 248);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_165, 241);
 	}
 	
 	(
@@ -7631,14 +7268,14 @@ parse_edap_Transition returns [edap.Transition element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_3, resolved, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_3, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_170, 249);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_166, 242);
 	}
 	
 	a2 = '->' {
@@ -7647,12 +7284,12 @@ parse_edap_Transition returns [edap.Transition element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_5, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_5, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_171, 250);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_167, 243);
 	}
 	
 	(
@@ -7684,7 +7321,7 @@ parse_edap_Transition returns [edap.Transition element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_7, proxy, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_7, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, element);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a3, proxy);
 			}
@@ -7692,8 +7329,8 @@ parse_edap_Transition returns [edap.Transition element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_172, 251);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 244, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_168, 244);
 	}
 	
 	(
@@ -7714,23 +7351,23 @@ parse_edap_Transition returns [edap.Transition element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_8_0_0_0, a4_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_8_0_0_0, a4_0, true);
 						copyLocalizationInfos(a4_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 252, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_172, 252);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 245, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_168, 245);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 253, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_172, 253);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 246, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_168, 246);
 	}
 	
 	a5 = '{' {
@@ -7739,15 +7376,15 @@ parse_edap_Transition returns [edap.Transition element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_10, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_10, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a5, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_173, 254);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_174, 254);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 254);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 254);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_169, 247);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_170, 247);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 247);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 247);
 	}
 	
 	(
@@ -7758,20 +7395,20 @@ parse_edap_Transition returns [edap.Transition element = null]
 					incompleteObjects.push(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_11_0_0_1, null, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_11_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a6, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 255, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 248, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_18, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_19);
 			}
 			
 			(
@@ -7790,27 +7427,27 @@ parse_edap_Transition returns [edap.Transition element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_11_0_0_3, a7_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_11_0_0_3, a7_0, true);
 						copyLocalizationInfos(a7_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_173, 256);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_174, 256);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 256);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 256);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_169, 249);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_170, 249);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 249);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 249);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_173, 257);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_174, 257);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 257);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 257);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_169, 250);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_170, 250);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 250);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 250);
 	}
 	
 	(
@@ -7821,20 +7458,20 @@ parse_edap_Transition returns [edap.Transition element = null]
 					incompleteObjects.push(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_12_0_0_1, null, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_12_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a8, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 258, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 251, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_20);
 			}
 			
 			(
@@ -7853,23 +7490,23 @@ parse_edap_Transition returns [edap.Transition element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_12_0_0_3, a9_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_12_0_0_3, a9_0, true);
 						copyLocalizationInfos(a9_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 259);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 259);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 252);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 252);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 260);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 260);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 253);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 253);
 	}
 	
 	(
@@ -7880,21 +7517,20 @@ parse_edap_Transition returns [edap.Transition element = null]
 					incompleteObjects.push(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_13_0_0_1, null, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_13_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a10, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 261, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 254, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_21);
 			}
 			
 			(
@@ -7913,21 +7549,21 @@ parse_edap_Transition returns [edap.Transition element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_13_0_0_3, a11_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_13_0_0_3, a11_0, true);
 						copyLocalizationInfos(a11_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 262);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 255);
 			}
 			
 		)
 		
 	)?	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 263);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 256);
 	}
 	
 	a12 = '}' {
@@ -7936,17 +7572,17 @@ parse_edap_Transition returns [edap.Transition element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_15, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_18_0_0_15, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a12, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 264);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 257, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 257);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 257, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 257, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 257, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 257);
 	}
 	
 ;
@@ -7971,14 +7607,14 @@ parse_edap_ReceiveMessage returns [edap.ReceiveMessage element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21_0_0_0, a0_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_0, a0_0, true);
 				copyLocalizationInfos(a0_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 265);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 258);
 	}
 	
 	a1 = '#' {
@@ -7987,12 +7623,12 @@ parse_edap_ReceiveMessage returns [edap.ReceiveMessage element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21_0_0_1, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_1, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a1, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_176, 266);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_171, 259);
 	}
 	
 	(
@@ -8024,7 +7660,7 @@ parse_edap_ReceiveMessage returns [edap.ReceiveMessage element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21_0_0_2, proxy, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_19_0_0_2, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a2, element);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a2, proxy);
 			}
@@ -8032,264 +7668,30 @@ parse_edap_ReceiveMessage returns [edap.ReceiveMessage element = null]
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_173, 267);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_174, 267);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 267);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 267);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_169, 260);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_170, 260);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 260);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 260);
 	}
 	
 ;
 
-parse_edap_Connector returns [edap.Connector element = null]
+parse_edap_PropertyAssignment returns [edap.PropertyAssignment element = null]
 @init{
 }
 :
-	a0 = 'connector' {
+	a0 = 'set' {
 		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createConnector();
+			element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_177, 268);
-	}
-	
-	a1 = '(' {
-		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createConnector();
-			incompleteObjects.push(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_1, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a1, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_178, 269);
-	}
-	
-	(
-		a2 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-			}
-			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createConnector();
-				incompleteObjects.push(element);
-			}
-			if (a2 != null) {
-				edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a2.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a2).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a2).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a2).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a2).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				edap.Port proxy = edap.EdapFactory.eINSTANCE.createPort();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new edap.resource.edap.mopp.EdapContextDependentURIFragmentFactory<edap.Connector, edap.Port>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getConnectorPort1ReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_2, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a2, element);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a2, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_179, 270);
-	}
-	
-	a3 = ',' {
-		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createConnector();
-			incompleteObjects.push(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_3, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a3, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_180, 271);
-	}
-	
-	(
-		a4 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-			}
-			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createConnector();
-				incompleteObjects.push(element);
-			}
-			if (a4 != null) {
-				edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a4).getStopIndex());
-				}
-				String resolved = (String) resolvedObject;
-				edap.Port proxy = edap.EdapFactory.eINSTANCE.createPort();
-				collectHiddenTokens(element);
-				registerContextDependentProxy(new edap.resource.edap.mopp.EdapContextDependentURIFragmentFactory<edap.Connector, edap.Port>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getConnectorPort2ReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2), resolved, proxy);
-				if (proxy != null) {
-					Object value = proxy;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_4, proxy, true);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a4, element);
-				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a4, proxy);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_181, 272);
-	}
-	
-	a5 = ')' {
-		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createConnector();
-			incompleteObjects.push(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_5, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a5, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 273);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 273);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 273);
-	}
-	
-	(
-		(
-			(
-				a6_0 = parse_edap_PlatformAnnotation				{
-					if (terminateParsing) {
-						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-					}
-					if (element == null) {
-						element = edap.EdapFactory.eINSTANCE.createConnector();
-						incompleteObjects.push(element);
-					}
-					if (a6_0 != null) {
-						if (a6_0 != null) {
-							Object value = a6_0;
-							addObjectToList(element, edap.EdapPackage.CONNECTOR__ANNOTATIONS, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_6_0_0_0, a6_0, true);
-						copyLocalizationInfos(a6_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 274);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 274);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 274);
-			}
-			
-		)
-		
-	)*	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 275);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 275);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 275, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 275);
-	}
-	
-;
-
-parse_edap_Port returns [edap.Port element = null]
-@init{
-}
-:
-	a0 = 'port' {
-		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createPort();
-			incompleteObjects.push(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_0, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_182, 276);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_172, 261);
 	}
 	
 	(
@@ -8299,272 +7701,105 @@ parse_edap_Port returns [edap.Port element = null]
 				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 			}
 			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createPort();
+				element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
 				incompleteObjects.push(element);
 			}
 			if (a1 != null) {
 				edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 				tokenResolver.setOptions(getOptions());
 				edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a1.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__NAME), result);
+				tokenResolver.resolve(a1.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), result);
 				Object resolvedObject = result.getResolvedToken();
 				if (resolvedObject == null) {
 					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a1).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a1).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a1).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a1).getStopIndex());
 				}
-				java.lang.String resolved = (java.lang.String)resolvedObject;
-				if (resolved != null) {
-					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__NAME), value);
+				String resolved = (String) resolvedObject;
+				edap.Property proxy = edap.EdapFactory.eINSTANCE.createProperty();
+				collectHiddenTokens(element);
+				registerContextDependentProxy(new edap.resource.edap.mopp.EdapContextDependentURIFragmentFactory<edap.PropertyAssignment, edap.Property>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropertyAssignmentPropertyReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), resolved, proxy);
+				if (proxy != null) {
+					Object value = proxy;
+					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), value);
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_2, resolved, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_2, proxy, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, element);
+				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, proxy);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 277);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 277);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 277, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 277);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_173, 262);
 	}
 	
-	(
-		(
-			(
-				a2_0 = parse_edap_PlatformAnnotation				{
-					if (terminateParsing) {
-						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-					}
-					if (element == null) {
-						element = edap.EdapFactory.eINSTANCE.createPort();
-						incompleteObjects.push(element);
-					}
-					if (a2_0 != null) {
-						if (a2_0 != null) {
-							Object value = a2_0;
-							addObjectToList(element, edap.EdapPackage.PORT__ANNOTATIONS, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_3_0_0_0, a2_0, true);
-						copyLocalizationInfos(a2_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 278);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 278);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 278);
-			}
-			
-		)
-		
-	)*	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_27, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_6);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_28, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_11, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_12, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_3);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_20, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_21, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_22, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_23, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_4);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 279);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_30, 279);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_1, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_2, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_3, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_4, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_5, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_6, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_7, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_5);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_32, 279);
-	}
-	
-;
-
-parse_edap_CreateAction returns [edap.CreateAction element = null]
-@init{
-}
-:
-	a0 = 'create' {
+	a2 = '=' {
 		if (element == null) {
-			element = edap.EdapFactory.eINSTANCE.createCreateAction();
+			element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_0, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_4, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 263, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_22);
 	}
 	
 	(
-		a1_0 = parse_edap_ComponentReference		{
+		a3_0 = parse_edap_Expression		{
 			if (terminateParsing) {
 				throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 			}
 			if (element == null) {
-				element = edap.EdapFactory.eINSTANCE.createCreateAction();
+				element = edap.EdapFactory.eINSTANCE.createPropertyAssignment();
 				incompleteObjects.push(element);
 			}
-			if (a1_0 != null) {
-				if (a1_0 != null) {
-					Object value = a1_0;
-					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.CREATE_ACTION__REF), value);
+			if (a3_0 != null) {
+				if (a3_0 != null) {
+					Object value = a3_0;
+					element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__EXPRESSION), value);
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_1, a1_0, true);
-				copyLocalizationInfos(a1_0, element);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_20_0_0_6, a3_0, true);
+				copyLocalizationInfos(a3_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 281);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 281);
-	}
-	
-	(
-		(
-			(
-				a2_0 = parse_edap_PlatformAnnotation				{
-					if (terminateParsing) {
-						throw new edap.resource.edap.mopp.EdapTerminateParsingException();
-					}
-					if (element == null) {
-						element = edap.EdapFactory.eINSTANCE.createCreateAction();
-						incompleteObjects.push(element);
-					}
-					if (a2_0 != null) {
-						if (a2_0 != null) {
-							Object value = a2_0;
-							addObjectToList(element, edap.EdapPackage.CREATE_ACTION__ANNOTATIONS, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_2_0_0_0, a2_0, true);
-						copyLocalizationInfos(a2_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 282);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 282);
-			}
-			
-		)
-		
-	)*	{
-		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_18, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_2);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 283);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 264);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 264, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 264);
 	}
 	
 ;
@@ -8579,22 +7814,21 @@ parse_edap_ActionBlock returns [edap.ActionBlock element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_25_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 284);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 265, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 265);
 	}
 	
 	(
@@ -8615,41 +7849,39 @@ parse_edap_ActionBlock returns [edap.ActionBlock element = null]
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_25_0_0_1_0_0_1, a1_0, true);
+						retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21_0_0_1_0_0_1, a1_0, true);
 						copyLocalizationInfos(a1_0, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 285);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 266, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+				addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 266);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 286);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 267, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 267);
 	}
 	
 	a2 = '}' {
@@ -8658,33 +7890,32 @@ parse_edap_ActionBlock returns [edap.ActionBlock element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_25_0_0_3, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_21_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 287);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 287);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 268);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 268, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 268);
 	}
 	
 ;
@@ -8719,35 +7950,34 @@ parse_edap_ExternStatement returns [edap.ExternStatement element = null]
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_26_0_0_0, resolved, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_22_0_0_0, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 288);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 288);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 269);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 269, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 269);
 	}
 	
 ;
@@ -8762,12 +7992,12 @@ parse_edap_ConditionalAction returns [edap.ConditionalAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_183, 289);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_174, 270);
 	}
 	
 	a1 = '(' {
@@ -8776,20 +8006,20 @@ parse_edap_ConditionalAction returns [edap.ConditionalAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_2, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a1, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 271, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
 	}
 	
 	(
@@ -8808,14 +8038,14 @@ parse_edap_ConditionalAction returns [edap.ConditionalAction element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_4, a2_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_4, a2_0, true);
 				copyLocalizationInfos(a2_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_184, 291);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_175, 272);
 	}
 	
 	a3 = ')' {
@@ -8824,21 +8054,20 @@ parse_edap_ConditionalAction returns [edap.ConditionalAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_6, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_6, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a3, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 273, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
 	}
 	
 	(
@@ -8857,35 +8086,34 @@ parse_edap_ConditionalAction returns [edap.ConditionalAction element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_8, a4_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_23_0_0_8, a4_0, true);
 				copyLocalizationInfos(a4_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 293);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 293);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 274);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 274, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 274);
 	}
 	
 ;
@@ -8900,12 +8128,12 @@ parse_edap_LoopAction returns [edap.LoopAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_185, 294);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_176, 275);
 	}
 	
 	a1 = '(' {
@@ -8914,20 +8142,20 @@ parse_edap_LoopAction returns [edap.LoopAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_2, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a1, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 276, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_23);
 	}
 	
 	(
@@ -8946,14 +8174,14 @@ parse_edap_LoopAction returns [edap.LoopAction element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_4, a2_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_4, a2_0, true);
 				copyLocalizationInfos(a2_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_186, 296);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_177, 277);
 	}
 	
 	a3 = ')' {
@@ -8962,21 +8190,20 @@ parse_edap_LoopAction returns [edap.LoopAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_6, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_6, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a3, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 278, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_24);
 	}
 	
 	(
@@ -8995,35 +8222,34 @@ parse_edap_LoopAction returns [edap.LoopAction element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_8, a4_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_24_0_0_8, a4_0, true);
 				copyLocalizationInfos(a4_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 298);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 298);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 279);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 279, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 279);
 	}
 	
 ;
@@ -9038,20 +8264,20 @@ parse_edap_PrintAction returns [edap.PrintAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_29_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_25_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 280, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_25);
 	}
 	
 	(
@@ -9070,35 +8296,34 @@ parse_edap_PrintAction returns [edap.PrintAction element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_29_0_0_2, a1_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_25_0_0_2, a1_0, true);
 				copyLocalizationInfos(a1_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 300);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 300, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 300);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 281);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 281, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 281);
 	}
 	
 ;
@@ -9113,20 +8338,20 @@ parse_edap_ErrorAction returns [edap.ErrorAction element = null]
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_30_0_0_0, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_26_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 282, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_26);
 	}
 	
 	(
@@ -9145,35 +8370,34 @@ parse_edap_ErrorAction returns [edap.ErrorAction element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_30_0_0_2, a1_0, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_26_0_0_2, a1_0, true);
 				copyLocalizationInfos(a1_0, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 302);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 302);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 283);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 283, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 283);
 	}
 	
 ;
@@ -9191,20 +8415,20 @@ parseop_Expression_level_1 returns [edap.Expression element = null]
 				incompleteObjects.push(element);
 			}
 			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31_0_0_2, null, true);
+			retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_2, null, true);
 			copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 		}
 		{
 			// expected elements (follow set)
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+			addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 284, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 		}
 		
 		rightArg = parseop_Expression_level_2		{
@@ -9222,7 +8446,7 @@ parseop_Expression_level_1 returns [edap.Expression element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31_0_0_0, leftArg, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_0, leftArg, true);
 				copyLocalizationInfos(leftArg, element);
 			}
 		}
@@ -9241,7 +8465,7 @@ parseop_Expression_level_1 returns [edap.Expression element = null]
 					completedElement(value, true);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31_0_0_4, rightArg, true);
+				retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_27_0_0_4, rightArg, true);
 				copyLocalizationInfos(rightArg, element);
 			}
 		}
@@ -9264,20 +8488,20 @@ leftArg = parseop_Expression_level_3((
 			incompleteObjects.push(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32_0_0_2, null, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+		addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 285, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 	}
 	
 	rightArg = parseop_Expression_level_3	{
@@ -9295,7 +8519,7 @@ leftArg = parseop_Expression_level_3((
 				completedElement(value, true);
 			}
 			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32_0_0_0, leftArg, true);
+			retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_0, leftArg, true);
 			copyLocalizationInfos(leftArg, element);
 		}
 	}
@@ -9314,7 +8538,7 @@ leftArg = parseop_Expression_level_3((
 				completedElement(value, true);
 			}
 			collectHiddenTokens(element);
-			retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32_0_0_4, rightArg, true);
+			retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_28_0_0_4, rightArg, true);
 			copyLocalizationInfos(rightArg, element);
 		}
 	}
@@ -9337,20 +8561,20 @@ a0 = '<' {
 		incompleteObjects.push(element);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33_0_0_2, null, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_29_0_0_2, null, true);
 	copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 	// expected elements (follow set)
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 286, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_4{
@@ -9368,7 +8592,7 @@ rightArg = parseop_Expression_level_4{
 			completedElement(value, true);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33_0_0_0, leftArg, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_29_0_0_0, leftArg, true);
 		copyLocalizationInfos(leftArg, element);
 	}
 }
@@ -9387,7 +8611,7 @@ rightArg = parseop_Expression_level_4{
 			completedElement(value, true);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33_0_0_4, rightArg, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_29_0_0_4, rightArg, true);
 		copyLocalizationInfos(rightArg, element);
 	}
 }
@@ -9401,20 +8625,20 @@ a0 = '>' {
 		incompleteObjects.push(element);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34_0_0_2, null, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_30_0_0_2, null, true);
 	copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 	// expected elements (follow set)
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 287, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_4{
@@ -9432,7 +8656,7 @@ rightArg = parseop_Expression_level_4{
 			completedElement(value, true);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34_0_0_0, leftArg, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_30_0_0_0, leftArg, true);
 		copyLocalizationInfos(leftArg, element);
 	}
 }
@@ -9451,7 +8675,7 @@ rightArg = parseop_Expression_level_4{
 			completedElement(value, true);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34_0_0_4, rightArg, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_30_0_0_4, rightArg, true);
 		copyLocalizationInfos(rightArg, element);
 	}
 }
@@ -9465,20 +8689,20 @@ a0 = '==' {
 		incompleteObjects.push(element);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35_0_0_2, null, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31_0_0_2, null, true);
 	copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 	// expected elements (follow set)
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 307, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+	addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 288, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_4{
@@ -9496,7 +8720,7 @@ rightArg = parseop_Expression_level_4{
 			completedElement(value, true);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35_0_0_0, leftArg, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31_0_0_0, leftArg, true);
 		copyLocalizationInfos(leftArg, element);
 	}
 }
@@ -9515,7 +8739,7 @@ rightArg = parseop_Expression_level_4{
 			completedElement(value, true);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35_0_0_4, rightArg, true);
+		retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_31_0_0_4, rightArg, true);
 		copyLocalizationInfos(rightArg, element);
 	}
 }
@@ -9538,20 +8762,20 @@ if (element == null) {
 	incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36_0_0_2, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32_0_0_2, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 308, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 289, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_5{
@@ -9569,7 +8793,7 @@ if (leftArg != null) {
 		completedElement(value, true);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36_0_0_0, leftArg, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32_0_0_0, leftArg, true);
 	copyLocalizationInfos(leftArg, element);
 }
 }
@@ -9588,7 +8812,7 @@ if (rightArg != null) {
 		completedElement(value, true);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36_0_0_4, rightArg, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_32_0_0_4, rightArg, true);
 	copyLocalizationInfos(rightArg, element);
 }
 }
@@ -9602,20 +8826,20 @@ if (element == null) {
 	incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_37_0_0_2, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33_0_0_2, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 309, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 290, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_5{
@@ -9633,7 +8857,7 @@ if (leftArg != null) {
 		completedElement(value, true);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_37_0_0_0, leftArg, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33_0_0_0, leftArg, true);
 	copyLocalizationInfos(leftArg, element);
 }
 }
@@ -9652,7 +8876,7 @@ if (rightArg != null) {
 		completedElement(value, true);
 	}
 	collectHiddenTokens(element);
-	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_37_0_0_4, rightArg, true);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_33_0_0_4, rightArg, true);
 	copyLocalizationInfos(rightArg, element);
 }
 }
@@ -9675,20 +8899,20 @@ element = edap.EdapFactory.eINSTANCE.createTimesExpression();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_38_0_0_2, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34_0_0_2, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 310, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 291, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_6{
@@ -9706,7 +8930,7 @@ if (leftArg != null) {
 	completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_38_0_0_0, leftArg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34_0_0_0, leftArg, true);
 copyLocalizationInfos(leftArg, element);
 }
 }
@@ -9725,7 +8949,7 @@ if (rightArg != null) {
 	completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_38_0_0_4, rightArg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_34_0_0_4, rightArg, true);
 copyLocalizationInfos(rightArg, element);
 }
 }
@@ -9739,20 +8963,20 @@ element = edap.EdapFactory.eINSTANCE.createDivExpression();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39_0_0_2, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35_0_0_2, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 311, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 292, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_6{
@@ -9770,7 +8994,7 @@ if (leftArg != null) {
 	completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39_0_0_0, leftArg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35_0_0_0, leftArg, true);
 copyLocalizationInfos(leftArg, element);
 }
 }
@@ -9789,7 +9013,7 @@ if (rightArg != null) {
 	completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39_0_0_4, rightArg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_35_0_0_4, rightArg, true);
 copyLocalizationInfos(rightArg, element);
 }
 }
@@ -9803,20 +9027,20 @@ element = edap.EdapFactory.eINSTANCE.createModExpression();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40_0_0_2, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36_0_0_2, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 312, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 293, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_27);
 }
 
 rightArg = parseop_Expression_level_6{
@@ -9834,7 +9058,7 @@ if (leftArg != null) {
 	completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40_0_0_0, leftArg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36_0_0_0, leftArg, true);
 copyLocalizationInfos(leftArg, element);
 }
 }
@@ -9853,7 +9077,7 @@ if (rightArg != null) {
 	completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40_0_0_4, rightArg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_36_0_0_4, rightArg, true);
 copyLocalizationInfos(rightArg, element);
 }
 }
@@ -9873,23 +9097,23 @@ element = edap.EdapFactory.eINSTANCE.createUnaryMinus();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_41_0_0_0, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_37_0_0_0, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 313, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 294, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
 }
 
-arg = parseop_Expression_level_8{
+arg = parseop_Expression_level_7{
 if (terminateParsing) {
 throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 }
@@ -9904,7 +9128,7 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.UNARY_MINUS
 completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_41_0_0_2, arg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_37_0_0_2, arg, true);
 copyLocalizationInfos(arg, element);
 }
 }
@@ -9915,23 +9139,23 @@ element = edap.EdapFactory.eINSTANCE.createNotExpression();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_42_0_0_0, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_38_0_0_0, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 314, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_30);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 295, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_28);
 }
 
-arg = parseop_Expression_level_8{
+arg = parseop_Expression_level_7{
 if (terminateParsing) {
 throw new edap.resource.edap.mopp.EdapTerminateParsingException();
 }
@@ -9946,13 +9170,175 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.NOT_EXPRESS
 completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_42_0_0_2, arg, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_38_0_0_2, arg, true);
 copyLocalizationInfos(arg, element);
 }
 }
 |
 
-arg = parseop_Expression_level_8{ element = arg; }
+arg = parseop_Expression_level_7{ element = arg; }
+;
+
+parseop_Expression_level_7 returns [edap.Expression element = null]
+@init{
+}
+:
+arg = parseop_Expression_level_8(
+(
+a0 = '.' {
+if (element == null) {
+element = edap.EdapFactory.eINSTANCE.createPropertyNavigation();
+incompleteObjects.push(element);
+}
+collectHiddenTokens(element);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39_0_0_2_0_0_0, null, true);
+copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
+}
+{
+// expected elements (follow set)
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_178, 296);
+}
+
+(
+a1 = TEXT
+{
+if (terminateParsing) {
+	throw new edap.resource.edap.mopp.EdapTerminateParsingException();
+}
+if (element == null) {
+	element = edap.EdapFactory.eINSTANCE.createPropertyNavigation();
+	incompleteObjects.push(element);
+}
+if (a1 != null) {
+	edap.resource.edap.IEdapTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
+	tokenResolver.setOptions(getOptions());
+	edap.resource.edap.IEdapTokenResolveResult result = getFreshTokenResolveResult();
+	tokenResolver.resolve(a1.getText(), element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY), result);
+	Object resolvedObject = result.getResolvedToken();
+	if (resolvedObject == null) {
+		addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_2_0.CommonToken) a1).getLine(), ((org.antlr.runtime3_2_0.CommonToken) a1).getCharPositionInLine(), ((org.antlr.runtime3_2_0.CommonToken) a1).getStartIndex(), ((org.antlr.runtime3_2_0.CommonToken) a1).getStopIndex());
+	}
+	String resolved = (String) resolvedObject;
+	edap.Property proxy = edap.EdapFactory.eINSTANCE.createProperty();
+	collectHiddenTokens(element);
+	registerContextDependentProxy(new edap.resource.edap.mopp.EdapContextDependentURIFragmentFactory<edap.PropertyNavigation, edap.Property>(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropertyNavigationPropertyReferenceResolver()), element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY), resolved, proxy);
+	if (proxy != null) {
+		Object value = proxy;
+		element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY), value);
+		completedElement(value, false);
+	}
+	collectHiddenTokens(element);
+	retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39_0_0_2_0_0_2, proxy, true);
+	copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, element);
+	copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a1, proxy);
+}
+}
+)
+{
+// expected elements (follow set)
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 297, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 297);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 297);
+}
+
+)
+{
+// expected elements (follow set)
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 298, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 298);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 298);
+}
+
+{
+if (terminateParsing) {
+throw new edap.resource.edap.mopp.EdapTerminateParsingException();
+}
+if (element == null) {
+element = edap.EdapFactory.eINSTANCE.createPropertyNavigation();
+incompleteObjects.push(element);
+}
+if (arg != null) {
+if (arg != null) {
+Object value = arg;
+element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__TARGET), value);
+completedElement(value, true);
+}
+collectHiddenTokens(element);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_39_0_0_0, arg, true);
+copyLocalizationInfos(arg, element);
+}
+}
+|
+/* epsilon */ { element = arg; } 
+)
 ;
 
 parseop_Expression_level_8 returns [edap.Expression element = null]
@@ -9977,20 +9363,20 @@ element = edap.EdapFactory.eINSTANCE.createExpressionGroup();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_43_0_0_0, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40_0_0_0, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a0, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 315, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_17, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_31);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_127, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 299, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_16, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_15, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_29);
 }
 
 (
@@ -10009,14 +9395,14 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.EXPRESSION_
 completedElement(value, true);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_43_0_0_1, a1_0, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40_0_0_1, a1_0, true);
 copyLocalizationInfos(a1_0, element);
 }
 }
 )
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 316);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 300);
 }
 
 a2 = ')' {
@@ -10025,47 +9411,48 @@ element = edap.EdapFactory.eINSTANCE.createExpressionGroup();
 incompleteObjects.push(element);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_43_0_0_2, null, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_40_0_0_2, null, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken)a2, element);
 }
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 317, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 317);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 317);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 301, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 301);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 301);
 }
 
 ;
@@ -10103,7 +9490,7 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_RE
 completedElement(value, false);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_44_0_0_0, proxy, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_41_0_0_0, proxy, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, proxy);
 }
@@ -10111,42 +9498,43 @@ copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, proxy);
 )
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 318, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 318);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 318);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 302, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 302);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 302);
 }
 
 ;
@@ -10181,49 +9569,50 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.INTEGER_LIT
 completedElement(value, false);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_45_0_0_0, resolved, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_42_0_0_0, resolved, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
 }
 }
 )
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 319, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 319);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 319);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 303, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 303);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 303);
 }
 
 ;
@@ -10258,49 +9647,50 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.STRING_LITT
 completedElement(value, false);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_46_0_0_0, resolved, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_43_0_0_0, resolved, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
 }
 }
 )
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 320, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 320);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 320);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 304, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 304);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 304);
 }
 
 ;
@@ -10335,49 +9725,50 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.BOOLEAN_LIT
 completedElement(value, false);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_47_0_0_0, resolved, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_44_0_0_0, resolved, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
 }
 }
 )
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 321, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 321);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 321);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 305, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 305);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 305);
 }
 
 ;
@@ -10412,49 +9803,50 @@ element.eSet(element.eClass().getEStructuralFeature(edap.EdapPackage.EXTERN_EXPR
 completedElement(value, false);
 }
 collectHiddenTokens(element);
-retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_48_0_0_0, resolved, true);
+retrieveLayoutInformation(element, edap.resource.edap.grammar.EdapGrammarInformationProvider.EDAP_45_0_0_0, resolved, true);
 copyLocalizationInfos((org.antlr.runtime3_2_0.CommonToken) a0, element);
 }
 }
 )
 {
 // expected elements (follow set)
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_31, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_69, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_9);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_73, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_10);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_76, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_77, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_110, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_111, 322, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_13);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_112, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_147, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_148, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_149, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_150, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_151, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_152, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_153, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_154, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_155, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_156, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_157, 322);
-addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_158, 322);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_131, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_132, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_133, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_99, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_134, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_65, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_29, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_66, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_67, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_7);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_68, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_70, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_71, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_8);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_72, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_74, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_75, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_100, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_101, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_102, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_103, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_104, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_105, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_106, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_107, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_108, 306, edap.resource.edap.grammar.EdapFollowSetProvider.FEATURE_11);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_109, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_135, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_136, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_137, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_138, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_139, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_140, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_141, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_142, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_143, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_144, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_145, 306);
+addExpectedElement(edap.resource.edap.grammar.EdapFollowSetProvider.TERMINAL_146, 306);
 }
 
 ;
@@ -10479,16 +9871,15 @@ c0 = parse_edap_Device{ element = c0; /* this is a subclass or primitive express
 
 parse_edap_Action returns [edap.Action element = null]
 :
-c0 = parse_edap_PropertyAssignment{ element = c0; /* this is a subclass or primitive expression choice */ }
-|c1 = parse_edap_Unicast{ element = c1; /* this is a subclass or primitive expression choice */ }
-|c2 = parse_edap_Broadcast{ element = c2; /* this is a subclass or primitive expression choice */ }
-|c3 = parse_edap_CreateAction{ element = c3; /* this is a subclass or primitive expression choice */ }
-|c4 = parse_edap_ActionBlock{ element = c4; /* this is a subclass or primitive expression choice */ }
-|c5 = parse_edap_ExternStatement{ element = c5; /* this is a subclass or primitive expression choice */ }
-|c6 = parse_edap_ConditionalAction{ element = c6; /* this is a subclass or primitive expression choice */ }
-|c7 = parse_edap_LoopAction{ element = c7; /* this is a subclass or primitive expression choice */ }
-|c8 = parse_edap_PrintAction{ element = c8; /* this is a subclass or primitive expression choice */ }
-|c9 = parse_edap_ErrorAction{ element = c9; /* this is a subclass or primitive expression choice */ }
+c0 = parse_edap_Unicast{ element = c0; /* this is a subclass or primitive expression choice */ }
+|c1 = parse_edap_Broadcast{ element = c1; /* this is a subclass or primitive expression choice */ }
+|c2 = parse_edap_PropertyAssignment{ element = c2; /* this is a subclass or primitive expression choice */ }
+|c3 = parse_edap_ActionBlock{ element = c3; /* this is a subclass or primitive expression choice */ }
+|c4 = parse_edap_ExternStatement{ element = c4; /* this is a subclass or primitive expression choice */ }
+|c5 = parse_edap_ConditionalAction{ element = c5; /* this is a subclass or primitive expression choice */ }
+|c6 = parse_edap_LoopAction{ element = c6; /* this is a subclass or primitive expression choice */ }
+|c7 = parse_edap_PrintAction{ element = c7; /* this is a subclass or primitive expression choice */ }
+|c8 = parse_edap_ErrorAction{ element = c8; /* this is a subclass or primitive expression choice */ }
 
 ;
 

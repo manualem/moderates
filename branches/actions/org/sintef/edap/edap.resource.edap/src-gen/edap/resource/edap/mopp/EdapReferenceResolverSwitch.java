@@ -16,16 +16,14 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 	protected edap.resource.edap.analysis.DictionaryIndexTypeReferenceResolver dictionaryIndexTypeReferenceResolver = new edap.resource.edap.analysis.DictionaryIndexTypeReferenceResolver();
 	protected edap.resource.edap.analysis.ParameterTypeReferenceResolver parameterTypeReferenceResolver = new edap.resource.edap.analysis.ParameterTypeReferenceResolver();
 	protected edap.resource.edap.analysis.CompositeStateInitialReferenceResolver compositeStateInitialReferenceResolver = new edap.resource.edap.analysis.CompositeStateInitialReferenceResolver();
-	protected edap.resource.edap.analysis.PropertyAssignmentPropertyReferenceResolver propertyAssignmentPropertyReferenceResolver = new edap.resource.edap.analysis.PropertyAssignmentPropertyReferenceResolver();
-	protected edap.resource.edap.analysis.ComponentReferenceComponentReferenceResolver componentReferenceComponentReferenceResolver = new edap.resource.edap.analysis.ComponentReferenceComponentReferenceResolver();
 	protected edap.resource.edap.analysis.EventReferenceMsgRefReferenceResolver eventReferenceMsgRefReferenceResolver = new edap.resource.edap.analysis.EventReferenceMsgRefReferenceResolver();
 	protected edap.resource.edap.analysis.EventReferenceParamRefReferenceResolver eventReferenceParamRefReferenceResolver = new edap.resource.edap.analysis.EventReferenceParamRefReferenceResolver();
 	protected edap.resource.edap.analysis.SendActionMessageReferenceResolver sendActionMessageReferenceResolver = new edap.resource.edap.analysis.SendActionMessageReferenceResolver();
 	protected edap.resource.edap.analysis.SendActionPortReferenceResolver sendActionPortReferenceResolver = new edap.resource.edap.analysis.SendActionPortReferenceResolver();
 	protected edap.resource.edap.analysis.TransitionTargetReferenceResolver transitionTargetReferenceResolver = new edap.resource.edap.analysis.TransitionTargetReferenceResolver();
 	protected edap.resource.edap.analysis.ReceiveMessageMessageReferenceResolver receiveMessageMessageReferenceResolver = new edap.resource.edap.analysis.ReceiveMessageMessageReferenceResolver();
-	protected edap.resource.edap.analysis.ConnectorPort1ReferenceResolver connectorPort1ReferenceResolver = new edap.resource.edap.analysis.ConnectorPort1ReferenceResolver();
-	protected edap.resource.edap.analysis.ConnectorPort2ReferenceResolver connectorPort2ReferenceResolver = new edap.resource.edap.analysis.ConnectorPort2ReferenceResolver();
+	protected edap.resource.edap.analysis.PropertyAssignmentPropertyReferenceResolver propertyAssignmentPropertyReferenceResolver = new edap.resource.edap.analysis.PropertyAssignmentPropertyReferenceResolver();
+	protected edap.resource.edap.analysis.PropertyNavigationPropertyReferenceResolver propertyNavigationPropertyReferenceResolver = new edap.resource.edap.analysis.PropertyNavigationPropertyReferenceResolver();
 	protected edap.resource.edap.analysis.PropertyReferencePropertyReferenceResolver propertyReferencePropertyReferenceResolver = new edap.resource.edap.analysis.PropertyReferencePropertyReferenceResolver();
 	
 	public edap.resource.edap.analysis.EdapModelImportsReferenceResolver getEdapModelImportsReferenceResolver() {
@@ -60,14 +58,6 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 		return compositeStateInitialReferenceResolver;
 	}
 	
-	public edap.resource.edap.analysis.PropertyAssignmentPropertyReferenceResolver getPropertyAssignmentPropertyReferenceResolver() {
-		return propertyAssignmentPropertyReferenceResolver;
-	}
-	
-	public edap.resource.edap.analysis.ComponentReferenceComponentReferenceResolver getComponentReferenceComponentReferenceResolver() {
-		return componentReferenceComponentReferenceResolver;
-	}
-	
 	public edap.resource.edap.analysis.EventReferenceMsgRefReferenceResolver getEventReferenceMsgRefReferenceResolver() {
 		return eventReferenceMsgRefReferenceResolver;
 	}
@@ -92,12 +82,12 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 		return receiveMessageMessageReferenceResolver;
 	}
 	
-	public edap.resource.edap.analysis.ConnectorPort1ReferenceResolver getConnectorPort1ReferenceResolver() {
-		return connectorPort1ReferenceResolver;
+	public edap.resource.edap.analysis.PropertyAssignmentPropertyReferenceResolver getPropertyAssignmentPropertyReferenceResolver() {
+		return propertyAssignmentPropertyReferenceResolver;
 	}
 	
-	public edap.resource.edap.analysis.ConnectorPort2ReferenceResolver getConnectorPort2ReferenceResolver() {
-		return connectorPort2ReferenceResolver;
+	public edap.resource.edap.analysis.PropertyNavigationPropertyReferenceResolver getPropertyNavigationPropertyReferenceResolver() {
+		return propertyNavigationPropertyReferenceResolver;
 	}
 	
 	public edap.resource.edap.analysis.PropertyReferencePropertyReferenceResolver getPropertyReferencePropertyReferenceResolver() {
@@ -113,16 +103,14 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 		dictionaryIndexTypeReferenceResolver.setOptions(options);
 		parameterTypeReferenceResolver.setOptions(options);
 		compositeStateInitialReferenceResolver.setOptions(options);
-		propertyAssignmentPropertyReferenceResolver.setOptions(options);
-		componentReferenceComponentReferenceResolver.setOptions(options);
 		eventReferenceMsgRefReferenceResolver.setOptions(options);
 		eventReferenceParamRefReferenceResolver.setOptions(options);
 		sendActionMessageReferenceResolver.setOptions(options);
 		sendActionPortReferenceResolver.setOptions(options);
 		transitionTargetReferenceResolver.setOptions(options);
 		receiveMessageMessageReferenceResolver.setOptions(options);
-		connectorPort1ReferenceResolver.setOptions(options);
-		connectorPort2ReferenceResolver.setOptions(options);
+		propertyAssignmentPropertyReferenceResolver.setOptions(options);
+		propertyNavigationPropertyReferenceResolver.setOptions(options);
 		propertyReferencePropertyReferenceResolver.setOptions(options);
 	}
 	
@@ -194,22 +182,6 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 				compositeStateInitialReferenceResolver.resolve(identifier, (edap.CompositeState) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
 			}
 		}
-		if (edap.EdapPackage.eINSTANCE.getPropertyAssignment().isInstance(container)) {
-			EdapFuzzyResolveResult<edap.Property> frr = new EdapFuzzyResolveResult<edap.Property>(result);
-			String referenceName = reference.getName();
-			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
-			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("property")) {
-				propertyAssignmentPropertyReferenceResolver.resolve(identifier, (edap.PropertyAssignment) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
-			}
-		}
-		if (edap.EdapPackage.eINSTANCE.getComponentReference().isInstance(container)) {
-			EdapFuzzyResolveResult<edap.Component> frr = new EdapFuzzyResolveResult<edap.Component>(result);
-			String referenceName = reference.getName();
-			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
-			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("component")) {
-				componentReferenceComponentReferenceResolver.resolve(identifier, (edap.ComponentReference) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
-			}
-		}
 		if (edap.EdapPackage.eINSTANCE.getEventReference().isInstance(container)) {
 			EdapFuzzyResolveResult<edap.ReceiveMessage> frr = new EdapFuzzyResolveResult<edap.ReceiveMessage>(result);
 			String referenceName = reference.getName();
@@ -258,20 +230,20 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 				receiveMessageMessageReferenceResolver.resolve(identifier, (edap.ReceiveMessage) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
 			}
 		}
-		if (edap.EdapPackage.eINSTANCE.getConnector().isInstance(container)) {
-			EdapFuzzyResolveResult<edap.Port> frr = new EdapFuzzyResolveResult<edap.Port>(result);
+		if (edap.EdapPackage.eINSTANCE.getPropertyAssignment().isInstance(container)) {
+			EdapFuzzyResolveResult<edap.Property> frr = new EdapFuzzyResolveResult<edap.Property>(result);
 			String referenceName = reference.getName();
 			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
-			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("port1")) {
-				connectorPort1ReferenceResolver.resolve(identifier, (edap.Connector) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
+			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("property")) {
+				propertyAssignmentPropertyReferenceResolver.resolve(identifier, (edap.PropertyAssignment) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
 			}
 		}
-		if (edap.EdapPackage.eINSTANCE.getConnector().isInstance(container)) {
-			EdapFuzzyResolveResult<edap.Port> frr = new EdapFuzzyResolveResult<edap.Port>(result);
+		if (edap.EdapPackage.eINSTANCE.getPropertyNavigation().isInstance(container)) {
+			EdapFuzzyResolveResult<edap.Property> frr = new EdapFuzzyResolveResult<edap.Property>(result);
 			String referenceName = reference.getName();
 			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
-			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("port2")) {
-				connectorPort2ReferenceResolver.resolve(identifier, (edap.Connector) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
+			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("property")) {
+				propertyNavigationPropertyReferenceResolver.resolve(identifier, (edap.PropertyNavigation) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
 			}
 		}
 		if (edap.EdapPackage.eINSTANCE.getPropertyReference().isInstance(container)) {
@@ -309,12 +281,6 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 		if (reference == edap.EdapPackage.eINSTANCE.getCompositeState_Initial()) {
 			return compositeStateInitialReferenceResolver;
 		}
-		if (reference == edap.EdapPackage.eINSTANCE.getPropertyAssignment_Property()) {
-			return propertyAssignmentPropertyReferenceResolver;
-		}
-		if (reference == edap.EdapPackage.eINSTANCE.getComponentReference_Component()) {
-			return componentReferenceComponentReferenceResolver;
-		}
 		if (reference == edap.EdapPackage.eINSTANCE.getEventReference_MsgRef()) {
 			return eventReferenceMsgRefReferenceResolver;
 		}
@@ -333,11 +299,11 @@ public class EdapReferenceResolverSwitch implements edap.resource.edap.IEdapRefe
 		if (reference == edap.EdapPackage.eINSTANCE.getReceiveMessage_Message()) {
 			return receiveMessageMessageReferenceResolver;
 		}
-		if (reference == edap.EdapPackage.eINSTANCE.getConnector_Port1()) {
-			return connectorPort1ReferenceResolver;
+		if (reference == edap.EdapPackage.eINSTANCE.getPropertyAssignment_Property()) {
+			return propertyAssignmentPropertyReferenceResolver;
 		}
-		if (reference == edap.EdapPackage.eINSTANCE.getConnector_Port2()) {
-			return connectorPort2ReferenceResolver;
+		if (reference == edap.EdapPackage.eINSTANCE.getPropertyNavigation_Property()) {
+			return propertyNavigationPropertyReferenceResolver;
 		}
 		if (reference == edap.EdapPackage.eINSTANCE.getPropertyReference_Property()) {
 			return propertyReferencePropertyReferenceResolver;

@@ -99,14 +99,6 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 			print_edap_CompositeState((edap.CompositeState) element, globaltab, out);
 			return;
 		}
-		if (element instanceof edap.PropertyAssignment) {
-			print_edap_PropertyAssignment((edap.PropertyAssignment) element, globaltab, out);
-			return;
-		}
-		if (element instanceof edap.ComponentReference) {
-			print_edap_ComponentReference((edap.ComponentReference) element, globaltab, out);
-			return;
-		}
 		if (element instanceof edap.EventReference) {
 			print_edap_EventReference((edap.EventReference) element, globaltab, out);
 			return;
@@ -127,16 +119,8 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 			print_edap_ReceiveMessage((edap.ReceiveMessage) element, globaltab, out);
 			return;
 		}
-		if (element instanceof edap.Connector) {
-			print_edap_Connector((edap.Connector) element, globaltab, out);
-			return;
-		}
-		if (element instanceof edap.Port) {
-			print_edap_Port((edap.Port) element, globaltab, out);
-			return;
-		}
-		if (element instanceof edap.CreateAction) {
-			print_edap_CreateAction((edap.CreateAction) element, globaltab, out);
+		if (element instanceof edap.PropertyAssignment) {
+			print_edap_PropertyAssignment((edap.PropertyAssignment) element, globaltab, out);
 			return;
 		}
 		if (element instanceof edap.ActionBlock) {
@@ -209,6 +193,10 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 		}
 		if (element instanceof edap.NotExpression) {
 			print_edap_NotExpression((edap.NotExpression) element, globaltab, out);
+			return;
+		}
+		if (element instanceof edap.PropertyNavigation) {
+			print_edap_PropertyNavigation((edap.PropertyNavigation) element, globaltab, out);
 			return;
 		}
 		if (element instanceof edap.ExpressionGroup) {
@@ -1204,78 +1192,30 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 		int count;
 		int alt = -1;
 		alt = 0;
-		int matches = 		matchCount(printCountingMap, java.util.Arrays.asList(		"ports"		));
+		int matches = 		matchCount(printCountingMap, java.util.Arrays.asList(		"messages"		));
 		int tempMatchCount;
-		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"connectors"		));
+		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"properties"		));
 		if (tempMatchCount > matches) {
 			alt = 1;
 			matches = tempMatchCount;
 		}
-		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"messages"		));
+		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"receives"		));
 		if (tempMatchCount > matches) {
 			alt = 2;
 			matches = tempMatchCount;
 		}
-		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"properties"		));
+		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"sends"		));
 		if (tempMatchCount > matches) {
 			alt = 3;
 			matches = tempMatchCount;
 		}
-		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"receives"		));
+		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"compositeComponent"		));
 		if (tempMatchCount > matches) {
 			alt = 4;
 			matches = tempMatchCount;
 		}
-		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"sends"		));
-		if (tempMatchCount > matches) {
-			alt = 5;
-			matches = tempMatchCount;
-		}
-		tempMatchCount = 		matchCount(printCountingMap, java.util.Arrays.asList(		"compositeComponent"		));
-		if (tempMatchCount > matches) {
-			alt = 6;
-			matches = tempMatchCount;
-		}
 		switch(alt) {
 			case 1:			{
-				// DEFINITION PART BEGINS (Containment)
-				count = printCountingMap.get("connectors");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__CONNECTORS));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("connectors", count - 1);
-				}
-			}
-			break;
-			case 2:			{
-				// DEFINITION PART BEGINS (Containment)
-				count = printCountingMap.get("messages");
-				if (count > 0) {
-					Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__MESSAGES));
-					java.util.List<?> list = (java.util.List<?>) o;
-					int index = list.size() - count;
-					if (index >= 0) {
-						o = list.get(index);
-					} else {
-						o = null;
-					}
-					if (o != null) {
-						doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-					}
-					printCountingMap.put("messages", count - 1);
-				}
-			}
-			break;
-			case 3:			{
 				// DEFINITION PART BEGINS (Containment)
 				count = printCountingMap.get("properties");
 				if (count > 0) {
@@ -1294,7 +1234,7 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 				}
 			}
 			break;
-			case 4:			{
+			case 2:			{
 				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
@@ -1340,7 +1280,7 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 				}
 			}
 			break;
-			case 5:			{
+			case 3:			{
 				boolean iterate = true;
 				java.io.StringWriter sWriter = null;
 				java.io.PrintWriter out1 = null;
@@ -1386,15 +1326,15 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 				}
 			}
 			break;
-			case 6:			{
+			case 4:			{
 				// DEFINITION PART BEGINS (CompoundDefinition)
 				print_edap_SoftwareComponent_3_2(element, localtab, out, printCountingMap);
 			}
 			break;
 			default:			// DEFINITION PART BEGINS (Containment)
-			count = printCountingMap.get("ports");
+			count = printCountingMap.get("messages");
 			if (count > 0) {
-				Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__PORTS));
+				Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.SOFTWARE_COMPONENT__MESSAGES));
 				java.util.List<?> list = (java.util.List<?>) o;
 				int index = list.size() - count;
 				if (index >= 0) {
@@ -1405,7 +1345,7 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 				if (o != null) {
 					doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 				}
-				printCountingMap.put("ports", count - 1);
+				printCountingMap.put("messages", count - 1);
 			}
 		}
 	}
@@ -3466,84 +3406,6 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 	}
 	
 	
-	public void print_edap_PropertyAssignment(edap.PropertyAssignment element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(4);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__ANNOTATIONS));
-		printCountingMap.put("annotations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY));
-		printCountingMap.put("property", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__EXPRESSION));
-		printCountingMap.put("expression", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		// DEFINITION PART BEGINS (CsString)
-		out.print("set");
-		// DEFINITION PART BEGINS (WhiteSpaces)
-		out.print(" ");
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("property");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY));
-			if (o != null) {
-				edap.resource.edap.IEdapTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropertyAssignmentPropertyReferenceResolver().deResolve((edap.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY)), element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), element));
-			}
-			printCountingMap.put("property", count - 1);
-		}
-		// DEFINITION PART BEGINS (WhiteSpaces)
-		out.print(" ");
-		// DEFINITION PART BEGINS (CsString)
-		out.print("=");
-		// DEFINITION PART BEGINS (WhiteSpaces)
-		out.print(" ");
-		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("expression");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__EXPRESSION));
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("expression", count - 1);
-		}
-	}
-	
-	
-	public void print_edap_ComponentReference(edap.ComponentReference element, String outertab, java.io.PrintWriter out) {
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(1);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT));
-		printCountingMap.put("component", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("component");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT));
-			if (o != null) {
-				edap.resource.edap.IEdapTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getComponentReferenceComponentReferenceResolver().deResolve((edap.Component) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT)), element.eClass().getEStructuralFeature(edap.EdapPackage.COMPONENT_REFERENCE__COMPONENT), element));
-			}
-			printCountingMap.put("component", count - 1);
-		}
-	}
-	
-	
 	public void print_edap_EventReference(edap.EventReference element, String outertab, java.io.PrintWriter out) {
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
@@ -4207,254 +4069,54 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 	}
 	
 	
-	public void print_edap_Connector(edap.Connector element, String outertab, java.io.PrintWriter out) {
+	public void print_edap_PropertyAssignment(edap.PropertyAssignment element, String outertab, java.io.PrintWriter out) {
 		String localtab = outertab;
 		// The printCountingMap contains a mapping from feature names to the number of
 		// remaining elements that still need to be printed. The map is initialized with
 		// the number of elements stored in each structural feature. For lists this is the
 		// list size. For non-multiple features it is either 1 (if the feature is set) or
 		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(7);
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(4);
 		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__NAME));
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__NAME));
 		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__ANNOTATIONS));
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__ANNOTATIONS));
 		printCountingMap.put("annotations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__OWNER));
-		printCountingMap.put("owner", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1));
-		printCountingMap.put("port1", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2));
-		printCountingMap.put("port2", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PROP1));
-		printCountingMap.put("prop1", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PROP2));
-		printCountingMap.put("prop2", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY));
+		printCountingMap.put("property", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__EXPRESSION));
+		printCountingMap.put("expression", temp == null ? 0 : 1);
 		// print collected hidden tokens
 		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.Map<String, Integer> printCountingMap1 = null;
 		// DEFINITION PART BEGINS (CsString)
-		out.print("connector");
-		// DEFINITION PART BEGINS (CsString)
-		out.print("(");
+		out.print("set");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("port1");
+		count = printCountingMap.get("property");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1));
+			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY));
 			if (o != null) {
 				edap.resource.edap.IEdapTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
 				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getConnectorPort1ReferenceResolver().deResolve((edap.Port) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1)), element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT1), element));
+				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropertyAssignmentPropertyReferenceResolver().deResolve((edap.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY)), element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__PROPERTY), element));
 			}
-			printCountingMap.put("port1", count - 1);
+			printCountingMap.put("property", count - 1);
 		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (CsString)
-		out.print(",");
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("port2");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2));
-			if (o != null) {
-				edap.resource.edap.IEdapTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getConnectorPort2ReferenceResolver().deResolve((edap.Port) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2)), element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__PORT2), element));
-			}
-			printCountingMap.put("port2", count - 1);
-		}
-		// DEFINITION PART BEGINS (CsString)
-		out.print(")");
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
-			print_edap_Connector_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-	}
-	
-	public void print_edap_Connector_0(edap.Connector element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		String localtab = outertab;
-		int count;
+		out.print("=");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		out.print(" ");
 		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("annotations");
+		count = printCountingMap.get("expression");
 		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CONNECTOR__ANNOTATIONS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
+			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_ASSIGNMENT__EXPRESSION));
 			if (o != null) {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
-			printCountingMap.put("annotations", count - 1);
-		}
-	}
-	
-	
-	public void print_edap_Port(edap.Port element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__ANNOTATIONS));
-		printCountingMap.put("annotations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__OWNER));
-		printCountingMap.put("owner", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.Map<String, Integer> printCountingMap1 = null;
-		// DEFINITION PART BEGINS (CsString)
-		out.print("port");
-		// DEFINITION PART BEGINS (LineBreak)
-		localtab += "	";
-		out.println();
-		out.print(localtab);
-		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
-		count = printCountingMap.get("name");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__NAME));
-			if (o != null) {
-				edap.resource.edap.IEdapTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
-				resolver.setOptions(getOptions());
-				out.print(resolver.deResolve((Object) o, element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__NAME), element));
-			}
-			printCountingMap.put("name", count - 1);
-		}
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
-			print_edap_Port_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-	}
-	
-	public void print_edap_Port_0(edap.Port element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		String localtab = outertab;
-		int count;
-		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("annotations");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PORT__ANNOTATIONS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("annotations", count - 1);
-		}
-	}
-	
-	
-	public void print_edap_CreateAction(edap.CreateAction element, String outertab, java.io.PrintWriter out) {
-		String localtab = outertab;
-		// The printCountingMap contains a mapping from feature names to the number of
-		// remaining elements that still need to be printed. The map is initialized with
-		// the number of elements stored in each structural feature. For lists this is the
-		// list size. For non-multiple features it is either 1 (if the feature is set) or
-		// 0 (if the feature is null).
-		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(3);
-		Object temp;
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CREATE_ACTION__NAME));
-		printCountingMap.put("name", temp == null ? 0 : 1);
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CREATE_ACTION__ANNOTATIONS));
-		printCountingMap.put("annotations", temp == null ? 0 : ((java.util.Collection<?>) temp).size());
-		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CREATE_ACTION__REF));
-		printCountingMap.put("ref", temp == null ? 0 : 1);
-		// print collected hidden tokens
-		int count;
-		boolean iterate = true;
-		java.io.StringWriter sWriter = null;
-		java.io.PrintWriter out1 = null;
-		java.util.Map<String, Integer> printCountingMap1 = null;
-		// DEFINITION PART BEGINS (CsString)
-		out.print("create");
-		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("ref");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CREATE_ACTION__REF));
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("ref", count - 1);
-		}
-		// DEFINITION PART BEGINS (CompoundDefinition)
-		iterate = true;
-		while (iterate) {
-			sWriter = new java.io.StringWriter();
-			out1 = new java.io.PrintWriter(sWriter);
-			printCountingMap1 = new java.util.LinkedHashMap<String, Integer>(printCountingMap);
-			print_edap_CreateAction_0(element, localtab, out1, printCountingMap1);
-			if (printCountingMap.equals(printCountingMap1)) {
-				iterate = false;
-				out1.close();
-			} else {
-				out1.flush();
-				out1.close();
-				out.print(sWriter.toString());
-				printCountingMap.putAll(printCountingMap1);
-			}
-		}
-	}
-	
-	public void print_edap_CreateAction_0(edap.CreateAction element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
-		String localtab = outertab;
-		int count;
-		// DEFINITION PART BEGINS (Containment)
-		count = printCountingMap.get("annotations");
-		if (count > 0) {
-			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.CREATE_ACTION__ANNOTATIONS));
-			java.util.List<?> list = (java.util.List<?>) o;
-			int index = list.size() - count;
-			if (index >= 0) {
-				o = list.get(index);
-			} else {
-				o = null;
-			}
-			if (o != null) {
-				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
-			}
-			printCountingMap.put("annotations", count - 1);
+			printCountingMap.put("expression", count - 1);
 		}
 	}
 	
@@ -5213,6 +4875,54 @@ public class EdapPrinter implements edap.resource.edap.IEdapTextPrinter {
 				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
 			}
 			printCountingMap.put("term", count - 1);
+		}
+	}
+	
+	
+	public void print_edap_PropertyNavigation(edap.PropertyNavigation element, String outertab, java.io.PrintWriter out) {
+		String localtab = outertab;
+		// The printCountingMap contains a mapping from feature names to the number of
+		// remaining elements that still need to be printed. The map is initialized with
+		// the number of elements stored in each structural feature. For lists this is the
+		// list size. For non-multiple features it is either 1 (if the feature is set) or
+		// 0 (if the feature is null).
+		java.util.Map<String, Integer> printCountingMap = new java.util.LinkedHashMap<String, Integer>(2);
+		Object temp;
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__TARGET));
+		printCountingMap.put("target", temp == null ? 0 : 1);
+		temp = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY));
+		printCountingMap.put("property", temp == null ? 0 : 1);
+		// print collected hidden tokens
+		int count;
+		// DEFINITION PART BEGINS (Containment)
+		count = printCountingMap.get("target");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__TARGET));
+			if (o != null) {
+				doPrint((org.eclipse.emf.ecore.EObject) o, out, localtab);
+			}
+			printCountingMap.put("target", count - 1);
+		}
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (CompoundDefinition)
+		print_edap_PropertyNavigation_0(element, localtab, out, printCountingMap);
+	}
+	
+	public void print_edap_PropertyNavigation_0(edap.PropertyNavigation element, String outertab, java.io.PrintWriter out, java.util.Map<String, Integer> printCountingMap) {
+		int count;
+		// DEFINITION PART BEGINS (CsString)
+		out.print(".");
+		// DEFINITION PART BEGINS (WhiteSpaces)
+		// DEFINITION PART BEGINS (PlaceholderUsingDefaultToken)
+		count = printCountingMap.get("property");
+		if (count > 0) {
+			Object o = element.eGet(element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY));
+			if (o != null) {
+				edap.resource.edap.IEdapTokenResolver resolver = tokenResolverFactory.createTokenResolver("TEXT");
+				resolver.setOptions(getOptions());
+				out.print(resolver.deResolve(getReferenceResolverSwitch() == null ? null : getReferenceResolverSwitch().getPropertyNavigationPropertyReferenceResolver().deResolve((edap.Property) o, element, (org.eclipse.emf.ecore.EReference) element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY)), element.eClass().getEStructuralFeature(edap.EdapPackage.PROPERTY_NAVIGATION__PROPERTY), element));
+			}
+			printCountingMap.put("property", count - 1);
 		}
 	}
 	
