@@ -110,6 +110,8 @@ public class EdapFactoryImpl extends EFactoryImpl implements EdapFactory {
 			case EdapPackage.CONDITIONAL_ACTION: return createConditionalAction();
 			case EdapPackage.PROPERTY_REFERENCE: return createPropertyReference();
 			case EdapPackage.EXPRESSION_GROUP: return createExpressionGroup();
+			case EdapPackage.PRINT_ACTION: return createPrintAction();
+			case EdapPackage.ERROR_ACTION: return createErrorAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -613,6 +615,26 @@ public class EdapFactoryImpl extends EFactoryImpl implements EdapFactory {
 	public ExpressionGroup createExpressionGroup() {
 		ExpressionGroupImpl expressionGroup = new ExpressionGroupImpl();
 		return expressionGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PrintAction createPrintAction() {
+		PrintActionImpl printAction = new PrintActionImpl();
+		return printAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ErrorAction createErrorAction() {
+		ErrorActionImpl errorAction = new ErrorActionImpl();
+		return errorAction;
 	}
 
 	/**

@@ -476,6 +476,24 @@ public interface EdapFactory extends EFactory {
 	ExpressionGroup createExpressionGroup();
 
 	/**
+	 * Returns a new object of class '<em>Print Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Print Action</em>'.
+	 * @generated
+	 */
+	PrintAction createPrintAction();
+
+	/**
+	 * Returns a new object of class '<em>Error Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Error Action</em>'.
+	 * @generated
+	 */
+	ErrorAction createErrorAction();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

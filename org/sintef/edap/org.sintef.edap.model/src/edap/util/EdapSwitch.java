@@ -589,6 +589,24 @@ public class EdapSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case EdapPackage.PRINT_ACTION: {
+				PrintAction printAction = (PrintAction)theEObject;
+				T result = casePrintAction(printAction);
+				if (result == null) result = caseAction(printAction);
+				if (result == null) result = caseAnnotatedElement(printAction);
+				if (result == null) result = caseEdapElement(printAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case EdapPackage.ERROR_ACTION: {
+				ErrorAction errorAction = (ErrorAction)theEObject;
+				T result = caseErrorAction(errorAction);
+				if (result == null) result = caseAction(errorAction);
+				if (result == null) result = caseAnnotatedElement(errorAction);
+				if (result == null) result = caseEdapElement(errorAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1520,6 +1538,36 @@ public class EdapSwitch<T> {
 	 * @generated
 	 */
 	public T caseExpressionGroup(ExpressionGroup object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Print Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Print Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePrintAction(PrintAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Error Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Error Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseErrorAction(ErrorAction object) {
 		return null;
 	}
 

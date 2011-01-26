@@ -39,6 +39,8 @@ public class EdapSyntaxCoverageInformationProvider {
 			edap.EdapPackage.eINSTANCE.getExternStatement(),
 			edap.EdapPackage.eINSTANCE.getConditionalAction(),
 			edap.EdapPackage.eINSTANCE.getLoopAction(),
+			edap.EdapPackage.eINSTANCE.getPrintAction(),
+			edap.EdapPackage.eINSTANCE.getErrorAction(),
 			edap.EdapPackage.eINSTANCE.getOrExpression(),
 			edap.EdapPackage.eINSTANCE.getAndExpression(),
 			edap.EdapPackage.eINSTANCE.getLowerExpression(),

@@ -177,5 +177,11 @@
     <genClasses ecoreClass="edap.ecore#//ExpressionGroup">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ExpressionGroup/exp"/>
     </genClasses>
+    <genClasses ecoreClass="edap.ecore#//PrintAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//PrintAction/msg"/>
+    </genClasses>
+    <genClasses ecoreClass="edap.ecore#//ErrorAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference edap.ecore#//ErrorAction/msg"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

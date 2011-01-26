@@ -3138,6 +3138,99 @@ public interface EdapPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link edap.impl.PrintActionImpl <em>Print Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.PrintActionImpl
+	 * @see edap.impl.EdapPackageImpl#getPrintAction()
+	 * @generated
+	 */
+	int PRINT_ACTION = 62;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_ACTION__NAME = ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_ACTION__ANNOTATIONS = ACTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Msg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_ACTION__MSG = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Print Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRINT_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link edap.impl.ErrorActionImpl <em>Error Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see edap.impl.ErrorActionImpl
+	 * @see edap.impl.EdapPackageImpl#getErrorAction()
+	 * @generated
+	 */
+	int ERROR_ACTION = 63;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_ACTION__NAME = ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_ACTION__ANNOTATIONS = ACTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Msg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_ACTION__MSG = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Error Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+
+
+	/**
 	 * Returns the meta object for class '{@link edap.EdapModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4550,6 +4643,48 @@ public interface EdapPackage extends EPackage {
 	EReference getExpressionGroup_Exp();
 
 	/**
+	 * Returns the meta object for class '{@link edap.PrintAction <em>Print Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Print Action</em>'.
+	 * @see edap.PrintAction
+	 * @generated
+	 */
+	EClass getPrintAction();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.PrintAction#getMsg <em>Msg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Msg</em>'.
+	 * @see edap.PrintAction#getMsg()
+	 * @see #getPrintAction()
+	 * @generated
+	 */
+	EReference getPrintAction_Msg();
+
+	/**
+	 * Returns the meta object for class '{@link edap.ErrorAction <em>Error Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Error Action</em>'.
+	 * @see edap.ErrorAction
+	 * @generated
+	 */
+	EClass getErrorAction();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link edap.ErrorAction#getMsg <em>Msg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Msg</em>'.
+	 * @see edap.ErrorAction#getMsg()
+	 * @see #getErrorAction()
+	 * @generated
+	 */
+	EReference getErrorAction_Msg();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5766,6 +5901,42 @@ public interface EdapPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXPRESSION_GROUP__EXP = eINSTANCE.getExpressionGroup_Exp();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.PrintActionImpl <em>Print Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.PrintActionImpl
+		 * @see edap.impl.EdapPackageImpl#getPrintAction()
+		 * @generated
+		 */
+		EClass PRINT_ACTION = eINSTANCE.getPrintAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Msg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRINT_ACTION__MSG = eINSTANCE.getPrintAction_Msg();
+
+		/**
+		 * The meta object literal for the '{@link edap.impl.ErrorActionImpl <em>Error Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see edap.impl.ErrorActionImpl
+		 * @see edap.impl.EdapPackageImpl#getErrorAction()
+		 * @generated
+		 */
+		EClass ERROR_ACTION = eINSTANCE.getErrorAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Msg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ERROR_ACTION__MSG = eINSTANCE.getErrorAction_Msg();
 
 	}
 

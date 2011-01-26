@@ -152,9 +152,13 @@ RULES{
 	
 	ExternStatement::= statement[STRING_EXT] ;
 	
-	ConditionalAction ::= "if" "(" condition ")" action;
+	ConditionalAction ::= "if" #1 "(" #1 condition #1 ")" !1 action;
 	
-	LoopAction ::= "while" "(" condition ")" action;
+	LoopAction ::= "while" #1 "(" #1 condition #1 ")" !1 action;
+	
+	PrintAction ::= "print" #1 msg;
+	
+	ErrorAction ::= "error" #1 msg;
 	
 	// The Expressions
 	
