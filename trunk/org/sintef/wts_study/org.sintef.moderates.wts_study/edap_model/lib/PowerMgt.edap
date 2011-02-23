@@ -1,0 +1,12 @@
+import "platform:/resource/org.sintef.moderates.sps_study/edap_model/lib/PrimitiveTypes.edap"
+
+device PowerMgt
+{
+	// Make the CPU sleep in low power mode for about 5 seconds
+	// Everything is interupted for this time
+	message sleep_about5s();
+	// Software reset of the CPU
+	message reset();
+	
+	receives sleep_about5s, reset
+}

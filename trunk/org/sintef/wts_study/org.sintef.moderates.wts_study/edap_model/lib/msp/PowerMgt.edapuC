@@ -1,0 +1,45 @@
+edap "../PowerMgt.edap"
+
+device PowerMgt {
+
+global 
+<generator>
+</generator>
+<template>
+
+#include <signal.h>
+
+interrupt (WDT_VECTOR) watchdog_timer(void)
+{
+  __bic_SR_register_on_exit(LPM3_bits);     // Clear LPM3 bits from 0(SR)
+}
+</template>
+
+init 
+<template>
+	// WDTPW: The password. Any write without it generates a reset
+	// WDTTMSEL: Set the watchdog to interval timer
+	// WDTCNTCL: Reset the timer to 0x0000
+	// WDTSSEL: Clock source to ACLK
+	WDTCTL =WDTPW+WDTTMSEL+WDTCNTCL+WDTSSEL;
+	BCSCTL3 |= LFXT1S_2;                      // ACLK = VLO (about 12kHz)
+	BCSCTL1 |= DIVA_1;                        // ACLK/2
+	IE1 |= WDTIE; // Enable WDT interrupt
+</template>
+
+
+
+message reset {
+send <template>
+	WDTCTL = 0; // Write this register with incorect pw generates a reset
+</template>
+
+}
+message sleep_about5s {
+send <template>
+	WDTCTL =WDTPW+WDTTMSEL+WDTCNTCL+WDTSSEL;
+	IE1 |= WDTIE; // Enable WDT interrupt
+	__bis_SR_register(LPM3_bits + GIE);
+</template>
+}
+}
