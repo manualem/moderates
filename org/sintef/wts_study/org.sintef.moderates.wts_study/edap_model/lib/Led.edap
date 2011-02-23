@@ -1,4 +1,4 @@
-import "PrimitiveTypes.edap"
+import "platform:/resource/org.sintef.moderates.sps_study/edap_model/lib/PrimitiveTypes.edap"
 
 // Definition of a driver to manage a set of LEDs
 // connected to digital IO PINs
@@ -12,7 +12,5 @@ device LED
 	// toggle LED
 	message toggle(led_id : Integer);
 	
-	receives light_on
-	receives light_off
-	receives toggle
+	receives light_on, light_off, toggle
 }

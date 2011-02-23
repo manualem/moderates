@@ -1,4 +1,4 @@
-import "PrimitiveTypes.edap"
+import "platform:/resource/org.sintef.moderates.sps_study/edap_model/lib/PrimitiveTypes.edap"
 
 // Manage a set of software timers.
 device Timer
@@ -9,8 +9,7 @@ device Timer
 	message cancel(timer_id : Integer);
 	// Notification that the timer has expired
 	message timeout(timer_id : Integer);
+	receives start, cancel
 	
 	sends timeout
-	receives start
-	receives cancel
 }
