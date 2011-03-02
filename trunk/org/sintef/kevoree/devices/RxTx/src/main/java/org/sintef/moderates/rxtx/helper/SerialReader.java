@@ -39,17 +39,17 @@ public class SerialReader extends Thread {
                 String data = "";
                 while ((len = this.in.read(buffer)) > -1) {
                     data += new String(buffer, 0, len);
-                    if (data.endsWith(System.getProperty("line.separator")) || data.endsWith("\u0003")) {
+                    if (data.endsWith("\n") || data.endsWith("\u0003") || data.endsWith("\u0A0D")) {
                         break;
                     }
                 }
-                device.push(data.trim().replace("\u0002", "").replace("\u0003", ""));
+                device.push(data.trim().replace("\u0002", "").replace("\u0003", "").replace("\u0A0D", ""));
                 sleep(100);
                 //System.out.println();
             } catch (InterruptedException ex) {
                 Logger.getLogger(SerialReader.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException ex) {
+                 Logger.getLogger(SerialReader.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         //System.out.println(device.getClass().getName()+".SerialReader has been shut down");

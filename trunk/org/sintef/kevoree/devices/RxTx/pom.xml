@@ -12,12 +12,12 @@
         <dependency>
             <groupId>org.kevoree</groupId>
             <artifactId>org.kevoree.framework</artifactId>
-            <version>1.0.0-RC3</version>
+            <version>1.0.0-RC4</version>
         </dependency>
         <dependency>
             <groupId>org.kevoree.tools</groupId>
             <artifactId>org.kevoree.tools.annotation.api</artifactId>
-            <version>1.0.0-RC3</version>
+            <version>1.0.0-RC4</version>
         </dependency>
         <dependency>
             <groupId>org.kevoree.extra</groupId>
@@ -60,19 +60,20 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.kevoree.tools</groupId>
-                <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
-                <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+        <plugin>
+            <groupId>org.kevoree.tools</groupId>
+            <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
+            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+            <extensions>true</extensions>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>generate</goal>
+                        <goal>compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
          <!-- Felix BnD plugin : allow Bundle packaging : generate OSGi JAR -->
             <plugin>
                 <groupId>org.apache.felix</groupId>
