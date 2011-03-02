@@ -1,0 +1,72 @@
+This device can be used to receive signals from Waveman equipments and ESIC temperature/humidity sensor.
+When data is received on the 434MHz radio receiver messages are sent on the serial port.
+The format of the message is the following. Each message is one line terminated by the characters 0x0A 0x0D (\u0A0D).
+
+For ESIC temperature sensors:
+------------------------------
+
+* ESIC X.Y TTT.T HHH
+
+X.Y corresponds to the ID of the sensor
+TTT.T is the temperature in °C
+HHH is the relative Humidity between 14 and 99
+
+Examples:
+
+ESIC 1.1 23.7 14
+ESIC 1.4 -1.8 0
+ESIC 1.3 21.3 14
+ESIC 1.2 -33.0 14
+ESIC 1.1 23.7 14
+
+For Waveman equipements:
+------------------------
+
+* WM HC 0X
+
+H is the House code in hexadecimal (0 -> F)
+C is the channel in hexadecimal (0 -> F)
+X is the command (0 for OFF and E for ON)
+
+Examples:
+
+WM C0 0E
+WM C1 0E
+WM F2 00
+WM F1 0E
+WM 21 0E
+
+The bridge also support sending messages to Waveman equipments and storing a set of bindings between Waveman equipments.
+Here are the corresponding commands:
+
+Sending a message:
+------------------
+
+* WMB SD HC 0X
+
+Sends the message X to the device with ID HC.
+Example: WMB SD 20 00
+
+Managing bindings:
+------------------
+
+* WMB CL
+clear all bindings
+
+* WMB LS
+List bindings. The list of binding is listed with this format:
+WMB LIST:
+  B F1 0E 10 0E
+  B F1 00 10 00
+;
+One binding per line and terminated with a line with a semicolon.
+
+* WMB AD SS 0X DD 0Y
+Add a binding between SS 0X and DD 0Y. 
+Whenever the message SS 0X will be received the message DD 0Y will be transmitted. 
+example: WMB AD F3 0E 21 0E
+
+
+* WMB RM SS 0X DD 0Y
+Remove a binding.
+

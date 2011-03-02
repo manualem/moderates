@@ -8,7 +8,6 @@
 #include "timer.h"
 #include "USART.h"
 #include "waveman.h"
-#include "LED.h"
 
 
 /****************************************************************
@@ -65,31 +64,109 @@ void int10_to_ascii(int inum,const char *prefixstr,char *outbuf){
 // the size of msg should be at least 30
 void ESICSensorRcv_format(uint8_t sensor, uint16_t temperature, uint8_t humidity, char* msg) {
 	uint8_t idx = 0;
-	msg[idx++] = 'S'; msg[idx++] = '=';
+	msg[idx++] = 'E'; msg[idx++] = 'S';
+	msg[idx++] = 'I'; msg[idx++] = 'C';
+	msg[idx++] = ' ';
 	itoa(sensor >> 4, msg+idx,10);
 	while(msg[idx] != '\0') idx++;
 	msg[idx++] = '.';
-	itoa((sensor >> 2) & 0x03, msg+idx,10);
+	itoa(((sensor >> 2) & 0x03)+1, msg+idx,10);
+	while(msg[idx] != '\0') idx++;
+
+	int10_to_ascii(temperature, " ", msg+idx);
 	while(msg[idx] != '\0') idx++;
 
 	msg[idx++] = ' ';
-	msg[idx++] = 'H';msg[idx++] = '=';
 	itoa(humidity, msg+idx,10);
 	while(msg[idx] != '\0') idx++;
-	msg[idx++] = '%';
-
-	int10_to_ascii(temperature, " T=", msg+idx);
-	while(msg[idx] != '\0') idx++;
-	msg[idx++] = 'C';
-
 	msg[idx++] = '\0';
 }
 
-void USART_transmit_Hex8(int value) {
-	static const char hex[] = "0123456789ABCDEF";
-	USART_send_character(hex[(value>>4) & 0x0f] );
-	USART_send_character(hex[value & 0x0f] );
+uint8_t parse_hex_char(char c) {
+	if (c >= '0' && c <= '9') return c-48;
+	if (c >= 'A' && c <= 'F') return c-55;
+	if (c >= 'a' && c <= 'f') return c-87;
+	return 0xFF;
 }
+
+uint8_t parse_8_bit_hex_char(char c1, char c2) {
+	return (parse_hex_char(c1)<<4) + parse_hex_char(c2);
+}
+
+int8_t parse_wm_command(char * cmd) {
+	// WMB CL
+	// WMB LS
+	// WMB AD HH HH HH HH
+	// WMB RM HH HH HH HH
+	// WMB SD HH HH
+	uint8_t src_id, src_cmd, dst_id, dst_cmd;
+	uint8_t tmp;
+
+	if (cmd[0] != 'W') return -1;
+	if (cmd[1] != 'M') return -1;
+	if (cmd[2] != 'B') return -1;
+	if (cmd[3] != ' ') return -1;
+	if (cmd[4] == 'C') { // should be a clear
+		if (cmd[5] != 'L') return -1;
+		else waveman_clear_bindings();
+	}
+	else if (cmd[4] == 'L') { // should be a clear
+		if (cmd[5] != 'S') return -1;
+		else waveman_list_bindings();
+	}
+	else if (cmd[4] == 'A' || cmd[4] == 'R' || cmd[4] == 'S') { // should be a add or remove
+		if (cmd[5] != 'D' && cmd[5] != 'M' && cmd[5] != 'D') return -1;
+		if (cmd[6] != ' ') return -1;
+
+		src_id = parse_hex_char(cmd[7]);
+		if (src_id == 0xFF) return -1;
+		tmp = parse_hex_char(cmd[8]);
+		if (tmp == 0xFF) return -1;
+		src_id = (src_id << 4) + tmp;
+
+		if (cmd[9] != ' ') return -1;
+
+		src_cmd = parse_hex_char(cmd[10]);
+		if (src_cmd == 0xFF) return -1;
+		tmp = parse_hex_char(cmd[11]);
+		if (tmp == 0xFF) return -1;
+		src_cmd = (src_cmd << 4) + tmp;
+
+		if (cmd[4] == 'S' && cmd[5] == 'D') { // It is a send
+			sendWavemanCommand(src_id, src_cmd);
+			return 0;
+		}
+
+		if (cmd[12] != ' ') return -1;
+
+		dst_id = parse_hex_char(cmd[13]);
+		if (dst_id == 0xFF) return -1;
+		tmp = parse_hex_char(cmd[14]);
+		if (tmp == 0xFF) return -1;
+		dst_id = (dst_id << 4) + tmp;
+
+		if (cmd[15] != ' ') return -1;
+
+		dst_cmd = parse_hex_char(cmd[16]);
+		if (dst_cmd == 0xFF) return -1;
+		tmp = parse_hex_char(cmd[17]);
+		if (tmp == 0xFF) return -1;
+		dst_cmd = (dst_cmd << 4) + tmp;
+
+		if (cmd[4] == 'A' && cmd[5] == 'D') { // It is an add
+			waveman_add_binding(src_id, src_cmd, dst_id, dst_cmd);
+		}
+		else if (cmd[4] == 'R' && cmd[5] == 'M') { // It is a remove
+			waveman_remove_binding(src_id, src_cmd, dst_id, dst_cmd);
+		}
+		else return -1;
+	}
+	else return -1;
+
+	return 0; // It went ok
+}
+
+// WMB AD F0 0E 20 0E
 
 /*
 SIGNAL(SIG_OUTPUT_COMPARE1A)
@@ -112,7 +189,6 @@ void init() {
 	init_USART();
 	init_timer();
 	init_waveman();
-	init_LED();
 }
 
 void recieve_esic(uint8_t sensor, uint16_t temperature, uint8_t humidity) {
@@ -123,40 +199,36 @@ void recieve_esic(uint8_t sensor, uint16_t temperature, uint8_t humidity) {
 	USART_send_character(0x0A);
 }
 
-void recieve_waveman(uint8_t home, uint8_t channel, uint8_t command) {
+void recieve_waveman(uint8_t id, uint8_t command) {
 
-	USART_send_message("EVT src=");
-	USART_transmit_Hex8( (home << 4) + channel);
-	USART_send_message(" cmd=");
+	USART_send_message("WM ");
+	USART_transmit_Hex8( id );
+	USART_send_message(" ");
 	USART_transmit_Hex8(command);
 	USART_send_character(0x0D);
 	USART_send_character(0x0A);
 
-	if (home == 0 && channel == 3 && command == 0x0E) {
-		sendWavemanCommand(0x00, 0x00, 0x00);
-	}
-	else if (home == 0 && channel == 3 && command == 0x00) {
-		sendWavemanCommand(0x00, 0x00, 0x0E);
-	}
 }
 
 void recieve_char(char c) {
 
-	LED_send_light_on(1);
-	if (c == 'o') {
-		sendWavemanCommand(0x00, 0x00, 0x0E);
+}
+
+void recieve_msg(char * msg) {
+	if (parse_wm_command(msg) < 0) {
+		USART_send_message("DBG Bad command: ");
 	}
-	else if (c == 'p') {
-		sendWavemanCommand(0x00, 0x00, 0x00);
+	else {
+		USART_send_message("DBG OK: ");
 	}
-	else USART_send_message("Error\n");
-	LED_send_light_off(1);
+	USART_send_message(msg);
+	USART_send_character(0x0D);
+	USART_send_character(0x0A);
 }
 
 void timeout(int id) {
 	USART_send_character('.');
 	timer_send_start(0, 1000);
-	LED_send_toggle(2);
 }
 
 int main(void)
@@ -166,13 +238,14 @@ int main(void)
 	register_receive_esic_listener(&recieve_esic);
 	register_receive_waveman_listener(&recieve_waveman);
 	register_USART_receive_byte_listener(&recieve_char);
+	register_USART_receive_msg_listener(&recieve_msg);
 	register_timer_receive_timeout_listener(&timeout);
 	sei(); // Globally enable all interrupts
 
-	LED_send_light_on(1);
-	//LED_send_light_on(2);
-
 	timer_send_start(0, 1000);
+
+	waveman_add_binding(0xF1, 0x0E, 0x10, 0x0E);
+	waveman_add_binding(0xF1, 0x00, 0x10, 0x00);
 
 	while(1) {
 		pool_USART();
