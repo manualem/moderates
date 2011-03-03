@@ -26,32 +26,37 @@ import org.kevoree.framework.MessagePort;
 @ComponentType
 public class LaunchPad extends AbstractRxTxDevice {
 
+    private static String encapsulate(String msg){
+        return "\u0002"+msg.trim()+"\n\u0003";
+    }
 
     @Port(name = "turnOnGreenLED", method = "turnOnGreenLED")
     public void turnOnGreenLED(Object o) {
-        serialWriter.setMsg("G");
+        serialWriter.setMsg(encapsulate("G"));
     }
 
     @Port(name = "turnOffGreenLED", method = "turnOffGreenLED")
     public void turnOffGreenLED(Object o) {
-        serialWriter.setMsg("g");
+        serialWriter.setMsg(encapsulate("g"));
     }
 
     @Port(name = "turnOnRedLED", method = "turnOnRedLED")
     public void turnOnRedLED(Object o) {
-        serialWriter.setMsg("R");
+        serialWriter.setMsg(encapsulate("R"));
     }
 
     @Port(name = "turnOffRedLED", method = "turnOffRedLED")
     public void turnOffRedLED(Object o) {
-        serialWriter.setMsg("r");
+        serialWriter.setMsg(encapsulate("r"));
     }
 
     @Port(name = "chatWithLaunchPad", method = "chatWithLaunchPad")
     public void chatWithLaunchPad(Object o) {
+        Logger.getLogger(LaunchPad.class.getName()).log(Level.INFO, "LaunchPad->chat: "+o);
         if (o instanceof String) {
-            String cmd = (String) o;
+            String cmd = ((String) o).trim();
             if (cmd.length() == 1) {
+                Logger.getLogger(LaunchPad.class.getName()).log(Level.INFO, "LaunchPad->chat: command has the right size.");
                 char c = cmd.charAt(0);
                 switch (c) {
                     case 'g':
@@ -67,9 +72,14 @@ public class LaunchPad extends AbstractRxTxDevice {
                         turnOnRedLED(null);
                         break;
                     default:
+                        Logger.getLogger(LaunchPad.class.getName()).log(Level.WARNING, "LaunchPad->chat: command has the right size, but cannot be handled.");
                         break;
                 }
+            } else {
+                Logger.getLogger(LaunchPad.class.getName()).log(Level.WARNING, "LaunchPad->chat: command has not the right size.");
             }
+        } else {
+            Logger.getLogger(LaunchPad.class.getName()).log(Level.WARNING, "LaunchPad->chat: Expecting String. Has been provided with "+o.getClass().getName());
         }
     }
 

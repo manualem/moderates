@@ -22,11 +22,7 @@ public class SerialWriter extends Thread {
     }
 
     public void setMsg(String msg){
-        this.msg.add("\u0002"+msg.trim()+"\n\u0003");
-        //this.msg = msg.trim();
-        //this.msg = "\u0002"+this.msg+"\n\u0003";
-        //newMsg = true;
-        //System.out.println("SerialWriter.setMsg("+msg+")");
+        this.msg.add(msg);
     }
 
     public void shutdown() {
@@ -49,6 +45,7 @@ public class SerialWriter extends Thread {
                     System.out.println("Writing "+msg.get(0)+" on serial port");
                     this.out.write(msg.get(0).getBytes());
                     //newMsg = false;
+                    this.out.flush();
                     msg.remove(0);
                 }
                 if (msg.isEmpty()){
@@ -60,7 +57,6 @@ public class SerialWriter extends Thread {
         } catch (InterruptedException ex) {
             Logger.getLogger(SerialWriter.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            ex.printStackTrace();
             Logger.getLogger(SerialWriter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -26,7 +26,7 @@ public class XBeeGateway extends AbstractRxTxDevice {
     public void sendDataOTA(Object o) {
         if (o instanceof String) {
             Logger.getLogger(XBeeGateway.class.getName()).log(Level.INFO, "XBeeGateway: writing on serial port to send message over the air: " + o);
-            serialWriter.setMsg((String) o);
+            serialWriter.setMsg("\u0002"+(String) o+"\n\u0003");
         } else {
             Logger.getLogger(XBeeGateway.class.getName()).log(Level.WARNING, "XBeeGateway: Cannot handle " + o.getClass().getName() + " in XBeeGateway.pullData");
         }

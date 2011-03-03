@@ -24,7 +24,7 @@ import org.sintef.moderates.rxtx.helper.SerialWriter;
  */
 @DictionaryType({
     @DictionaryAttribute(name = "port", defaultValue = "/dev/ttyUSB0", optional = false),
-    @DictionaryAttribute(name = "name", defaultValue = "defaultName", optional = false),
+    @DictionaryAttribute(name = "name", defaultValue = "defaultName", optional = false)
 })
 @ThirdParties({
     @ThirdParty(name = "org.kevoree.extra.osgi.rxtx", url = "mvn:org.kevoree.extra/org.kevoree.extra.osgi.rxtx/2.2.0")
@@ -62,7 +62,7 @@ public abstract class AbstractRxTxDevice extends AbstractComponentType implement
         }
     }
 
-    private void readSerialPort() {
+    protected void readSerialPort() {
         InputStream in = null;
         try {
             in = serialPort.getInputStream();
@@ -79,7 +79,7 @@ public abstract class AbstractRxTxDevice extends AbstractComponentType implement
         }
     }
 
-    private void writeSerialPort() {
+    protected void writeSerialPort() {
         try {
             OutputStream out = serialPort.getOutputStream();
             serialWriter = new SerialWriter(out);

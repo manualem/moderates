@@ -9,9 +9,6 @@
       <dictionary>
         <values attribute="//@typeDefinitions.2/@dictionaryType/@attributes.0" value="/dev/ttyUSB2"/>
         <values attribute="//@typeDefinitions.2/@dictionaryType/@attributes.1" value="XBee1"/>
-        <values attribute="//@typeDefinitions.2/@dictionaryType/@attributes.2" value="250"/>
-        <values attribute="//@typeDefinitions.2/@dictionaryType/@attributes.3" value="1.5"/>
-        <values attribute="//@typeDefinitions.2/@dictionaryType/@attributes.4" value="4"/>
       </dictionary>
       <provided portTypeRef="//@typeDefinitions.2/@provided.0"/>
       <required portTypeRef="//@typeDefinitions.2/@required.0"/>
@@ -87,13 +84,6 @@
       </dictionary>
       <provided portTypeRef="//@typeDefinitions.4/@provided.0"/>
       <required portTypeRef="//@typeDefinitions.4/@required.0"/>
-    </components>
-    <components name="SkypeComponent-968120116" typeDefinition="//@typeDefinitions.13">
-      <dictionary>
-        <values attribute="//@typeDefinitions.13/@dictionaryType/@attributes.0" value="brice.morin"/>
-      </dictionary>
-      <provided portTypeRef="//@typeDefinitions.13/@provided.0"/>
-      <provided portTypeRef="//@typeDefinitions.13/@provided.1"/>
     </components>
   </nodes>
   <typeDefinitions xsi:type="kevoree:ComponentType" name="LaunchPad" deployUnit="//@deployUnits.1" factoryBean="org.sintef.moderates.rxtx.LaunchPadFactory" bean="org.sintef.moderates.rxtx.LaunchPad" requiredLibs="//@deployUnits.0" startMethod="start" stopMethod="stop">
@@ -202,19 +192,7 @@
   </typeDefinitions>
   <typeDefinitions xsi:type="kevoree:ChannelType" name="defMSG" deployUnit="//@deployUnits.4" factoryBean="org.kevoree.library.defaultChannels.defMSGFactory" bean="org.kevoree.library.defaultChannels.defMSG" startMethod="startHello" stopMethod="stopHello" updateMethod="updateHello"/>
   <typeDefinitions xsi:type="kevoree:ChannelType" name="defSERVICE" deployUnit="//@deployUnits.4" factoryBean="org.kevoree.library.defaultChannels.defSERVICEFactory" bean="org.kevoree.library.defaultChannels.defSERVICE" startMethod="startHello" stopMethod="stopHello"/>
-  <typeDefinitions xsi:type="kevoree:ComponentType" name="SkypeComponent" deployUnit="//@deployUnits.5" factoryBean="org.kevoree.library.com.skype.SkypeComponentFactory" bean="org.kevoree.library.com.skype.SkypeComponent" startMethod="start" stopMethod="stop" updateMethod="update">
-    <dictionaryType>
-      <attributes name="tel"/>
-    </dictionaryType>
-    <provided name="sendSMS" ref="//@typeDefinitions.1">
-      <mappings beanMethodName="sendSMS" serviceMethodName="process"/>
-    </provided>
-    <provided name="sendChatMessage" ref="//@typeDefinitions.1">
-      <mappings beanMethodName="sendChatMessage" serviceMethodName="process"/>
-    </provided>
-  </typeDefinitions>
   <repositories units="//@deployUnits.1 //@deployUnits.2 //@deployUnits.3 //@deployUnits.4" url="http://dukeboard.github.com/kevoree/maven/"/>
-  <repositories units="//@deployUnits.5" url="http://maven.kevoree.org/"/>
   <dataTypes name="void"/>
   <dataTypes name="java.lang.Object"/>
   <dataTypes name="java.lang.String"/>
@@ -222,7 +200,6 @@
   <libraries name="MODERATES::Management" subTypes="//@typeDefinitions.4 //@typeDefinitions.6"/>
   <libraries name="Fake-DOMO" subTypes="//@typeDefinitions.7 //@typeDefinitions.9 //@typeDefinitions.10"/>
   <libraries name="art2baselib" subTypes="//@typeDefinitions.11 //@typeDefinitions.12"/>
-  <libraries name="Kevoree::Chat" subTypes="//@typeDefinitions.13"/>
   <hubs name="hub-496811066" typeDefinition="//@typeDefinitions.11"/>
   <hubs name="hub--960061369" typeDefinition="//@typeDefinitions.11"/>
   <hubs name="hub-556426517" typeDefinition="//@typeDefinitions.11"/>
@@ -236,7 +213,6 @@
   <hubs name="hub-9678002" typeDefinition="//@typeDefinitions.12"/>
   <hubs name="hub-256791231" typeDefinition="//@typeDefinitions.11"/>
   <hubs name="hub-1433572132" typeDefinition="//@typeDefinitions.11"/>
-  <hubs name="hub-614643621" typeDefinition="//@typeDefinitions.11"/>
   <mBindings port="//@nodes.0/@components.0/@required.0" hub="//@hubs.0"/>
   <mBindings port="//@nodes.0/@components.1/@provided.0" hub="//@hubs.0"/>
   <mBindings port="//@nodes.0/@components.3/@required.0" hub="//@hubs.1"/>
@@ -271,13 +247,9 @@
   <mBindings port="//@nodes.0/@components.5/@provided.2" hub="//@hubs.12"/>
   <mBindings port="//@nodes.0/@components.3/@provided.0" hub="//@hubs.11"/>
   <mBindings port="//@nodes.0/@components.0/@provided.0" hub="//@hubs.12"/>
-  <mBindings port="//@nodes.0/@components.5/@required.0" hub="//@hubs.13"/>
-  <mBindings port="//@nodes.0/@components.5/@required.1" hub="//@hubs.13"/>
-  <mBindings port="//@nodes.0/@components.11/@provided.1" hub="//@hubs.13"/>
   <deployUnits name="org.kevoree.extra.osgi.rxtx" url="mvn:org.kevoree.extra/org.kevoree.extra.osgi.rxtx/2.2.0"/>
   <deployUnits groupName="org.sintef" unitName="RXTX" version="1.0-SNAPSHOT" hashcode="201103011104091"/>
   <deployUnits groupName="org.sintef" unitName="moderates.management" version="1.0.0-RC3" hashcode="201103010916909"/>
   <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.fakeDomo" version="1.0.0-RC3" hashcode="201102251521568"/>
   <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.defaultChannels" version="1.0.0-RC3" hashcode="201102251520100"/>
-  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.com.skype" version="1.0-SNAPSHOT" hashcode="201103020943471"/>
 </kevoree:ContainerRoot>
