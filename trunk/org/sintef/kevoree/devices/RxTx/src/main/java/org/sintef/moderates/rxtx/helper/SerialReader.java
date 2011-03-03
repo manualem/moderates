@@ -39,11 +39,11 @@ public class SerialReader extends Thread {
                 String data = "";
                 while ((len = this.in.read(buffer)) > -1) {
                     data += new String(buffer, 0, len);
-                    if (data.endsWith("\n") || data.endsWith("\u0003") || data.endsWith("\u0A0D")) {
+                    if (data.endsWith("\n") || data.endsWith("\u0003") || data.endsWith("\u0a0a")) {
                         break;
                     }
                 }
-                device.push(data.trim().replace("\u0002", "").replace("\u0003", "").replace("\u0A0D", ""));
+                device.push(data.trim().replace("\u0002", "").replace("\u0003", "").replace("\u0a0d", ""));
                 sleep(100);
                 //System.out.println();
             } catch (InterruptedException ex) {

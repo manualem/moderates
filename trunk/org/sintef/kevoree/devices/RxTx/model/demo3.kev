@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kevoree:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kevoree="http://kevoree/1.0">
+  <nodes name="moderates1">
+    <components name="LaunchPad1" typeDefinition="//@typeDefinitions.10">
+      <dictionary>
+        <values attribute="//@typeDefinitions.10/@dictionaryType/@attributes.0" value="/dev/ttyACM0"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.0"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.1"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.2"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.3"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.4"/>
+      <required portTypeRef="//@typeDefinitions.10/@required.0"/>
+      <required portTypeRef="//@typeDefinitions.10/@required.1"/>
+    </components>
+    <components name="FakeSimpleSwitch1" typeDefinition="//@typeDefinitions.7">
+      <required portTypeRef="//@typeDefinitions.7/@required.0"/>
+      <required portTypeRef="//@typeDefinitions.7/@required.1"/>
+      <required portTypeRef="//@typeDefinitions.7/@required.2"/>
+    </components>
+    <components name="FakeSimpleSwitch2" typeDefinition="//@typeDefinitions.7">
+      <required portTypeRef="//@typeDefinitions.7/@required.0"/>
+      <required portTypeRef="//@typeDefinitions.7/@required.1"/>
+      <required portTypeRef="//@typeDefinitions.7/@required.2"/>
+    </components>
+    <components name="FakeConsole1" typeDefinition="//@typeDefinitions.6">
+      <provided portTypeRef="//@typeDefinitions.6/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.6/@required.0"/>
+    </components>
+    <components name="LaunchPad2" typeDefinition="//@typeDefinitions.10">
+      <dictionary>
+        <values attribute="//@typeDefinitions.10/@dictionaryType/@attributes.0" value="/dev/ttyACM1"/>
+        <values attribute="//@typeDefinitions.10/@dictionaryType/@attributes.1" value="LaunchPad2"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.0"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.1"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.2"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.3"/>
+      <provided portTypeRef="//@typeDefinitions.10/@provided.4"/>
+      <required portTypeRef="//@typeDefinitions.10/@required.0"/>
+      <required portTypeRef="//@typeDefinitions.10/@required.1"/>
+    </components>
+    <components name="RF2Ways" typeDefinition="//@typeDefinitions.13">
+      <dictionary>
+        <values attribute="//@typeDefinitions.13/@dictionaryType/@attributes.1" value="RF2Ways"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.13/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.13/@required.0"/>
+      <required portTypeRef="//@typeDefinitions.13/@required.1"/>
+      <required portTypeRef="//@typeDefinitions.13/@required.2"/>
+    </components>
+    <components name="FakeConsole2" typeDefinition="//@typeDefinitions.6">
+      <provided portTypeRef="//@typeDefinitions.6/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.6/@required.0"/>
+    </components>
+    <components name="XBee1" typeDefinition="//@typeDefinitions.11">
+      <dictionary>
+        <values attribute="//@typeDefinitions.11/@dictionaryType/@attributes.1" value="XBee1"/>
+        <values attribute="//@typeDefinitions.11/@dictionaryType/@attributes.0" value="/dev/ttyUSB1"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.11/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.11/@required.0"/>
+    </components>
+    <components name="XBee2" typeDefinition="//@typeDefinitions.11">
+      <dictionary>
+        <values attribute="//@typeDefinitions.11/@dictionaryType/@attributes.0" value="/dev/ttyUSB2"/>
+        <values attribute="//@typeDefinitions.11/@dictionaryType/@attributes.1" value="XBee2"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.11/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.11/@required.0"/>
+    </components>
+    <components name="FakeConsole3" typeDefinition="//@typeDefinitions.6">
+      <provided portTypeRef="//@typeDefinitions.6/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.6/@required.0"/>
+    </components>
+    <components name="FakeConsole4" typeDefinition="//@typeDefinitions.6">
+      <provided portTypeRef="//@typeDefinitions.6/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.6/@required.0"/>
+    </components>
+    <components name="SkypeComponent2005860257" typeDefinition="//@typeDefinitions.14">
+      <dictionary>
+        <values attribute="//@typeDefinitions.14/@dictionaryType/@attributes.0" value="brice.morin"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.14/@provided.0"/>
+      <provided portTypeRef="//@typeDefinitions.14/@provided.1"/>
+    </components>
+    <components name="GCalendarComponent675191478" typeDefinition="//@typeDefinitions.3">
+      <dictionary>
+        <values attribute="//@typeDefinitions.3/@dictionaryType/@attributes.0" value="moderates.9012@gmail.com"/>
+        <values attribute="//@typeDefinitions.3/@dictionaryType/@attributes.2" value="120000"/>
+      </dictionary>
+      <required portTypeRef="//@typeDefinitions.3/@required.0"/>
+    </components>
+    <components name="EventScheduler1226745764" typeDefinition="//@typeDefinitions.1">
+      <dictionary>
+        <values attribute="//@typeDefinitions.1/@dictionaryType/@attributes.0" value="yyyy-MM-dd HH:mm"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.1/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.1/@required.0"/>
+    </components>
+  </nodes>
+  <typeDefinitions xsi:type="kevoree:MessagePortType" name="org.kevoree.framework.MessagePort"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="EventScheduler" deployUnit="//@deployUnits.2" factoryBean="org.sintef.moderates.management.EventSchedulerFactory" bean="org.sintef.moderates.management.EventScheduler" startMethod="start" stopMethod="stop" updateMethod="update">
+    <dictionaryType>
+      <attributes name="dateFormat"/>
+      <defaultValues attribute="//@typeDefinitions.1/@dictionaryType/@attributes.0" value="yyyy-MM-dd HH:mm"/>
+    </dictionaryType>
+    <required name="notify" ref="//@typeDefinitions.0"/>
+    <provided name="schedule" ref="//@typeDefinitions.2">
+      <mappings beanMethodName="scheduleIn" serviceMethodName="scheduleIn"/>
+      <mappings beanMethodName="scheduleAt" serviceMethodName="scheduleAt"/>
+      <mappings beanMethodName="scheduleInRec" serviceMethodName="scheduleInRec"/>
+      <mappings beanMethodName="scheduleAtRec" serviceMethodName="scheduleAtRec"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ServicePortType" name="org.sintef.moderates.management.IEventScheduler"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="GCalendarComponent" deployUnit="//@deployUnits.2" factoryBean="org.sintef.moderates.management.GCalendarComponentFactory" bean="org.sintef.moderates.management.GCalendarComponent" startMethod="start" stopMethod="stop" updateMethod="update">
+    <dictionaryType>
+      <attributes name="userName"/>
+      <attributes name="userPassword"/>
+      <attributes name="delay"/>
+      <defaultValues attribute="//@typeDefinitions.3/@dictionaryType/@attributes.0" value="moderates.9012@gmail.com"/>
+      <defaultValues attribute="//@typeDefinitions.3/@dictionaryType/@attributes.1" value="thingmlrules"/>
+      <defaultValues attribute="//@typeDefinitions.3/@dictionaryType/@attributes.2" value="300000"/>
+    </dictionaryType>
+    <required name="scheduleToSystem" ref="//@typeDefinitions.2"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="FakeSimpleLight" deployUnit="//@deployUnits.3" factoryBean="org.kevoree.library.fakedomo.FakeSimpleLightFactory" bean="org.kevoree.library.fakedomo.FakeSimpleLight" startMethod="start" stopMethod="stop" updateMethod="update">
+    <dictionaryType>
+      <attributes name="param1"/>
+      <attributes name="param2" optional="true"/>
+      <defaultValues attribute="//@typeDefinitions.4/@dictionaryType/@attributes.1" value="defVal"/>
+    </dictionaryType>
+    <provided name="on" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="lightOn" serviceMethodName="process"/>
+    </provided>
+    <provided name="off" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="lightOff" serviceMethodName="process"/>
+    </provided>
+    <provided name="toggle" ref="//@typeDefinitions.5">
+      <mappings beanMethodName="toogle" serviceMethodName="toggle"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ServicePortType" name="org.kevoree.library.fakedomo.ToggleLightService"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="FakeConsole" deployUnit="//@deployUnits.3" factoryBean="org.kevoree.library.fakedomo.FakeConsoleFactory" bean="org.kevoree.library.fakedomo.FakeConsole" startMethod="start" stopMethod="stop">
+    <required name="textEntered" ref="//@typeDefinitions.0"/>
+    <provided name="showText" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="appendIncoming" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="FakeSimpleSwitch" deployUnit="//@deployUnits.3" factoryBean="org.kevoree.library.fakedomo.FakeSimpleSwitchFactory" bean="org.kevoree.library.fakedomo.FakeSimpleSwitch" startMethod="start" stopMethod="stop" updateMethod="update">
+    <required name="on" ref="//@typeDefinitions.0"/>
+    <required name="off" ref="//@typeDefinitions.0"/>
+    <required name="toggle" ref="//@typeDefinitions.5"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ChannelType" name="defMSG" deployUnit="//@deployUnits.4" factoryBean="org.kevoree.library.defaultChannels.defMSGFactory" bean="org.kevoree.library.defaultChannels.defMSG" startMethod="startHello" stopMethod="stopHello" updateMethod="updateHello"/>
+  <typeDefinitions xsi:type="kevoree:ChannelType" name="defSERVICE" deployUnit="//@deployUnits.4" factoryBean="org.kevoree.library.defaultChannels.defSERVICEFactory" bean="org.kevoree.library.defaultChannels.defSERVICE" startMethod="startHello" stopMethod="stopHello"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="LaunchPad" deployUnit="//@deployUnits.1" factoryBean="org.sintef.moderates.rxtx.LaunchPadFactory" bean="org.sintef.moderates.rxtx.LaunchPad" requiredLibs="//@deployUnits.0" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.10/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.10/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="forwardOnPress" ref="//@typeDefinitions.0"/>
+    <required name="forwardOnRelease" ref="//@typeDefinitions.0"/>
+    <provided name="turnOnGreenLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOnGreenLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="turnOffGreenLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOffGreenLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="turnOnRedLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOnRedLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="turnOffRedLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOffRedLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="chatWithLaunchPad" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="chatWithLaunchPad" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="XBeeGateway" deployUnit="//@deployUnits.1" factoryBean="org.sintef.moderates.rxtx.XBeeGatewayFactory" bean="org.sintef.moderates.rxtx.XBeeGateway" requiredLibs="//@deployUnits.0" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.11/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.11/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="forwardData" ref="//@typeDefinitions.0"/>
+    <provided name="sendDataOTA" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="sendDataOTA" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="RFIDComponent" deployUnit="//@deployUnits.1" factoryBean="org.sintef.moderates.rxtx.RFIDComponentFactory" bean="org.sintef.moderates.rxtx.RFIDComponent" requiredLibs="//@deployUnits.0" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.12/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.12/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="pushRFIDtag" ref="//@typeDefinitions.0"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="RF2Ways" deployUnit="//@deployUnits.1" factoryBean="org.sintef.moderates.rxtx.RF2WaysFactory" bean="org.sintef.moderates.rxtx.RF2Ways" requiredLibs="//@deployUnits.0" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.13/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.13/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="forwardESIC" ref="//@typeDefinitions.0"/>
+    <required name="forwardWM" ref="//@typeDefinitions.0"/>
+    <required name="otherOutput" ref="//@typeDefinitions.0"/>
+    <provided name="sendWMCommand" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="sendWMCommand" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="SkypeComponent" deployUnit="//@deployUnits.8" factoryBean="org.kevoree.library.com.skype.SkypeComponentFactory" bean="org.kevoree.library.com.skype.SkypeComponent" startMethod="start" stopMethod="stop" updateMethod="update">
+    <dictionaryType>
+      <attributes name="tel"/>
+    </dictionaryType>
+    <provided name="sendSMS" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="sendSMS" serviceMethodName="process"/>
+    </provided>
+    <provided name="sendChatMessage" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="sendChatMessage" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <repositories units="//@deployUnits.1 //@deployUnits.2 //@deployUnits.8" url="http://maven.kevoree.org/"/>
+  <repositories units="//@deployUnits.3 //@deployUnits.4" url="http://dukeboard.github.com/kevoree/maven/"/>
+  <dataTypes name="void"/>
+  <dataTypes name="java.lang.Object"/>
+  <dataTypes name="java.lang.String"/>
+  <libraries name="MODERATES::Devices" subTypes="//@typeDefinitions.10 //@typeDefinitions.11 //@typeDefinitions.12 //@typeDefinitions.13"/>
+  <libraries name="MODERATES::Management" subTypes="//@typeDefinitions.1 //@typeDefinitions.3"/>
+  <libraries name="Fake-DOMO" subTypes="//@typeDefinitions.4 //@typeDefinitions.6 //@typeDefinitions.7"/>
+  <libraries name="art2baselib" subTypes="//@typeDefinitions.8 //@typeDefinitions.9"/>
+  <libraries name="Kevoree::Chat" subTypes="//@typeDefinitions.14"/>
+  <hubs name="hub-276781547" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-1613485186" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--1002918030" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--1890972873" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--129650292" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-1253280160" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-1507210532" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--913193555" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--1262810804" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-1321365927" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-874834961" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--795689583" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-756794749" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-1409324251" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub--311544344" typeDefinition="//@typeDefinitions.8"/>
+  <hubs name="hub-204406323" typeDefinition="//@typeDefinitions.9"/>
+  <hubs name="hub--1857238362" typeDefinition="//@typeDefinitions.8"/>
+  <mBindings port="//@nodes.0/@components.1/@required.0" hub="//@hubs.0"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.0" hub="//@hubs.0"/>
+  <mBindings port="//@nodes.0/@components.1/@required.1" hub="//@hubs.1"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.1" hub="//@hubs.1"/>
+  <mBindings port="//@nodes.0/@components.2/@required.0" hub="//@hubs.2"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.2" hub="//@hubs.2"/>
+  <mBindings port="//@nodes.0/@components.2/@required.1" hub="//@hubs.3"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.3" hub="//@hubs.3"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.4" hub="//@hubs.4"/>
+  <mBindings port="//@nodes.0/@components.3/@required.0" hub="//@hubs.4"/>
+  <mBindings port="//@nodes.0/@components.0/@required.0" hub="//@hubs.5"/>
+  <mBindings port="//@nodes.0/@components.4/@provided.0" hub="//@hubs.5"/>
+  <mBindings port="//@nodes.0/@components.4/@provided.2" hub="//@hubs.5"/>
+  <mBindings port="//@nodes.0/@components.0/@required.1" hub="//@hubs.6"/>
+  <mBindings port="//@nodes.0/@components.4/@provided.1" hub="//@hubs.6"/>
+  <mBindings port="//@nodes.0/@components.4/@provided.3" hub="//@hubs.6"/>
+  <mBindings port="//@nodes.0/@components.5/@required.0" hub="//@hubs.7"/>
+  <mBindings port="//@nodes.0/@components.6/@provided.0" hub="//@hubs.7"/>
+  <mBindings port="//@nodes.0/@components.5/@required.1" hub="//@hubs.7"/>
+  <mBindings port="//@nodes.0/@components.6/@required.0" hub="//@hubs.8"/>
+  <mBindings port="//@nodes.0/@components.5/@provided.0" hub="//@hubs.8"/>
+  <mBindings port="//@nodes.0/@components.7/@required.0" hub="//@hubs.9"/>
+  <mBindings port="//@nodes.0/@components.9/@provided.0" hub="//@hubs.9"/>
+  <mBindings port="//@nodes.0/@components.8/@required.0" hub="//@hubs.10"/>
+  <mBindings port="//@nodes.0/@components.10/@provided.0" hub="//@hubs.10"/>
+  <mBindings port="//@nodes.0/@components.10/@required.0" hub="//@hubs.11"/>
+  <mBindings port="//@nodes.0/@components.8/@provided.0" hub="//@hubs.11"/>
+  <mBindings port="//@nodes.0/@components.9/@required.0" hub="//@hubs.12"/>
+  <mBindings port="//@nodes.0/@components.7/@provided.0" hub="//@hubs.12"/>
+  <mBindings port="//@nodes.0/@components.5/@required.2" hub="//@hubs.13"/>
+  <mBindings port="//@nodes.0/@components.6/@provided.0" hub="//@hubs.13"/>
+  <mBindings port="//@nodes.0/@components.4/@required.0" hub="//@hubs.14"/>
+  <mBindings port="//@nodes.0/@components.4/@required.1" hub="//@hubs.14"/>
+  <mBindings port="//@nodes.0/@components.11/@provided.1" hub="//@hubs.14"/>
+  <mBindings port="//@nodes.0/@components.12/@required.0" hub="//@hubs.15"/>
+  <mBindings port="//@nodes.0/@components.13/@provided.0" hub="//@hubs.15"/>
+  <mBindings port="//@nodes.0/@components.4/@provided.4" hub="//@hubs.16"/>
+  <mBindings port="//@nodes.0/@components.13/@required.0" hub="//@hubs.16"/>
+  <deployUnits name="org.kevoree.extra.osgi.rxtx" url="mvn:org.kevoree.extra/org.kevoree.extra.osgi.rxtx/2.2.0"/>
+  <deployUnits groupName="org.sintef" unitName="RXTX" version="1.0-SNAPSHOT" hashcode="201103021900614"/>
+  <deployUnits groupName="org.sintef" unitName="moderates.management" version="1.0.0-RC4" hashcode="201103021220548"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.fakeDomo" version="1.0.0-RC3" hashcode="201102251521568"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.defaultChannels" version="1.0.0-RC3" hashcode="201102251520100"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.com.skype" version="1.0-SNAPSHOT" hashcode="201103030914838"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.com.skype" version="1.0-SNAPSHOT" hashcode="201103030923522"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.com.skype" version="1.0-SNAPSHOT" hashcode="201103030926029"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.com.skype" version="1.0-SNAPSHOT" hashcode="201103030929640"/>
+</kevoree:ContainerRoot>
