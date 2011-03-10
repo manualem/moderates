@@ -128,8 +128,16 @@ public class RRDComponent extends AbstractMonitorComponent {
                 } catch (NumberFormatException nfe) {
                     v = new Double(0);
                 }
-                s = monitorDB.createSample().setTime(Util.getTime()).setValue(headers[i], v);
-                Logger.getLogger(RRDComponent.class.getName()).log(Level.INFO, "Logging: " + headers[i] + " = " + v);
+
+                String header = null;
+                if (headers[i].contains("=")) {
+                    header = headers[i].split("=")[0];
+                } else {
+                    header = headers[i];
+                }
+
+                s = monitorDB.createSample().setTime(Util.getTime()).setValue(header, v);
+                Logger.getLogger(RRDComponent.class.getName()).log(Level.INFO, "Logging: " + header + " = " + v);
             }
             s.update();
         } catch (IOException ex) {
