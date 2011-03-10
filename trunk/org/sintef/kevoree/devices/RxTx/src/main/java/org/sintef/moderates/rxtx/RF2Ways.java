@@ -58,7 +58,7 @@ public class RF2Ways extends AbstractRxTxDevice {
             String sData = (String) data;
             if (sData.startsWith("ESIC")) {
                 Logger.getLogger(RF2Ways.class.getName()).log(Level.INFO, "RF2Ways: forwarding ESIC data: " + data);
-                this.getPortByName("forwardESIC", MessagePort.class).process(sData);
+                this.getPortByName("forwardESIC", MessagePort.class).process(System.currentTimeMillis()+" "+sData);
             } else if (sData.startsWith("WM")) {
                 Logger.getLogger(RF2Ways.class.getName()).log(Level.INFO, "RF2Ways: forwarding WM data: " + data);
                 this.getPortByName("forwardWM", MessagePort.class).process(sData);

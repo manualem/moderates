@@ -48,6 +48,11 @@ public abstract class AbstractRxTxDevice extends AbstractComponentType implement
         }
     }
 
+    public void update(){
+        stop();
+        start();
+    }
+
     @Stop
     public void stop() {
         Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Stopping "+ this.getClass().getName() +" " + this.getDictionary().get("name"));
@@ -60,6 +65,12 @@ public abstract class AbstractRxTxDevice extends AbstractComponentType implement
         if (serialPort != null) {
             serialPort.close();
         }
+    }
+
+    @Override
+    public void restartSerialReader(){
+        readSerialPort();
+        Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "A problem with the serial port has been detected. Trying to reconnect on the same port. It this does not work, please update the attributes of the component with proper port.");
     }
 
     protected void readSerialPort() {

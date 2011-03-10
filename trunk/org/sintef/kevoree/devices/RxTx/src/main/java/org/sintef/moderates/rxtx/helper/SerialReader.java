@@ -30,6 +30,11 @@ public class SerialReader extends Thread {
         }
     }
 
+    private void restart(){
+        shutdown();
+        device.restartSerialReader();
+    }
+
     public void run() {
         //System.out.println(device.getClass().getName()+".SerialReader.run");
         while (alive) {
@@ -48,8 +53,10 @@ public class SerialReader extends Thread {
                 //System.out.println();
             } catch (InterruptedException ex) {
                 Logger.getLogger(SerialReader.class.getName()).log(Level.SEVERE, null, ex);
+                restart();
             } catch (IOException ex) {
                  Logger.getLogger(SerialReader.class.getName()).log(Level.SEVERE, null, ex);
+                 restart();
             }
         }
         //System.out.println(device.getClass().getName()+".SerialReader has been shut down");
