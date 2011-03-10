@@ -11,4 +11,6 @@ package org.sintef.moderates.rxtx;
  */
 public interface RxTxDevice {
     public void push(Object msg);
+
+    public void restartSerialReader();
 }
