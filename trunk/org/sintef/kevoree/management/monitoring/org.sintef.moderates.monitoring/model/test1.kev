@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kevoree:ContainerRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:kevoree="http://kevoree/1.0">
+  <nodes name="moderates1">
+    <components name="FakeConsole216473424" typeDefinition="//@typeDefinitions.3">
+      <provided portTypeRef="//@typeDefinitions.3/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.3/@required.0"/>
+    </components>
+    <components name="RF2Ways1241830006" typeDefinition="//@typeDefinitions.12">
+      <dictionary>
+        <values attribute="//@typeDefinitions.12/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+        <values attribute="//@typeDefinitions.12/@dictionaryType/@attributes.1" value="defaultName"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.12/@provided.0"/>
+      <required portTypeRef="//@typeDefinitions.12/@required.0"/>
+      <required portTypeRef="//@typeDefinitions.12/@required.1"/>
+      <required portTypeRef="//@typeDefinitions.12/@required.2"/>
+    </components>
+    <components name="LiveGraphComponent621438781" typeDefinition="//@typeDefinitions.14">
+      <dictionary>
+        <values attribute="//@typeDefinitions.14/@dictionaryType/@attributes.1" value=" "/>
+        <values attribute="//@typeDefinitions.14/@dictionaryType/@attributes.0" value="Protocol ID=1.2 T H"/>
+      </dictionary>
+      <provided portTypeRef="//@typeDefinitions.14/@provided.0"/>
+    </components>
+  </nodes>
+  <typeDefinitions xsi:type="kevoree:MessagePortType" name="org.kevoree.framework.MessagePort"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="FakeSimpleLight" deployUnit="//@deployUnits.1" factoryBean="org.kevoree.library.fakedomo.FakeSimpleLightFactory" bean="org.kevoree.library.fakedomo.FakeSimpleLight" startMethod="start" stopMethod="stop" updateMethod="update">
+    <dictionaryType>
+      <attributes name="param1"/>
+      <attributes name="param2" optional="true"/>
+      <defaultValues attribute="//@typeDefinitions.1/@dictionaryType/@attributes.1" value="defVal"/>
+    </dictionaryType>
+    <provided name="on" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="lightOn" serviceMethodName="process"/>
+    </provided>
+    <provided name="off" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="lightOff" serviceMethodName="process"/>
+    </provided>
+    <provided name="toggle" ref="//@typeDefinitions.2">
+      <mappings beanMethodName="toogle" serviceMethodName="toggle"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ServicePortType" name="org.kevoree.library.fakedomo.ToggleLightService"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="FakeConsole" deployUnit="//@deployUnits.1" factoryBean="org.kevoree.library.fakedomo.FakeConsoleFactory" bean="org.kevoree.library.fakedomo.FakeConsole" startMethod="start" stopMethod="stop">
+    <required name="textEntered" ref="//@typeDefinitions.0"/>
+    <provided name="showText" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="appendIncoming" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="FakeSimpleSwitch" deployUnit="//@deployUnits.1" factoryBean="org.kevoree.library.fakedomo.FakeSimpleSwitchFactory" bean="org.kevoree.library.fakedomo.FakeSimpleSwitch" startMethod="start" stopMethod="stop" updateMethod="update">
+    <required name="on" ref="//@typeDefinitions.0"/>
+    <required name="off" ref="//@typeDefinitions.0"/>
+    <required name="toggle" ref="//@typeDefinitions.2"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ChannelType" name="defMSG" deployUnit="//@deployUnits.2" factoryBean="org.kevoree.library.defaultChannels.defMSGFactory" bean="org.kevoree.library.defaultChannels.defMSG" startMethod="startHello" stopMethod="stopHello" updateMethod="updateHello"/>
+  <typeDefinitions xsi:type="kevoree:ChannelType" name="defSERVICE" deployUnit="//@deployUnits.2" factoryBean="org.kevoree.library.defaultChannels.defSERVICEFactory" bean="org.kevoree.library.defaultChannels.defSERVICE" startMethod="startHello" stopMethod="stopHello"/>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="SimplePlug" deployUnit="//@deployUnits.3" factoryBean="org.sintef.moderates.rxtx.virtual.wm.SimplePlugFactory" bean="org.sintef.moderates.rxtx.virtual.wm.SimplePlug" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="WMaddress"/>
+      <attributes name="WMOn"/>
+      <attributes name="WMOff"/>
+      <defaultValues attribute="//@typeDefinitions.7/@dictionaryType/@attributes.0" value="10"/>
+      <defaultValues attribute="//@typeDefinitions.7/@dictionaryType/@attributes.1" value="0E"/>
+      <defaultValues attribute="//@typeDefinitions.7/@dictionaryType/@attributes.2" value="00"/>
+    </dictionaryType>
+    <required name="outputMessage" ref="//@typeDefinitions.0"/>
+    <required name="onOn" ref="//@typeDefinitions.0"/>
+    <required name="onOff" ref="//@typeDefinitions.0"/>
+    <provided name="inputMessage" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="inputMessage" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="LaunchPad" deployUnit="//@deployUnits.3" factoryBean="org.sintef.moderates.rxtx.LaunchPadFactory" bean="org.sintef.moderates.rxtx.LaunchPad" requiredLibs="//@deployUnits.4" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.8/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.8/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="forwardOnPress" ref="//@typeDefinitions.0"/>
+    <required name="forwardOnRelease" ref="//@typeDefinitions.0"/>
+    <provided name="turnOnGreenLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOnGreenLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="turnOffGreenLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOffGreenLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="turnOnRedLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOnRedLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="turnOffRedLED" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="turnOffRedLED" serviceMethodName="process"/>
+    </provided>
+    <provided name="chatWithLaunchPad" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="chatWithLaunchPad" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="XBeeGateway" deployUnit="//@deployUnits.3" factoryBean="org.sintef.moderates.rxtx.XBeeGatewayFactory" bean="org.sintef.moderates.rxtx.XBeeGateway" requiredLibs="//@deployUnits.4" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.9/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.9/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="forwardData" ref="//@typeDefinitions.0"/>
+    <provided name="sendDataOTA" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="sendDataOTA" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="RFIDComponent" deployUnit="//@deployUnits.3" factoryBean="org.sintef.moderates.rxtx.RFIDComponentFactory" bean="org.sintef.moderates.rxtx.RFIDComponent" requiredLibs="//@deployUnits.4" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.10/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.10/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="pushRFIDtag" ref="//@typeDefinitions.0"/>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="RingBell" deployUnit="//@deployUnits.3" factoryBean="org.sintef.moderates.rxtx.virtual.wm.RingBellFactory" bean="org.sintef.moderates.rxtx.virtual.wm.RingBell" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="WMaddress"/>
+      <attributes name="WMRing"/>
+      <defaultValues attribute="//@typeDefinitions.11/@dictionaryType/@attributes.0" value="10"/>
+      <defaultValues attribute="//@typeDefinitions.11/@dictionaryType/@attributes.1" value="0E"/>
+    </dictionaryType>
+    <required name="outputMessage" ref="//@typeDefinitions.0"/>
+    <required name="onRing" ref="//@typeDefinitions.0"/>
+    <provided name="inputMessage" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="inputMessage" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="RF2Ways" deployUnit="//@deployUnits.3" factoryBean="org.sintef.moderates.rxtx.RF2WaysFactory" bean="org.sintef.moderates.rxtx.RF2Ways" requiredLibs="//@deployUnits.4" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="port"/>
+      <attributes name="name"/>
+      <defaultValues attribute="//@typeDefinitions.12/@dictionaryType/@attributes.0" value="/dev/ttyUSB0"/>
+      <defaultValues attribute="//@typeDefinitions.12/@dictionaryType/@attributes.1" value="defaultName"/>
+    </dictionaryType>
+    <required name="forwardESIC" ref="//@typeDefinitions.0"/>
+    <required name="forwardWM" ref="//@typeDefinitions.0"/>
+    <required name="otherOutput" ref="//@typeDefinitions.0"/>
+    <provided name="sendWMCommand" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="sendWMCommand" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="SensorMonitor" deployUnit="//@deployUnits.0" factoryBean="org.sintef.moderates.monitoring.SensorMonitorFactory" bean="org.sintef.moderates.monitoring.SensorMonitor" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="name"/>
+      <attributes name="type"/>
+      <attributes name="step"/>
+      <attributes name="heartbeat"/>
+      <attributes name="archiveType"/>
+      <attributes name="archiveStep"/>
+      <attributes name="archiveRows"/>
+    </dictionaryType>
+    <provided name="logValue" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="logValue" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <typeDefinitions xsi:type="kevoree:ComponentType" name="LiveGraphComponent" deployUnit="//@deployUnits.0" factoryBean="org.sintef.moderates.monitoring.LiveGraphComponentFactory" bean="org.sintef.moderates.monitoring.LiveGraphComponent" startMethod="start" stopMethod="stop">
+    <dictionaryType>
+      <attributes name="dataSeries"/>
+      <attributes name="separator"/>
+      <defaultValues attribute="//@typeDefinitions.14/@dictionaryType/@attributes.1" value=";"/>
+    </dictionaryType>
+    <provided name="logValue" ref="//@typeDefinitions.0">
+      <mappings beanMethodName="logValue" serviceMethodName="process"/>
+    </provided>
+  </typeDefinitions>
+  <repositories units="//@deployUnits.0 //@deployUnits.3" url="http://maven.kevoree.org/"/>
+  <repositories units="//@deployUnits.1 //@deployUnits.2" url="http://maven.kevoree.org/libs-release/"/>
+  <dataTypes name="java.lang.String"/>
+  <libraries name="MODERATES::Monitoring" subTypes="//@typeDefinitions.13 //@typeDefinitions.14"/>
+  <libraries name="Fake-DOMO" subTypes="//@typeDefinitions.1 //@typeDefinitions.3 //@typeDefinitions.4"/>
+  <libraries name="art2baselib" subTypes="//@typeDefinitions.5 //@typeDefinitions.6"/>
+  <libraries name="MODERATES::Devices" subTypes="//@typeDefinitions.7 //@typeDefinitions.8 //@typeDefinitions.9 //@typeDefinitions.10 //@typeDefinitions.11 //@typeDefinitions.12"/>
+  <hubs name="hub-1616907412" typeDefinition="//@typeDefinitions.5"/>
+  <mBindings port="//@nodes.0/@components.1/@required.0" hub="//@hubs.0"/>
+  <mBindings port="//@nodes.0/@components.0/@provided.0" hub="//@hubs.0"/>
+  <mBindings port="//@nodes.0/@components.2/@provided.0" hub="//@hubs.0"/>
+  <deployUnits groupName="org.sintef" unitName="org.sintef.moderates.monitoring" version="1.0-SNAPSHOT" hashcode="201103091614523"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.fakeDomo" version="1.0.0-RC3" hashcode="201103021731788"/>
+  <deployUnits groupName="org.kevoree.library" unitName="org.kevoree.library.defaultChannels" version="1.0.0-RC3" hashcode="201103021732313"/>
+  <deployUnits groupName="org.sintef" unitName="RXTX" version="1.0-SNAPSHOT" hashcode="201103031631515"/>
+  <deployUnits name="org.kevoree.extra.osgi.rxtx" url="mvn:org.kevoree.extra/org.kevoree.extra.osgi.rxtx/2.2.0"/>
+</kevoree:ContainerRoot>

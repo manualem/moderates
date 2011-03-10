@@ -1,0 +1,1298 @@
+<rrd>
+   <!-- JRobin, version 0.1 -->
+   <version>0001</version>
+   <!-- Seconds -->
+   <step>1</step>
+   <!-- Thu Mar 10 11:05:07 CET 2011 -->
+   <lastupdate>1299751507</lastupdate>
+   <ds>
+      <name>value1</name>
+      <type>GAUGE</type>
+      <minimal_heartbeat>5</minimal_heartbeat>
+      <min>NaN</min>
+      <max>NaN</max>
+      <!-- PDP Status -->
+      <last_ds>UNKN</last_ds>
+      <value>+0.0000000000E00</value>
+      <unknown_sec>0</unknown_sec>
+   </ds>
+   <ds>
+      <name>value2</name>
+      <type>GAUGE</type>
+      <minimal_heartbeat>5</minimal_heartbeat>
+      <min>NaN</min>
+      <max>NaN</max>
+      <!-- PDP Status -->
+      <last_ds>+6.5594708336E-01</last_ds>
+      <value>+0.0000000000E00</value>
+      <unknown_sec>0</unknown_sec>
+   </ds>
+   <rra>
+      <cf>AVERAGE</cf>
+      <!-- 2 seconds -->
+      <pdp_per_row>2</pdp_per_row>
+      <xff>+5.0000000000E-01</xff>
+      <cdp_prep>
+         <ds>
+            <value>NaN</value>
+            <unknown_datapoints>1</unknown_datapoints>
+         </ds>
+         <ds>
+            <value>+6.5594708336E-01</value>
+            <unknown_datapoints>0</unknown_datapoints>
+         </ds>
+      </cdp_prep>
+      <database>
+         <!-- Thu Mar 10 10:56:48 CET 2011 / 1299751008 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:56:50 CET 2011 / 1299751010 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:56:52 CET 2011 / 1299751012 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:56:54 CET 2011 / 1299751014 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:56:56 CET 2011 / 1299751016 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:56:58 CET 2011 / 1299751018 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:00 CET 2011 / 1299751020 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:02 CET 2011 / 1299751022 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:04 CET 2011 / 1299751024 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:06 CET 2011 / 1299751026 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:08 CET 2011 / 1299751028 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:10 CET 2011 / 1299751030 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:12 CET 2011 / 1299751032 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:14 CET 2011 / 1299751034 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:16 CET 2011 / 1299751036 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:18 CET 2011 / 1299751038 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:20 CET 2011 / 1299751040 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:22 CET 2011 / 1299751042 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:24 CET 2011 / 1299751044 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:26 CET 2011 / 1299751046 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:28 CET 2011 / 1299751048 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:30 CET 2011 / 1299751050 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:32 CET 2011 / 1299751052 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:34 CET 2011 / 1299751054 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:36 CET 2011 / 1299751056 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:38 CET 2011 / 1299751058 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:40 CET 2011 / 1299751060 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:42 CET 2011 / 1299751062 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:44 CET 2011 / 1299751064 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:46 CET 2011 / 1299751066 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:48 CET 2011 / 1299751068 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:50 CET 2011 / 1299751070 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:52 CET 2011 / 1299751072 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:54 CET 2011 / 1299751074 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:56 CET 2011 / 1299751076 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:57:58 CET 2011 / 1299751078 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:00 CET 2011 / 1299751080 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:02 CET 2011 / 1299751082 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:04 CET 2011 / 1299751084 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:06 CET 2011 / 1299751086 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:08 CET 2011 / 1299751088 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:10 CET 2011 / 1299751090 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:12 CET 2011 / 1299751092 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:14 CET 2011 / 1299751094 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:16 CET 2011 / 1299751096 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:18 CET 2011 / 1299751098 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:20 CET 2011 / 1299751100 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:22 CET 2011 / 1299751102 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:24 CET 2011 / 1299751104 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:26 CET 2011 / 1299751106 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:28 CET 2011 / 1299751108 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:30 CET 2011 / 1299751110 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:32 CET 2011 / 1299751112 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:34 CET 2011 / 1299751114 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:36 CET 2011 / 1299751116 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:38 CET 2011 / 1299751118 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:40 CET 2011 / 1299751120 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:42 CET 2011 / 1299751122 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:44 CET 2011 / 1299751124 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:46 CET 2011 / 1299751126 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:48 CET 2011 / 1299751128 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:50 CET 2011 / 1299751130 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:52 CET 2011 / 1299751132 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:54 CET 2011 / 1299751134 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:56 CET 2011 / 1299751136 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:58:58 CET 2011 / 1299751138 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:00 CET 2011 / 1299751140 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:02 CET 2011 / 1299751142 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:04 CET 2011 / 1299751144 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:06 CET 2011 / 1299751146 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:08 CET 2011 / 1299751148 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:10 CET 2011 / 1299751150 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:12 CET 2011 / 1299751152 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:14 CET 2011 / 1299751154 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:16 CET 2011 / 1299751156 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:18 CET 2011 / 1299751158 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:20 CET 2011 / 1299751160 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:22 CET 2011 / 1299751162 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:24 CET 2011 / 1299751164 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:26 CET 2011 / 1299751166 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:28 CET 2011 / 1299751168 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:30 CET 2011 / 1299751170 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:32 CET 2011 / 1299751172 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:34 CET 2011 / 1299751174 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:36 CET 2011 / 1299751176 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:38 CET 2011 / 1299751178 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:40 CET 2011 / 1299751180 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:42 CET 2011 / 1299751182 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:44 CET 2011 / 1299751184 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:46 CET 2011 / 1299751186 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:48 CET 2011 / 1299751188 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:50 CET 2011 / 1299751190 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:52 CET 2011 / 1299751192 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:54 CET 2011 / 1299751194 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:56 CET 2011 / 1299751196 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 10:59:58 CET 2011 / 1299751198 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:00 CET 2011 / 1299751200 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:02 CET 2011 / 1299751202 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:04 CET 2011 / 1299751204 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:06 CET 2011 / 1299751206 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:08 CET 2011 / 1299751208 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:10 CET 2011 / 1299751210 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:12 CET 2011 / 1299751212 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:14 CET 2011 / 1299751214 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:16 CET 2011 / 1299751216 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:18 CET 2011 / 1299751218 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:20 CET 2011 / 1299751220 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:22 CET 2011 / 1299751222 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:24 CET 2011 / 1299751224 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:26 CET 2011 / 1299751226 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:28 CET 2011 / 1299751228 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:30 CET 2011 / 1299751230 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:32 CET 2011 / 1299751232 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:34 CET 2011 / 1299751234 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:36 CET 2011 / 1299751236 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:38 CET 2011 / 1299751238 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:40 CET 2011 / 1299751240 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:42 CET 2011 / 1299751242 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:44 CET 2011 / 1299751244 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:46 CET 2011 / 1299751246 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:48 CET 2011 / 1299751248 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:50 CET 2011 / 1299751250 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:52 CET 2011 / 1299751252 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:54 CET 2011 / 1299751254 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:56 CET 2011 / 1299751256 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:00:58 CET 2011 / 1299751258 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:00 CET 2011 / 1299751260 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:02 CET 2011 / 1299751262 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:04 CET 2011 / 1299751264 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:06 CET 2011 / 1299751266 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:08 CET 2011 / 1299751268 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:10 CET 2011 / 1299751270 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:12 CET 2011 / 1299751272 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:14 CET 2011 / 1299751274 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:16 CET 2011 / 1299751276 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:18 CET 2011 / 1299751278 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:20 CET 2011 / 1299751280 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:22 CET 2011 / 1299751282 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:24 CET 2011 / 1299751284 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:26 CET 2011 / 1299751286 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:28 CET 2011 / 1299751288 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:30 CET 2011 / 1299751290 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:32 CET 2011 / 1299751292 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:34 CET 2011 / 1299751294 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:36 CET 2011 / 1299751296 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:38 CET 2011 / 1299751298 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:40 CET 2011 / 1299751300 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:42 CET 2011 / 1299751302 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:44 CET 2011 / 1299751304 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:46 CET 2011 / 1299751306 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:48 CET 2011 / 1299751308 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:50 CET 2011 / 1299751310 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:52 CET 2011 / 1299751312 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:54 CET 2011 / 1299751314 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:56 CET 2011 / 1299751316 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:01:58 CET 2011 / 1299751318 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:00 CET 2011 / 1299751320 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:02 CET 2011 / 1299751322 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:04 CET 2011 / 1299751324 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:06 CET 2011 / 1299751326 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:08 CET 2011 / 1299751328 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:10 CET 2011 / 1299751330 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:12 CET 2011 / 1299751332 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:14 CET 2011 / 1299751334 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:16 CET 2011 / 1299751336 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:18 CET 2011 / 1299751338 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:20 CET 2011 / 1299751340 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:22 CET 2011 / 1299751342 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:24 CET 2011 / 1299751344 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:26 CET 2011 / 1299751346 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:28 CET 2011 / 1299751348 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:30 CET 2011 / 1299751350 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:32 CET 2011 / 1299751352 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:34 CET 2011 / 1299751354 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:36 CET 2011 / 1299751356 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:38 CET 2011 / 1299751358 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:40 CET 2011 / 1299751360 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:42 CET 2011 / 1299751362 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:44 CET 2011 / 1299751364 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:46 CET 2011 / 1299751366 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:48 CET 2011 / 1299751368 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:50 CET 2011 / 1299751370 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:52 CET 2011 / 1299751372 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:54 CET 2011 / 1299751374 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:56 CET 2011 / 1299751376 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:02:58 CET 2011 / 1299751378 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:00 CET 2011 / 1299751380 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:02 CET 2011 / 1299751382 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:04 CET 2011 / 1299751384 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:06 CET 2011 / 1299751386 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:08 CET 2011 / 1299751388 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:10 CET 2011 / 1299751390 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:12 CET 2011 / 1299751392 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:14 CET 2011 / 1299751394 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:16 CET 2011 / 1299751396 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:18 CET 2011 / 1299751398 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:20 CET 2011 / 1299751400 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:22 CET 2011 / 1299751402 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:24 CET 2011 / 1299751404 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:26 CET 2011 / 1299751406 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:28 CET 2011 / 1299751408 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:30 CET 2011 / 1299751410 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:32 CET 2011 / 1299751412 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:34 CET 2011 / 1299751414 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:36 CET 2011 / 1299751416 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:38 CET 2011 / 1299751418 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:40 CET 2011 / 1299751420 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:42 CET 2011 / 1299751422 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:44 CET 2011 / 1299751424 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:46 CET 2011 / 1299751426 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:48 CET 2011 / 1299751428 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:50 CET 2011 / 1299751430 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:52 CET 2011 / 1299751432 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:54 CET 2011 / 1299751434 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:56 CET 2011 / 1299751436 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:03:58 CET 2011 / 1299751438 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:00 CET 2011 / 1299751440 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:02 CET 2011 / 1299751442 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:04 CET 2011 / 1299751444 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:06 CET 2011 / 1299751446 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:08 CET 2011 / 1299751448 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:10 CET 2011 / 1299751450 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:12 CET 2011 / 1299751452 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:14 CET 2011 / 1299751454 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:16 CET 2011 / 1299751456 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:18 CET 2011 / 1299751458 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:20 CET 2011 / 1299751460 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:22 CET 2011 / 1299751462 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:24 CET 2011 / 1299751464 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:26 CET 2011 / 1299751466 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:28 CET 2011 / 1299751468 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:30 CET 2011 / 1299751470 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:32 CET 2011 / 1299751472 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:34 CET 2011 / 1299751474 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:36 CET 2011 / 1299751476 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:38 CET 2011 / 1299751478 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:40 CET 2011 / 1299751480 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:42 CET 2011 / 1299751482 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:44 CET 2011 / 1299751484 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:46 CET 2011 / 1299751486 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:48 CET 2011 / 1299751488 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:50 CET 2011 / 1299751490 -->
+         <row>
+            <v>NaN</v>
+            <v>NaN</v>
+         </row>
+         <!-- Thu Mar 10 11:04:52 CET 2011 / 1299751492 -->
+         <row>
+            <v>NaN</v>
+            <v>+1.2667956353E-01</v>
+         </row>
+         <!-- Thu Mar 10 11:04:54 CET 2011 / 1299751494 -->
+         <row>
+            <v>NaN</v>
+            <v>+2.4793092750E-01</v>
+         </row>
+         <!-- Thu Mar 10 11:04:56 CET 2011 / 1299751496 -->
+         <row>
+            <v>NaN</v>
+            <v>+6.3192629427E-01</v>
+         </row>
+         <!-- Thu Mar 10 11:04:58 CET 2011 / 1299751498 -->
+         <row>
+            <v>NaN</v>
+            <v>+1.3123760804E-01</v>
+         </row>
+         <!-- Thu Mar 10 11:05:00 CET 2011 / 1299751500 -->
+         <row>
+            <v>NaN</v>
+            <v>+1.6319909141E-01</v>
+         </row>
+         <!-- Thu Mar 10 11:05:02 CET 2011 / 1299751502 -->
+         <row>
+            <v>NaN</v>
+            <v>+9.3362650106E-02</v>
+         </row>
+         <!-- Thu Mar 10 11:05:04 CET 2011 / 1299751504 -->
+         <row>
+            <v>NaN</v>
+            <v>+3.0569857517E-02</v>
+         </row>
+         <!-- Thu Mar 10 11:05:06 CET 2011 / 1299751506 -->
+         <row>
+            <v>NaN</v>
+            <v>+7.1839915933E-01</v>
+         </row>
+      </database>
+   </rra>
+</rrd>
