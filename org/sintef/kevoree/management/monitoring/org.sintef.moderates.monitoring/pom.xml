@@ -1,0 +1,125 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.sintef</groupId>
+    <artifactId>org.sintef.moderates.monitoring</artifactId>
+    <packaging>bundle</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>org.sintef.moderates.monitoring</name>
+    <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+
+  
+            <plugin>
+                <groupId>org.kevoree.tools</groupId>
+                <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
+                <version>1.0.0-RC4</version><!-- To modify on wiki -->
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			<!-- Felix BnD plugin : allow Bundle packaging : generate OSGi JAR -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.1.0</version>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <instructions>
+                        <Import-Package>!org.sintef.moderates.monitoring,!org.jrobin.*,!com.sun.image.*,!sun.nio.*,*</Import-Package>
+                        <!-- <Private-Package>com.skype.*</Private-Package>-->
+                        <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
+                        <Private-Package>org.LiveGraph.*</Private-Package>
+                        <Export-Package>org.sintef.moderates.monitoring</Export-Package>
+                        <Embed-Dependency>jrobin,*;scope=system</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.kevoree</groupId>
+            <artifactId>org.kevoree.framework</artifactId>
+            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+        </dependency>
+        <dependency>
+            <groupId>org.kevoree.tools</groupId>
+            <artifactId>org.kevoree.tools.annotation.api</artifactId>
+            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+        </dependency>
+        <dependency>
+            <groupId>org.jrobin</groupId>
+            <artifactId>jrobin</artifactId>
+            <version>1.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <systemPath>${basedir}/lib/LiveGraph.2.0.beta01.Complete.jar</systemPath>
+            <groupId>com.livegraph</groupId>
+            <artifactId>com.livegraph</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+        </dependency>
+        <dependency>
+            <systemPath>${basedir}/lib/SoftNetConsultUtils2.1.slim.jar</systemPath>
+            <groupId>com.livegraph</groupId>
+            <artifactId>com.livegraph.utils</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+        </dependency>
+    </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>kevoree-libs-release-local</id>
+            <url>http://maven.kevoree.org/libs-release-local</url>
+        </repository>
+        <repository>
+            <id>opennms-repo</id>
+            <name>OpenNMS Repository</name>
+            <url>http://repo.opennms.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>plugin.kevoree</id>
+            <url>http://maven.kevoree.org/libs-release-local</url>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>plugin.kevoree-github</id>
+            <url>http://maven.kevoree.org/plugins-release-local</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
