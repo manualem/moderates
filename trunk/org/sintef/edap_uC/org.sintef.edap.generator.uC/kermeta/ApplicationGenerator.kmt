@@ -14,9 +14,9 @@ _res.append(g.header.generate(a))
 _res.append("\n\n")
 _res.append(ucg.application.headers.text)
 _res.append("\n\n/******************************************************************************\n *                           INCLUDE THE DEVICES\n ******************************************************************************/\n \n")
- a.all_devices.each{ d | 
+ ucg.all_devices.each{ d | 
 _res.append("#include \"")
-_res.append(d.name)
+_res.append(d.device.name)
 _res.append(".h\" \n")
 }
 _res.append("\n/******************************************************************************\n *                      CODE FROM THE GLOBALS TEMPLATE\n ******************************************************************************/\n\n")

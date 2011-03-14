@@ -17,8 +17,8 @@ parameters="ucg : UCGenerator, g : PSGenerator"
  *                           INCLUDE THE DEVICES
  ******************************************************************************/
  
-<% a.all_devices.each{ d | %>
-#include "<%=d.name%>.h" 
+<% ucg.all_devices.each{ d | %>
+#include "<%=d.device.name%>.h" 
 <%}%>
 
 /******************************************************************************
