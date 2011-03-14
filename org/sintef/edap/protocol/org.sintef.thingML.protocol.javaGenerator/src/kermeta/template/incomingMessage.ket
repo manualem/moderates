@@ -1,0 +1,56 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="IncomingMessageGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, msg:edap::Message, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import java.nio.ByteBuffer;
+
+public class <%=msg.name%> extends Incoming<%=device.name%>Message {
+
+	<%msg.parameters.each{ p | %>
+	private <%=helper.toJavaType(p.type)%> <%=p.name%>;
+	<%}%>
+	
+	@Override
+	protected void setPacketData(byte[] packet) {
+		super.setPacketData(packet);
+		<%if msg.parameters.exists{p | not helper.isJavaString(p.type)} then%>
+		ByteBuffer bb = ByteBuffer.wrap(data, 6, 10);<%//6 and 10 are magic numbers...%>
+		<%end%>
+		<%msg.parameters.each{ p | %>
+		<%if helper.isJavaString(p.type) then%>
+		 <%=p.name%> = ""; 
+		for(int i=2; i<getLength(); i++) {
+			 <%=p.name%> =  <%=p.name%> + (char)data[4+i];
+		}
+		<%else%>
+		<%=p.name%> = bb.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
+		<%end%>
+		<%}%>
+		
+	}
+
+
+	<%msg.parameters.each{ p | %>
+	public <%=helper.toJavaType(p.type)%> get<%=helper.firstToUpper(p.name)%>() {
+		return <%=p.name%>;
+	}
+	
+	<%}%>
+
+
+	@Override
+	protected Incoming<%=device.name%>Message createPacket(byte[] packet) {
+		Incoming<%=device.name%>Message result = new <%=msg.name%>();
+		result.setPacketData(packet);
+		return result;
+	}
+	
+}
