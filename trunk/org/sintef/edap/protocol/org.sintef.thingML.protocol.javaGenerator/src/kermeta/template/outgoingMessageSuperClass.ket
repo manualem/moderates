@@ -1,0 +1,23 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="OutGoingMessageSuperGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+public abstract class Outgoing<%=device.name%>Message extends <%=device.name%>ProtocolPacket {
+	
+	public Outgoing<%=device.name%>Message() {
+		super();
+	}
+	
+	protected void setCommandID(byte cmd) {
+		data[4] = cmd;
+	}
+}
+
