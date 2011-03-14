@@ -120,7 +120,7 @@ public class RRDComponent extends AbstractMonitorComponent {
         }
 
         try {
-            Sample s = null;
+            Sample s = monitorDB.createSample().setTime(Util.getTime());
             for (int i = 0; i < entry.length; i++) {
                 Double v = null;
                 try {
@@ -136,7 +136,7 @@ public class RRDComponent extends AbstractMonitorComponent {
                     header = headers[i];
                 }
 
-                s = monitorDB.createSample().setTime(Util.getTime()).setValue(header, v);
+                s = s.setValue(header, v);
                 Logger.getLogger(RRDComponent.class.getName()).log(Level.INFO, "Logging: " + header + " = " + v);
             }
             s.update();
@@ -169,7 +169,7 @@ public class RRDComponent extends AbstractMonitorComponent {
         monitor.getDictionary().put("heartbeat", "5");
         monitor.getDictionary().put("archiveType", "AVERAGE");
         monitor.getDictionary().put("archiveStep", "2");
-        monitor.getDictionary().put("archiveRows", "250");
+        monitor.getDictionary().put("archiveRows", "5");
         monitor.start();
 
         for (int i = 0; i < 15; i++) {
