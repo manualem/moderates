@@ -31,7 +31,7 @@ import fr.irisa.triskell.kermeta.exceptions.URIMalformedException;
 import fr.irisa.triskell.kermeta.runtime.RuntimeObject;
 
 public class KExecMain {
-	public static final String DIVA_KERMETA_CODE = "platform:/plugin/org.sintef.edap.generator.UC/kermeta/AVRGenerator.kmt";
+	//public static final String DIVA_KERMETA_CODE = "platform:/plugin/org.sintef.edap.generator.UC/kermeta/AVRGenerator.kmt";
 	
 	
 	public static String run(String kmt, String cls,  String op, String fileURI, String path, IOConsole console) throws NotRegisteredURIException, IOException, URIMalformedException  {
