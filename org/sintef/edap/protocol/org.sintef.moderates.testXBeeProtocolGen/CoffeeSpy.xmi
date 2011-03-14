@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<edap:EdapModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap">
+  <types xsi:type="edap:PrimitiveType" name="Integer">
+    <annotations name="avr_type" value="uint_8"/>
+    <annotations name="msp_type" value="int"/>
+    <annotations name="java_type" value="short"/>
+  </types>
+  <types xsi:type="edap:PrimitiveType" name="Byte">
+    <annotations name="avr_type" value="char"/>
+    <annotations name="msp_type" value="char"/>
+    <annotations name="java_type" value="byte"/>
+  </types>
+  <types xsi:type="edap:Device" name="CoffeeSensor" receives="//@types.2/@messages.0">
+    <messages name="CoffeeData">
+      <annotations name="code" value="33"/>
+      <parameters name="temp" type="//@types.0"/>
+      <parameters name="dist" type="//@types.0"/>
+      <parameters name="light" type="//@types.0"/>
+    </messages>
+  </types>
+</edap:EdapModel>

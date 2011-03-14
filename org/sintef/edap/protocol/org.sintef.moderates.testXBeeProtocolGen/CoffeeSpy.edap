@@ -1,0 +1,20 @@
+
+// Definition of some primitive types used throuout the application
+
+datatype Integer	
+	@avr_type "uint_8"
+	@msp_type "int"
+	@java_type "short";
+
+datatype Byte
+	@avr_type "char"
+	@msp_type "char"
+	@java_type "byte";
+	
+device CoffeeSensor {
+
+	// [src, dst, frame, length, code, tempH, tempL, distH, distL, lightH, lightL, 0, 0, 0, 0, 0];
+
+	message CoffeeData(temp : Integer, dist : Integer, light : Integer) @code "33";
+	receives CoffeeData
+}
