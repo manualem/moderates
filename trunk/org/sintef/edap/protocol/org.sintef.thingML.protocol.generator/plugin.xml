@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.sintef.edap.generator.protocol"
+            nameFilter="*.edap"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.sintef.edap.generator.protocol.menu"
+               label="ThingML"
+               path="additions">
+            <separator
+                  name="group3">
+            </separator>
+         </menu>
+         <action
+               class="org.sintef.thingml.protocol.generator.GenerateJava"
+               enablesFor="1"
+               id="org.sintef.edap.generator.protocol.generateJava"
+               label="Generate Protocol API in JAVA"
+               menubarPath="org.sintef.edap.generator.protocol.menu/group3">
+       </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
