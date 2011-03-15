@@ -15,12 +15,12 @@ import java.util.Hashtable;
 public abstract class <%=device.name%>Protocol {
 
 	// Outgoing messages
-	<%device.sends.each{out | %>
+	<%device.receives.each{out | %>
 	public static final byte <%=helper.toJavaConstant(out.name)%> = <%=out.annotations.select{a | a.name == "code"}.one.~value%>; 
 	<%}%>
 	
 	// incoming messages
-	<%device.receives.each{in | %>
+	<%device.sends.each{in | %>
 	public static final byte <%=helper.toJavaConstant(in.name)%> = <%=in.annotations.select{a | a.name == "code"}.one.~value%>; 
 	<%}%>
 	
@@ -29,7 +29,7 @@ public abstract class <%=device.name%>Protocol {
 	
 	private static void createincomingMsg() {
 		incomingMsg = new Hashtable<Byte, Incoming<%=device.name%>Message>();
-		<%device.receives.each{in | %>
+		<%device.sends.each{in | %>
 		incomingMsg.put(<%=device.name%>Protocol.<%=helper.toJavaConstant(in.name)%>, new <%=in.name%>()); 
 		<%}%>
 	}
@@ -44,7 +44,7 @@ public abstract class <%=device.name%>Protocol {
 		return result;
 	}
 
-	<%device.sends.each{out | %>
+	<%device.receives.each{out | %>
 	public static <%=out.name%> create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
 		<%=out.name%> result = new <%=out.name%>(<%=helper.paramsToJavaCall(out)%>);
 		return result;
@@ -53,7 +53,7 @@ public abstract class <%=device.name%>Protocol {
 	<%}%>
 
 <%/*%>	
-	<%device.receives.each{in | %>
+	<%device.sends.each{in | %>
 	public static <%=in.name%> create<%=in.name%>(<%=helper.paramsToJava(in)%>) {
 		<%=in.name%> result = new <%=in.name%>(<%=helper.paramsToJavaCall(in)%>);
 		return result;
