@@ -1,0 +1,140 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="InteractiveDataSimulatorGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.Insets;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Interactive<%=device.name%>DataSimulator implements ActionListener, ItemListener{
+
+	private JFrame frame;
+	
+	<%device.receives.each{msg |%>
+	//Attributes related to <%=msg.name%>
+	private JButton sendButton<%=msg.name%>;
+		<%msg.parameters.each{ p | %>
+	private JTextField field<%=msg.name+"_"+p.name%>;
+		<%}%>
+		
+	<%}%>
+
+	public void init(){
+		frame = new JFrame("Interactive <%=device.name%> Data Simulator");
+		frame.setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(0,3,0,3);
+		
+		<%var x : Integer init 0%>
+		<%device.receives.each{msg |%>
+		c.gridy = 0;
+ 		c.gridx = <%=x.toString%>;
+		frame.add(create<%=msg.name%>Label(), c);
+		
+		c.gridy = 1;
+ 		c.gridx = <%=x.toString%>;
+		frame.add(create<%=msg.name%>Panel(), c);
+		
+		c.gridy = 2;
+ 		c.gridx = <%=x.toString%>;
+		frame.add(createSend<%=msg.name%>Button(), c);
+		
+		sendButton<%=msg.name%>.addActionListener(this);
+		
+		<%x := x+1%>
+		<%}%>
+		
+				
+		frame.pack();
+		frame.setVisible(true);
+	}
+
+	<%device.receives.each{msg |%>
+	public void send<%=msg.name%>() {
+		System.out.println("send<%=msg.name%>");
+	}
+	
+	public JLabel create<%=msg.name%>Label(){
+		JLabel label = new JLabel();
+		label.setText("<%=msg.name%>");
+		return label;
+	}
+	
+	public JButton createSend<%=msg.name%>Button(){
+		sendButton<%=msg.name%> = new JButton("send");
+		return sendButton<%=msg.name%>;
+	}
+	
+	<%var y : Integer init 0%>	
+	public JPanel create<%=msg.name%>Panel(){
+
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		
+		JPanel panel = new JPanel(new GridBagLayout());
+
+			<%msg.parameters.each{ p | %>
+		JLabel label<%=p.name%> = new JLabel();
+		label<%=p.name%>.setText("<%=p.name%>");
+ 		c.gridx = 0;
+		c.gridy = <%=y.toString%>;
+ 		panel.add(label<%=p.name%>, c);
+ 		
+ 		field<%=msg.name+"_"+p.name%> = new JTextField();
+		field<%=msg.name+"_"+p.name%>.setText("<%=p.name%>");
+ 		c.gridx = 1;
+		c.gridy = <%=y.toString%>;
+ 		panel.add(field<%=msg.name+"_"+p.name%>, c);
+ 		
+
+ 			<%y := y+1%>
+			<%}%>
+			
+		return panel;	
+	}
+	<%}%>
+	
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		<%var k : Integer init 0%>
+		<%device.receives.each{msg |%>
+		 <%if k >0 then%>else <%end%>if ( ae.getSource() == sendButton<%=msg.name%>) {
+		 	send<%=msg.name%>();
+		 }
+		 <%k := k+1%>
+		<%}%>	
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}	
+	
+	public static void main(String args[]){
+		Interactive<%=device.name%>DataSimulator simulator = new Interactive<%=device.name%>DataSimulator();
+		simulator.init();
+	}
+}
