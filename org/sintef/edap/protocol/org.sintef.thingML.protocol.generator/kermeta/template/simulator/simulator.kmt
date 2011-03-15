@@ -1,0 +1,125 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class InteractiveDataSimulatorGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.awt.event.ItemEvent;\nimport java.awt.event.ItemListener;\nimport java.awt.Insets;\n\nimport javax.swing.JButton;\nimport javax.swing.JPanel;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JTextField;\n\npublic class Interactive")
+_res.append(device.name)
+_res.append("DataSimulator implements ActionListener, ItemListener{\n\n\tprivate JFrame frame;\n\t\n")
+device.receives.each{msg |
+_res.append("\t//Attributes related to ")
+_res.append(msg.name)
+_res.append("\n\tprivate JButton sendButton")
+_res.append(msg.name)
+_res.append(";\n")
+msg.parameters.each{ p | 
+_res.append("\tprivate JTextField field")
+_res.append(msg.name+"_"+p.name)
+_res.append(";\n")
+}
+_res.append("\t\t\n")
+}
+_res.append("\n\tpublic void init(){\n\t\tframe = new JFrame(\"Interactive ")
+_res.append(device.name)
+_res.append(" Data Simulator\");\n\t\tframe.setLayout(new GridBagLayout());\n\t\t\n\t\tGridBagConstraints c = new GridBagConstraints();\n\t\tc.gridwidth = 1;\n\t\tc.fill = GridBagConstraints.HORIZONTAL;\n\t\tc.insets = new Insets(0,3,0,3);\n\t\t\n")
+var x : Integer init 0
+_res.append("")
+device.receives.each{msg |
+_res.append("\t\tc.gridy = 0;\n \t\tc.gridx = ")
+_res.append(x.toString)
+_res.append(";\n\t\tframe.add(create")
+_res.append(msg.name)
+_res.append("Label(), c);\n\t\t\n\t\tc.gridy = 1;\n \t\tc.gridx = ")
+_res.append(x.toString)
+_res.append(";\n\t\tframe.add(create")
+_res.append(msg.name)
+_res.append("Panel(), c);\n\t\t\n\t\tc.gridy = 2;\n \t\tc.gridx = ")
+_res.append(x.toString)
+_res.append(";\n\t\tframe.add(createSend")
+_res.append(msg.name)
+_res.append("Button(), c);\n\t\t\n\t\tsendButton")
+_res.append(msg.name)
+_res.append(".addActionListener(this);\n\t\t\n")
+x := x+1
+_res.append("")
+}
+_res.append("\t\t\n\t\t\t\t\n\t\tframe.pack();\n\t\tframe.setVisible(true);\n\t}\n\n")
+device.receives.each{msg |
+_res.append("\tpublic void send")
+_res.append(msg.name)
+_res.append("() {\n\t\tSystem.out.println(\"send")
+_res.append(msg.name)
+_res.append("\");\n\t}\n\t\n\tpublic JLabel create")
+_res.append(msg.name)
+_res.append("Label(){\n\t\tJLabel label = new JLabel();\n\t\tlabel.setText(\"")
+_res.append(msg.name)
+_res.append("\");\n\t\treturn label;\n\t}\n\t\n\tpublic JButton createSend")
+_res.append(msg.name)
+_res.append("Button(){\n\t\tsendButton")
+_res.append(msg.name)
+_res.append(" = new JButton(\"send\");\n\t\treturn sendButton")
+_res.append(msg.name)
+_res.append(";\n\t}\n\t\n")
+var y : Integer init 0
+_res.append("\tpublic JPanel create")
+_res.append(msg.name)
+_res.append("Panel(){\n\n\t\tGridBagConstraints c = new GridBagConstraints();\n\t\tc.fill = GridBagConstraints.HORIZONTAL;\n\t\tc.weightx = 0.5;\n\t\t\n\t\tJPanel panel = new JPanel(new GridBagLayout());\n\n")
+msg.parameters.each{ p | 
+_res.append("\t\tJLabel label")
+_res.append(p.name)
+_res.append(" = new JLabel();\n\t\tlabel")
+_res.append(p.name)
+_res.append(".setText(\"")
+_res.append(p.name)
+_res.append("\");\n \t\tc.gridx = 0;\n\t\tc.gridy = ")
+_res.append(y.toString)
+_res.append(";\n \t\tpanel.add(label")
+_res.append(p.name)
+_res.append(", c);\n \t\t\n \t\tfield")
+_res.append(msg.name+"_"+p.name)
+_res.append(" = new JTextField();\n\t\tfield")
+_res.append(msg.name+"_"+p.name)
+_res.append(".setText(\"")
+_res.append(p.name)
+_res.append("\");\n \t\tc.gridx = 1;\n\t\tc.gridy = ")
+_res.append(y.toString)
+_res.append(";\n \t\tpanel.add(field")
+_res.append(msg.name+"_"+p.name)
+_res.append(", c);\n \t\t\n\n")
+y := y+1
+_res.append("")
+}
+_res.append("\t\t\t\n\t\treturn panel;\t\n\t}\n")
+}
+_res.append("\t\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+var k : Integer init 0
+_res.append("")
+device.receives.each{msg |
+_res.append("\t\t ")
+if k >0 then
+_res.append("else ")
+end
+_res.append("if ( ae.getSource() == sendButton")
+_res.append(msg.name)
+_res.append(") {\n\t\t \tsend")
+_res.append(msg.name)
+_res.append("();\n\t\t }\n")
+k := k+1
+_res.append("")
+}
+_res.append("\t}\n\n\t@Override\n\tpublic void itemStateChanged(ItemEvent arg0) {\n\t\t// TODO Auto-generated method stub\n\t\t\n\t}\t\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataSimulator simulator = new Interactive")
+_res.append(device.name)
+_res.append("DataSimulator();\n\t\tsimulator.init();\n\t}\n}")
+result := _res.toString
+end
+}
