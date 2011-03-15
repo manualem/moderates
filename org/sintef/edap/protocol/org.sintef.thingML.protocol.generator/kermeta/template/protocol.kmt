@@ -14,7 +14,7 @@ _res.append(packageName)
 _res.append(";\n\nimport java.util.Hashtable;\n\npublic abstract class ")
 _res.append(device.name)
 _res.append("Protocol {\n\n\t// Outgoing messages\n")
-device.sends.each{out | 
+device.receives.each{out | 
 _res.append("\tpublic static final byte ")
 _res.append(helper.toJavaConstant(out.name))
 _res.append(" = ")
@@ -22,7 +22,7 @@ _res.append(out.annotations.select{a | a.name == "code"}.one.~value)
 _res.append("; \n")
 }
 _res.append("\t\n\t// incoming messages\n")
-device.receives.each{in | 
+device.sends.each{in | 
 _res.append("\tpublic static final byte ")
 _res.append(helper.toJavaConstant(in.name))
 _res.append(" = ")
@@ -34,7 +34,7 @@ _res.append(device.name)
 _res.append("Message> incomingMsg;\n\t\n\tprivate static void createincomingMsg() {\n\t\tincomingMsg = new Hashtable<Byte, Incoming")
 _res.append(device.name)
 _res.append("Message>();\n")
-device.receives.each{in | 
+device.sends.each{in | 
 _res.append("\t\tincomingMsg.put(")
 _res.append(device.name)
 _res.append("Protocol.")
@@ -48,7 +48,7 @@ _res.append(device.name)
 _res.append("Message createMessageForIncomingPacket(byte[] packet) {\n\t\tif(incomingMsg == null) createincomingMsg();\n\t\tbyte packetType = packet[4];\n\t\tIncoming")
 _res.append(device.name)
 _res.append("Message result = null;\n\t\tif (incomingMsg.containsKey(packetType)) {\n\t\t\tresult = incomingMsg.get(packetType).createPacket(packet);\n\t\t}\n\t\treturn result;\n\t}\n\n")
-device.sends.each{out | 
+device.receives.each{out | 
 _res.append("\tpublic static ")
 _res.append(out.name)
 _res.append(" create")
@@ -66,7 +66,7 @@ _res.append(");\n\t\treturn result;\n\t}\n\t\n")
 _res.append("\n")
 /*
 _res.append("")
-device.receives.each{in | 
+device.sends.each{in | 
 _res.append("\tpublic static ")
 _res.append(in.name)
 _res.append(" create")

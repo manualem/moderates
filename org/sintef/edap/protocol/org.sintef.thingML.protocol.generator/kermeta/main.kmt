@@ -74,14 +74,14 @@ class MainJavaProtocolGenerator
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/Outgoing"+t.name+"Message.java", omsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")		
 			
-			t.asType(Device).receives.each{ m |
+			t.asType(Device).sends.each{ m |
 				stdio.writeln("IncomingMessageGenerator")
 				stdio.writeln("-----------------------")
 				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+".java", imGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
 				stdio.writeln("")
 			}
 			
-			t.asType(Device).sends.each{ m |
+			t.asType(Device).receives.each{ m |
 				stdio.writeln("OutgoingMessageGenerator")
 				stdio.writeln("-----------------------")
 				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+".java", omGenerator.generate("org.sintef.moderates", m, t.name))
