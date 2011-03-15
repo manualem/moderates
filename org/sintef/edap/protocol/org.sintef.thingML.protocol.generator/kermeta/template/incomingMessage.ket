@@ -37,6 +37,14 @@ public class <%=msg.name%> extends Incoming<%=device.name%>Message {
 		
 	}
 
+	@Override
+	public String toString(){
+		String myString = "<%=msg.name%>\\n";
+		<%msg.parameters.each{ p | %>
+		myString += "\\t-<%=p.name%>: "+<%=p.name%>+"\\n";
+		<%}%>
+		return myString;
+	}
 
 	<%msg.parameters.each{ p | %>
 	public <%=helper.toJavaType(p.type)%> get<%=helper.firstToUpper(p.name)%>() {
