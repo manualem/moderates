@@ -49,7 +49,17 @@ _res.append("();\n")
 end
 _res.append("")
 }
-_res.append("\t\t\n\t}\n\n\n")
+_res.append("\t\t\n\t}\n\n\t@Override\n\tpublic String toString(){\n\t\tString myString = \"")
+_res.append(msg.name)
+_res.append("\\n\";\n")
+msg.parameters.each{ p | 
+_res.append("\t\tmyString += \"\\t-")
+_res.append(p.name)
+_res.append(": \"+")
+_res.append(p.name)
+_res.append("+\"\\n\";\n")
+}
+_res.append("\t\treturn myString;\n\t}\n\n")
 msg.parameters.each{ p | 
 _res.append("\tpublic ")
 _res.append(helper.toJavaType(p.type))
