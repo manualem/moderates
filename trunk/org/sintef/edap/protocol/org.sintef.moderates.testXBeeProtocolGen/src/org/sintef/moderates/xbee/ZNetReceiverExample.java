@@ -52,7 +52,7 @@ public class ZNetReceiverExample {
 		try {			
 			// replace with the com port of your receiving XBee (typically your end device)
 //			xbee.open("/dev/tty.usbserial-A6005uRz", 9600);
-			xbee.open("COM15", 9600);
+			xbee.open("COM17", 9600);
 			
 			while (true) {
 
@@ -68,17 +68,18 @@ public class ZNetReceiverExample {
 						
 						log.info("Received RX packet, option is " + rx.getOption() + ", sender 64 address is " + ByteUtils.toBase16(rx.getRemoteAddress64().getAddress()) + ", remote 16-bit address is " + ByteUtils.toBase16(rx.getRemoteAddress16().getAddress()) + ", data is " + ByteUtils.toBase16(rx.getData()));
 
-						System.out.println("MSG = " + ByteUtils.toBase10(rx.getData()));
+						//System.out.println("MSG = " + ByteUtils.toBase10(rx.getData()));
 						
 						byte[] data = new byte[rx.getData().length];
 						for(int i=0; i<data.length; i++) {
 							data[i] = (byte)rx.getData()[i];
+							//System.out.println("data[" + i + "] = " + data[i]);
 						}
 						
 						IncomingCoffeeSensorMessage msg = CoffeeSensorProtocol.createMessageForIncomingPacket(data);
 						
 						if (msg != null) {
-							System.out.println("Message : " + msg.getClass().getName());
+							System.out.println("Message : " + msg.toString());
 							
 						
 						}

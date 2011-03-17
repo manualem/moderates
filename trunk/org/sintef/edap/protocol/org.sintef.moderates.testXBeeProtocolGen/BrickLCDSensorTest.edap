@@ -1,0 +1,46 @@
+
+// Definition of some primitive types used throuout the application
+
+datatype Integer	
+	@avr_type "uint_8"
+	@msp_type "int"
+	@java_type "short";
+
+datatype Byte
+	@avr_type "char"
+	@msp_type "char"
+	@java_type "byte";
+	
+datatype String
+@avr_type "char"
+@msp_type "char"
+@java_type "byte"
+@size "8";
+	
+device BrickLCDSensor {
+
+	// [src, dst, frame, length, code, tempH, tempL, distH, distL, lightH, lightL, 0, 0, 0, 0, 0];
+
+	// line = {0,1}
+	message displayText(line : Integer, msg : String) @code "1";
+	message clearText() @code "2";
+
+	message readAllAnalog() @code "3";
+	// pin = {0,1,2,3,4,5}
+	message readAnalog(pin : Integer) @code "4";
+	message analogValue(pin : Integer, val : Integer) @code "5";
+	
+	// pin = {0,..,11} & direction = {0,1} 0 for input and 1 for output
+	message setDigital( pin : Integer, direction : Integer) @code "6";
+	message setValue( pin : Integer, val : Integer) @code "7";
+	message getValue( pin : Integer ) @code "8";
+	message digitalValue(pin : Integer, val : Integer) @code "9";
+	
+	receives displayText, clearText, readAllAnalog, readAnalog, setDigital, setValue, getValue
+	sends analogValue, digitalValue
+	
+	message ping() @code "66";
+	message pong() @code "67";
+	receives ping
+	sends pong
+}
