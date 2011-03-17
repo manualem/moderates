@@ -1,0 +1,95 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="InteractiveDataControllerGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+public class Interactive<%=device.name%>DataController implements ActionListener {
+
+	<%device.sends.each{ msg |%>
+	public void send<%=msg.name%>() {
+		Incoming<%=device.name%>Message result = null;
+		byte packet[] = new byte[16];
+		packet[4] = <%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>;
+		<%if msg.parameters.size > 0 then%>
+		boolean valid = true;
+		<%msg.parameters.each{ p | %>
+		<%=helper.firstToUpper(helper.toJavaType(p.type))%> <%=p.name%> = null;
+		<%}%>
+		try{
+		<%msg.parameters.each{ p | %>
+		<%if helper.isJavaString(p.type) then%>
+			<%=p.name%> = Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText();
+		<%else%>
+			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText()); 
+		<%end%>
+		<%}%>
+		} catch (NumberFormatException nfe){
+			JOptionPane.showMessageDialog(new JFrame(), "Please check that all the inputs have the right type", "Error: Invalid input", JOptionPane.ERROR_MESSAGE);
+			valid = false;
+		}
+		if (valid){
+			List<Byte> params = new ArrayList<Byte>();
+			<%msg.parameters.each{ p | %>
+			<%if helper.getJavaByteTypes.contains(p.type.name) then%>
+				<%if helper.isJavaByte(p.type) then%>
+			params.add((byte)0);
+			params.add(<%=p.name%>);
+				<%else%>
+			params.add((byte)0);
+			params.add(<%=p.name%>.byteValue());
+				<%end%>		
+			<%else%>
+				<%if helper.isJavaString(p.type) then%>
+			for(int i = 0; i < <%=p.name%>.getBytes().length; i++){
+				params.add(<%=p.name%>.getBytes()[i]);
+			}
+				<%end%>
+			<%end%>
+			<%}%>
+			Byte data[] = params.toArray(new Byte[0]);
+			for(int i=0; i<Math.min(16-5, data.length); i++){
+				packet[i+5] = data[i];
+			}
+			result = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
+		}
+		<%else%>	
+		result = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
+		<%end%>
+		System.out.println(result);
+	}
+
+	<%}%>
+
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		<%var k : Integer init 0%>
+		<%device.sends.each{msg |%>
+		 <%if k >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI.sendButton<%=msg.name%>) {
+		 	send<%=msg.name%>();
+		 }
+		 <%k := k+1%>
+		<%}%>	
+	}
+	
+	public static void main(String args[]){
+		Interactive<%=device.name%>DataController controller = new Interactive<%=device.name%>DataController();
+		Interactive<%=device.name%>DataGUI.init();
+		Interactive<%=device.name%>DataGUI.addListener(controller);
+	}
+}

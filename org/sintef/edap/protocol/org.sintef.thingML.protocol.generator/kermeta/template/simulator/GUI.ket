@@ -1,0 +1,115 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="InteractiveDataGUIGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Interactive<%=device.name%>DataGUI {
+	
+	private static JFrame frame;
+	
+	<%device.sends.each{msg |%>
+	//Attributes related to <%=msg.name%>
+	public static JButton sendButton<%=msg.name%>;
+		<%msg.parameters.each{ p | %>
+	public static JTextField field<%=msg.name+"_"+p.name%>;
+		<%}%>
+		
+	<%}%>
+		
+	public static void addListener(ActionListener l){
+		<%device.sends.each{msg |%>
+		sendButton<%=msg.name%>.addActionListener(l);
+		<%}%>
+	}
+
+	public static void init(){
+		frame = new JFrame("Interactive <%=device.name%> Data Simulator");
+		frame.setLayout(new GridBagLayout());
+		
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(0,3,0,3);
+		
+		<%var x : Integer init 0%>
+		<%device.sends.each{msg |%>
+		//GUI related to <%=msg.name%>
+		c.gridy = 0;
+ 		c.gridx = <%=x.toString%>;
+		frame.add(create<%=msg.name%>Label(), c);
+		
+		c.gridy = 1;
+ 		c.gridx = <%=x.toString%>;
+		frame.add(create<%=msg.name%>Panel(), c);
+		
+		c.gridy = 2;
+ 		c.gridx = <%=x.toString%>;
+		frame.add(createSend<%=msg.name%>Button(), c);
+		
+		<%x := x+1%>
+		<%}%>
+					
+		
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	<%device.sends.each{ msg |%>
+	public static JLabel create<%=msg.name%>Label(){
+		return new JLabel("<%=msg.name%>");
+	}
+	
+	public static JButton createSend<%=msg.name%>Button(){
+		sendButton<%=msg.name%> = new JButton("send");
+		return sendButton<%=msg.name%>;
+	}
+	
+	<%var y : Integer init 0%>	
+	public static JPanel create<%=msg.name%>Panel(){
+
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		
+		JPanel panel = new JPanel(new GridBagLayout());
+
+			<%msg.parameters.each{ p | %>
+		JLabel label<%=p.name%> = new JLabel();
+		label<%=p.name%>.setText("<%=p.name%>");
+ 		c.gridx = 0;
+		c.gridy = <%=y.toString%>;
+ 		panel.add(label<%=p.name%>, c);
+ 		
+ 		field<%=msg.name+"_"+p.name%> = new JTextField();
+		field<%=msg.name+"_"+p.name%>.setText("<%=p.name%>");
+ 		c.gridx = 1;
+		c.gridy = <%=y.toString%>;
+ 		panel.add(field<%=msg.name+"_"+p.name%>, c);
+ 		
+
+ 			<%y := y+1%>
+			<%}%>
+			
+		return panel;	
+	}
+	
+	<%}%>
+}

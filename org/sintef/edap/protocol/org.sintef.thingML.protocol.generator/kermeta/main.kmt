@@ -18,7 +18,9 @@ require "./template/incomingMessageSuperClass.kmt"
 require "./template/outgoingMessageSuperClass.kmt"
 require "./template/incomingMessage.kmt"
 require "./template/outgoingMessage.kmt"
-require "./template/simulator/simulator.kmt"
+//require "./template/simulator/simulator.kmt"
+require "./template/simulator/GUI.kmt"
+require "./template/simulator/controller.kmt"
 
 using kermeta::standard
 using kermeta::io
@@ -39,18 +41,15 @@ class MainJavaProtocolGenerator
 		var imGenerator : IncomingMessageGenerator init IncomingMessageGenerator.new
 		var omGenerator : OutgointMessageGenerator init OutgointMessageGenerator.new
 		
-		var simGenerator : InteractiveDataSimulatorGenerator init InteractiveDataSimulatorGenerator.new
+		//var simGenerator : InteractiveDataSimulatorGenerator init InteractiveDataSimulatorGenerator.new
+		var guiGenerator : InteractiveDataGUIGenerator init InteractiveDataGUIGenerator.new
+		var controllerGenerator : InteractiveDataControllerGenerator init InteractiveDataControllerGenerator.new
 		
 		var file : FileIO init FileIO.new
 		
 		file.writeTextFile(srcFolder+"/org/sintef/moderates/FixedSizePacket.java", fspGenerator.generate("org.sintef.moderates"))
 		
 		thingMLmodel.types.select{t | t.isKindOf(Device)}.each{t |
-			stdio.writeln("InteractiveDataSimulatorGenerator")
-			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataSimulator.java", simGenerator.generate("org.sintef.moderates", t.asType(Device)))
-			stdio.writeln("")
-		
 		
 			stdio.writeln("ProtocolPacketGenerator")
 			stdio.writeln("-----------------------")
@@ -87,6 +86,16 @@ class MainJavaProtocolGenerator
 				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+".java", omGenerator.generate("org.sintef.moderates", m, t.name))
 				stdio.writeln("")
 			}
+			
+			stdio.writeln("InteractiveDataGUIGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			stdio.writeln("")
+			
+			stdio.writeln("InteractiveDataControllerGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			stdio.writeln("")	
 		}
 	end
 }
