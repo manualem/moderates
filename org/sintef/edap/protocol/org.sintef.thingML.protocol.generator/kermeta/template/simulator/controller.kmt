@@ -97,12 +97,34 @@ _res.append("Protocol.createMessageForIncomingPacket(packet);\n")
 end
 _res.append("\t\tSystem.out.println(result);\n\t}\n\n")
 }
-_res.append("\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+_res.append("\n\n\tpublic void receiveMessage(Object msg){\n\t\tOutgoing")
+_res.append(device.name)
+_res.append("Message data;\n")
 var k : Integer init 0
+_res.append("")
+device.receives.each{msg |
+_res.append("\t\t ")
+if k >0 then
+_res.append("else ")
+end
+_res.append("if (msg instanceof ")
+_res.append(msg.name)
+_res.append(") {\n\t\t \tdata = (Outgoing")
+_res.append(device.name)
+_res.append("Message) msg;\n\t\t \tInteractive")
+_res.append(device.name)
+_res.append("DataGUI.print")
+_res.append(msg.name)
+_res.append("(data.getClass().getName()+\" [\"+System.currentTimeMillis()+\"]: \"+data.toString());\n\t\t }\n")
+k := k+1
+_res.append("")
+}
+_res.append("\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+var l : Integer init 0
 _res.append("")
 device.sends.each{msg |
 _res.append("\t\t ")
-if k >0 then
+if l >0 then
 _res.append("else ")
 end
 _res.append("if ( ae.getSource() == Interactive")
@@ -112,7 +134,7 @@ _res.append(msg.name)
 _res.append(") {\n\t\t \tsend")
 _res.append(msg.name)
 _res.append("();\n\t\t }\n")
-k := k+1
+l := l+1
 _res.append("")
 }
 _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive")

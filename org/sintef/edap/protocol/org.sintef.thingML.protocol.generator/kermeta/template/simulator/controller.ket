@@ -76,14 +76,26 @@ public class Interactive<%=device.name%>DataController implements ActionListener
 	<%}%>
 
 
-	@Override
-	public void actionPerformed(ActionEvent ae) {
+	public void receiveMessage(Object msg){
+		Outgoing<%=device.name%>Message data;
 		<%var k : Integer init 0%>
-		<%device.sends.each{msg |%>
-		 <%if k >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI.sendButton<%=msg.name%>) {
-		 	send<%=msg.name%>();
+		<%device.receives.each{msg |%>
+		 <%if k >0 then%>else <%end%>if (msg instanceof <%=msg.name%>) {
+		 	data = (Outgoing<%=device.name%>Message) msg;
+		 	Interactive<%=device.name%>DataGUI.print<%=msg.name%>(data.getClass().getName()+" ["+System.currentTimeMillis()+"]: "+data.toString());
 		 }
 		 <%k := k+1%>
+		<%}%>	
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		<%var l : Integer init 0%>
+		<%device.sends.each{msg |%>
+		 <%if l >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI.sendButton<%=msg.name%>) {
+		 	send<%=msg.name%>();
+		 }
+		 <%l := l+1%>
 		<%}%>	
 	}
 	
