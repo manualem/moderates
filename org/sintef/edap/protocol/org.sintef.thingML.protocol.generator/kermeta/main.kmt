@@ -94,7 +94,7 @@ class MainJavaProtocolGenerator
 			
 			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), false))
 			stdio.writeln("")	
 		}
 	end

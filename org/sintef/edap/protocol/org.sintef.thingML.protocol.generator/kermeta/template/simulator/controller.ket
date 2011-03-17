@@ -5,7 +5,7 @@ using=""
 isAspectClass="false"
 class="InteractiveDataControllerGenerator"
 ismethod="false"operation="generate"
-parameters="packageName:String, device:edap::Device"
+parameters="packageName:String, device:edap::Device, toKevoreeComponent:Boolean"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>;
@@ -18,7 +18,64 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class Interactive<%=device.name%>DataController implements ActionListener {
+import java.nio.ByteBuffer;
+
+<%if toKevoreeComponent then%>
+import org.kevoree.annotation.*;
+import org.kevoree.framework.AbstractComponentType;
+import org.kevoree.framework.MessagePort;
+<%end%>
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+<%if toKevoreeComponent then%>
+@Requires({
+    @RequiredPort(name = "out", type = PortType.MESSAGE)
+})
+@Library(name = "Moderates::Stub")
+@ComponentType
+<%end%>
+public class Interactive<%=device.name%>DataController <%if toKevoreeComponent then%>extends AbstractComponentType <%end%>implements ActionListener {
+
+	private Logger log;
+
+	public Interactive<%=device.name%>DataController(){
+		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName()); 
+		Interactive<%=device.name%>DataGUI.init();
+		Interactive<%=device.name%>DataGUI.addListener(this);	
+	}
+	
+	<%if toKevoreeComponent then%>
+	@Start
+    public void start() {
+    	log.log(Level.INFO, "Interactive<%=device.name%>DataController has been started");
+    }
+
+    @Stop
+    public void stop() {
+    	log.log(Level.INFO, "Interactive<%=device.name%>DataController has been stopped");
+    }
+
+    @Update
+    public void update() {
+    
+    }
+    <%end%>
+	
+
+	private void doSend(Object result){
+		<%if toKevoreeComponent then%>
+		if (this.isPortBinded("out")) {
+           	this.getPortByName("out", MessagePort.class).process(result);
+          	log.log(Level.INFO, "Message sent "+result);
+        } else {
+        	log.log(Level.WARNING, "No component connected to output port. Cannot send message: "+result);
+        }
+        <%else%>
+        System.out.println(result);
+        <%end%>
+	}
 
 	<%device.sends.each{ msg |%>
 	public void send<%=msg.name%>() {
@@ -27,6 +84,7 @@ public class Interactive<%=device.name%>DataController implements ActionListener
 		packet[4] = <%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>;
 		<%if msg.parameters.size > 0 then%>
 		boolean valid = true;
+		ByteBuffer bb = ByteBuffer.wrap(packet, 5, 10);
 		<%msg.parameters.each{ p | %>
 		<%=helper.firstToUpper(helper.toJavaType(p.type))%> <%=p.name%> = null;
 		<%}%>
@@ -34,8 +92,15 @@ public class Interactive<%=device.name%>DataController implements ActionListener
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
 			<%=p.name%> = Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText();
+			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
+			bb.put(<%=p.name%>.getBytes());
 		<%else%>
-			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText()); 
+			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText());
+			<%if helper.isJavaByte(p.type) then%>
+			bb.put(<%=p.name%>);
+			<%else%>
+			bb.put<%=helper.firstToUpper(helper.toJavaType(p.type))%>(<%=p.name%>);
+			<%end%>	
 		<%end%>
 		<%}%>
 		} catch (NumberFormatException nfe){
@@ -43,34 +108,16 @@ public class Interactive<%=device.name%>DataController implements ActionListener
 			valid = false;
 		}
 		if (valid){
-			List<Byte> params = new ArrayList<Byte>();
-			<%msg.parameters.each{ p | %>
-			<%if helper.getJavaByteTypes.contains(p.type.name) then%>
-				<%if helper.isJavaByte(p.type) then%>
-			params.add((byte)0);
-			params.add(<%=p.name%>);
-				<%else%>
-			params.add((byte)0);
-			params.add(<%=p.name%>.byteValue());
-				<%end%>		
-			<%else%>
-				<%if helper.isJavaString(p.type) then%>
-			for(int i = 0; i < <%=p.name%>.getBytes().length; i++){
-				params.add(<%=p.name%>.getBytes()[i]);
-			}
-				<%end%>
-			<%end%>
-			<%}%>
-			Byte data[] = params.toArray(new Byte[0]);
-			for(int i=0; i<Math.min(16-5, data.length); i++){
-				packet[i+5] = data[i];
-			}
 			result = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
 		}
 		<%else%>	
 		result = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
 		<%end%>
-		System.out.println(result);
+		if (result != null){
+			doSend(result);
+		} else {
+			log.log(Level.WARNING, "Null message not sent");
+		}
 	}
 
 	<%}%>
@@ -101,7 +148,5 @@ public class Interactive<%=device.name%>DataController implements ActionListener
 	
 	public static void main(String args[]){
 		Interactive<%=device.name%>DataController controller = new Interactive<%=device.name%>DataController();
-		Interactive<%=device.name%>DataGUI.init();
-		Interactive<%=device.name%>DataGUI.addListener(controller);
 	}
 }
