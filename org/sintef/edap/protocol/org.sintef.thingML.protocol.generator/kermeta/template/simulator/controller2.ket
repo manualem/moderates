@@ -3,7 +3,7 @@ package="thingML"
 require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt"
 using=""
 isAspectClass="false"
-class="InteractiveDataControllerGenerator"
+class="InteractiveDataControllerGenerator2"
 ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device, toKevoreeComponent:Boolean"
 %>
@@ -39,25 +39,25 @@ import java.util.logging.Logger;
 @Library(name = "Moderates::Stub")
 @ComponentType
 <%end%>
-public class Interactive<%=device.name%>DataController <%if toKevoreeComponent then%>extends AbstractComponentType <%end%>implements ActionListener {
+public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent then%>extends AbstractComponentType <%end%>implements ActionListener {
 
 	private Logger log;
 
-	public Interactive<%=device.name%>DataController(){
-		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName()); 
-		Interactive<%=device.name%>DataGUI.init();
-		Interactive<%=device.name%>DataGUI.addListener(this);	
+	public Interactive<%=device.name%>DataController2(){
+		log = Logger.getLogger(Interactive<%=device.name%>DataController2.class.getName()); 
+		Interactive<%=device.name%>DataGUI2.init();
+		Interactive<%=device.name%>DataGUI2.addListener(this);	
 	}
 	
 	<%if toKevoreeComponent then%>
 	@Start
     public void start() {
-    	log.log(Level.INFO, "Interactive<%=device.name%>DataController has been started");
+    	log.log(Level.INFO, "Interactive<%=device.name%>DataController2 has been started");
     }
 
     @Stop
     public void stop() {
-    	log.log(Level.INFO, "Interactive<%=device.name%>DataController has been stopped");
+    	log.log(Level.INFO, "Interactive<%=device.name%>DataController2 has been stopped");
     }
 
     @Update
@@ -83,7 +83,7 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
         }
 	}
 
-	<%device.sends.each{ msg |%>
+	<%device.receives.each{ msg |%>
 	public void send<%=msg.name%>() {
 		byte packet[] = new byte[16];
 		packet[4] = <%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>;
@@ -96,11 +96,11 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 		try{
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
-			<%=p.name%> = Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText();
+			<%=p.name%> = Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getText();
 			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
 			bb.put(<%=p.name%>.getBytes());
 		<%else%>
-			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI.field<%=msg.name+"_"+p.name%>.getText());
+			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getText());
 			<%if helper.isJavaByte(p.type) then%>
 			bb.put(<%=p.name%>);
 			<%else%>
@@ -128,15 +128,15 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	public void receiveMessage(byte[] packet){
 		Incoming<%=device.name%>Message data = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
 		if (data != null) {
-			Interactive<%=device.name%>DataGUI.print(data.getClass().getName().substring(0,data.getClass().getName().length()-4), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+packet);
+			Interactive<%=device.name%>DataGUI2.print(data.getClass().getName().substring(0,data.getClass().getName().length()-4), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+packet);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		<%var l : Integer init 0%>
-		<%device.sends.each{msg |%>
-		 <%if l >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI.sendButton<%=msg.name%>) {
+		<%device.receives.each{msg |%>
+		 <%if l >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI2.sendButton<%=msg.name%>) {
 		 	send<%=msg.name%>();
 		 }
 		 <%l := l+1%>
@@ -144,6 +144,6 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	}
 	
 	public static void main(String args[]){
-		Interactive<%=device.name%>DataController controller = new Interactive<%=device.name%>DataController();
+		Interactive<%=device.name%>DataController2 controller = new Interactive<%=device.name%>DataController2();
 	}
 }

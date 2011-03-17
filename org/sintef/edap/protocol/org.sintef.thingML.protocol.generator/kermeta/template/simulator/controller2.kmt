@@ -4,7 +4,7 @@ require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
 require "../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
-class InteractiveDataControllerGenerator{
+class InteractiveDataControllerGenerator2{
 operation generate(packageName:String, device:edap::Device, toKevoreeComponent:Boolean):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
@@ -21,25 +21,25 @@ _res.append("@Provides({\n    @ProvidedPort(name = \"in\", type = PortType.MESSA
 end
 _res.append("public class Interactive")
 _res.append(device.name)
-_res.append("DataController ")
+_res.append("DataController2 ")
 if toKevoreeComponent then
 _res.append("extends AbstractComponentType ")
 end
 _res.append("implements ActionListener {\n\n\tprivate Logger log;\n\n\tpublic Interactive")
 _res.append(device.name)
-_res.append("DataController(){\n\t\tlog = Logger.getLogger(Interactive")
+_res.append("DataController2(){\n\t\tlog = Logger.getLogger(Interactive")
 _res.append(device.name)
-_res.append("DataController.class.getName()); \n\t\tInteractive")
+_res.append("DataController2.class.getName()); \n\t\tInteractive")
 _res.append(device.name)
-_res.append("DataGUI.init();\n\t\tInteractive")
+_res.append("DataGUI2.init();\n\t\tInteractive")
 _res.append(device.name)
-_res.append("DataGUI.addListener(this);\t\n\t}\n\t\n")
+_res.append("DataGUI2.addListener(this);\t\n\t}\n\t\n")
 if toKevoreeComponent then
 _res.append("\t@Start\n    public void start() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
-_res.append("DataController has been started\");\n    }\n\n    @Stop\n    public void stop() {\n    \tlog.log(Level.INFO, \"Interactive")
+_res.append("DataController2 has been started\");\n    }\n\n    @Stop\n    public void stop() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
-_res.append("DataController has been stopped\");\n    }\n\n    @Update\n    public void update() {\n    \n    }\n")
+_res.append("DataController2 has been stopped\");\n    }\n\n    @Update\n    public void update() {\n    \n    }\n")
 end
 _res.append("\t\n\n\tprivate void doSend(byte[] packet){\n\t\tIncoming")
 _res.append(device.name)
@@ -54,7 +54,7 @@ _res.append(device.name)
 _res.append("Protocol.createMessageForIncomingPacket(packet)+\" --> \"+packet);\n")
 end
 _res.append("        }\n\t}\n\n")
-device.sends.each{ msg |
+device.receives.each{ msg |
 _res.append("\tpublic void send")
 _res.append(msg.name)
 _res.append("() {\n\t\tbyte packet[] = new byte[16];\n\t\tpacket[4] = ")
@@ -79,7 +79,7 @@ _res.append("\t\t\t")
 _res.append(p.name)
 _res.append(" = Interactive")
 _res.append(device.name)
-_res.append("DataGUI.field")
+_res.append("DataGUI2.field")
 _res.append(msg.name+"_"+p.name)
 _res.append(".getText();\n\t\t\tif (")
 _res.append(p.name)
@@ -103,7 +103,7 @@ _res.append(".parse")
 _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
 _res.append("(Interactive")
 _res.append(device.name)
-_res.append("DataGUI.field")
+_res.append("DataGUI2.field")
 _res.append(msg.name+"_"+p.name)
 _res.append(".getText());\n")
 if helper.isJavaByte(p.type) then
@@ -137,17 +137,17 @@ _res.append("Message data = ")
 _res.append(device.name)
 _res.append("Protocol.createMessageForIncomingPacket(packet);\n\t\tif (data != null) {\n\t\t\tInteractive")
 _res.append(device.name)
-_res.append("DataGUI.print(data.getClass().getName().substring(0,data.getClass().getName().length()-4), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+packet);\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+_res.append("DataGUI2.print(data.getClass().getName().substring(0,data.getClass().getName().length()-4), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+packet);\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
 var l : Integer init 0
 _res.append("")
-device.sends.each{msg |
+device.receives.each{msg |
 _res.append("\t\t ")
 if l >0 then
 _res.append("else ")
 end
 _res.append("if ( ae.getSource() == Interactive")
 _res.append(device.name)
-_res.append("DataGUI.sendButton")
+_res.append("DataGUI2.sendButton")
 _res.append(msg.name)
 _res.append(") {\n\t\t \tsend")
 _res.append(msg.name)
@@ -157,9 +157,9 @@ _res.append("")
 }
 _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive")
 _res.append(device.name)
-_res.append("DataController controller = new Interactive")
+_res.append("DataController2 controller = new Interactive")
 _res.append(device.name)
-_res.append("DataController();\n\t}\n}")
+_res.append("DataController2();\n\t}\n}")
 result := _res.toString
 end
 }

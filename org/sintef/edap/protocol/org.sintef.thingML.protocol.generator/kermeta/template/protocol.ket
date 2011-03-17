@@ -30,8 +30,11 @@ public abstract class <%=device.name%>Protocol {
 	private static void createincomingMsg() {
 		incomingMsg = new Hashtable<Byte, Incoming<%=device.name%>Message>();
 		<%device.sends.each{in | %>
-		incomingMsg.put(<%=device.name%>Protocol.<%=helper.toJavaConstant(in.name)%>, new <%=in.name%>()); 
+		incomingMsg.put(<%=device.name%>Protocol.<%=helper.toJavaConstant(in.name)%>, new <%=in.name%>_In()); 
 		<%}%>
+		<%device.receives.each{in | %>
+		incomingMsg.put(<%=device.name%>Protocol.<%=helper.toJavaConstant(in.name)%>, new <%=in.name%>_In()); 
+		<%}%>		
 	}
 	
 	public static Incoming<%=device.name%>Message createMessageForIncomingPacket(byte[] packet) {
@@ -45,20 +48,18 @@ public abstract class <%=device.name%>Protocol {
 	}
 
 	<%device.receives.each{out | %>
-	public static <%=out.name%> create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
-		<%=out.name%> result = new <%=out.name%>(<%=helper.paramsToJavaCall(out)%>);
+	public static <%=out.name%>_Out create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
+		<%=out.name%>_Out result = new <%=out.name%>_Out(<%=helper.paramsToJavaCall(out)%>);
 		return result;
 	}
 	
 	<%}%>
-
-<%/*%>	
-	<%device.sends.each{in | %>
-	public static <%=in.name%> create<%=in.name%>(<%=helper.paramsToJava(in)%>) {
-		<%=in.name%> result = new <%=in.name%>(<%=helper.paramsToJavaCall(in)%>);
+	
+	<%device.sends.each{out | %>
+	public static <%=out.name%>_Out create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
+		<%=out.name%>_Out result = new <%=out.name%>_Out(<%=helper.paramsToJavaCall(out)%>);
 		return result;
 	}
 	
 	<%}%>
-<%*/%>
 }
