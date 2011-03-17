@@ -5,15 +5,49 @@ require "../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
 class InteractiveDataControllerGenerator{
-operation generate(packageName:String, device:edap::Device):String is do
+operation generate(packageName:String, device:edap::Device, toKevoreeComponent:Boolean):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\npublic class Interactive")
+_res.append(";\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
+if toKevoreeComponent then
+_res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\n")
+end
+_res.append("\nimport java.util.logging.Level;\nimport java.util.logging.Logger;\n\n")
+if toKevoreeComponent then
+_res.append("@Requires({\n    @RequiredPort(name = \"out\", type = PortType.MESSAGE)\n})\n@Library(name = \"Moderates::Stub\")\n@ComponentType\n")
+end
+_res.append("public class Interactive")
 _res.append(device.name)
-_res.append("DataController implements ActionListener {\n\n")
+_res.append("DataController ")
+if toKevoreeComponent then
+_res.append("extends AbstractComponentType ")
+end
+_res.append("implements ActionListener {\n\n\tprivate Logger log;\n\n\tpublic Interactive")
+_res.append(device.name)
+_res.append("DataController(){\n\t\tlog = Logger.getLogger(Interactive")
+_res.append(device.name)
+_res.append("DataController.class.getName()); \n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataGUI.init();\n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataGUI.addListener(this);\t\n\t}\n\t\n")
+if toKevoreeComponent then
+_res.append("\t@Start\n    public void start() {\n    \tlog.log(Level.INFO, \"Interactive")
+_res.append(device.name)
+_res.append("DataController has been started\");\n    }\n\n    @Stop\n    public void stop() {\n    \tlog.log(Level.INFO, \"Interactive")
+_res.append(device.name)
+_res.append("DataController has been stopped\");\n    }\n\n    @Update\n    public void update() {\n    \n    }\n")
+end
+_res.append("\t\n\n\tprivate void doSend(Object result){\n")
+if toKevoreeComponent then
+_res.append("\t\tif (this.isPortBinded(\"out\")) {\n           \tthis.getPortByName(\"out\", MessagePort.class).process(result);\n          \tlog.log(Level.INFO, \"Message sent \"+result);\n        } else {\n        \tlog.log(Level.WARNING, \"No component connected to output port. Cannot send message: \"+result);\n        }\n")
+else
+_res.append("        System.out.println(result);\n")
+end
+_res.append("\t}\n\n")
 device.sends.each{ msg |
 _res.append("\tpublic void send")
 _res.append(msg.name)
@@ -25,7 +59,7 @@ _res.append("Protocol.")
 _res.append(helper.toJavaConstant(msg.name))
 _res.append(";\n")
 if msg.parameters.size > 0 then
-_res.append("\t\tboolean valid = true;\n")
+_res.append("\t\tboolean valid = true;\n\t\tByteBuffer bb = ByteBuffer.wrap(packet, 5, 10);\n")
 msg.parameters.each{ p | 
 _res.append("\t\t")
 _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
@@ -43,7 +77,19 @@ _res.append(" = Interactive")
 _res.append(device.name)
 _res.append("DataGUI.field")
 _res.append(msg.name+"_"+p.name)
-_res.append(".getText();\n")
+_res.append(".getText();\n\t\t\tif (")
+_res.append(p.name)
+_res.append(".length() > ")
+_res.append(helper.getSize(p.type))
+_res.append(") ")
+_res.append(p.name)
+_res.append(" = ")
+_res.append(p.name)
+_res.append(".substring(0, ")
+_res.append(helper.getSize(p.type))
+_res.append("-1);\n\t\t\tbb.put(")
+_res.append(p.name)
+_res.append(".getBytes());\n")
 else
 _res.append("\t\t\t")
 _res.append(p.name)
@@ -55,39 +101,23 @@ _res.append("(Interactive")
 _res.append(device.name)
 _res.append("DataGUI.field")
 _res.append(msg.name+"_"+p.name)
-_res.append(".getText()); \n")
-end
-_res.append("")
-}
-_res.append("\t\t} catch (NumberFormatException nfe){\n\t\t\tJOptionPane.showMessageDialog(new JFrame(), \"Please check that all the inputs have the right type\", \"Error: Invalid input\", JOptionPane.ERROR_MESSAGE);\n\t\t\tvalid = false;\n\t\t}\n\t\tif (valid){\n\t\t\tList<Byte> params = new ArrayList<Byte>();\n")
-msg.parameters.each{ p | 
-_res.append("")
-if helper.getJavaByteTypes.contains(p.type.name) then
-_res.append("")
+_res.append(".getText());\n")
 if helper.isJavaByte(p.type) then
-_res.append("\t\t\tparams.add((byte)0);\n\t\t\tparams.add(")
+_res.append("\t\t\tbb.put(")
 _res.append(p.name)
 _res.append(");\n")
 else
-_res.append("\t\t\tparams.add((byte)0);\n\t\t\tparams.add(")
+_res.append("\t\t\tbb.put")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append("(")
 _res.append(p.name)
-_res.append(".byteValue());\n")
-end
-_res.append("")
-else
-_res.append("")
-if helper.isJavaString(p.type) then
-_res.append("\t\t\tfor(int i = 0; i < ")
-_res.append(p.name)
-_res.append(".getBytes().length; i++){\n\t\t\t\tparams.add(")
-_res.append(p.name)
-_res.append(".getBytes()[i]);\n\t\t\t}\n")
+_res.append(");\n")
 end
 _res.append("")
 end
 _res.append("")
 }
-_res.append("\t\t\tByte data[] = params.toArray(new Byte[0]);\n\t\t\tfor(int i=0; i<Math.min(16-5, data.length); i++){\n\t\t\t\tpacket[i+5] = data[i];\n\t\t\t}\n\t\t\tresult = ")
+_res.append("\t\t} catch (NumberFormatException nfe){\n\t\t\tJOptionPane.showMessageDialog(new JFrame(), \"Please check that all the inputs have the right type\", \"Error: Invalid input\", JOptionPane.ERROR_MESSAGE);\n\t\t\tvalid = false;\n\t\t}\n\t\tif (valid){\n\t\t\tresult = ")
 _res.append(device.name)
 _res.append("Protocol.createMessageForIncomingPacket(packet);\n\t\t}\n")
 else
@@ -95,7 +125,7 @@ _res.append("\t\tresult = ")
 _res.append(device.name)
 _res.append("Protocol.createMessageForIncomingPacket(packet);\n")
 end
-_res.append("\t\tSystem.out.println(result);\n\t}\n\n")
+_res.append("\t\tif (result != null){\n\t\t\tdoSend(result);\n\t\t} else {\n\t\t\tlog.log(Level.WARNING, \"Null message not sent\");\n\t\t}\n\t}\n\n")
 }
 _res.append("\n\n\tpublic void receiveMessage(Object msg){\n\t\tOutgoing")
 _res.append(device.name)
@@ -141,11 +171,7 @@ _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive
 _res.append(device.name)
 _res.append("DataController controller = new Interactive")
 _res.append(device.name)
-_res.append("DataController();\n\t\tInteractive")
-_res.append(device.name)
-_res.append("DataGUI.init();\n\t\tInteractive")
-_res.append(device.name)
-_res.append("DataGUI.addListener(controller);\n\t}\n}")
+_res.append("DataController();\n\t}\n}")
 result := _res.toString
 end
 }

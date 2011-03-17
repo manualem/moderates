@@ -33,8 +33,9 @@ import javax.swing.text.StyledDocument;
 
 public class Interactive<%=device.name%>DataGUI {
 	
-	private static JFrame frame;
+	private static boolean init = false;
 	
+	private static JFrame frame;
 	private static JTextPane screen;
 	
 	<%device.sends.each{msg |%>
@@ -64,40 +65,43 @@ public class Interactive<%=device.name%>DataGUI {
 	}
 	
 	public static void init(){
+		if (!init) {
+			init = true;
 		
-		frame = new JFrame("Interactive <%=device.name%> Data Simulator");
-		frame.setLayout(new GridBagLayout());
-		
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridwidth = 1;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(0,3,0,3);
-		
-		<%var x : Integer init 0%>
-		<%device.sends.each{msg |%>
-		//GUI related to <%=msg.name%>
-		c.gridy = 0;
- 		c.gridx = <%=x.toString%>;
-		frame.add(create<%=msg.name%>Label(), c);
-		
-		c.gridy = 1;
- 		c.gridx = <%=x.toString%>;
-		frame.add(create<%=msg.name%>Panel(), c);
-		
-		c.gridy = 2;
- 		c.gridx = <%=x.toString%>;
-		frame.add(createSend<%=msg.name%>Button(), c);
-		
-		<%x := x+1%>
-		<%}%>
-					
-		c.gridy = 3;
-		c.gridx = 0;
-		c.gridwidth = <%=device.sends.size.toString%>;
-		frame.add(createJTextPane(), c);
-		
-		frame.pack();
-		frame.setVisible(true);
+			frame = new JFrame("Interactive <%=device.name%> Data Simulator");
+			frame.setLayout(new GridBagLayout());
+			
+			GridBagConstraints c = new GridBagConstraints();
+			c.gridwidth = 1;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(0,3,0,3);
+			
+			<%var x : Integer init 0%>
+			<%device.sends.each{msg |%>
+			//GUI related to <%=msg.name%>
+			c.gridy = 0;
+	 		c.gridx = <%=x.toString%>;
+			frame.add(create<%=msg.name%>Label(), c);
+			
+			c.gridy = 1;
+	 		c.gridx = <%=x.toString%>;
+			frame.add(create<%=msg.name%>Panel(), c);
+			
+			c.gridy = 2;
+	 		c.gridx = <%=x.toString%>;
+			frame.add(createSend<%=msg.name%>Button(), c);
+			
+			<%x := x+1%>
+			<%}%>
+						
+			c.gridy = 3;
+			c.gridx = 0;
+			c.gridwidth = <%=device.sends.size.toString%>;
+			frame.add(createJTextPane(), c);
+			
+			frame.pack();
+			frame.setVisible(true);
+		}
 	}
 	
 	<%device.sends.each{ msg |%>
