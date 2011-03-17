@@ -12,10 +12,8 @@ datatype Byte
 	@java_type "byte";
 	
 datatype String
-@avr_type "char"
-@msp_type "char"
-@java_type "byte"
-@size "8";
+	@java_type "String"
+	@size "8";
 	
 device BrickLCDSensor {
 
