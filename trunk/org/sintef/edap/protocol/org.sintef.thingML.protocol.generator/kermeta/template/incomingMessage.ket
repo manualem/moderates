@@ -12,7 +12,7 @@ package <%=packageName%>;
 
 import java.nio.ByteBuffer;
 
-public class <%=msg.name%> extends Incoming<%=device.name%>Message {
+public class <%=msg.name%>_In extends Incoming<%=device.name%>Message {
 
 	<%msg.parameters.each{ p | %>
 	private <%=helper.toJavaType(p.type)%> <%=p.name%>;
@@ -39,9 +39,9 @@ public class <%=msg.name%> extends Incoming<%=device.name%>Message {
 
 	@Override
 	public String toString(){
-		String myString = "<%=msg.name%>\\n";
+		String myString = "<%=msg.name%>:";
 		<%msg.parameters.each{ p | %>
-		myString += "\\t-<%=p.name%>: "+<%=p.name%>+"\\n";
+		myString += " [<%=p.name%>: "+<%=p.name%>+"]";
 		<%}%>
 		return myString;
 	}
@@ -56,7 +56,7 @@ public class <%=msg.name%> extends Incoming<%=device.name%>Message {
 
 	@Override
 	protected Incoming<%=device.name%>Message createPacket(byte[] packet) {
-		Incoming<%=device.name%>Message result = new <%=msg.name%>();
+		Incoming<%=device.name%>Message result = new <%=msg.name%>_In();
 		result.setPacketData(packet);
 		return result;
 	}

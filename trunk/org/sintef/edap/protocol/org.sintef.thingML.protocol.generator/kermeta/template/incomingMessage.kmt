@@ -13,7 +13,7 @@ _res.append("package ")
 _res.append(packageName)
 _res.append(";\n\nimport java.nio.ByteBuffer;\n\npublic class ")
 _res.append(msg.name)
-_res.append(" extends Incoming")
+_res.append("_In extends Incoming")
 _res.append(device.name)
 _res.append("Message {\n\n")
 msg.parameters.each{ p | 
@@ -51,13 +51,13 @@ _res.append("")
 }
 _res.append("\t\t\n\t}\n\n\t@Override\n\tpublic String toString(){\n\t\tString myString = \"")
 _res.append(msg.name)
-_res.append("\\n\";\n")
+_res.append(":\";\n")
 msg.parameters.each{ p | 
-_res.append("\t\tmyString += \"\\t-")
+_res.append("\t\tmyString += \" [")
 _res.append(p.name)
 _res.append(": \"+")
 _res.append(p.name)
-_res.append("+\"\\n\";\n")
+_res.append("+\"]\";\n")
 }
 _res.append("\t\treturn myString;\n\t}\n\n")
 msg.parameters.each{ p | 
@@ -75,7 +75,7 @@ _res.append("Message createPacket(byte[] packet) {\n\t\tIncoming")
 _res.append(device.name)
 _res.append("Message result = new ")
 _res.append(msg.name)
-_res.append("();\n\t\tresult.setPacketData(packet);\n\t\treturn result;\n\t}\n\t\n}")
+_res.append("_In();\n\t\tresult.setPacketData(packet);\n\t\treturn result;\n\t}\n\t\n}")
 result := _res.toString
 end
 }

@@ -4,7 +4,7 @@ require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
 require "../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
-class InteractiveDataGUIGenerator{
+class InteractiveDataGUIGenerator2{
 operation generate(packageName:String, device:edap::Device):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
@@ -13,8 +13,8 @@ _res.append("package ")
 _res.append(packageName)
 _res.append(";\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
 _res.append(device.name)
-_res.append("DataGUI {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\t\n")
-device.sends.each{msg |
+_res.append("DataGUI2 {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\t\n")
+device.receives.each{msg |
 _res.append("\t//Attributes related to ")
 _res.append(msg.name)
 _res.append("\n\tpublic static JButton sendButton")
@@ -28,7 +28,7 @@ _res.append(";\n")
 _res.append("\t\t\n")
 }
 _res.append("\n\tpublic static void print(String id, String data){\n\t\ttry {\n        \tStyledDocument doc = screen.getStyledDocument();\n            doc.insertString(doc.getLength(), formatForPrint(data), doc.getStyle(\"receive\"+id+\"Style\"));\n        } catch (BadLocationException ex) {\n            ex.printStackTrace();\n        }\n\t}\n\t\t\n\tpublic static void addListener(ActionListener l){\n")
-device.sends.each{msg |
+device.receives.each{msg |
 _res.append("\t\tsendButton")
 _res.append(msg.name)
 _res.append(".addActionListener(l);\n")
@@ -38,7 +38,7 @@ _res.append(device.name)
 _res.append(" Data Simulator\");\n\t\t\tframe.setLayout(new GridBagLayout());\n\t\t\t\n\t\t\tGridBagConstraints c = new GridBagConstraints();\n\t\t\tc.gridwidth = 1;\n\t\t\tc.fill = GridBagConstraints.HORIZONTAL;\n\t\t\tc.insets = new Insets(0,3,0,3);\n\t\t\t\n")
 var x : Integer init 0
 _res.append("")
-device.sends.each{msg |
+device.receives.each{msg |
 _res.append("\t\t\t//GUI related to ")
 _res.append(msg.name)
 _res.append("\n\t\t\tc.gridy = 0;\n\t \t\tc.gridx = ")
@@ -62,9 +62,9 @@ x := x+1
 _res.append("")
 }
 _res.append("\t\t\t\t\t\t\n\t\t\tc.gridy = 3;\n\t\t\tc.gridx = 0;\n\t\t\tc.gridwidth = ")
-_res.append(device.sends.size.toString)
+_res.append(device.receives.size.toString)
 _res.append(";\n\t\t\tframe.add(createJTextPane(), c);\n\t\t\t\n\t\t\tframe.pack();\n\t\t\tframe.setVisible(true);\n\t\t}\n\t}\n\t\n\tpublic static JLabel createLabel(String name){\n\t\treturn new JLabel(name);\n\t}\n\t\n\tpublic static JButton createSendButton(String name){\n\t\treturn new JButton(\"send\");\n\t}\n\t\n")
-device.sends.each{ msg |
+device.receives.each{ msg |
 _res.append("")
 var y : Integer init 0
 _res.append("\tpublic static JPanel create")
@@ -98,7 +98,7 @@ _res.append("")
 _res.append("\t\t\t\n\t\treturn panel;\t\n\t}\n\t\n")
 }
 _res.append("\t\n\t\t\n\tpublic static JScrollPane createJTextPane(){\n\t\tscreen = new JTextPane();\n        screen.setFocusable(false);\n        screen.setEditable(false);\n        screen.setAutoscrolls(true);\n  \n  \t\tJScrollPane editorScrollPane = new JScrollPane(screen);\n\t\teditorScrollPane.setVerticalScrollBarPolicy(\n\t\t                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);\n\t\teditorScrollPane.setPreferredSize(new Dimension(480, 240));\n\t\teditorScrollPane.setMinimumSize(new Dimension(320, 160));\n        \n        StyledDocument doc = screen.getStyledDocument();\n        Style def = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);\n            \n        Random rnd = new Random();\n")
-device.receives.each{msg |
+device.sends.each{msg |
 _res.append("\t\tStyle receive")
 _res.append(msg.name)
 _res.append("Style = doc.addStyle(\"receive")

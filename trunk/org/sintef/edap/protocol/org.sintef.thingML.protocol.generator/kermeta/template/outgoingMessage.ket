@@ -10,9 +10,9 @@ parameters="packageName:String, msg:edap::Message, deviceName:String"
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>;
 
-public class <%=msg.name%> extends Outgoing<%=deviceName%>Message {
+public class <%=msg.name%>_Out extends Outgoing<%=deviceName%>Message {
 	
-	public <%=msg.name%>(<%=helper.paramsToJava(msg)%>) {
+	public <%=msg.name%>_Out(<%=helper.paramsToJava(msg)%>) {
 		setCommandID(<%=deviceName%>Protocol.<%=helper.toJavaConstant(msg.name)%>);
 		<%msg.parameters.each{ p | %>
 		set<%=helper.firstToUpper(helper.toJavaType(p.type))%>Value(<%=p.name%>);

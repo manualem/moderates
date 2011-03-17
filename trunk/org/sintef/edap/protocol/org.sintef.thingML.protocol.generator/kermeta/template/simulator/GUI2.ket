@@ -3,7 +3,7 @@ package="thingML"
 require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt"
 using=""
 isAspectClass="false"
-class="InteractiveDataGUIGenerator"
+class="InteractiveDataGUIGenerator2"
 ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device"
 %>
@@ -31,14 +31,14 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-public class Interactive<%=device.name%>DataGUI {
+public class Interactive<%=device.name%>DataGUI2 {
 	
 	private static boolean init = false;
 	
 	private static JFrame frame;
 	private static JTextPane screen;
 	
-	<%device.sends.each{msg |%>
+	<%device.receives.each{msg |%>
 	//Attributes related to <%=msg.name%>
 	public static JButton sendButton<%=msg.name%>;
 		<%msg.parameters.each{ p | %>
@@ -57,7 +57,7 @@ public class Interactive<%=device.name%>DataGUI {
 	}
 		
 	public static void addListener(ActionListener l){
-		<%device.sends.each{msg |%>
+		<%device.receives.each{msg |%>
 		sendButton<%=msg.name%>.addActionListener(l);
 		<%}%>
 	}
@@ -75,7 +75,7 @@ public class Interactive<%=device.name%>DataGUI {
 			c.insets = new Insets(0,3,0,3);
 			
 			<%var x : Integer init 0%>
-			<%device.sends.each{msg |%>
+			<%device.receives.each{msg |%>
 			//GUI related to <%=msg.name%>
 			c.gridy = 0;
 	 		c.gridx = <%=x.toString%>;
@@ -95,7 +95,7 @@ public class Interactive<%=device.name%>DataGUI {
 						
 			c.gridy = 3;
 			c.gridx = 0;
-			c.gridwidth = <%=device.sends.size.toString%>;
+			c.gridwidth = <%=device.receives.size.toString%>;
 			frame.add(createJTextPane(), c);
 			
 			frame.pack();
@@ -111,7 +111,7 @@ public class Interactive<%=device.name%>DataGUI {
 		return new JButton("send");
 	}
 	
-	<%device.sends.each{ msg |%>
+	<%device.receives.each{ msg |%>
 	<%var y : Integer init 0%>	
 	public static JPanel create<%=msg.name%>Panel(){
 
@@ -160,7 +160,7 @@ public class Interactive<%=device.name%>DataGUI {
         Style def = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
             
         Random rnd = new Random();
-		<%device.receives.each{msg |%>
+		<%device.sends.each{msg |%>
 		Style receive<%=msg.name%>Style = doc.addStyle("receive<%=msg.name%>Style", def);
         StyleConstants.setForeground(receive<%=msg.name%>Style, new Color(rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255)));	
 		<%}%>        
