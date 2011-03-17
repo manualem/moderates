@@ -1,0 +1,129 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class InteractiveDataControllerGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\npublic class Interactive")
+_res.append(device.name)
+_res.append("DataController implements ActionListener {\n\n")
+device.sends.each{ msg |
+_res.append("\tpublic void send")
+_res.append(msg.name)
+_res.append("() {\n\t\tIncoming")
+_res.append(device.name)
+_res.append("Message result = null;\n\t\tbyte packet[] = new byte[16];\n\t\tpacket[4] = ")
+_res.append(device.name)
+_res.append("Protocol.")
+_res.append(helper.toJavaConstant(msg.name))
+_res.append(";\n")
+if msg.parameters.size > 0 then
+_res.append("\t\tboolean valid = true;\n")
+msg.parameters.each{ p | 
+_res.append("\t\t")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append(" ")
+_res.append(p.name)
+_res.append(" = null;\n")
+}
+_res.append("\t\ttry{\n")
+msg.parameters.each{ p | 
+_res.append("")
+if helper.isJavaString(p.type) then
+_res.append("\t\t\t")
+_res.append(p.name)
+_res.append(" = Interactive")
+_res.append(device.name)
+_res.append("DataGUI.field")
+_res.append(msg.name+"_"+p.name)
+_res.append(".getText();\n")
+else
+_res.append("\t\t\t")
+_res.append(p.name)
+_res.append(" = ")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append(".parse")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append("(Interactive")
+_res.append(device.name)
+_res.append("DataGUI.field")
+_res.append(msg.name+"_"+p.name)
+_res.append(".getText()); \n")
+end
+_res.append("")
+}
+_res.append("\t\t} catch (NumberFormatException nfe){\n\t\t\tJOptionPane.showMessageDialog(new JFrame(), \"Please check that all the inputs have the right type\", \"Error: Invalid input\", JOptionPane.ERROR_MESSAGE);\n\t\t\tvalid = false;\n\t\t}\n\t\tif (valid){\n\t\t\tList<Byte> params = new ArrayList<Byte>();\n")
+msg.parameters.each{ p | 
+_res.append("")
+if helper.getJavaByteTypes.contains(p.type.name) then
+_res.append("")
+if helper.isJavaByte(p.type) then
+_res.append("\t\t\tparams.add((byte)0);\n\t\t\tparams.add(")
+_res.append(p.name)
+_res.append(");\n")
+else
+_res.append("\t\t\tparams.add((byte)0);\n\t\t\tparams.add(")
+_res.append(p.name)
+_res.append(".byteValue());\n")
+end
+_res.append("")
+else
+_res.append("")
+if helper.isJavaString(p.type) then
+_res.append("\t\t\tfor(int i = 0; i < ")
+_res.append(p.name)
+_res.append(".getBytes().length; i++){\n\t\t\t\tparams.add(")
+_res.append(p.name)
+_res.append(".getBytes()[i]);\n\t\t\t}\n")
+end
+_res.append("")
+end
+_res.append("")
+}
+_res.append("\t\t\tByte data[] = params.toArray(new Byte[0]);\n\t\t\tfor(int i=0; i<Math.min(16-5, data.length); i++){\n\t\t\t\tpacket[i+5] = data[i];\n\t\t\t}\n\t\t\tresult = ")
+_res.append(device.name)
+_res.append("Protocol.createMessageForIncomingPacket(packet);\n\t\t}\n")
+else
+_res.append("\t\tresult = ")
+_res.append(device.name)
+_res.append("Protocol.createMessageForIncomingPacket(packet);\n")
+end
+_res.append("\t\tSystem.out.println(result);\n\t}\n\n")
+}
+_res.append("\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+var k : Integer init 0
+_res.append("")
+device.sends.each{msg |
+_res.append("\t\t ")
+if k >0 then
+_res.append("else ")
+end
+_res.append("if ( ae.getSource() == Interactive")
+_res.append(device.name)
+_res.append("DataGUI.sendButton")
+_res.append(msg.name)
+_res.append(") {\n\t\t \tsend")
+_res.append(msg.name)
+_res.append("();\n\t\t }\n")
+k := k+1
+_res.append("")
+}
+_res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataController controller = new Interactive")
+_res.append(device.name)
+_res.append("DataController();\n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataGUI.init();\n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataGUI.addListener(controller);\n\t}\n}")
+result := _res.toString
+end
+}
