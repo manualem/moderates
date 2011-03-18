@@ -21,17 +21,20 @@ public class <%=msg.name%>_In extends Incoming<%=device.name%>Message {
 	@Override
 	protected void setPacketData(byte[] packet) {
 		super.setPacketData(packet);
+		int position = 5;
 		<%if msg.parameters.exists{p | not helper.isJavaString(p.type)} then%>
 		ByteBuffer bb = ByteBuffer.wrap(data, 5, 10);<%//5 and 10 are magic numbers...%>
 		<%end%>
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
 		 <%=p.name%> = ""; 
-		for(int i=2; i<getLength(); i++) {
-			 <%=p.name%> =  <%=p.name%> + (char)data[4+i];
+		for(int i=position; i<Math.min(position+<%=helper.getSize(p.type)%>, getLength()); i++) {
+			 <%=p.name%> =  <%=p.name%> + (char)data[i];
 		}
+		position += <%=helper.getSize(p.type)%>;
 		<%else%>
 		<%=p.name%> = bb.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
+		position += (int) (<%=helper.firstToUpper(helper.toJavaType(p.type))%>.SIZE/8);
 		<%end%>
 		<%}%>
 		

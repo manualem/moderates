@@ -12,7 +12,7 @@ package <%=packageName%>;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -39,11 +39,14 @@ import java.util.logging.Logger;
 @Library(name = "Moderates::Stub")
 @ComponentType
 <%end%>
-public class Interactive<%=device.name%>DataController <%if toKevoreeComponent then%>extends AbstractComponentType <%end%>implements ActionListener {
+public class Interactive<%=device.name%>DataController <%if toKevoreeComponent then%>extends AbstractComponentType <%end%>implements ActionListener, ProtocolHandler {
 
 	private Logger log;
 
+	private List<ProtocolHandler> handlers;
+
 	public Interactive<%=device.name%>DataController(){
+		handlers = new LinkedList<ProtocolHandler>();
 		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName()); 
 		Interactive<%=device.name%>DataGUI.init();
 		Interactive<%=device.name%>DataGUI.addListener(this);	
@@ -80,12 +83,16 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
         <%else%>
         	System.out.println(<%=device.name%>Protocol.createMessageForIncomingPacket(packet)+" --> "+packet);
         <%end%>
+            for (ProtocolHandler h : handlers){
+				h.receiveMsg(packet);
+			}
         }
 	}
 
 	<%device.sends.each{ msg |%>
 	public void send<%=msg.name%>() {
 		byte packet[] = new byte[16];
+		packet[3] = 16;
 		packet[4] = <%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>;
 		<%if msg.parameters.size > 0 then%>
 		boolean valid = true;
@@ -128,7 +135,7 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	public void receiveMessage(byte[] packet){
 		Incoming<%=device.name%>Message data = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
 		if (data != null) {
-			Interactive<%=device.name%>DataGUI.print(data.getClass().getName().substring(0,data.getClass().getName().length()-4), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+packet);
+			Interactive<%=device.name%>DataGUI.print(data.getClass().getSimpleName().substring(0,data.getClass().getSimpleName().length()-3), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+FixedSizePacket.toString(packet));
 		}
 	}
 
@@ -145,5 +152,15 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	
 	public static void main(String args[]){
 		Interactive<%=device.name%>DataController controller = new Interactive<%=device.name%>DataController();
+	}
+	
+	@Override
+	public void register(ProtocolHandler handler) {
+		handlers.add(handler);
+	}
+
+	@Override
+	public void receiveMsg(byte[] msg) {
+		receiveMessage(msg);
 	}
 }

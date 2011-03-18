@@ -1,0 +1,15 @@
+<%@ket
+package="thingML"
+require=""
+using=""
+isAspectClass="false"
+class="ProtocolHandlerGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String"
+%>
+package <%=packageName%>;
+
+public interface ProtocolHandler {
+	public void register(ProtocolHandler handler);
+	public void receiveMsg(byte[] msg);
+}
