@@ -72,59 +72,59 @@ class MainJavaProtocolGenerator
 	
 			stdio.writeln("IncomingMessageSuperGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Incoming"+t.name+"Message.java", imsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/in/Incoming"+t.name+"Message.java", imsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")
 			
 			
 			stdio.writeln("OutgoingMessageSuperGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Outgoing"+t.name+"Message.java", omsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/out/Outgoing"+t.name+"Message.java", omsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")		
 			
 			t.asType(Device).sends.each{ m |
 				stdio.writeln("IncomingMessageGenerator")
 				stdio.writeln("-----------------------")
-				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+"_In.java", imGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
-				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+"_Out.java", omGenerator.generate("org.sintef.moderates", m, t.name))
+				file.writeTextFile(srcFolder+"/org/sintef/moderates/in/"+m.name+"_In.java", imGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
+				file.writeTextFile(srcFolder+"/org/sintef/moderates/out/"+m.name+"_Out.java", omGenerator.generate("org.sintef.moderates", m, t.name))
 				stdio.writeln("")
 			}
 			
 			t.asType(Device).receives.each{ m |
 				stdio.writeln("OutgoingMessageGenerator")
 				stdio.writeln("-----------------------")
-				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+"_In.java", imGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
-				file.writeTextFile(srcFolder+"/org/sintef/moderates/"+m.name+"_Out.java", omGenerator.generate("org.sintef.moderates", m, t.name))
+				file.writeTextFile(srcFolder+"/org/sintef/moderates/in/"+m.name+"_In.java", imGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
+				file.writeTextFile(srcFolder+"/org/sintef/moderates/out/"+m.name+"_Out.java", omGenerator.generate("org.sintef.moderates", m, t.name))
 				stdio.writeln("")
 			}
 			
 			stdio.writeln("ProtocolHandlerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/ProtocolHandler.java", handlerGenerator.generate("org.sintef.moderates"))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/ProtocolHandler.java", handlerGenerator.generate("org.sintef.moderates"))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataGUIGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device)))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), false))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), false))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataGUIGenerator2")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataGUI2.java", guiGenerator2.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI2.java", guiGenerator2.generate("org.sintef.moderates", t.asType(Device)))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataControllerGenerator2")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataController2.java", controllerGenerator2.generate("org.sintef.moderates", t.asType(Device), false))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController2.java", controllerGenerator2.generate("org.sintef.moderates", t.asType(Device), false))
 			stdio.writeln("")
 			
 			stdio.writeln("SimulatorTestGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/Test"+t.name+".java", simulatorTestGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Test"+t.name+".java", simulatorTestGenerator.generate("org.sintef.moderates", t.asType(Device)))
 			stdio.writeln("")		
 		}
 	end

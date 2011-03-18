@@ -8,7 +8,7 @@ ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device"
 %>
 <%var helper : StringHelper init StringHelper.new%>
-package <%=packageName%>;
+package <%=packageName%>.sim;
 
 import java.awt.Color;
 import java.awt.Dimension;

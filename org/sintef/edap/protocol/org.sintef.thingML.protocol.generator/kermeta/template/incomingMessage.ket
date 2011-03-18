@@ -8,7 +8,9 @@ ismethod="false"operation="generate"
 parameters="packageName:String, msg:edap::Message, device:edap::Device"
 %>
 <%var helper : StringHelper init StringHelper.new%>
-package <%=packageName%>;
+package <%=packageName%>.in;
+
+import <%=packageName%>.*;
 
 import java.nio.ByteBuffer;
 
@@ -19,7 +21,7 @@ public class <%=msg.name%>_In extends Incoming<%=device.name%>Message {
 	<%}%>
 	
 	@Override
-	protected void setPacketData(byte[] packet) {
+	public void setPacketData(byte[] packet) {
 		super.setPacketData(packet);
 		int position = 5;
 		<%if msg.parameters.exists{p | not helper.isJavaString(p.type)} then%>
@@ -58,7 +60,7 @@ public class <%=msg.name%>_In extends Incoming<%=device.name%>Message {
 
 
 	@Override
-	protected Incoming<%=device.name%>Message createPacket(byte[] packet) {
+	public Incoming<%=device.name%>Message createPacket(byte[] packet) {
 		Incoming<%=device.name%>Message result = new <%=msg.name%>_In();
 		result.setPacketData(packet);
 		return result;

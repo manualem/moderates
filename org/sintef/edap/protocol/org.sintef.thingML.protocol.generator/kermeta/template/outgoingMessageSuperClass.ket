@@ -8,7 +8,9 @@ ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
 %>
 <%var helper : StringHelper init StringHelper.new%>
-package <%=packageName%>;
+package <%=packageName%>.out;
+
+import <%=packageName%>.*;
 
 public abstract class Outgoing<%=device.name%>Message extends <%=device.name%>ProtocolPacket {
 	

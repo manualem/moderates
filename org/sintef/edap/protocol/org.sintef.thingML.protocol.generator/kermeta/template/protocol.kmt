@@ -11,7 +11,11 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.util.Hashtable;\n\npublic abstract class ")
+_res.append(";\n\nimport java.util.Hashtable;\nimport ")
+_res.append(packageName)
+_res.append(".in.*;\nimport ")
+_res.append(packageName)
+_res.append(".out.*;\n\npublic abstract class ")
 _res.append(device.name)
 _res.append("Protocol {\n\n\t// Outgoing messages\n")
 device.receives.each{out | 

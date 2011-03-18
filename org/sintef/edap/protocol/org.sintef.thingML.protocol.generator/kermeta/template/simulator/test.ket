@@ -7,10 +7,10 @@ class="SimulatorTestGenerator"
 ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device"
 %>
-package <%=packageName%>;
+package <%=packageName%>.sim;
 
-import org.sintef.moderates.Interactive<%=device.name%>DataController;
-import org.sintef.moderates.Interactive<%=device.name%>DataController2;
+import org.sintef.moderates.sim.Interactive<%=device.name%>DataController;
+import org.sintef.moderates.sim.Interactive<%=device.name%>DataController2;
 
 public class Test<%=device.name%> {
 

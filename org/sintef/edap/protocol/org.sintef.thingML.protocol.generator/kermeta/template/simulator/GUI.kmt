@@ -11,7 +11,7 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
+_res.append(".sim;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
 _res.append(device.name)
 _res.append("DataGUI {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\t\n")
 device.sends.each{msg |
