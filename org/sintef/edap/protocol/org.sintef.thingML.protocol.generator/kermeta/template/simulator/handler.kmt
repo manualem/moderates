@@ -1,0 +1,13 @@
+package thingML;
+require kermeta
+using kermeta::standard
+using kermeta::utils
+class ProtocolHandlerGenerator{
+operation generate(packageName:String):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\npublic interface ProtocolHandler {\n\tpublic void register(ProtocolHandler handler);\n\tpublic void receiveMsg(byte[] msg);\n}\n")
+result := _res.toString
+end
+}

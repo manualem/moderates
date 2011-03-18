@@ -11,7 +11,7 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
+_res.append(";\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
 if toKevoreeComponent then
 _res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\n")
 end
@@ -25,9 +25,9 @@ _res.append("DataController ")
 if toKevoreeComponent then
 _res.append("extends AbstractComponentType ")
 end
-_res.append("implements ActionListener {\n\n\tprivate Logger log;\n\n\tpublic Interactive")
+_res.append("implements ActionListener, ProtocolHandler {\n\n\tprivate Logger log;\n\n\tprivate List<ProtocolHandler> handlers;\n\n\tpublic Interactive")
 _res.append(device.name)
-_res.append("DataController(){\n\t\tlog = Logger.getLogger(Interactive")
+_res.append("DataController(){\n\t\thandlers = new LinkedList<ProtocolHandler>();\n\t\tlog = Logger.getLogger(Interactive")
 _res.append(device.name)
 _res.append("DataController.class.getName()); \n\t\tInteractive")
 _res.append(device.name)
@@ -53,11 +53,11 @@ _res.append("        \tSystem.out.println(")
 _res.append(device.name)
 _res.append("Protocol.createMessageForIncomingPacket(packet)+\" --> \"+packet);\n")
 end
-_res.append("        }\n\t}\n\n")
+_res.append("            for (ProtocolHandler h : handlers){\n\t\t\t\th.receiveMsg(packet);\n\t\t\t}\n        }\n\t}\n\n")
 device.sends.each{ msg |
 _res.append("\tpublic void send")
 _res.append(msg.name)
-_res.append("() {\n\t\tbyte packet[] = new byte[16];\n\t\tpacket[4] = ")
+_res.append("() {\n\t\tbyte packet[] = new byte[16];\n\t\tpacket[3] = 16;\n\t\tpacket[4] = ")
 _res.append(device.name)
 _res.append("Protocol.")
 _res.append(helper.toJavaConstant(msg.name))
@@ -137,7 +137,7 @@ _res.append("Message data = ")
 _res.append(device.name)
 _res.append("Protocol.createMessageForIncomingPacket(packet);\n\t\tif (data != null) {\n\t\t\tInteractive")
 _res.append(device.name)
-_res.append("DataGUI.print(data.getClass().getName().substring(0,data.getClass().getName().length()-4), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+packet);\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+_res.append("DataGUI.print(data.getClass().getSimpleName().substring(0,data.getClass().getSimpleName().length()-3), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+FixedSizePacket.toString(packet));\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
 var l : Integer init 0
 _res.append("")
 device.sends.each{msg |
@@ -159,7 +159,7 @@ _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive
 _res.append(device.name)
 _res.append("DataController controller = new Interactive")
 _res.append(device.name)
-_res.append("DataController();\n\t}\n}")
+_res.append("DataController();\n\t}\n\t\n\t@Override\n\tpublic void register(ProtocolHandler handler) {\n\t\thandlers.add(handler);\n\t}\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\n}")
 result := _res.toString
 end
 }

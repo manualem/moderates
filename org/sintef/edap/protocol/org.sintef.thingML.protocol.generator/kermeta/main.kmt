@@ -23,6 +23,8 @@ require "./template/simulator/GUI.kmt"
 require "./template/simulator/controller.kmt"
 require "./template/simulator/GUI2.kmt"
 require "./template/simulator/controller2.kmt"
+require "./template/simulator/handler.kmt"
+require "./template/simulator/test.kmt"
 
 using kermeta::standard
 using kermeta::io
@@ -48,6 +50,8 @@ class MainJavaProtocolGenerator
 		var controllerGenerator : InteractiveDataControllerGenerator init InteractiveDataControllerGenerator.new
 		var guiGenerator2 : InteractiveDataGUIGenerator2 init InteractiveDataGUIGenerator2.new
 		var controllerGenerator2 : InteractiveDataControllerGenerator2 init InteractiveDataControllerGenerator2.new
+		var handlerGenerator : ProtocolHandlerGenerator init ProtocolHandlerGenerator.new
+		var simulatorTestGenerator : SimulatorTestGenerator init SimulatorTestGenerator.new
 		
 		var file : FileIO init FileIO.new
 		
@@ -93,6 +97,11 @@ class MainJavaProtocolGenerator
 				stdio.writeln("")
 			}
 			
+			stdio.writeln("ProtocolHandlerGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/ProtocolHandler.java", handlerGenerator.generate("org.sintef.moderates"))
+			stdio.writeln("")
+			
 			stdio.writeln("InteractiveDataGUIGenerator")
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device)))
@@ -111,6 +120,11 @@ class MainJavaProtocolGenerator
 			stdio.writeln("InteractiveDataControllerGenerator2")
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/Interactive"+t.name+"DataController2.java", controllerGenerator2.generate("org.sintef.moderates", t.asType(Device), false))
+			stdio.writeln("")
+			
+			stdio.writeln("SimulatorTestGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/Test"+t.name+".java", simulatorTestGenerator.generate("org.sintef.moderates", t.asType(Device)))
 			stdio.writeln("")		
 		}
 	end

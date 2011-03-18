@@ -23,7 +23,7 @@ _res.append(" ")
 _res.append(p.name)
 _res.append(";\n")
 }
-_res.append("\t\n\t@Override\n\tprotected void setPacketData(byte[] packet) {\n\t\tsuper.setPacketData(packet);\n")
+_res.append("\t\n\t@Override\n\tprotected void setPacketData(byte[] packet) {\n\t\tsuper.setPacketData(packet);\n\t\tint position = 5;\n")
 if msg.parameters.exists{p | not helper.isJavaString(p.type)} then
 _res.append("\t\tByteBuffer bb = ByteBuffer.wrap(data, 5, 10);")
 //5 and 10 are magic numbers...
@@ -35,17 +35,23 @@ _res.append("")
 if helper.isJavaString(p.type) then
 _res.append("\t\t ")
 _res.append(p.name)
-_res.append(" = \"\"; \n\t\tfor(int i=2; i<getLength(); i++) {\n\t\t\t ")
+_res.append(" = \"\"; \n\t\tfor(int i=position; i<Math.min(position+")
+_res.append(helper.getSize(p.type))
+_res.append(", getLength()); i++) {\n\t\t\t ")
 _res.append(p.name)
 _res.append(" =  ")
 _res.append(p.name)
-_res.append(" + (char)data[4+i];\n\t\t}\n")
+_res.append(" + (char)data[i];\n\t\t}\n\t\tposition += ")
+_res.append(helper.getSize(p.type))
+_res.append(";\n")
 else
 _res.append("\t\t")
 _res.append(p.name)
 _res.append(" = bb.get")
 _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
-_res.append("();\n")
+_res.append("();\n\t\tposition += (int) (")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append(".SIZE/8);\n")
 end
 _res.append("")
 }

@@ -22,6 +22,14 @@ public abstract class FixedSizePacket {
 		return result;
 	}
 	
+	public static String toString(byte msg[]) {
+		String result = "";
+		for (int i = 0; i< msg.length; i++) {
+			result += Byte.toString(msg[i]) + ' ';
+		}
+		return result;
+	}
+	
 	public FixedSizePacket() {
 		data = new byte[16];
 	}

@@ -1,0 +1,27 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+using=""
+isAspectClass="false"
+class="SimulatorTestGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+package <%=packageName%>;
+
+import org.sintef.moderates.Interactive<%=device.name%>DataController;
+import org.sintef.moderates.Interactive<%=device.name%>DataController2;
+
+public class Test<%=device.name%> {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Interactive<%=device.name%>DataController controller1 = new Interactive<%=device.name%>DataController();
+		Interactive<%=device.name%>DataController2 controller2 = new Interactive<%=device.name%>DataController2();
+		controller1.register(controller2);
+		controller2.register(controller1);
+	}
+
+}
