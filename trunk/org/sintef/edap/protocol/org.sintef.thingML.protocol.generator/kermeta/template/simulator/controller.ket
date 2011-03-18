@@ -8,7 +8,10 @@ ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device, toKevoreeComponent:Boolean"
 %>
 <%var helper : StringHelper init StringHelper.new%>
-package <%=packageName%>;
+package <%=packageName%>.sim;
+
+import <%=packageName%>.*;
+import <%=packageName%>.in.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

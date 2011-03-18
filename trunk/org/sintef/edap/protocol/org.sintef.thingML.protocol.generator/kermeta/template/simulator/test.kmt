@@ -8,9 +8,9 @@ operation generate(packageName:String, device:edap::Device):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport org.sintef.moderates.Interactive")
+_res.append(".sim;\n\nimport org.sintef.moderates.sim.Interactive")
 _res.append(device.name)
-_res.append("DataController;\nimport org.sintef.moderates.Interactive")
+_res.append("DataController;\nimport org.sintef.moderates.sim.Interactive")
 _res.append(device.name)
 _res.append("DataController2;\n\npublic class Test")
 _res.append(device.name)

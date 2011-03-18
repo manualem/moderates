@@ -11,7 +11,11 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
+_res.append(".sim;\n\nimport ")
+_res.append(packageName)
+_res.append(".*;\nimport ")
+_res.append(packageName)
+_res.append(".in.*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
 if toKevoreeComponent then
 _res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\n")
 end

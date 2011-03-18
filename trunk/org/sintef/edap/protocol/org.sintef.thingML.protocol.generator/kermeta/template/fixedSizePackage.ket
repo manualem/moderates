@@ -34,7 +34,7 @@ public abstract class FixedSizePacket {
 		data = new byte[16];
 	}
 	
-	protected void setPacketData(byte[] packet) {
+	public void setPacketData(byte[] packet) {
 		this.data = packet;
 	}
 	

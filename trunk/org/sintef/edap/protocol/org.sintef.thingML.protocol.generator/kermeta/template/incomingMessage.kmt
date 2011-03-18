@@ -11,7 +11,9 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.nio.ByteBuffer;\n\npublic class ")
+_res.append(".in;\n\nimport ")
+_res.append(packageName)
+_res.append(".*;\n\nimport java.nio.ByteBuffer;\n\npublic class ")
 _res.append(msg.name)
 _res.append("_In extends Incoming")
 _res.append(device.name)
@@ -23,7 +25,7 @@ _res.append(" ")
 _res.append(p.name)
 _res.append(";\n")
 }
-_res.append("\t\n\t@Override\n\tprotected void setPacketData(byte[] packet) {\n\t\tsuper.setPacketData(packet);\n\t\tint position = 5;\n")
+_res.append("\t\n\t@Override\n\tpublic void setPacketData(byte[] packet) {\n\t\tsuper.setPacketData(packet);\n\t\tint position = 5;\n")
 if msg.parameters.exists{p | not helper.isJavaString(p.type)} then
 _res.append("\t\tByteBuffer bb = ByteBuffer.wrap(data, 5, 10);")
 //5 and 10 are magic numbers...
@@ -75,7 +77,7 @@ _res.append("() {\n\t\treturn ")
 _res.append(p.name)
 _res.append(";\n\t}\n\t\n")
 }
-_res.append("\n\n\t@Override\n\tprotected Incoming")
+_res.append("\n\n\t@Override\n\tpublic Incoming")
 _res.append(device.name)
 _res.append("Message createPacket(byte[] packet) {\n\t\tIncoming")
 _res.append(device.name)

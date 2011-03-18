@@ -7,7 +7,7 @@ class="ProtocolHandlerGenerator"
 ismethod="false"operation="generate"
 parameters="packageName:String"
 %>
-package <%=packageName%>;
+package <%=packageName%>.sim;
 
 public interface ProtocolHandler {
 	public void register(ProtocolHandler handler);

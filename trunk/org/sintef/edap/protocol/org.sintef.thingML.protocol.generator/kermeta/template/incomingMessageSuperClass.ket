@@ -8,8 +8,10 @@ ismethod="false"operation="generate"
 parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
 %>
 <%var helper : StringHelper init StringHelper.new%>
-package <%=packageName%>;
+package <%=packageName%>.in;
+
+import <%=packageName%>.*;
 
 public abstract class Incoming<%=device.name%>Message extends <%=device.name%>ProtocolPacket implements Cloneable {
-	protected abstract Incoming<%=device.name%>Message createPacket(byte[] packet);
+	public abstract Incoming<%=device.name%>Message createPacket(byte[] packet);
 }

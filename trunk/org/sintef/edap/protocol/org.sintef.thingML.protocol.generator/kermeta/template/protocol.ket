@@ -11,6 +11,8 @@ parameters="packageName:String, device:edap::Device"
 package <%=packageName%>;
 
 import java.util.Hashtable;
+import <%=packageName%>.in.*;
+import <%=packageName%>.out.*;
 
 public abstract class <%=device.name%>Protocol {
 
