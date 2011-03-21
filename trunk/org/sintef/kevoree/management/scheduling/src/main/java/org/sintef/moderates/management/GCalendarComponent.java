@@ -43,7 +43,7 @@ import org.kevoree.framework.AbstractComponentType;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "scheduleToSystem", type = PortType.SERVICE, async = false, className = IEventScheduler.class)
+    @RequiredPort(name = "scheduleToSystem", type = PortType.SERVICE, className = IEventScheduler.class)
 })
 @DictionaryType({
     @DictionaryAttribute(name = "userName", defaultValue = "moderates.9012@gmail.com", optional = false),

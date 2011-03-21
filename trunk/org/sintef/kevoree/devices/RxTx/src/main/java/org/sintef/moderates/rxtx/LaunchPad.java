@@ -13,8 +13,8 @@ import org.kevoree.framework.MessagePort;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "forwardOnPress", type = PortType.MESSAGE, async = true),
-    @RequiredPort(name = "forwardOnRelease", type = PortType.MESSAGE, async = true)
+    @RequiredPort(name = "forwardOnPress", type = PortType.MESSAGE),
+    @RequiredPort(name = "forwardOnRelease", type = PortType.MESSAGE)
 })
 @Provides({
     @ProvidedPort(name = "turnOnGreenLED", type = PortType.MESSAGE, async = true),

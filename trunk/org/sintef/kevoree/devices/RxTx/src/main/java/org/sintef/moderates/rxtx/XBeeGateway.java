@@ -14,7 +14,7 @@ import org.kevoree.framework.MessagePort;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "forwardData", type = PortType.MESSAGE, async = true)
+    @RequiredPort(name = "forwardData", type = PortType.MESSAGE)
 })
 @Provides({
     @ProvidedPort(name = "sendDataOTA", type = PortType.MESSAGE, async = true)
