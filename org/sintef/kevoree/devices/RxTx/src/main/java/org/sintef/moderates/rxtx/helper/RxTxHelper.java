@@ -7,6 +7,8 @@ package org.sintef.moderates.rxtx.helper;
 import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
+import java.io.File;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.sintef.moderates.rxtx.RxTxDevice;
@@ -24,7 +26,7 @@ public final class RxTxHelper {
             prop = "";
         }
         if (!prop.contains(port)) {
-            prop += port + ":";
+            prop += port + File.pathSeparator;
             System.setProperty("gnu.io.rxtx.SerialPorts", prop);
         }
         //System.out.println("gnu.io.rxtx.SerialPorts = " + prop);
@@ -34,7 +36,7 @@ public final class RxTxHelper {
             prop = "";
         }
         if (!prop.contains(port)) {
-            prop += port + ":";
+            prop += port + File.pathSeparator;
             System.setProperty("javax.comm.rxtx.SerialPorts", prop);
         }
         //System.out.println("javax.comm.rxtx.SerialPorts = " + prop);
@@ -54,6 +56,13 @@ public final class RxTxHelper {
         Logger.getLogger(RxTxHelper.class.getName()).log(Level.INFO, "Try to connect "+device.getClass().getName()+" on " + port);
 
         RxTxHelper.registerPort(port);
+
+         Enumeration ports = CommPortIdentifier.getPortIdentifiers();
+
+    while(ports.hasMoreElements()){
+        CommPortIdentifier portTemp = (CommPortIdentifier) ports.nextElement();
+        System.out.println(portTemp.getName());
+    }
 
         CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(port);
         if (portIdentifier.isCurrentlyOwned()) {
