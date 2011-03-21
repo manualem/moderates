@@ -13,7 +13,7 @@ import org.kevoree.framework.MessagePort;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "pushRFIDtag", type = PortType.MESSAGE, async = true)
+    @RequiredPort(name = "pushRFIDtag", type = PortType.MESSAGE)
 })
 @ComponentType
 public class RFIDComponent extends AbstractRxTxDevice {

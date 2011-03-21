@@ -24,7 +24,7 @@ import org.kevoree.framework.MessagePort;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "notify", type = PortType.MESSAGE, async = true)
+    @RequiredPort(name = "notify", type = PortType.MESSAGE)
 })
 @Provides({
     @ProvidedPort(name = "schedule", type = PortType.SERVICE, async = false, className = IEventScheduler.class)

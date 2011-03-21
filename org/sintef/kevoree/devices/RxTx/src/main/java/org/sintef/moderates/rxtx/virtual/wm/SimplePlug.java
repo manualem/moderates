@@ -17,9 +17,9 @@ import org.kevoree.framework.MessagePort;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "outputMessage", type = PortType.MESSAGE, async = true),
-    @RequiredPort(name = "onOn", type = PortType.MESSAGE, async = true),
-    @RequiredPort(name = "onOff", type = PortType.MESSAGE, async = true)
+    @RequiredPort(name = "outputMessage", type = PortType.MESSAGE),
+    @RequiredPort(name = "onOn", type = PortType.MESSAGE),
+    @RequiredPort(name = "onOff", type = PortType.MESSAGE)
 })
 @Provides({
     @ProvidedPort(name = "inputMessage", type = PortType.MESSAGE, async = true)

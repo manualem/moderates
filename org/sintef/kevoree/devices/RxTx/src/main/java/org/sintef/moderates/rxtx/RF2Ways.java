@@ -14,9 +14,9 @@ import org.sintef.moderates.rxtx.helper.RxTxHelper;
  * @copyright SINTEF IKT
  */
 @Requires({
-    @RequiredPort(name = "forwardESIC", type = PortType.MESSAGE, async = true),
-    @RequiredPort(name = "forwardWM", type = PortType.MESSAGE, async = true),
-    @RequiredPort(name = "otherOutput", type = PortType.MESSAGE, async = true)
+    @RequiredPort(name = "forwardESIC", type = PortType.MESSAGE),
+    @RequiredPort(name = "forwardWM", type = PortType.MESSAGE),
+    @RequiredPort(name = "otherOutput", type = PortType.MESSAGE)
 })
 @Provides({
     @ProvidedPort(name = "sendWMCommand", type = PortType.MESSAGE, async = true)
