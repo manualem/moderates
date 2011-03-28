@@ -33,7 +33,16 @@ using edap
 
 class MainJavaProtocolGenerator
 {
-	operation main(thingMLuri : String, srcFolder : String) : Void is do 
+
+operation mainJava(thingMLuri : String, srcFolder : String) : Void is do 
+	main(thingMLuri, srcFolder, false)
+end
+
+operation mainKevoree(thingMLuri : String, srcFolder : String) : Void is do 
+	main(thingMLuri, srcFolder, true)
+end
+
+	operation main(thingMLuri : String, srcFolder : String, isKevoree: Boolean) : Void is do 
 		var helper : Helper init Helper.new
 		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
 		
@@ -109,7 +118,7 @@ class MainJavaProtocolGenerator
 			
 			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), false))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), isKevoree))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataGUIGenerator2")
@@ -119,7 +128,7 @@ class MainJavaProtocolGenerator
 			
 			stdio.writeln("InteractiveDataControllerGenerator2")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController2.java", controllerGenerator2.generate("org.sintef.moderates", t.asType(Device), false))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController2.java", controllerGenerator2.generate("org.sintef.moderates", t.asType(Device), isKevoree))
 			stdio.writeln("")
 			
 			stdio.writeln("SimulatorTestGenerator")
