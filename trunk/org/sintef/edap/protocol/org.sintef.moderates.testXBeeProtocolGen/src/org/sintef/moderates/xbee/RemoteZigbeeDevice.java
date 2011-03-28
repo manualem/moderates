@@ -1,6 +1,9 @@
 package org.sintef.moderates.xbee;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.sintef.moderates.sim.InteractiveBrickLCDSensorDataController2;
+import org.sintef.moderates.sim.InteractiveCoffeeSensorDataController;
+import org.sintef.moderates.sim.ProtocolHandler;
 
 import com.rapplogic.xbee.api.ApiId;
 import com.rapplogic.xbee.api.XBee;
@@ -12,16 +15,37 @@ import com.rapplogic.xbee.api.zigbee.ZNetRxResponse;
 import com.rapplogic.xbee.api.zigbee.ZNetTxRequest;
 import com.rapplogic.xbee.util.ByteUtils;
 
-public class RemoteZigbeeDevice implements Runnable {
+public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 
 	// The physical adress of the device
-	protected XBeeAddress64 addr64 = new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC3);
+	protected XBeeAddress64 addr64;
 	protected XBee xbee;
 	
+	protected ProtocolHandler dataController;
+	
+	public ProtocolHandler getDataController() {
+		return dataController;
+	}
+
+	public void setDataController(ProtocolHandler dataController) {
+		this.dataController = dataController;
+	}
+
 	public RemoteZigbeeDevice(XBee local_xbee, XBeeAddress64 remote_addr64) {
 		this.addr64 = remote_addr64;
 		this.xbee = local_xbee;
 		new Thread(this).start();
+	}
+	
+	@Override
+	public void register(ProtocolHandler handler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void receiveMsg(byte[] msg) {
+		sendData(msg);
 	}
 	
 	protected void sendData(byte[] payload) {
@@ -42,11 +66,18 @@ public class RemoteZigbeeDevice implements Runnable {
 	
 	public void run() {
 
+		try {
+			// wait a bit then send another packet
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+		}
+		
 		while (true) {
 			byte[] response;
 			response = receiveData();
 			if (response != null) {
 				// notify
+				dataController.receiveMsg(response);
 			}
 			try {
 				// wait a bit then send another packet
@@ -81,14 +112,20 @@ public class RemoteZigbeeDevice implements Runnable {
 		XBee xbee = new XBee();
 		try {
 			xbee.open("COM17", 9600);
+			
 			RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC3));
+			InteractiveCoffeeSensorDataController controller2 = new InteractiveCoffeeSensorDataController();
+			device.setDataController(controller2);
+			controller2.register(device);
+			
+			
 			
 			byte[] ping = new byte[] { 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 			
 			while (true) {
 				
-				System.out.println("Sending ping...");
-				device.sendData(ping);
+				//System.out.println("Sending ping...");
+				//device.sendData(ping);
 				
 				try {
 					// wait a bit then send another packet
@@ -107,5 +144,4 @@ public class RemoteZigbeeDevice implements Runnable {
 			xbee.close();
 		}
 	}
-	
 }
