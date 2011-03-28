@@ -34,7 +34,7 @@ import fr.irisa.triskell.eclipse.console.messages.InfoMessage;
 import fr.irisa.triskell.eclipse.console.messages.OKMessage;
 import fr.irisa.triskell.eclipse.console.messages.ThrowableMessage;
 
-public class GenerateJava implements IObjectActionDelegate {
+public class GenerateKevoree implements IObjectActionDelegate {
 
 	private Shell shell;
 	protected StructuredSelection currentSelection;
@@ -43,7 +43,7 @@ public class GenerateJava implements IObjectActionDelegate {
 	/**
 	 * Constructor for Action1.
 	 */
-	public GenerateJava() {
+	public GenerateKevoree() {
 		super();
 	}
 
@@ -80,7 +80,7 @@ public class GenerateJava implements IObjectActionDelegate {
 			String file_uri = "file:/" + file.getLocation().removeFileExtension().addFileExtension("xmi").toString();
 			String path = "file://" + file.getParent().getLocation().append("/java/").toOSString();
 			
-			KExecMain.run(kmt, "thingML::MainJavaProtocolGenerator", "mainJava", file_uri, path, console);
+			KExecMain.run(kmt, "thingML::MainJavaProtocolGenerator", "mainKevoree", file_uri, path, console);
 		    
 			//KExecMain.run(kmt, "edap_devices::Main", "generateDevices", file_uri, path, console);
 			
