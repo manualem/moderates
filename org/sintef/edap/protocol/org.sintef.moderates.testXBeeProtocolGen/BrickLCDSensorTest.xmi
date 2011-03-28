@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<edap:EdapModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap">
+  <types xsi:type="edap:PrimitiveType" name="Integer">
+    <annotations name="avr_type" value="uint_8"/>
+    <annotations name="msp_type" value="int"/>
+    <annotations name="java_type" value="short"/>
+  </types>
+  <types xsi:type="edap:PrimitiveType" name="Byte">
+    <annotations name="avr_type" value="char"/>
+    <annotations name="msp_type" value="char"/>
+    <annotations name="java_type" value="byte"/>
+  </types>
+  <types xsi:type="edap:PrimitiveType" name="String">
+    <annotations name="java_type" value="String"/>
+    <annotations name="size" value="8"/>
+  </types>
+  <types xsi:type="edap:Device" name="BrickLCDSensor" receives="//@types.3/@messages.0 //@types.3/@messages.1 //@types.3/@messages.2 //@types.3/@messages.3 //@types.3/@messages.5 //@types.3/@messages.6 //@types.3/@messages.7 //@types.3/@messages.9" sends="//@types.3/@messages.4 //@types.3/@messages.8 //@types.3/@messages.10">
+    <messages name="displayText">
+      <annotations name="code" value="1"/>
+      <parameters name="line" type="//@types.0"/>
+      <parameters name="msg" type="//@types.2"/>
+    </messages>
+    <messages name="clearText">
+      <annotations name="code" value="2"/>
+    </messages>
+    <messages name="readAllAnalog">
+      <annotations name="code" value="3"/>
+    </messages>
+    <messages name="readAnalog">
+      <annotations name="code" value="4"/>
+      <parameters name="pin" type="//@types.0"/>
+    </messages>
+    <messages name="analogValue">
+      <annotations name="code" value="5"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="val" type="//@types.0"/>
+    </messages>
+    <messages name="setDigital">
+      <annotations name="code" value="6"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="direction" type="//@types.0"/>
+    </messages>
+    <messages name="setValue">
+      <annotations name="code" value="7"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="val" type="//@types.0"/>
+    </messages>
+    <messages name="getValue">
+      <annotations name="code" value="8"/>
+      <parameters name="pin" type="//@types.0"/>
+    </messages>
+    <messages name="digitalValue">
+      <annotations name="code" value="9"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="val" type="//@types.0"/>
+    </messages>
+    <messages name="ping">
+      <annotations name="code" value="66"/>
+    </messages>
+    <messages name="pong">
+      <annotations name="code" value="67"/>
+    </messages>
+  </types>
+</edap:EdapModel>

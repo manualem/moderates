@@ -37,8 +37,15 @@ device BrickLCDSensor {
 	receives displayText, clearText, readAllAnalog, readAnalog, setDigital, setValue, getValue
 	sends analogValue, digitalValue
 	
-	message ping() @code "66";
+	message ping()
+		@code "66"
+		@ackmessage "pong"
+		@retransmit "3"
+		@timout "1000"
+		@failuremessage "deviceUnreachable";
 	message pong() @code "67";
+	message deviceUnreachable() @code "69";
+	
 	receives ping
 	sends pong
 }

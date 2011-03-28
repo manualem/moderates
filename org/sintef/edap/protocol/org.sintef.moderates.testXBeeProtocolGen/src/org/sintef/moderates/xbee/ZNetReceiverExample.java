@@ -21,8 +21,6 @@ package org.sintef.moderates.xbee;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.sintef.moderates.CoffeeSensorProtocol;
-import org.sintef.moderates.IncomingCoffeeSensorMessage;
 
 import com.rapplogic.xbee.api.ApiId;
 import com.rapplogic.xbee.api.AtCommand;
@@ -76,6 +74,7 @@ public class ZNetReceiverExample {
 							//System.out.println("data[" + i + "] = " + data[i]);
 						}
 						
+						/*
 						IncomingCoffeeSensorMessage msg = CoffeeSensorProtocol.createMessageForIncomingPacket(data);
 						
 						if (msg != null) {
@@ -83,6 +82,7 @@ public class ZNetReceiverExample {
 							
 						
 						}
+						*/
 						// optionally we may want to get the signal strength (RSSI) of the last hop.
 						// keep in mind if you have routers in your network, this will be the signal of the last hop.
 						AtCommand at = new AtCommand("DB");
