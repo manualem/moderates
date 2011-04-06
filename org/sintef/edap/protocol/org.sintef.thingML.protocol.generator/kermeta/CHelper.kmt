@@ -1,0 +1,159 @@
+/* $Id:$ 
+ * Creation : April 4, 2011
+ * Licence  : EPL 
+ * Copyright: SINTEF IKT
+ * Authors  : Franck Fleurey
+ */
+
+
+package edap;
+
+
+require kermeta
+
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+
+using kermeta::standard
+using kermeta::utils
+
+
+class CHelper {
+	attribute ctypehelpers : Hashtable<String, CTypeHelper>
+	
+	operation make() : CHelper is do
+		ctypehelpers := Hashtable<String, CTypeHelper>.new
+		var  int8 : CInt8Type init CInt8Type.new
+		var int16 : CInt16Type init CInt16Type.new
+		var int32 : CInt32Type init CInt32Type.new
+		var string8 : CString8Type init CString8Type.new
+		
+		ctypehelpers.put("bool", int8)
+		ctypehelpers.put("char", int8)
+		ctypehelpers.put("uint8_t", int8)
+		ctypehelpers.put("short", int8)
+		ctypehelpers.put("uint16_t", int16)
+		ctypehelpers.put("int", int16)
+		ctypehelpers.put("uint32_t", int32)
+		ctypehelpers.put("string8", string8)
+		
+		result := self
+	end
+	
+	operation typeHelper(t : PrimitiveType) : CTypeHelper is do
+		result := ctypehelpers.getValue(t.getCTypeAnnotation)
+	end
+	
+	operation msgParamsDecl(m : Message) : String is do
+		result := ""
+		var i : Integer init 0
+		m.parameters.each{ p | 
+			if i > 0 then result := result + ", " end
+			result := result + typeHelper(p.type.asType(PrimitiveType)).generateType + " " + p.name
+			i := i+1
+		}
+	end
+	
+	operation msgTotalSize(m : Message) : Integer is do
+		result := 0
+		m.parameters.each{ p | 
+			result := result + typeHelper(p.type.asType(PrimitiveType)).sizeOf
+		}
+	end
+	
+	operation msgParamsReadBuffer(m : Message, bufname : String, startidx : Integer) : String is do
+		result := ""
+		var i : Integer init 0
+		var idx : Integer init startidx
+		m.parameters.each{ p | 
+			if i > 0 then result := result + ", " end
+			var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
+			result := result + th.generateReadFromBuffer(bufname, idx) + " " + p.name
+			idx := idx + th.sizeOf
+			i := i+1
+		}
+	end
+	
+	operation paramWriteBuffer(p : Parameter, bufname : String, idx : Integer) : String is do
+		var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
+		result := th.generateWriteToBuffer(p.name, bufname, idx)
+	end
+	
+	operation paramSize(p : Parameter) : Integer is do
+		var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
+		result := th.sizeOf
+	end
+	
+}
+
+abstract class CTypeHelper {
+	operation sizeOf(): Integer is abstract
+	operation generateType(): String is abstract
+	operation generateDeclaration(varname: String) : String is do result := generateType + " " + varname + ";" end
+	operation generateReadFromBuffer(bufname: String, idx: Integer) : String is abstract
+	operation generateWriteToBuffer(varname: String, bufname: String, idx: Integer) : String is abstract
+}
+
+class CInt8Type inherits CTypeHelper {
+	method sizeOf(): Integer is do result := 1 end
+	method generateType(): String is do result := "uint8_t" end
+	method generateReadFromBuffer(bufname: String, idx: Integer) : String is do
+		result := bufname + "[" + idx.toString + "]" 
+	end
+	method generateWriteToBuffer(varname: String, bufname: String, idx: Integer) : String is do
+		result := bufname + "[" + idx.toString + "] = " + varname + ";"
+	end
+}
+
+class CInt16Type inherits CTypeHelper {
+	method sizeOf(): Integer is do result := 2 end
+	method generateType(): String is do result := "uint16_t" end
+	method generateReadFromBuffer(bufname: String, idx: Integer) : String is do
+		result := "(" + bufname + "[" + idx.toString + "] << 8) + " + bufname + "[" + (idx+1).toString + "]"
+	end
+	method generateWriteToBuffer(varname: String, bufname: String, idx: Integer) : String is do
+
+		result := bufname + "[" + idx.toString + "] = " + varname + " >> 8 & 0x00ff; " + 
+				  bufname + "[" + (idx+1).toString + "] = " + varname + " & 0x00ff;"
+	end
+}
+
+class CInt32Type inherits CTypeHelper {
+	method sizeOf(): Integer is do result := 4 end
+	method generateType(): String is do result := "uint32_t" end
+	method generateReadFromBuffer(bufname: String, idx: Integer) : String is do
+		result := "(" + bufname + "[" + idx.toString + "] << 24) + " + 
+				  "(" + bufname + "[" + (idx+1).toString + "] << 16) + " + 
+		          "(" + bufname + "[" + (idx+2).toString + "] << 8) + " + 
+					    bufname + "[" + (idx+3).toString + "]"
+	end
+	method generateWriteToBuffer(varname: String, bufname: String, idx: Integer) : String is do
+
+		result := bufname + "[" + idx.toString + "] = " + varname + " >> 24 & 0x000000ff; " + 
+				  bufname + "[" + (idx+1).toString + "] = " + varname + " >> 16 & 0x000000ff; " + 
+				  bufname + "[" + (idx+2).toString + "] = " + varname + " >> 8 & 0x000000ff; " + 
+				  bufname + "[" + (idx+3).toString + "] = " + varname + " & 0x000000ff;"
+	end
+}
+
+class CString8Type inherits CTypeHelper {
+	method sizeOf(): Integer is do result := 8 end
+	method generateType(): String is do result := "char *" end
+	method generateReadFromBuffer(bufname: String, idx: Integer) : String is do
+		result := "(char *)&" + bufname + "[" + idx.toString + "]"
+	end
+	method generateWriteToBuffer(varname: String, bufname: String, idx: Integer) : String is do
+		result := "strcpy(&" + bufname + "[" + idx.toString + "], " + varname + ");"
+	end
+}
+
+aspect class PrimitiveType
+{
+
+	operation getCTypeAnnotation() : String is do
+		var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "c_type"}
+		if a!=void then result := a.~value
+		else result := name
+		end
+	end
+	
+}

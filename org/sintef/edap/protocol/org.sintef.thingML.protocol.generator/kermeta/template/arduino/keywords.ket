@@ -1,0 +1,38 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt ../../CHelper.kmt"
+using="edap"
+isAspectClass="false"
+class="ArduinoKeywordsGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+#######################################
+# Syntax Coloring For <%=device.name%>
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+<%=device.name%>	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+<%device.receives.each{out | %>
+receive<%=out.name%>	KEYWORD2<%}%>
+
+<%device.sends.each{out | %>
+send<%=out.name%>	KEYWORD2<%}%>
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

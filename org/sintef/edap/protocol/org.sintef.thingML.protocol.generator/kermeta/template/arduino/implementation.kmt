@@ -1,0 +1,66 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+require "../../CHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class ArduinoCPPGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("")
+var chelper : CHelper init CHelper.new.make
+_res.append("// include core Wiring API\n#include \"WProgram.h\"\n\n// include this library's description file\n#include \"")
+_res.append(device.name)
+_res.append(".h\"\n\n// include the Xbee lib\n#include \"../XBee/XBee.h\"\n\n// Constructor /////////////////////////////////////////////////////////////////\n")
+_res.append(device.name)
+_res.append("::")
+_res.append(device.name)
+_res.append("(uint32_t addr_h, uint32_t addr_l) {\n\txbee = XBee();\n\taddr64 = XBeeAddress64(addr_h, addr_l);\n\tzbTx = ZBTxRequest(addr64, payload, sizeof(payload));\n\ttxStatus = ZBTxStatusResponse();\n\trx = ZBRxResponse();\n}\n\n// Public Methods //////////////////////////////////////////////////////////////\nvoid ")
+_res.append(device.name)
+_res.append("::init_")
+_res.append(device.name)
+_res.append("(void) {\t\n\txbee.begin(9600);\n}\n\nvoid ")
+_res.append(device.name)
+_res.append("::poll_")
+_res.append(device.name)
+_res.append("(void) {\t\n\t // Look for incomming XBEE messages\n  xbee.readPacket();\n  if (xbee.getResponse().isAvailable()) { // We got a message\n    if (xbee.getResponse().getApiId() == ZB_RX_RESPONSE) { // it is a ZB message\n        xbee.getResponse().getZBRxResponse(rx);\n        parseIncommingMessage(rx.getData());\n    }\n  }\n}\n\n")
+device.receives.each{out | 
+_res.append("void ")
+_res.append(device.name)
+_res.append("::send")
+_res.append(out.name)
+_res.append("(")
+_res.append(chelper.msgParamsDecl(out))
+_res.append(") {\n   payload[0] = 0x01; // source addr (not used)\n   payload[1] = 0xff; // target addr (not used)\n   payload[2] = 0x00; // frame num (not used)\n   payload[3] = ")
+_res.append(chelper.msgTotalSize(out).toString)
+_res.append("; // length of the params\n   payload[4] = ")
+_res.append(out.annotations.select{a | a.name == "code"}.one.~value)
+_res.append("; // command code\n   // set params here\n")
+ var idx : Integer init 5
+   out.parameters.each{ p |
+_res.append("   ")
+_res.append(chelper.paramWriteBuffer(p, "payload", idx))
+_res.append("\n")
+idx := idx + chelper.paramSize(p) }
+_res.append("   // send the message\n   xbee.send(zbTx);\n}\n")
+}
+_res.append("\n// Private Methods /////////////////////////////////////////////////////////////\nvoid ")
+_res.append(device.name)
+_res.append("::parseIncommingMessage(uint8_t data[])\n{\n\tswitch(data[4]) // command code\n  {\n")
+device.sends.each{in | 
+_res.append("   case ")
+_res.append(in.annotations.select{a | a.name == "code"}.one.~value)
+_res.append(": receive")
+_res.append(in.name)
+_res.append("(")
+_res.append(chelper.msgParamsReadBuffer(in, "data", 5))
+_res.append("); break;")
+}
+_res.append("\n   default: break; \n  }\n}\n")
+result := _res.toString
+end
+}
