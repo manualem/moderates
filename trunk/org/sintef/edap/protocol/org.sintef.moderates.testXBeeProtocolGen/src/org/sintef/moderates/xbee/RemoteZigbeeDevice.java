@@ -111,10 +111,11 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 	public static void main(String[] args) throws XBeeException, InterruptedException  {
 		XBee xbee = new XBee();
 		try {
-			xbee.open("COM17", 9600);
+			xbee.open("COM19", 9600);
 			
-			RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC3));
-			InteractiveCoffeeSensorDataController controller2 = new InteractiveCoffeeSensorDataController();
+			//RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC3));
+			RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC6));
+			InteractiveBrickLCDSensorDataController2 controller2 = new InteractiveBrickLCDSensorDataController2();
 			device.setDataController(controller2);
 			controller2.register(device);
 			
