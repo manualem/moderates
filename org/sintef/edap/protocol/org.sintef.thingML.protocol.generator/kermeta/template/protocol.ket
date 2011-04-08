@@ -5,7 +5,7 @@ using=""
 isAspectClass="false"
 class="ProtocolGenerator"
 ismethod="false"operation="generate"
-parameters="packageName:String, device:edap::Device"
+parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>;
@@ -15,6 +15,22 @@ import <%=packageName%>.in.*;
 import <%=packageName%>.out.*;
 
 public abstract class <%=device.name%>Protocol {
+
+	//Enumerations
+	<%root.types.select{t | t.isKindOf(edap::Enumeration)}.each{ e | %>
+	public static enum <%=e.name%>{	
+		<%var x : Integer init 0 e.asType(edap::Enumeration).literals.each{l | if x > 0 then%>,\n\t\t<%end%><%=l.name%>("<%=helper.getValue(l)%>")<%x := x+1}%>;
+	
+		private final String value;
+		<%=e.name%>(String value){
+			this.value = value;
+		}
+		
+		public String getValue(){
+			return value;
+		}
+	}
+	<%}%>
 
 	// Outgoing messages
 	<%device.receives.each{out | %>

@@ -106,11 +106,19 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 		try{
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
+			<%if p.type.isKindOf(edap::Enumeration) then%>
+			<%=p.name%> = ((<%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>)Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getSelectedItem()).getValue();
+			<%else%>
 			<%=p.name%> = Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getText();
+			<%end%>
 			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
 			bb.put(<%=p.name%>.getBytes());
 		<%else%>
+			<%if p.type.isKindOf(edap::Enumeration) then%>
+			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(((<%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>)Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getSelectedItem()).getValue());
+			<%else%>
 			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getText());
+			<%end%>
 			<%if helper.isJavaByte(p.type) then%>
 			bb.put(<%=p.name%>);
 			<%else%>

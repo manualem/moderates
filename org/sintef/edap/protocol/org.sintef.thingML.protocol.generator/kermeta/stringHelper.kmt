@@ -131,4 +131,14 @@ class StringHelper
 		}
 		result := res
 	end
+	
+	operation getValue(l : edap::EnumerationLiteral) : String is
+	do
+		var res : String init "" 
+		var annot : edap::PlatformAnnotation init l.annotations.select{a | a.name == "enum_val"}.one
+		if annot != void then
+			res := annot.~value
+		end
+		result := res
+	end	
 }

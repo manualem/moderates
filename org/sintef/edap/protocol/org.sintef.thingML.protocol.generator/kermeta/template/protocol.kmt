@@ -5,7 +5,7 @@ require "../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
 class ProtocolGenerator{
-operation generate(packageName:String, device:edap::Device):String is do
+operation generate(packageName:String, device:edap::Device, root:edap::EdapModel):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
@@ -17,7 +17,24 @@ _res.append(".in.*;\nimport ")
 _res.append(packageName)
 _res.append(".out.*;\n\npublic abstract class ")
 _res.append(device.name)
-_res.append("Protocol {\n\n\t// Outgoing messages\n")
+_res.append("Protocol {\n\n\t//Enumerations\n")
+root.types.select{t | t.isKindOf(edap::Enumeration)}.each{ e | 
+_res.append("\tpublic static enum ")
+_res.append(e.name)
+_res.append("{\t\n\t\t")
+var x : Integer init 0 e.asType(edap::Enumeration).literals.each{l | if x > 0 then
+_res.append(",\n\t\t")
+end
+_res.append(l.name)
+_res.append("(\"")
+_res.append(helper.getValue(l))
+_res.append("\")")
+x := x+1}
+_res.append(";\n\t\n\t\tprivate final String value;\n\t\t")
+_res.append(e.name)
+_res.append("(String value){\n\t\t\tthis.value = value;\n\t\t}\n\t\t\n\t\tpublic String getValue(){\n\t\t\treturn value;\n\t\t}\n\t}\n")
+}
+_res.append("\n\t// Outgoing messages\n")
 device.receives.each{out | 
 _res.append("\tpublic static final byte ")
 _res.append(helper.toJavaConstant(out.name))

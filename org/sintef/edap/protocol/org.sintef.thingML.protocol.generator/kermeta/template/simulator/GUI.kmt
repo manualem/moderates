@@ -11,7 +11,11 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(".sim;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
+_res.append(".sim;\n\nimport ")
+_res.append(packageName)
+_res.append(".")
+_res.append(device.name)
+_res.append("Protocol;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JComboBox;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
 _res.append(device.name)
 _res.append("DataGUI {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\t\n")
 device.sends.each{msg |
@@ -21,9 +25,17 @@ _res.append("\n\tpublic static JButton sendButton")
 _res.append(msg.name)
 _res.append(";\n")
 msg.parameters.each{ p | 
+_res.append("")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append("\tpublic static JComboBox field")
+_res.append(msg.name+"_"+p.name)
+_res.append(";\n")
+else
 _res.append("\tpublic static JTextField field")
 _res.append(msg.name+"_"+p.name)
 _res.append(";\n")
+end
+_res.append("")
 }
 _res.append("\t\t\n")
 }
@@ -81,17 +93,41 @@ _res.append("\");\n \t\tc.gridx = 0;\n\t\tc.gridy = ")
 _res.append(y.toString)
 _res.append(";\n \t\tpanel.add(label")
 _res.append(p.name)
-_res.append(", c);\n \t\t\n \t\tfield")
+_res.append(", c);\n")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append("\t\t")
+_res.append(device.name)
+_res.append("Protocol.")
+_res.append(helper.firstToUpper(p.name))
+_res.append("[] values")
+_res.append(msg.name+"_"+p.name)
+_res.append(" = {")
+var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then
+_res.append(", ")
+end
+_res.append(device.name)
+_res.append("Protocol.")
+_res.append(helper.firstToUpper(p.name))
+_res.append(".")
+_res.append(l.name)
+w := w+1}
+_res.append("};\n\t\tfield")
+_res.append(msg.name+"_"+p.name)
+_res.append(" = new JComboBox(values);\t\t\n")
+else
+_res.append(" \t\tfield")
 _res.append(msg.name+"_"+p.name)
 _res.append(" = new JTextField();\n\t\tfield")
 _res.append(msg.name+"_"+p.name)
 _res.append(".setText(\"")
 _res.append(p.name)
-_res.append("\");\n \t\tc.gridx = 1;\n\t\tc.gridy = ")
+_res.append("\");\n")
+end
+_res.append(" \t\tc.gridx = 1;\n\t\tc.gridy = ")
 _res.append(y.toString)
 _res.append(";\n \t\tpanel.add(field")
 _res.append(msg.name+"_"+p.name)
-_res.append(", c);\n \t\t\n\n")
+_res.append(", c);\n")
 y := y+1
 _res.append("")
 }
