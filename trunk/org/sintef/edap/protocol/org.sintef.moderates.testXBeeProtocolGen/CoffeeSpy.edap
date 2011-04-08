@@ -2,13 +2,11 @@
 // Definition of some primitive types used throuout the application
 
 datatype Integer	
-	@avr_type "uint_8"
-	@msp_type "int"
+	@c_type "int"
 	@java_type "short";
 
 datatype Byte
-	@avr_type "char"
-	@msp_type "char"
+	@c_type "char"
 	@java_type "byte";
 	
 device CoffeeSensor {
