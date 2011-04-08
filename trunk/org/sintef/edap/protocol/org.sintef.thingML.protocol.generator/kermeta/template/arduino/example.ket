@@ -16,7 +16,7 @@ parameters="packageName:String, device:edap::Device"
 <%=device.name%> _<%=device.name%> = <%=device.name%>(0x0013a200, 0x40331dc5);
 
 <%device.receives.each{out | %>
-extern void receive<%=out.name%>(<%=chelper.msgParamsDecl(out)%>)
+extern void receive<%=out.name%>(<%=chelper.msgParamsDecl(out)%>) {
 	// TODO: Implement the handler for message reception of the message <%=out.name%>
 }
 <%}%>

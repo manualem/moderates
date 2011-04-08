@@ -47,11 +47,19 @@ _res.append(" + (char)data[i];\n\t\t}\n\t\tposition += ")
 _res.append(helper.getSize(p.type))
 _res.append(";\n")
 else
+_res.append("")
+ if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
 _res.append("\t\t")
 _res.append(p.name)
 _res.append(" = bb.get")
 _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
-_res.append("();\n\t\tposition += (int) (")
+_res.append("();\n")
+else
+_res.append("\t\t")
+_res.append(p.name)
+_res.append(" = bb.get();\n")
+end
+_res.append("\t\tposition += (int) (")
 _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
 _res.append(".SIZE/8);\n")
 end

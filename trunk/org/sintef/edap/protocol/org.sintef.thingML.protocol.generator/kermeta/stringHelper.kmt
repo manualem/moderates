@@ -32,6 +32,8 @@ class StringHelper
 		res.add("double")
 		res.add("Byte")
 		res.add("byte")
+		res.add("Int8")
+		res.add("Int16")
 		result := res
 	end
 

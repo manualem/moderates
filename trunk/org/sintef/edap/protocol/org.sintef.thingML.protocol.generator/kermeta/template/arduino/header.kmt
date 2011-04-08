@@ -23,9 +23,9 @@ _res.append("extern void receive")
 _res.append(out.name)
 _res.append("(")
 _res.append(chelper.msgParamsDecl(out))
-_res.append(");")
+_res.append(");\n")
 }
-_res.append("\n\nclass ")
+_res.append("\nclass ")
 _res.append(device.name)
 _res.append("\n{\n  public:\n\t// Constructor which takes the address of the target XBee as parameter\n    ")
 _res.append(device.name)
@@ -36,12 +36,12 @@ _res.append(device.name)
 _res.append("();\n\t// Operations for sending all messages\n")
 device.sends.each{in | 
 _res.append("    void send")
-_res.append(out.name)
+_res.append(in.name)
 _res.append("(")
-_res.append(chelper.msgParamsDecl(out))
-_res.append(");")
+_res.append(chelper.msgParamsDecl(in))
+_res.append(");\n")
 }
-_res.append("\n\n  private:\n\t// the address of the target XBee\n\tXBee xbee;\n\tXBeeAddress64 addr64;\n\tZBTxRequest zbTx;\n\tZBTxStatusResponse txStatus;\n\tZBRxResponse rx;\n\tuint8_t payload[16];\n\t// private operation which parses incomming message and calls\n\t// the corresponding exten functions\n    void parseIncommingMessage(uint8_t data[]);\n};\n\n#endif\n")
+_res.append("\n  private:\n\t// the address of the target XBee\n\tXBee xbee;\n\tXBeeAddress64 addr64;\n\tZBTxRequest zbTx;\n\tZBTxStatusResponse txStatus;\n\tZBRxResponse rx;\n\tuint8_t payload[16];\n\t// private operation which parses incomming message and calls\n\t// the corresponding exten functions\n    void parseIncommingMessage(uint8_t data[]);\n};\n\n#endif\n")
 result := _res.toString
 end
 }

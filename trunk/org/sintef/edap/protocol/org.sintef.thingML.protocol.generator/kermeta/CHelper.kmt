@@ -67,7 +67,7 @@ class CHelper {
 		m.parameters.each{ p | 
 			if i > 0 then result := result + ", " end
 			var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
-			result := result + th.generateReadFromBuffer(bufname, idx) + " " + p.name
+			result := result + th.generateReadFromBuffer(bufname, idx)
 			idx := idx + th.sizeOf
 			i := i+1
 		}

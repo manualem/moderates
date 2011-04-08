@@ -43,7 +43,7 @@ void <%=device.name%>::poll_<%=device.name%>(void) {
   }
 }
 
-<%device.receives.each{out | %>
+<%device.sends.each{out | %>
 void <%=device.name%>::send<%=out.name%>(<%=chelper.msgParamsDecl(out)%>) {
    payload[0] = 0x01; // source addr (not used)
    payload[1] = 0xff; // target addr (not used)
@@ -65,8 +65,9 @@ void <%=device.name%>::parseIncommingMessage(uint8_t data[])
 {
 	switch(data[4]) // command code
   {
-  <%device.sends.each{in | %>
-   case <%=in.annotations.select{a | a.name == "code"}.one.~value%>: receive<%=in.name%>(<%=chelper.msgParamsReadBuffer(in, "data", 5)%>); break;<%}%>
+  <%device.receives.each{in | %>
+   case <%=in.annotations.select{a | a.name == "code"}.one.~value%>: receive<%=in.name%>(<%=chelper.msgParamsReadBuffer(in, "data", 5)%>); break;
+   <%}%>
    default: break; 
   }
 }
