@@ -24,6 +24,10 @@ parameters="packageName:String, device:edap::Device"
 // include the Xbee lib
 #include "../XBee/XBee.h"
 
+<%device.all_enums.each{ e | e.literals.each { l |%>
+#define <%=e.name%>_<%=l.name%> <%=l.c_value%>
+<%}}%>
+
 // Operations which implements the logic to execute when messages are received.
 <%device.receives.each{out | %>
 extern void receive<%=out.name%>(<%=chelper.msgParamsDecl(out)%>);

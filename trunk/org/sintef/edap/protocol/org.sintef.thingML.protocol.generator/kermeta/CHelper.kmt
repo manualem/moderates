@@ -39,8 +39,11 @@ class CHelper {
 		result := self
 	end
 	
-	operation typeHelper(t : PrimitiveType) : CTypeHelper is do
+	operation typeHelper(t : Type) : CTypeHelper is do
 		result := ctypehelpers.getValue(t.getCTypeAnnotation)
+		if (result == void) then
+			stdio.writeln("ThingML ERROR : Unable to generate code for type " + t.name + " the c_type annotation was not found or not recognized." )
+		end
 	end
 	
 	operation msgParamsDecl(m : Message) : String is do
@@ -48,7 +51,7 @@ class CHelper {
 		var i : Integer init 0
 		m.parameters.each{ p | 
 			if i > 0 then result := result + ", " end
-			result := result + typeHelper(p.type.asType(PrimitiveType)).generateType + " " + p.name
+			result := result + typeHelper(p.type).generateType + " " + p.name
 			i := i+1
 		}
 	end
@@ -56,7 +59,7 @@ class CHelper {
 	operation msgTotalSize(m : Message) : Integer is do
 		result := 0
 		m.parameters.each{ p | 
-			result := result + typeHelper(p.type.asType(PrimitiveType)).sizeOf
+			result := result + typeHelper(p.type).sizeOf
 		}
 	end
 	
@@ -66,7 +69,7 @@ class CHelper {
 		var idx : Integer init startidx
 		m.parameters.each{ p | 
 			if i > 0 then result := result + ", " end
-			var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
+			var th : CTypeHelper init typeHelper(p.type)
 			result := result + th.generateReadFromBuffer(bufname, idx)
 			idx := idx + th.sizeOf
 			i := i+1
@@ -74,12 +77,12 @@ class CHelper {
 	end
 	
 	operation paramWriteBuffer(p : Parameter, bufname : String, idx : Integer) : String is do
-		var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
+		var th : CTypeHelper init typeHelper(p.type)
 		result := th.generateWriteToBuffer(p.name, bufname, idx)
 	end
 	
 	operation paramSize(p : Parameter) : Integer is do
-		var th : CTypeHelper init typeHelper(p.type.asType(PrimitiveType))
+		var th : CTypeHelper init typeHelper(p.type)
 		result := th.sizeOf
 	end
 	
@@ -146,7 +149,34 @@ class CString8Type inherits CTypeHelper {
 	end
 }
 
-aspect class PrimitiveType
+aspect class Device {
+
+	operation all_types() : Set<Type> is do
+		result := Set<Type>.new
+		sends.union(receives).each{ m | m.parameters.collect{ p | p.type }.each{ t |
+			if not result.contains(t) then result.add(t) end
+		}}
+	end
+	
+	operation all_enums() : Set<Enumeration> is do
+		result := Set<Enumeration>.new
+		all_types.select{ t | t.isKindOf(Enumeration) }.each { t |
+			result.add(t.asType(Enumeration))
+		}
+	end
+
+}
+
+aspect class EnumerationLiteral {
+	operation c_value() : String is do
+		var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "enum_val"}
+		if a!=void then result := a.~value
+		else result := container.asType(Enumeration).literals.indexOf(self).toString
+		end
+	end
+}
+
+aspect class Type
 {
 
 	operation getCTypeAnnotation() : String is do
