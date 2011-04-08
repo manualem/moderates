@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<edap:EdapModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap">
+  <types xsi:type="edap:PrimitiveType" name="Int16">
+    <annotations name="c_type" value="int"/>
+    <annotations name="java_type" value="short"/>
+  </types>
+  <types xsi:type="edap:Device" name="CurrentSensor" receives="//@types.1/@messages.0 //@types.1/@messages.1 //@types.1/@messages.3" sends="//@types.1/@messages.2 //@types.1/@messages.4">
+    <annotations name="packet_size" value="20"/>
+    <messages name="start">
+      <annotations name="code" value="2"/>
+    </messages>
+    <messages name="stop">
+      <annotations name="code" value="3"/>
+    </messages>
+    <messages name="currentData">
+      <annotations name="code" value="4"/>
+      <parameters name="sensorMax" type="//@types.0"/>
+      <parameters name="current" type="//@types.0"/>
+      <parameters name="eff_current" type="//@types.0"/>
+    </messages>
+    <messages name="ping">
+      <annotations name="code" value="66"/>
+    </messages>
+    <messages name="pong">
+      <annotations name="code" value="67"/>
+    </messages>
+  </types>
+</edap:EdapModel>

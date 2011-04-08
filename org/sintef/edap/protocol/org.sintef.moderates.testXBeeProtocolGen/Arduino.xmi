@@ -13,11 +13,22 @@
     <annotations name="java_type" value="String"/>
     <annotations name="size" value="8"/>
   </types>
-  <types xsi:type="edap:Device" name="RemoteArduino" receives="//@types.3/@messages.0 //@types.3/@messages.2 //@types.3/@messages.1 //@types.3/@messages.4 //@types.3/@messages.5 //@types.3/@messages.7 //@types.3/@messages.8 //@types.3/@messages.10 //@types.3/@messages.11" sends="//@types.3/@messages.3 //@types.3/@messages.6 //@types.3/@messages.9 //@types.3/@messages.12">
+  <types xsi:type="edap:Enumeration" name="Mode">
+    <annotations name="java_type" value="byte"/>
+    <annotations name="c_type" value="uint8_t"/>
+    <literals name="INPUT">
+      <annotations name="enum_val" value="0"/>
+    </literals>
+    <literals name="OUTPUT">
+      <annotations name="enum_val" value="1"/>
+    </literals>
+  </types>
+  <types xsi:type="edap:Device" name="RemoteArduino" receives="//@types.4/@messages.0 //@types.4/@messages.2 //@types.4/@messages.1 //@types.4/@messages.4 //@types.4/@messages.5 //@types.4/@messages.7 //@types.4/@messages.8 //@types.4/@messages.10 //@types.4/@messages.11" sends="//@types.4/@messages.3 //@types.4/@messages.6 //@types.4/@messages.9 //@types.4/@messages.12">
+    <annotations name="packet_size" value="20"/>
     <messages name="pinMode">
       <annotations name="code" value="2"/>
       <parameters name="pin" type="//@types.0"/>
-      <parameters name="mode" type="//@types.0"/>
+      <parameters name="mode" type="//@types.3"/>
     </messages>
     <messages name="digitalWrite">
       <annotations name="code" value="3"/>

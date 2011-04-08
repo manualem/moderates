@@ -1,0 +1,24 @@
+// Definition of some primitive
+datatype Int16	
+	@c_type "int"
+	@java_type "short";
+	
+device CurrentSensor 
+	@packet_size "20"
+{
+	// Digital I/O
+	message start() @code "2";
+	message stop() @code "3";
+	message currentData(sensorMax : Int16, current : Int16, eff_current : Int16) @code "4";
+	receives start, stop
+	sends currentData
+	
+	// Simple Ping
+	message ping() @code "66";
+	message pong() @code "67";
+	receives ping
+	sends pong
+}
+
+
+

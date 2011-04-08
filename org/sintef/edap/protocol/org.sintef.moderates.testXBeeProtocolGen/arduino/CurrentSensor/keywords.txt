@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring For CurrentSensor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+CurrentSensor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+receivestart	KEYWORD2
+receivestop	KEYWORD2
+receiveping	KEYWORD2
+
+sendcurrentData	KEYWORD2
+sendpong	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
