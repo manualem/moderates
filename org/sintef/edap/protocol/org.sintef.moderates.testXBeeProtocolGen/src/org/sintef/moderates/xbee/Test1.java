@@ -3,6 +3,9 @@ package org.sintef.moderates.xbee;
 import org.apache.log4j.PropertyConfigurator;
 //import org.sintef.moderates.sim.InteractiveBrickLCDSensorDataController2;
 //import org.sintef.moderates.sim.InteractiveCoffeeSensorDataController;
+import org.sintef.moderates.RemoteArduinoProtocol;
+import org.sintef.moderates.RemoteArduinoProtocolPacket;
+import org.sintef.moderates.in.IncomingRemoteArduinoMessage;
 import org.sintef.moderates.sim.InteractiveRemoteArduinoDataController;
 import org.sintef.moderates.sim.InteractiveRemoteArduinoDataController2;
 import org.sintef.moderates.sim.ProtocolHandler;
@@ -17,7 +20,7 @@ import com.rapplogic.xbee.api.zigbee.ZNetRxResponse;
 import com.rapplogic.xbee.api.zigbee.ZNetTxRequest;
 import com.rapplogic.xbee.util.ByteUtils;
 
-public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
+public class Test1 implements Runnable, ProtocolHandler {
 
 	// The physical adress of the device
 	protected XBeeAddress64 addr64;
@@ -33,7 +36,7 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 		this.dataController = dataController;
 	}
 
-	public RemoteZigbeeDevice(XBee local_xbee, XBeeAddress64 remote_addr64) {
+	public Test1(XBee local_xbee, XBeeAddress64 remote_addr64) {
 		this.addr64 = remote_addr64;
 		this.xbee = local_xbee;
 		new Thread(this).start();
@@ -79,7 +82,7 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 			response = receiveData();
 			if (response != null) {
 				// notify
-				dataController.receiveMsg(response);
+				IncomingRemoteArduinoMessage data = RemoteArduinoProtocol.createMessageForIncomingPacket(response);
 			}
 			try {
 				// wait a bit then send another packet
@@ -115,16 +118,12 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 		try {
 			xbee.open("COM18", 9600);
 			
-			//RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC3));
-			RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC6));
-			//InteractiveBrickLCDSensorDataController2 controller2 = new InteractiveBrickLCDSensorDataController2();
-			InteractiveRemoteArduinoDataController2 controller2 = new InteractiveRemoteArduinoDataController2();
-			device.setDataController(controller2);
-			controller2.register(device);
+			Test1 device = new Test1(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC6));
+		
 			
+			RemoteArduinoProtocolPacket p = RemoteArduinoProtocol.createpinMode((byte)4, (byte)1);
+			device.sendData(p.getPacket());
 			
-			
-			byte[] ping = new byte[] { 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 			
 			while (true) {
 				
@@ -132,8 +131,19 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 				//device.sendData(ping);
 				
 				try {
+					
+					p = RemoteArduinoProtocol.createdigitalWrite((byte)4, (byte)0);
+					device.sendData(p.getPacket());
+					
 					// wait a bit then send another packet
 					Thread.sleep(1000);
+					
+					p = RemoteArduinoProtocol.createdigitalWrite((byte)4, (byte)1);
+					device.sendData(p.getPacket());
+					
+					// wait a bit then send another packet
+					Thread.sleep(1000);
+					
 				} catch (InterruptedException e) {
 				}
 				

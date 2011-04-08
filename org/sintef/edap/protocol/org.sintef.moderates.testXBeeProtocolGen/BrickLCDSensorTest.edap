@@ -1,17 +1,15 @@
-
 // Definition of some primitive types used throuout the application
 
 datatype Integer	
-	@avr_type "uint_8"
-	@msp_type "int"
+	@c_type "int"
 	@java_type "short";
 
 datatype Byte
-	@avr_type "char"
-	@msp_type "char"
+	@c_type "char"
 	@java_type "byte";
 	
 datatype String
+	@c_type "string8"
 	@java_type "String"
 	@size "8";
 	
@@ -48,4 +46,17 @@ device BrickLCDSensor {
 	
 	receives ping
 	sends pong
+	
+	/*
+	statechart MyApp init MyState {
+		state MyState {
+		
+			transition pingpong -> MyState {
+				event BrickLCDSensor#ping
+				action send BrickLCDSensor.pong()
+			}
+		}
+	}
+	*/
 }
+

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="ASCII"?>
 <edap:EdapModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap">
   <types xsi:type="edap:PrimitiveType" name="Integer">
-    <annotations name="avr_type" value="uint_8"/>
-    <annotations name="msp_type" value="int"/>
+    <annotations name="c_type" value="int"/>
     <annotations name="java_type" value="short"/>
   </types>
   <types xsi:type="edap:PrimitiveType" name="Byte">
-    <annotations name="avr_type" value="char"/>
-    <annotations name="msp_type" value="char"/>
+    <annotations name="c_type" value="char"/>
     <annotations name="java_type" value="byte"/>
   </types>
   <types xsi:type="edap:PrimitiveType" name="String">
+    <annotations name="c_type" value="string8"/>
     <annotations name="java_type" value="String"/>
     <annotations name="size" value="8"/>
   </types>
@@ -56,9 +55,16 @@
     </messages>
     <messages name="ping">
       <annotations name="code" value="66"/>
+      <annotations name="ackmessage" value="pong"/>
+      <annotations name="retransmit" value="3"/>
+      <annotations name="timout" value="1000"/>
+      <annotations name="failuremessage" value="deviceUnreachable"/>
     </messages>
     <messages name="pong">
       <annotations name="code" value="67"/>
+    </messages>
+    <messages name="deviceUnreachable">
+      <annotations name="code" value="69"/>
     </messages>
   </types>
 </edap:EdapModel>

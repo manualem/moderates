@@ -1,0 +1,35 @@
+#######################################
+# Syntax Coloring For BrickLCDSensor
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+BrickLCDSensor	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+receivedisplayText	KEYWORD2
+receiveclearText	KEYWORD2
+receivereadAllAnalog	KEYWORD2
+receivereadAnalog	KEYWORD2
+receivesetDigital	KEYWORD2
+receivesetValue	KEYWORD2
+receivegetValue	KEYWORD2
+receiveping	KEYWORD2
+
+sendanalogValue	KEYWORD2
+senddigitalValue	KEYWORD2
+sendpong	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

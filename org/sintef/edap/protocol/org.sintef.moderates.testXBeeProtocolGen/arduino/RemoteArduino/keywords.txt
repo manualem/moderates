@@ -1,0 +1,37 @@
+#######################################
+# Syntax Coloring For RemoteArduino
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RemoteArduino	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+receivepinMode	KEYWORD2
+receivedigitalRead	KEYWORD2
+receivedigitalWrite	KEYWORD2
+receiveanalogReference	KEYWORD2
+receiveanalogRead	KEYWORD2
+receiveanalogWrite	KEYWORD2
+receiveping	KEYWORD2
+receiveattachInterrupt	KEYWORD2
+receivedetachInterrupt	KEYWORD2
+
+senddigitalReadResult	KEYWORD2
+sendanalogReadResult	KEYWORD2
+sendpong	KEYWORD2
+sendinterruptNotification	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

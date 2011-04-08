@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ASCII"?>
+<edap:EdapModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:edap="http://edap">
+  <types xsi:type="edap:PrimitiveType" name="Int8">
+    <annotations name="c_type" value="uint8_t"/>
+    <annotations name="java_type" value="byte"/>
+  </types>
+  <types xsi:type="edap:PrimitiveType" name="Int16">
+    <annotations name="c_type" value="int"/>
+    <annotations name="java_type" value="short"/>
+  </types>
+  <types xsi:type="edap:PrimitiveType" name="String">
+    <annotations name="c_type" value="string8"/>
+    <annotations name="java_type" value="String"/>
+    <annotations name="size" value="8"/>
+  </types>
+  <types xsi:type="edap:Device" name="RemoteArduino" receives="//@types.3/@messages.0 //@types.3/@messages.2 //@types.3/@messages.1 //@types.3/@messages.4 //@types.3/@messages.5 //@types.3/@messages.7 //@types.3/@messages.8 //@types.3/@messages.10 //@types.3/@messages.11" sends="//@types.3/@messages.3 //@types.3/@messages.6 //@types.3/@messages.9 //@types.3/@messages.12">
+    <messages name="pinMode">
+      <annotations name="code" value="2"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="mode" type="//@types.0"/>
+    </messages>
+    <messages name="digitalWrite">
+      <annotations name="code" value="3"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="value" type="//@types.0"/>
+    </messages>
+    <messages name="digitalRead">
+      <annotations name="code" value="4"/>
+      <parameters name="pin" type="//@types.0"/>
+    </messages>
+    <messages name="digitalReadResult">
+      <annotations name="code" value="5"/>
+      <parameters name="value" type="//@types.0"/>
+    </messages>
+    <messages name="analogReference">
+      <annotations name="code" value="6"/>
+      <parameters name="type" type="//@types.0"/>
+    </messages>
+    <messages name="analogRead">
+      <annotations name="code" value="7"/>
+      <parameters name="pin" type="//@types.0"/>
+    </messages>
+    <messages name="analogReadResult">
+      <annotations name="code" value="8"/>
+      <parameters name="value" type="//@types.1"/>
+    </messages>
+    <messages name="analogWrite">
+      <annotations name="code" value="9"/>
+      <parameters name="pin" type="//@types.0"/>
+      <parameters name="value" type="//@types.0"/>
+    </messages>
+    <messages name="ping">
+      <annotations name="code" value="66"/>
+    </messages>
+    <messages name="pong">
+      <annotations name="code" value="67"/>
+    </messages>
+    <messages name="attachInterrupt">
+      <annotations name="code" value="21"/>
+      <parameters name="interrupt" type="//@types.0"/>
+      <parameters name="mode" type="//@types.0"/>
+    </messages>
+    <messages name="detachInterrupt">
+      <annotations name="code" value="22"/>
+      <parameters name="interrupt" type="//@types.0"/>
+    </messages>
+    <messages name="interruptNotification">
+      <annotations name="code" value="23"/>
+      <parameters name="interrupt" type="//@types.0"/>
+    </messages>
+  </types>
+</edap:EdapModel>
