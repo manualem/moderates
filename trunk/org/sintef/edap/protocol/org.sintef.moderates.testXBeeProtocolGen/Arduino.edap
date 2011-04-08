@@ -23,9 +23,6 @@ enumeration Mode
 device RemoteArduino 
 	@packet_size "20"
 {
-
-	
-
 	// Digital I/O
 	message pinMode(pin : Int8, mode : Mode) @code "2";
 	message digitalWrite(pin : Int8, value : Int8) @code "3";
@@ -56,4 +53,6 @@ device RemoteArduino
 	sends interruptNotification
 	
 }
+
+
 

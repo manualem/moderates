@@ -1,7 +1,7 @@
 
 // ensure this library description is only included once
-#ifndef RemoteArduino_h
-#define RemoteArduino_h
+#ifndef CurrentSensor_h
+#define CurrentSensor_h
 
 // include types & constants of Wiring core API
 #include "WConstants.h"
@@ -13,33 +13,23 @@
 // include the Xbee lib
 #include "../XBee/XBee.h"
 
-#define Mode_INPUT 0
-#define Mode_OUTPUT 1
 
 // Operations which implements the logic to execute when messages are received.
-extern void receivepinMode(uint8_t pin, uint8_t mode);
-extern void receivedigitalRead(uint8_t pin);
-extern void receivedigitalWrite(uint8_t pin, uint8_t value);
-extern void receiveanalogReference(uint8_t type);
-extern void receiveanalogRead(uint8_t pin);
-extern void receiveanalogWrite(uint8_t pin, uint8_t value);
+extern void receivestart();
+extern void receivestop();
 extern void receiveping();
-extern void receiveattachInterrupt(uint8_t interrupt, uint8_t mode);
-extern void receivedetachInterrupt(uint8_t interrupt);
 
-class RemoteArduino
+class CurrentSensor
 {
   public:
 	// Constructor which takes the address of the target XBee as parameter
-    RemoteArduino(uint32_t, uint32_t);
+    CurrentSensor(uint32_t, uint32_t);
 	// Standard init and pool operations to be called in setup and loop
-	void init_RemoteArduino();
-	void poll_RemoteArduino();
+	void init_CurrentSensor();
+	void poll_CurrentSensor();
 	// Operations for sending all messages
-    void senddigitalReadResult(uint8_t value);
-    void sendanalogReadResult(uint16_t value);
+    void sendcurrentData(uint16_t sensorMax, uint16_t current, uint16_t eff_current);
     void sendpong();
-    void sendinterruptNotification(uint8_t interrupt);
 
   private:
 	// the address of the target XBee
