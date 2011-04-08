@@ -19,15 +19,15 @@ _res.append("\tKEYWORD1\n\n#######################################\n# Methods an
 device.receives.each{out | 
 _res.append("receive")
 _res.append(out.name)
-_res.append("\tKEYWORD2")
+_res.append("\tKEYWORD2\n")
 }
-_res.append("\n\n")
+_res.append("\n")
 device.sends.each{out | 
 _res.append("send")
 _res.append(out.name)
-_res.append("\tKEYWORD2")
+_res.append("\tKEYWORD2\n")
 }
-_res.append("\n\n#######################################\n# Instances (KEYWORD2)\n#######################################\n\n#######################################\n# Constants (LITERAL1)\n#######################################\n\n")
+_res.append("\n#######################################\n# Instances (KEYWORD2)\n#######################################\n\n#######################################\n# Constants (LITERAL1)\n#######################################\n\n")
 result := _res.toString
 end
 }

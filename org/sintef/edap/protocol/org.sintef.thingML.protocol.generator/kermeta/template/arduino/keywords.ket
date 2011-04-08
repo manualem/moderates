@@ -23,10 +23,12 @@ parameters="packageName:String, device:edap::Device"
 #######################################
 
 <%device.receives.each{out | %>
-receive<%=out.name%>	KEYWORD2<%}%>
+receive<%=out.name%>	KEYWORD2
+<%}%>
 
 <%device.sends.each{out | %>
-send<%=out.name%>	KEYWORD2<%}%>
+send<%=out.name%>	KEYWORD2
+<%}%>
 
 #######################################
 # Instances (KEYWORD2)

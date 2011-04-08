@@ -27,7 +27,7 @@ _res.append("extern void receive")
 _res.append(out.name)
 _res.append("(")
 _res.append(chelper.msgParamsDecl(out))
-_res.append(")\n\t// TODO: Implement the handler for message reception of the message ")
+_res.append(") {\n\t// TODO: Implement the handler for message reception of the message ")
 _res.append(out.name)
 _res.append("\n}\n")
 }

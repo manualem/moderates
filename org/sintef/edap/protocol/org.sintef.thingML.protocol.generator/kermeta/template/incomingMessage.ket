@@ -35,7 +35,11 @@ public class <%=msg.name%>_In extends Incoming<%=device.name%>Message {
 		}
 		position += <%=helper.getSize(p.type)%>;
 		<%else%>
+		<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
 		<%=p.name%> = bb.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
+		<%else%>
+		<%=p.name%> = bb.get();
+		<%end%>
 		position += (int) (<%=helper.firstToUpper(helper.toJavaType(p.type))%>.SIZE/8);
 		<%end%>
 		<%}%>

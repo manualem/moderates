@@ -1,0 +1,74 @@
+/* $Id:$ 
+ * Creation : March 10, 2011
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            bmori
+ */
+
+package thingML;
+
+
+require kermeta
+require "./helper.kmt"
+require "./CHelper.kmt"
+require "./template/arduino/header.kmt"
+require "./template/arduino/implementation.kmt"
+require "./template/arduino/example.kmt"
+require "./template/arduino/keywords.kmt"
+
+using kermeta::standard
+using kermeta::io
+
+using edap
+
+class MainArduinoProtocolGenerator
+{
+
+operation mainArduino(thingMLuri : String, srcFolder : String) : Void is do 
+	main(thingMLuri, srcFolder)
+end
+
+operation mainKevoree(thingMLuri : String, srcFolder : String) : Void is do 
+	main(thingMLuri, srcFolder)
+end
+
+	operation main(thingMLuri : String, srcFolder : String) : Void is do 
+		var helper : Helper init Helper.new
+		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
+		
+		var header : ArduinoHeaderGenerator init ArduinoHeaderGenerator.new
+		var impl : ArduinoCPPGenerator init ArduinoCPPGenerator.new
+		var example: ArduinoExampleGenerator init ArduinoExampleGenerator.new
+		var keywds : ArduinoKeywordsGenerator init ArduinoKeywordsGenerator.new
+		
+		
+		var file : FileIO init FileIO.new
+		
+		thingMLmodel.types.select{t | t.isKindOf(Device)}.each{t |
+		
+			stdio.writeln("ArduinoHeaderGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"/" +t.name+".h", header.generate(t.name, t.asType(Device)))
+			stdio.writeln("")
+			
+			
+			stdio.writeln("ArduinoCPPGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"/" +t.name+".cpp", impl.generate(t.name, t.asType(Device)))
+			stdio.writeln("")
+	
+			stdio.writeln("ArduinoKeywordsGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"/keywords.txt", keywds.generate(t.name, t.asType(Device)))
+			stdio.writeln("")
+			
+			
+			stdio.writeln("ArduinoExampleGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"/examples/" +t.name+ "Example/"+t.name+"Example.pde", example.generate(t.name, t.asType(Device)))
+			stdio.writeln("")		
+			
+		}
+	end
+}

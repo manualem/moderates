@@ -28,7 +28,7 @@ _res.append(device.name)
 _res.append("::poll_")
 _res.append(device.name)
 _res.append("(void) {\t\n\t // Look for incomming XBEE messages\n  xbee.readPacket();\n  if (xbee.getResponse().isAvailable()) { // We got a message\n    if (xbee.getResponse().getApiId() == ZB_RX_RESPONSE) { // it is a ZB message\n        xbee.getResponse().getZBRxResponse(rx);\n        parseIncommingMessage(rx.getData());\n    }\n  }\n}\n\n")
-device.receives.each{out | 
+device.sends.each{out | 
 _res.append("void ")
 _res.append(device.name)
 _res.append("::send")
@@ -51,16 +51,16 @@ _res.append("   // send the message\n   xbee.send(zbTx);\n}\n")
 _res.append("\n// Private Methods /////////////////////////////////////////////////////////////\nvoid ")
 _res.append(device.name)
 _res.append("::parseIncommingMessage(uint8_t data[])\n{\n\tswitch(data[4]) // command code\n  {\n")
-device.sends.each{in | 
+device.receives.each{in | 
 _res.append("   case ")
 _res.append(in.annotations.select{a | a.name == "code"}.one.~value)
 _res.append(": receive")
 _res.append(in.name)
 _res.append("(")
 _res.append(chelper.msgParamsReadBuffer(in, "data", 5))
-_res.append("); break;")
+_res.append("); break;\n")
 }
-_res.append("\n   default: break; \n  }\n}\n")
+_res.append("   default: break; \n  }\n}\n")
 result := _res.toString
 end
 }
