@@ -4,20 +4,20 @@ require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
 require "../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
-class IncomingMessageGenerator{
+class MessageGenerator{
 operation generate(packageName:String, msg:edap::Message, device:edap::Device):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(".in;\n\nimport ")
+_res.append(".msg;\n\nimport ")
 _res.append(packageName)
 _res.append(".*;\n\nimport java.nio.ByteBuffer;\n\npublic class ")
 _res.append(msg.name)
-_res.append("_In extends Incoming")
+_res.append(" extends ")
 _res.append(device.name)
-_res.append("Message {\n\n")
+_res.append("ProtocolPacket {\n\n")
 msg.parameters.each{ p | 
 _res.append("\tprivate ")
 _res.append(helper.toJavaType(p.type))
@@ -25,7 +25,29 @@ _res.append(" ")
 _res.append(p.name)
 _res.append(";\n")
 }
-_res.append("\t\n\t@Override\n\tpublic void setPacketData(byte[] packet) {\n\t\tsuper.setPacketData(packet);\n\t\tint position = 5;\n")
+_res.append("\t\n\tpublic ")
+_res.append(msg.name)
+_res.append("(")
+_res.append(helper.paramsToJava(msg))
+_res.append(") {\n\t\tsetCommandID(")
+_res.append(device.name)
+_res.append("Protocol.")
+_res.append(helper.toJavaConstant(msg.name))
+_res.append(");\n")
+msg.parameters.each{ p | 
+_res.append("\t\tset")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append("Value(")
+_res.append(p.name)
+_res.append(");\n\t\tthis.")
+_res.append(p.name)
+_res.append(" = ")
+_res.append(p.name)
+_res.append(";\n")
+}
+_res.append("\t}\n\t\n\tpublic ")
+_res.append(msg.name)
+_res.append("(byte[] packet) {\n\t\tsetPacketData(packet);\n\t\tint position = 5;\n")
 if msg.parameters.exists{p | not helper.isJavaString(p.type)} then
 _res.append("\t\tByteBuffer bb = ByteBuffer.wrap(data, 5, 10);")
 //5 and 10 are magic numbers...
@@ -85,13 +107,7 @@ _res.append("() {\n\t\treturn ")
 _res.append(p.name)
 _res.append(";\n\t}\n\t\n")
 }
-_res.append("\n\n\t@Override\n\tpublic Incoming")
-_res.append(device.name)
-_res.append("Message createPacket(byte[] packet) {\n\t\tIncoming")
-_res.append(device.name)
-_res.append("Message result = new ")
-_res.append(msg.name)
-_res.append("_In();\n\t\tresult.setPacketData(packet);\n\t\treturn result;\n\t}\n\t\n}")
+_res.append("}")
 result := _res.toString
 end
 }
