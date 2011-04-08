@@ -17,7 +17,17 @@ _res.append("\n// ensure this library description is only included once\n#ifndef
 _res.append(device.name)
 _res.append("_h\n#define ")
 _res.append(device.name)
-_res.append("_h\n\n// include types & constants of Wiring core API\n#include \"WConstants.h\"\n#undef abs\n#undef round\n\n#include <inttypes.h>\n\n// include the Xbee lib\n#include \"../XBee/XBee.h\"\n\n// Operations which implements the logic to execute when messages are received.\n")
+_res.append("_h\n\n// include types & constants of Wiring core API\n#include \"WConstants.h\"\n#undef abs\n#undef round\n\n#include <inttypes.h>\n\n// include the Xbee lib\n#include \"../XBee/XBee.h\"\n\n")
+device.all_enums.each{ e | e.literals.each { l |
+_res.append("#define ")
+_res.append(e.name)
+_res.append("_")
+_res.append(l.name)
+_res.append(" ")
+_res.append(l.c_value)
+_res.append("\n")
+}}
+_res.append("\n// Operations which implements the logic to execute when messages are received.\n")
 device.receives.each{out | 
 _res.append("extern void receive")
 _res.append(out.name)
