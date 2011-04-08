@@ -34,13 +34,13 @@ using edap
 class MainJavaProtocolGenerator
 {
 
-operation mainJava(thingMLuri : String, srcFolder : String) : Void is do 
-	main(thingMLuri, srcFolder, false)
-end
+	operation mainJava(thingMLuri : String, srcFolder : String) : Void is do 
+		main(thingMLuri, srcFolder, false)
+	end
 
-operation mainKevoree(thingMLuri : String, srcFolder : String) : Void is do 
-	main(thingMLuri, srcFolder, true)
-end
+	operation mainKevoree(thingMLuri : String, srcFolder : String) : Void is do 
+		main(thingMLuri, srcFolder, true)
+	end
 
 	operation main(thingMLuri : String, srcFolder : String, isKevoree: Boolean) : Void is do 
 		var helper : Helper init Helper.new
@@ -76,7 +76,7 @@ end
 			
 			stdio.writeln("ProtocolGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"Protocol.java", pGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"Protocol.java", pGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")
 	
 			stdio.writeln("IncomingMessageSuperGenerator")

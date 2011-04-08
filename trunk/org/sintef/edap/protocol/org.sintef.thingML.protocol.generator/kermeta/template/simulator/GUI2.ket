@@ -10,6 +10,8 @@ parameters="packageName:String, device:edap::Device"
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>.sim;
 
+import <%=packageName%>.<%=device.name%>Protocol;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -19,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,7 +45,11 @@ public class Interactive<%=device.name%>DataGUI2 {
 	//Attributes related to <%=msg.name%>
 	public static JButton sendButton<%=msg.name%>;
 		<%msg.parameters.each{ p | %>
+			<%if p.type.isKindOf(edap::Enumeration) then%>
+	public static JComboBox field<%=msg.name+"_"+p.name%>;
+			<%else%>
 	public static JTextField field<%=msg.name+"_"+p.name%>;
+			<%end%>
 		<%}%>
 		
 	<%}%>
@@ -127,14 +134,16 @@ public class Interactive<%=device.name%>DataGUI2 {
  		c.gridx = 0;
 		c.gridy = <%=y.toString%>;
  		panel.add(label<%=p.name%>, c);
- 		
+				<%if p.type.isKindOf(edap::Enumeration) then%>
+		<%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>.<%=l.name%><%w := w+1}%>};
+		field<%=msg.name+"_"+p.name%> = new JComboBox(values<%=msg.name+"_"+p.name%>);
+				<%else%>		
  		field<%=msg.name+"_"+p.name%> = new JTextField();
 		field<%=msg.name+"_"+p.name%>.setText("<%=p.name%>");
+ 				<%end%>
  		c.gridx = 1;
 		c.gridy = <%=y.toString%>;
  		panel.add(field<%=msg.name+"_"+p.name%>, c);
- 		
-
  			<%y := y+1%>
 			<%}%>
 			
