@@ -11,7 +11,6 @@ parameters="packageName:String, device:edap::Device, toKevoreeComponent:Boolean"
 package <%=packageName%>.sim;
 
 import <%=packageName%>.*;
-import <%=packageName%>.in.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,12 +44,12 @@ import java.util.logging.Logger;
 public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent then%>extends AbstractComponentType <%end%>implements ActionListener, ProtocolHandler {
 
 	private Logger log;
-	
+
 	private List<ProtocolHandler> handlers;
 
 	public Interactive<%=device.name%>DataController2(){
 		handlers = new LinkedList<ProtocolHandler>();
-		log = Logger.getLogger(Interactive<%=device.name%>DataController2.class.getName()); 
+		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName()); 
 		Interactive<%=device.name%>DataGUI2.init();
 		Interactive<%=device.name%>DataGUI2.addListener(this);	
 	}
@@ -58,12 +57,12 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 	<%if toKevoreeComponent then%>
 	@Start
     public void start() {
-    	log.log(Level.INFO, "Interactive<%=device.name%>DataController2 has been started");
+    	log.log(Level.INFO, "Interactive<%=device.name%>DataController has been started");
     }
 
     @Stop
     public void stop() {
-    	log.log(Level.INFO, "Interactive<%=device.name%>DataController2 has been stopped");
+    	log.log(Level.INFO, "Interactive<%=device.name%>DataController has been stopped");
     }
 
     @Update
@@ -73,33 +72,32 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
     <%end%>
 	
 
-	private void doSend(byte[] packet){
-		Incoming<%=device.name%>Message data = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
+	private void doSend(FixedSizePacket data){
 		if (data != null) {
 		<%if toKevoreeComponent then%>
 			if (this.isPortBinded("out")) {
-           		this.getPortByName("out", MessagePort.class).process(packet);
-          		log.log(Level.INFO, "Message sent "+packet);
+           		this.getPortByName("out", MessagePort.class).process(data);
+          		log.log(Level.INFO, "Message sent "+data);
         	} else {
-        		log.log(Level.WARNING, "No component connected to output port. Cannot send message: "+result);
+        		log.log(Level.WARNING, "No component connected to output port. Cannot send message: "+data);
         	}
         <%else%>
-        	System.out.println(<%=device.name%>Protocol.createMessageForIncomingPacket(packet)+" --> "+packet);
+        	System.out.println(data+" --> "+data.getPacket());
         <%end%>
             for (ProtocolHandler h : handlers){
-				h.receiveMsg(packet);
+				h.receiveMsg(data.getPacket());
 			}
+        }
+        else {
+        	System.out.println("Data is null");
         }
 	}
 
 	<%device.receives.each{ msg |%>
 	public void send<%=msg.name%>() {
-		byte packet[] = new byte[16];
-		packet[3] = 16;
-		packet[4] = <%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>;
+		FixedSizePacket fsp = null;
 		<%if msg.parameters.size > 0 then%>
 		boolean valid = true;
-		ByteBuffer bb = ByteBuffer.wrap(packet, 5, 10);
 		<%msg.parameters.each{ p | %>
 		<%=helper.firstToUpper(helper.toJavaType(p.type))%> <%=p.name%> = null;
 		<%}%>
@@ -112,18 +110,12 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 			<%=p.name%> = Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getText();
 			<%end%>
 			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
-			bb.put(<%=p.name%>.getBytes());
 		<%else%>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
 			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(((<%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>)Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getSelectedItem()).getValue());
 			<%else%>
 			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI2.field<%=msg.name+"_"+p.name%>.getText());
 			<%end%>
-			<%if helper.isJavaByte(p.type) then%>
-			bb.put(<%=p.name%>);
-			<%else%>
-			bb.put<%=helper.firstToUpper(helper.toJavaType(p.type))%>(<%=p.name%>);
-			<%end%>	
 		<%end%>
 		<%}%>
 		} catch (NumberFormatException nfe){
@@ -131,10 +123,12 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 			valid = false;
 		}
 		if (valid){
-			doSend(packet);
+			fsp = <%=device.name%>Protocol.create<%=msg.name%>(<%=helper.paramsToJavaCall(msg)%>);
+			doSend(fsp);
 		}
-		<%else%>	
-		doSend(packet);
+		<%else%>
+		fsp = <%=device.name%>Protocol.create<%=msg.name%>();	
+		doSend(fsp);
 		<%end%>
 	}
 
@@ -144,9 +138,9 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 	@Port(name="in", method="receiveMessage")
 	<%end%>
 	public void receiveMessage(byte[] packet){
-		Incoming<%=device.name%>Message data = <%=device.name%>Protocol.createMessageForIncomingPacket(packet);
+		FixedSizePacket data = <%=device.name%>Protocol.createMessageFromPacket(packet);
 		if (data != null) {
-			Interactive<%=device.name%>DataGUI2.print(data.getClass().getSimpleName().substring(0,data.getClass().getSimpleName().length()-3), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+FixedSizePacket.toString(packet));
+			Interactive<%=device.name%>DataGUI2.print(data.getClass().getSimpleName(), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+FixedSizePacket.toString(packet));
 		}
 	}
 
@@ -164,7 +158,7 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 	public static void main(String args[]){
 		Interactive<%=device.name%>DataController2 controller = new Interactive<%=device.name%>DataController2();
 	}
-
+	
 	@Override
 	public void register(ProtocolHandler handler) {
 		handlers.add(handler);
@@ -173,5 +167,5 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 	@Override
 	public void receiveMsg(byte[] msg) {
 		receiveMessage(msg);
-	}	
+	}
 }

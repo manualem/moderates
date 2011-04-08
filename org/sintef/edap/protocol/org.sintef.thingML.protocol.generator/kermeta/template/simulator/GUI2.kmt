@@ -143,7 +143,7 @@ _res.append("Style = doc.addStyle(\"receive")
 _res.append(msg.name)
 _res.append("Style\", def);\n        StyleConstants.setForeground(receive")
 _res.append(msg.name)
-_res.append("Style, new Color(rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255)));\t\n")
+_res.append("Style, new Color(rnd.nextInt(128), rnd.nextInt(128), rnd.nextInt(128)));\t\n")
 }
 _res.append("        return editorScrollPane;\n\t}\n\t\n\tprivate static String formatForPrint(String text) {\n            return (text.endsWith(\"\\n\") ? text : text + \"\\n\");\n    }\n}")
 result := _res.toString

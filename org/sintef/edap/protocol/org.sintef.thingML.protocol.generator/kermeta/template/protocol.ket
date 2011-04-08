@@ -10,9 +10,7 @@ parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>;
 
-import java.util.Hashtable;
-import <%=packageName%>.in.*;
-import <%=packageName%>.out.*;
+import <%=packageName%>.msg.*;
 
 public abstract class <%=device.name%>Protocol {
 
@@ -32,50 +30,39 @@ public abstract class <%=device.name%>Protocol {
 	}
 	<%}%>
 
-	// Outgoing messages
 	<%device.receives.each{out | %>
 	public static final byte <%=helper.toJavaConstant(out.name)%> = <%=out.annotations.select{a | a.name == "code"}.one.~value%>; 
 	<%}%>
-	
-	// incoming messages
 	<%device.sends.each{in | %>
 	public static final byte <%=helper.toJavaConstant(in.name)%> = <%=in.annotations.select{a | a.name == "code"}.one.~value%>; 
 	<%}%>
 	
-
-	private static Hashtable<Byte, Incoming<%=device.name%>Message> incomingMsg;
-	
-	private static void createincomingMsg() {
-		incomingMsg = new Hashtable<Byte, Incoming<%=device.name%>Message>();
-		<%device.sends.each{in | %>
-		incomingMsg.put(<%=device.name%>Protocol.<%=helper.toJavaConstant(in.name)%>, new <%=in.name%>_In()); 
-		<%}%>
-		<%device.receives.each{in | %>
-		incomingMsg.put(<%=device.name%>Protocol.<%=helper.toJavaConstant(in.name)%>, new <%=in.name%>_In()); 
-		<%}%>		
-	}
-	
-	public static Incoming<%=device.name%>Message createMessageForIncomingPacket(byte[] packet) {
-		if(incomingMsg == null) createincomingMsg();
+	public static FixedSizePacket createMessageFromPacket(byte[] packet) {
 		byte packetType = packet[4];
-		Incoming<%=device.name%>Message result = null;
-		if (incomingMsg.containsKey(packetType)) {
-			result = incomingMsg.get(packetType).createPacket(packet);
+		FixedSizePacket result = null;
+		switch(packetType){
+			<%device.receives.each{out | %>
+			case <%=helper.toJavaConstant(out.name)%>: result = new <%=out.name%>(packet); break; 
+			<%}%>
+			<%device.sends.each{in | %>
+			case <%=helper.toJavaConstant(in.name)%>: result = new <%=in.name%>(packet); break; 
+			<%}%>
+			default: break;
 		}
 		return result;
 	}
 
 	<%device.receives.each{out | %>
-	public static <%=out.name%>_Out create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
-		<%=out.name%>_Out result = new <%=out.name%>_Out(<%=helper.paramsToJavaCall(out)%>);
+	public static FixedSizePacket create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
+		<%=out.name%> result = new <%=out.name%>(<%=helper.paramsToJavaCall(out)%>);
 		return result;
 	}
 	
 	<%}%>
 	
 	<%device.sends.each{out | %>
-	public static <%=out.name%>_Out create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
-		<%=out.name%>_Out result = new <%=out.name%>_Out(<%=helper.paramsToJavaCall(out)%>);
+	public static FixedSizePacket create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
+		<%=out.name%> result = new <%=out.name%>(<%=helper.paramsToJavaCall(out)%>);
 		return result;
 	}
 	

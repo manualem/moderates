@@ -13,9 +13,7 @@ _res.append("package ")
 _res.append(packageName)
 _res.append(".sim;\n\nimport ")
 _res.append(packageName)
-_res.append(".*;\nimport ")
-_res.append(packageName)
-_res.append(".in.*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
+_res.append(".*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
 if toKevoreeComponent then
 _res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\n")
 end
@@ -29,11 +27,11 @@ _res.append("DataController2 ")
 if toKevoreeComponent then
 _res.append("extends AbstractComponentType ")
 end
-_res.append("implements ActionListener, ProtocolHandler {\n\n\tprivate Logger log;\n\t\n\tprivate List<ProtocolHandler> handlers;\n\n\tpublic Interactive")
+_res.append("implements ActionListener, ProtocolHandler {\n\n\tprivate Logger log;\n\n\tprivate List<ProtocolHandler> handlers;\n\n\tpublic Interactive")
 _res.append(device.name)
 _res.append("DataController2(){\n\t\thandlers = new LinkedList<ProtocolHandler>();\n\t\tlog = Logger.getLogger(Interactive")
 _res.append(device.name)
-_res.append("DataController2.class.getName()); \n\t\tInteractive")
+_res.append("DataController.class.getName()); \n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataGUI2.init();\n\t\tInteractive")
 _res.append(device.name)
@@ -41,33 +39,23 @@ _res.append("DataGUI2.addListener(this);\t\n\t}\n\t\n")
 if toKevoreeComponent then
 _res.append("\t@Start\n    public void start() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
-_res.append("DataController2 has been started\");\n    }\n\n    @Stop\n    public void stop() {\n    \tlog.log(Level.INFO, \"Interactive")
+_res.append("DataController has been started\");\n    }\n\n    @Stop\n    public void stop() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
-_res.append("DataController2 has been stopped\");\n    }\n\n    @Update\n    public void update() {\n    \n    }\n")
+_res.append("DataController has been stopped\");\n    }\n\n    @Update\n    public void update() {\n    \n    }\n")
 end
-_res.append("\t\n\n\tprivate void doSend(byte[] packet){\n\t\tIncoming")
-_res.append(device.name)
-_res.append("Message data = ")
-_res.append(device.name)
-_res.append("Protocol.createMessageForIncomingPacket(packet);\n\t\tif (data != null) {\n")
+_res.append("\t\n\n\tprivate void doSend(FixedSizePacket data){\n\t\tif (data != null) {\n")
 if toKevoreeComponent then
-_res.append("\t\t\tif (this.isPortBinded(\"out\")) {\n           \t\tthis.getPortByName(\"out\", MessagePort.class).process(packet);\n          \t\tlog.log(Level.INFO, \"Message sent \"+packet);\n        \t} else {\n        \t\tlog.log(Level.WARNING, \"No component connected to output port. Cannot send message: \"+result);\n        \t}\n")
+_res.append("\t\t\tif (this.isPortBinded(\"out\")) {\n           \t\tthis.getPortByName(\"out\", MessagePort.class).process(data);\n          \t\tlog.log(Level.INFO, \"Message sent \"+data);\n        \t} else {\n        \t\tlog.log(Level.WARNING, \"No component connected to output port. Cannot send message: \"+data);\n        \t}\n")
 else
-_res.append("        \tSystem.out.println(")
-_res.append(device.name)
-_res.append("Protocol.createMessageForIncomingPacket(packet)+\" --> \"+packet);\n")
+_res.append("        \tSystem.out.println(data+\" --> \"+data.getPacket());\n")
 end
-_res.append("            for (ProtocolHandler h : handlers){\n\t\t\t\th.receiveMsg(packet);\n\t\t\t}\n        }\n\t}\n\n")
+_res.append("            for (ProtocolHandler h : handlers){\n\t\t\t\th.receiveMsg(data.getPacket());\n\t\t\t}\n        }\n        else {\n        \tSystem.out.println(\"Data is null\");\n        }\n\t}\n\n")
 device.receives.each{ msg |
 _res.append("\tpublic void send")
 _res.append(msg.name)
-_res.append("() {\n\t\tbyte packet[] = new byte[16];\n\t\tpacket[3] = 16;\n\t\tpacket[4] = ")
-_res.append(device.name)
-_res.append("Protocol.")
-_res.append(helper.toJavaConstant(msg.name))
-_res.append(";\n")
+_res.append("() {\n\t\tFixedSizePacket fsp = null;\n")
 if msg.parameters.size > 0 then
-_res.append("\t\tboolean valid = true;\n\t\tByteBuffer bb = ByteBuffer.wrap(packet, 5, 10);\n")
+_res.append("\t\tboolean valid = true;\n")
 msg.parameters.each{ p | 
 _res.append("\t\t")
 _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
@@ -111,9 +99,7 @@ _res.append(" = ")
 _res.append(p.name)
 _res.append(".substring(0, ")
 _res.append(helper.getSize(p.type))
-_res.append("-1);\n\t\t\tbb.put(")
-_res.append(p.name)
-_res.append(".getBytes());\n")
+_res.append("-1);\n")
 else
 _res.append("")
 if p.type.isKindOf(edap::Enumeration) then
@@ -146,24 +132,22 @@ _res.append(msg.name+"_"+p.name)
 _res.append(".getText());\n")
 end
 _res.append("")
-if helper.isJavaByte(p.type) then
-_res.append("\t\t\tbb.put(")
-_res.append(p.name)
-_res.append(");\n")
-else
-_res.append("\t\t\tbb.put")
-_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
-_res.append("(")
-_res.append(p.name)
-_res.append(");\n")
-end
-_res.append("")
 end
 _res.append("")
 }
-_res.append("\t\t} catch (NumberFormatException nfe){\n\t\t\tJOptionPane.showMessageDialog(new JFrame(), \"Please check that all the inputs have the right type\", \"Error: Invalid input\", JOptionPane.ERROR_MESSAGE);\n\t\t\tvalid = false;\n\t\t}\n\t\tif (valid){\n\t\t\tdoSend(packet);\n\t\t}\n")
+_res.append("\t\t} catch (NumberFormatException nfe){\n\t\t\tJOptionPane.showMessageDialog(new JFrame(), \"Please check that all the inputs have the right type\", \"Error: Invalid input\", JOptionPane.ERROR_MESSAGE);\n\t\t\tvalid = false;\n\t\t}\n\t\tif (valid){\n\t\t\tfsp = ")
+_res.append(device.name)
+_res.append("Protocol.create")
+_res.append(msg.name)
+_res.append("(")
+_res.append(helper.paramsToJavaCall(msg))
+_res.append(");\n\t\t\tdoSend(fsp);\n\t\t}\n")
 else
-_res.append("\t\tdoSend(packet);\n")
+_res.append("\t\tfsp = ")
+_res.append(device.name)
+_res.append("Protocol.create")
+_res.append(msg.name)
+_res.append("();\t\n\t\tdoSend(fsp);\n")
 end
 _res.append("\t}\n\n")
 }
@@ -171,13 +155,11 @@ _res.append("\n")
 if toKevoreeComponent then
 _res.append("\t@Port(name=\"in\", method=\"receiveMessage\")\n")
 end
-_res.append("\tpublic void receiveMessage(byte[] packet){\n\t\tIncoming")
+_res.append("\tpublic void receiveMessage(byte[] packet){\n\t\tFixedSizePacket data = ")
 _res.append(device.name)
-_res.append("Message data = ")
+_res.append("Protocol.createMessageFromPacket(packet);\n\t\tif (data != null) {\n\t\t\tInteractive")
 _res.append(device.name)
-_res.append("Protocol.createMessageForIncomingPacket(packet);\n\t\tif (data != null) {\n\t\t\tInteractive")
-_res.append(device.name)
-_res.append("DataGUI2.print(data.getClass().getSimpleName().substring(0,data.getClass().getSimpleName().length()-3), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+FixedSizePacket.toString(packet));\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+_res.append("DataGUI2.print(data.getClass().getSimpleName(), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+FixedSizePacket.toString(packet));\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
 var l : Integer init 0
 _res.append("")
 device.receives.each{msg |
@@ -199,7 +181,7 @@ _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive
 _res.append(device.name)
 _res.append("DataController2 controller = new Interactive")
 _res.append(device.name)
-_res.append("DataController2();\n\t}\n\n\t@Override\n\tpublic void register(ProtocolHandler handler) {\n\t\thandlers.add(handler);\n\t}\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\t\n}")
+_res.append("DataController2();\n\t}\n\t\n\t@Override\n\tpublic void register(ProtocolHandler handler) {\n\t\thandlers.add(handler);\n\t}\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\n}")
 result := _res.toString
 end
 }
