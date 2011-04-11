@@ -21,7 +21,8 @@ public class Test<%=device.name%> {
 		Interactive<%=device.name%>DataController controller1 = new Interactive<%=device.name%>DataController();
 		Interactive<%=device.name%>DataController2 controller2 = new Interactive<%=device.name%>DataController2();
 		controller1.register(controller2);
+		controller1.register(controller1);
 		controller2.register(controller1);
+		controller2.register(controller2);
 	}
-
 }

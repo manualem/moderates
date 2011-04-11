@@ -58,6 +58,7 @@ public class Interactive<%=device.name%>DataGUI {
 		try {
         	StyledDocument doc = screen.getStyledDocument();
             doc.insertString(doc.getLength(), formatForPrint(data), doc.getStyle("receive"+id+"Style"));
+            screen.setCaretPosition(doc.getLength());
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -171,7 +172,7 @@ public class Interactive<%=device.name%>DataGUI {
         Random rnd = new Random();
 		<%device.receives.each{msg |%>
 		Style receive<%=msg.name%>Style = doc.addStyle("receive<%=msg.name%>Style", def);
-        StyleConstants.setForeground(receive<%=msg.name%>Style, new Color(rnd.nextInt(128), rnd.nextInt(128), rnd.nextInt(128)));	
+        StyleConstants.setForeground(receive<%=msg.name%>Style, new Color(rnd.nextInt(176), rnd.nextInt(176), rnd.nextInt(176)));	
 		<%}%>        
         return editorScrollPane;
 	}

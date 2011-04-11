@@ -13,7 +13,7 @@ _res.append("package ")
 _res.append(packageName)
 _res.append(".sim;\n\nimport ")
 _res.append(packageName)
-_res.append(".*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
+_res.append(".*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\nimport java.text.SimpleDateFormat;\nimport java.util.Date;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
 if toKevoreeComponent then
 _res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\n")
 end
@@ -27,11 +27,11 @@ _res.append("DataController ")
 if toKevoreeComponent then
 _res.append("extends AbstractComponentType ")
 end
-_res.append("implements ActionListener, ProtocolHandler {\n\n\tprivate Logger log;\n\n\tprivate List<ProtocolHandler> handlers;\n\n\tpublic Interactive")
+_res.append("implements ActionListener, ProtocolHandler {\n\n\tprivate Logger log;\n\n\tprivate List<ProtocolHandler> handlers;\n\t\n\tprivate SimpleDateFormat dateFormat;\n\n\tpublic Interactive")
 _res.append(device.name)
 _res.append("DataController(){\n\t\thandlers = new LinkedList<ProtocolHandler>();\n\t\tlog = Logger.getLogger(Interactive")
 _res.append(device.name)
-_res.append("DataController.class.getName()); \n\t\tInteractive")
+_res.append("DataController.class.getName());\n\t\tdateFormat = new SimpleDateFormat(\"dd MMM yyy 'at' HH:mm:ss.SSS\");\n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataGUI.init();\n\t\tInteractive")
 _res.append(device.name)
@@ -159,7 +159,7 @@ _res.append("\tpublic void receiveMessage(byte[] packet){\n\t\tFixedSizePacket d
 _res.append(device.name)
 _res.append("Protocol.createMessageFromPacket(packet);\n\t\tif (data != null) {\n\t\t\tInteractive")
 _res.append(device.name)
-_res.append("DataGUI.print(data.getClass().getSimpleName(), \"[\"+System.currentTimeMillis()+\"]: \"+data.toString()+\" --> \"+FixedSizePacket.toString(packet));\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
+_res.append("DataGUI.print(data.getClass().getSimpleName(), \"[\"+dateFormat.format(new Date(System.currentTimeMillis()))+\"]: \"+data.toString()+\" --> \"+FixedSizePacket.toString(packet));\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
 var l : Integer init 0
 _res.append("")
 device.sends.each{msg |
