@@ -22,7 +22,7 @@ _res.append("DataController();\n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataController2 controller2 = new Interactive")
 _res.append(device.name)
-_res.append("DataController2();\n\t\tcontroller1.register(controller2);\n\t\tcontroller2.register(controller1);\n\t}\n\n}")
+_res.append("DataController2();\n\t\tcontroller1.register(controller2);\n\t\tcontroller1.register(controller1);\n\t\tcontroller2.register(controller1);\n\t\tcontroller2.register(controller2);\n\t}\n}")
 result := _res.toString
 end
 }

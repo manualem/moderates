@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -46,10 +48,13 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	private Logger log;
 
 	private List<ProtocolHandler> handlers;
+	
+	private SimpleDateFormat dateFormat;
 
 	public Interactive<%=device.name%>DataController(){
 		handlers = new LinkedList<ProtocolHandler>();
-		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName()); 
+		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName());
+		dateFormat = new SimpleDateFormat("dd MMM yyy 'at' HH:mm:ss.SSS");
 		Interactive<%=device.name%>DataGUI.init();
 		Interactive<%=device.name%>DataGUI.addListener(this);	
 	}
@@ -140,7 +145,7 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	public void receiveMessage(byte[] packet){
 		FixedSizePacket data = <%=device.name%>Protocol.createMessageFromPacket(packet);
 		if (data != null) {
-			Interactive<%=device.name%>DataGUI.print(data.getClass().getSimpleName(), "["+System.currentTimeMillis()+"]: "+data.toString()+" --> "+FixedSizePacket.toString(packet));
+			Interactive<%=device.name%>DataGUI.print(data.getClass().getSimpleName(), "["+dateFormat.format(new Date(System.currentTimeMillis()))+"]: "+data.toString()+" --> "+FixedSizePacket.toString(packet));
 		}
 	}
 
