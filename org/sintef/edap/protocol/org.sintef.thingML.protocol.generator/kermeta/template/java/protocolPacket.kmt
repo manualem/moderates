@@ -1,7 +1,6 @@
 package thingML;
 require kermeta
-require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
-require "../stringHelper.kmt"
+require "../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
 class ProtocolPacketGenerator{
@@ -16,7 +15,7 @@ _res.append(device.name)
 _res.append("ProtocolPacket extends FixedSizePacket {\n\t\n\tprivate int position = 5;\n\t\n\tpublic ")
 _res.append(device.name)
 _res.append("ProtocolPacket() {\n\t\tsuper();\n\t}\n\t\n\tprotected void setCommandID(byte cmd) {\n\t\tdata[4] = cmd;\n\t}\n\t\n\tprotected byte getCommandID(){\n\t\treturn data[4];\n\t}\n\t\n")
-root.types.select{t | t.isKindOf(edap::PrimitiveType)}.each{ t | 
+device.all_types.select{t | t.isKindOf(edap::PrimitiveType)}.each{ t | 
 _res.append("\tprotected void set")
 _res.append(helper.firstToUpper(helper.toJavaType(t)))
 _res.append("Value(")

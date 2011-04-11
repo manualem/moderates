@@ -1,6 +1,6 @@
 <%@ket
 package="thingML"
-require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../stringHelper.kmt"
+require="../../stringHelper.kmt"
 using=""
 isAspectClass="false"
 class="ProtocolGenerator"
@@ -15,7 +15,7 @@ import <%=packageName%>.msg.*;
 public abstract class <%=device.name%>Protocol {
 
 	//Enumerations
-	<%root.types.select{t | t.isKindOf(edap::Enumeration)}.each{ e | %>
+	<%device.all_types.select{t | t.isKindOf(edap::Enumeration)}.each{ e | %>
 	public static enum <%=e.name%>{	
 		<%var x : Integer init 0 e.asType(edap::Enumeration).literals.each{l | if x > 0 then%>,\n\t\t<%end%><%=l.name%>("<%=helper.getValue(l)%>")<%x := x+1}%>;
 	
