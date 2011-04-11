@@ -11,21 +11,21 @@ package thingML;
 
 require kermeta
 require "./helper.kmt"
-require "./template/fixedSizePackage.kmt"
-require "./template/protocolPacket.kmt"
-require "./template/protocol.kmt"
-/*require "./template/incomingMessageSuperClass.kmt"
-require "./template/outgoingMessageSuperClass.kmt"
-require "./template/incomingMessage.kmt"
-require "./template/outgoingMessage.kmt"*/
-require "./template/message.kmt"
-//require "./template/simulator/simulator.kmt"
-require "./template/simulator/GUI.kmt"
-require "./template/simulator/controller.kmt"
-require "./template/simulator/GUI2.kmt"
-require "./template/simulator/controller2.kmt"
-require "./template/simulator/handler.kmt"
-require "./template/simulator/test.kmt"
+require "./template/java/fixedSizePackage.kmt"
+require "./template/java/protocolPacket.kmt"
+require "./template/java/protocol.kmt"
+/*require "./template/java/incomingMessageSuperClass.kmt"
+require "./template/java/outgoingMessageSuperClass.kmt"
+require "./template/java/incomingMessage.kmt"
+require "./template/java/outgoingMessage.kmt"*/
+require "./template/java/message.kmt"
+//require "./template/java/simulator/simulator.kmt"
+require "./template/java/simulator/GUI.kmt"
+require "./template/java/simulator/controller.kmt"
+require "./template/java/simulator/GUI2.kmt"
+require "./template/java/simulator/controller2.kmt"
+require "./template/java/simulator/handler.kmt"
+require "./template/java/simulator/test.kmt"
 
 using kermeta::standard
 using kermeta::io
