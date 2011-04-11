@@ -1,0 +1,56 @@
+/* $Id:$ 
+ * Creation : April 4, 2011
+ * Licence  : EPL 
+ * Copyright: SINTEF IKT
+ * Authors  : Franck Fleurey
+ */
+
+
+package edap;
+
+
+require kermeta
+
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+
+using kermeta::standard
+using kermeta::utils
+
+aspect class Device {
+
+	operation all_types() : Set<Type> is do
+		result := Set<Type>.new
+		sends.union(receives).each{ m | m.parameters.collect{ p | p.type }.each{ t |
+			if not result.contains(t) then result.add(t) end
+		}}
+	end
+	
+	operation all_enums() : Set<Enumeration> is do
+		result := Set<Enumeration>.new
+		all_types.select{ t | t.isKindOf(Enumeration) }.each { t |
+			result.add(t.asType(Enumeration))
+		}
+	end
+
+}
+
+aspect class EnumerationLiteral {
+	operation c_value() : String is do
+		var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "enum_val"}
+		if a!=void then result := a.~value
+		else result := container.asType(Enumeration).literals.indexOf(self).toString
+		end
+	end
+}
+
+aspect class Type
+{
+
+	operation getCTypeAnnotation() : String is do
+		var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "c_type"}
+		if a!=void then result := a.~value
+		else result := name
+		end
+	end
+	
+}

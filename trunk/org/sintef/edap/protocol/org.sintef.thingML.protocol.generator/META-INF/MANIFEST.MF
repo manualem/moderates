@@ -16,3 +16,4 @@ Require-Bundle: org.eclipse.core.runtime,
  fr.irisa.triskell.kermeta.ket;bundle-version="1.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.sintef.thingml.protocol.generator

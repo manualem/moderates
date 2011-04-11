@@ -10,7 +10,8 @@ package thingML;
 
 
 require kermeta
-require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+//require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "./ThingML.kmt"
 
 using kermeta::standard
 using kermeta::persistence
