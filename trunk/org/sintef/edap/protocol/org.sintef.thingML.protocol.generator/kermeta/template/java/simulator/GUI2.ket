@@ -1,6 +1,6 @@
 <%@ket
 package="thingML"
-require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt"
+require="../../../stringHelper.kmt"
 using=""
 isAspectClass="false"
 class="InteractiveDataGUIGenerator2"

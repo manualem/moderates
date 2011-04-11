@@ -1,7 +1,6 @@
 package thingML;
 require kermeta
-require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
-require "../../stringHelper.kmt"
+require "../../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
 class InteractiveDataControllerGenerator{
