@@ -1,0 +1,71 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="MessageGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, msg:edap::Message, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>.msg;
+
+import <%=packageName%>.*;
+
+import java.nio.ByteBuffer;
+
+public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
+
+	<%msg.parameters.each{ p | %>
+	private <%=helper.toJavaType(p.type)%> <%=p.name%>;
+	<%}%>
+	
+	public <%=msg.name%>(<%=helper.paramsToJava(msg)%>) {
+		setCommandID(<%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>);
+		<%msg.parameters.each{ p | %>
+		set<%=helper.firstToUpper(helper.toJavaType(p.type))%>Value(<%=p.name%>);
+		this.<%=p.name%> = <%=p.name%>;
+		<%}%>
+	}
+	
+	public <%=msg.name%>(byte[] packet) {
+		setPacketData(packet);
+		int position = 5;
+		<%if msg.parameters.exists{p | not helper.isJavaString(p.type)} then%>
+		ByteBuffer bb = ByteBuffer.wrap(data, 5, 10);<%//5 and 10 are magic numbers...%>
+		<%end%>
+		<%msg.parameters.each{ p | %>
+		<%if helper.isJavaString(p.type) then%>
+		 <%=p.name%> = ""; 
+		for(int i=position; i<Math.min(position+<%=helper.getSize(p.type)%>, getLength()); i++) {
+			 <%=p.name%> =  <%=p.name%> + (char)data[i];
+		}
+		position += <%=helper.getSize(p.type)%>;
+		<%else%>
+		<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
+		<%=p.name%> = bb.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
+		<%else%>
+		<%=p.name%> = bb.get();
+		<%end%>
+		position += (int) (<%=helper.firstToUpper(helper.toJavaType(p.type))%>.SIZE/8);
+		<%end%>
+		<%}%>
+		
+	}
+
+	@Override
+	public String toString(){
+		String myString = "<%=msg.name%>:";
+		<%msg.parameters.each{ p | %>
+		myString += " [<%=p.name%>: "+<%=p.name%>+"]";
+		<%}%>
+		return myString;
+	}
+
+	<%msg.parameters.each{ p | %>
+	public <%=helper.toJavaType(p.type)%> get<%=helper.firstToUpper(p.name)%>() {
+		return <%=p.name%>;
+	}
+	
+	<%}%>	
+}
