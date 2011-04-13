@@ -153,7 +153,7 @@ public class Interactive<%=device.name%>DataGUI implements ActionListener {
 		c.gridy = <%=y.toString%>;
  		panel.add(label<%=p.name%>, c);
 				<%if p.type.isKindOf(edap::Enumeration) then%>
-		<%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>.<%=l.name%><%w := w+1}%>};
+		<%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>.<%=l.name%><%w := w+1}%>};
 		field<%=msg.name+"_"+p.name%> = new JComboBox(values);		
 				<%else%>		
  		field<%=msg.name+"_"+p.name%> = new JTextField();
