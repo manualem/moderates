@@ -14,9 +14,13 @@ _res.append(".sim;\n\nimport ")
 _res.append(packageName)
 _res.append(".")
 _res.append(device.name)
-_res.append("Protocol;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JComboBox;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
+_res.append("Protocol;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JComboBox;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
 _res.append(device.name)
-_res.append("DataGUI {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\t\n")
+_res.append("DataGUI implements ActionListener {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static final Interactive")
+_res.append(device.name)
+_res.append("DataGUI _this = new Interactive")
+_res.append(device.name)
+_res.append("DataGUI();\n\t\n\tpublic static ProtocolHandler handler;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\tprivate static JButton clearButton;\n\tprivate static JButton logOwnEventsButton;\n\t\n")
 device.sends.each{msg |
 _res.append("\t//Attributes related to ")
 _res.append(msg.name)
@@ -44,7 +48,7 @@ _res.append("\t\tsendButton")
 _res.append(msg.name)
 _res.append(".addActionListener(l);\n")
 }
-_res.append("\t}\n\t\n\tpublic static void init(){\n\t\tif (!init) {\n\t\t\tinit = true;\n\t\t\n\t\t\tframe = new JFrame(\"Interactive ")
+_res.append("\t}\n\t\n\tpublic static void init(){\n\t\tif (!init) {\n\t\t\tinit = true;\n\t\t\t\n\t\t\tclearButton = new JButton(\"Clear Console\");\n\t\t\tlogOwnEventsButton = new JButton(\"Log Own Events (Click to Activate)\");\n\t\t\tframe = new JFrame(\"Interactive ")
 _res.append(device.name)
 _res.append(" Data Simulator\");\n\t\t\tframe.setLayout(new GridBagLayout());\n\t\t\t\n\t\t\tGridBagConstraints c = new GridBagConstraints();\n\t\t\tc.gridwidth = 1;\n\t\t\tc.fill = GridBagConstraints.HORIZONTAL;\n\t\t\tc.insets = new Insets(0,3,0,3);\n\t\t\t\n")
 var x : Integer init 0
@@ -74,7 +78,7 @@ _res.append("")
 }
 _res.append("\t\t\t\t\t\t\n\t\t\tc.gridy = 3;\n\t\t\tc.gridx = 0;\n\t\t\tc.gridwidth = ")
 _res.append(device.sends.size.toString)
-_res.append(";\n\t\t\tframe.add(createJTextPane(), c);\n\t\t\t\n\t\t\tframe.pack();\n\t\t\tframe.setVisible(true);\n\t\t}\n\t}\n\t\n\tpublic static JLabel createLabel(String name){\n\t\treturn new JLabel(name);\n\t}\n\t\n\tpublic static JButton createSendButton(String name){\n\t\treturn new JButton(\"send\");\n\t}\n\t\n")
+_res.append(";\n\t\t\tframe.add(createJTextPane(), c);\n\t\t\t\n\t\t\tc.gridy = 4;\n\t\t\tframe.add(clearButton, c);\n\t\t\t\n\t\t\tc.gridy = 5;\n\t\t\tframe.add(logOwnEventsButton, c);\n\t\t\t\n\t\t\tframe.pack();\n\t\t\tclearButton.addActionListener(_this);\n\t\t\tlogOwnEventsButton.addActionListener(_this);\n\t\t\tframe.setVisible(true);\n\t\t}\n\t}\n\t\n\tpublic static JLabel createLabel(String name){\n\t\treturn new JLabel(name);\n\t}\n\t\n\tpublic static JButton createSendButton(String name){\n\t\treturn new JButton(\"send\");\n\t}\n\t\n")
 device.sends.each{ msg |
 _res.append("")
 var y : Integer init 0
@@ -142,7 +146,7 @@ _res.append("Style\", def);\n        StyleConstants.setForeground(receive")
 _res.append(msg.name)
 _res.append("Style, new Color(rnd.nextInt(176), rnd.nextInt(176), rnd.nextInt(176)));\t\n")
 }
-_res.append("        return editorScrollPane;\n\t}\n\t\n\tprivate static String formatForPrint(String text) {\n            return (text.endsWith(\"\\n\") ? text : text + \"\\n\");\n    }\n}")
+_res.append("        return editorScrollPane;\n\t}\n\t\n\tprivate static String formatForPrint(String text) {\n            return (text.endsWith(\"\\n\") ? text : text + \"\\n\");\n    }\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n\t\tif (ae.getSource() == clearButton){\n\t\t\tscreen.setText(\"\");\n\t\t} else if (ae.getSource() == logOwnEventsButton) {\n\t\t\tif (logOwnEventsButton.getText().equals(\"Log Own Events (Click to Activate)\")){\n\t\t\t\tlogOwnEventsButton.setText(\"Log Own Events (Click to De-activate)\");\n\t\t\t\thandler.register(handler);\n\t\t\t} else {\n\t\t\t\tlogOwnEventsButton.setText(\"Log Own Events (Click to Activate)\");\n\t\t\t\thandler.unregister(handler);\t\t\t\t\n\t\t\t}\n\t\t}\n\t}     \n}")
 result := _res.toString
 end
 }
