@@ -101,7 +101,7 @@ if p.type.isKindOf(edap::Enumeration) then
 _res.append("\t\t")
 _res.append(device.name)
 _res.append("Protocol.")
-_res.append(helper.firstToUpper(p.name))
+_res.append(helper.firstToUpper(p.type.name))
 _res.append("[] values")
 _res.append(msg.name+"_"+p.name)
 _res.append(" = {")
