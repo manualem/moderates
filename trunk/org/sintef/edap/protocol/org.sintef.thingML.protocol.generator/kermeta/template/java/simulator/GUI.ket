@@ -5,7 +5,7 @@ using=""
 isAspectClass="false"
 class="InteractiveDataGUIGenerator"
 ismethod="false"operation="generate"
-parameters="packageName:String, device:edap::Device"
+parameters="packageName:String, device:edap::Device, modifier:String"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>.sim;
@@ -35,11 +35,11 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-public class Interactive<%=device.name%>DataGUI implements ActionListener {
+public class Interactive<%=device.name%>DataGUI<%=modifier%> implements ActionListener {
 	
 	private static boolean init = false;
 	
-	private static final Interactive<%=device.name%>DataGUI _this = new Interactive<%=device.name%>DataGUI();
+	private static final Interactive<%=device.name%>DataGUI<%=modifier%> _this = new Interactive<%=device.name%>DataGUI<%=modifier%>();
 	
 	public static ProtocolHandler handler;
 	
@@ -153,8 +153,8 @@ public class Interactive<%=device.name%>DataGUI implements ActionListener {
 		c.gridy = <%=y.toString%>;
  		panel.add(label<%=p.name%>, c);
 				<%if p.type.isKindOf(edap::Enumeration) then%>
-		<%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=device.name%>Protocol.<%=helper.firstToUpper(p.name)%>.<%=l.name%><%w := w+1}%>};
-		field<%=msg.name+"_"+p.name%> = new JComboBox(values);		
+		<%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>.<%=l.name%><%w := w+1}%>};
+		field<%=msg.name+"_"+p.name%> = new JComboBox(values<%=msg.name+"_"+p.name%>);		
 				<%else%>		
  		field<%=msg.name+"_"+p.name%> = new JTextField();
 		field<%=msg.name+"_"+p.name%>.setText("<%=p.name%>");

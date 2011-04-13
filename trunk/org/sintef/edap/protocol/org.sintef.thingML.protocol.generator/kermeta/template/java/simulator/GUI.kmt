@@ -4,7 +4,7 @@ require "../../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
 class InteractiveDataGUIGenerator{
-operation generate(packageName:String, device:edap::Device):String is do
+operation generate(packageName:String, device:edap::Device, modifier:String):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
@@ -16,11 +16,17 @@ _res.append(".")
 _res.append(device.name)
 _res.append("Protocol;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JComboBox;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
 _res.append(device.name)
-_res.append("DataGUI implements ActionListener {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static final Interactive")
+_res.append("DataGUI")
+_res.append(modifier)
+_res.append(" implements ActionListener {\n\t\n\tprivate static boolean init = false;\n\t\n\tprivate static final Interactive")
 _res.append(device.name)
-_res.append("DataGUI _this = new Interactive")
+_res.append("DataGUI")
+_res.append(modifier)
+_res.append(" _this = new Interactive")
 _res.append(device.name)
-_res.append("DataGUI();\n\t\n\tpublic static ProtocolHandler handler;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\tprivate static JButton clearButton;\n\tprivate static JButton logOwnEventsButton;\n\t\n")
+_res.append("DataGUI")
+_res.append(modifier)
+_res.append("();\n\t\n\tpublic static ProtocolHandler handler;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTextPane screen;\n\tprivate static JButton clearButton;\n\tprivate static JButton logOwnEventsButton;\n\t\n")
 device.sends.each{msg |
 _res.append("\t//Attributes related to ")
 _res.append(msg.name)
@@ -110,13 +116,15 @@ _res.append(", ")
 end
 _res.append(device.name)
 _res.append("Protocol.")
-_res.append(helper.firstToUpper(p.name))
+_res.append(helper.firstToUpper(p.type.name))
 _res.append(".")
 _res.append(l.name)
 w := w+1}
 _res.append("};\n\t\tfield")
 _res.append(msg.name+"_"+p.name)
-_res.append(" = new JComboBox(values);\t\t\n")
+_res.append(" = new JComboBox(values")
+_res.append(msg.name+"_"+p.name)
+_res.append(");\t\t\n")
 else
 _res.append(" \t\tfield")
 _res.append(msg.name+"_"+p.name)
