@@ -14,16 +14,9 @@ require "./helper.kmt"
 require "./template/java/fixedSizePackage.kmt"
 require "./template/java/protocolPacket.kmt"
 require "./template/java/protocol.kmt"
-/*require "./template/java/incomingMessageSuperClass.kmt"
-require "./template/java/outgoingMessageSuperClass.kmt"
-require "./template/java/incomingMessage.kmt"
-require "./template/java/outgoingMessage.kmt"*/
 require "./template/java/message.kmt"
-//require "./template/java/simulator/simulator.kmt"
 require "./template/java/simulator/GUI.kmt"
 require "./template/java/simulator/controller.kmt"
-require "./template/java/simulator/GUI2.kmt"
-require "./template/java/simulator/controller2.kmt"
 require "./template/java/simulator/handler.kmt"
 require "./template/java/simulator/test.kmt"
 
@@ -54,8 +47,8 @@ class MainJavaProtocolGenerator
 		
 		var guiGenerator : InteractiveDataGUIGenerator init InteractiveDataGUIGenerator.new
 		var controllerGenerator : InteractiveDataControllerGenerator init InteractiveDataControllerGenerator.new
-		var guiGenerator2 : InteractiveDataGUIGenerator2 init InteractiveDataGUIGenerator2.new
-		var controllerGenerator2 : InteractiveDataControllerGenerator2 init InteractiveDataControllerGenerator2.new
+		//var guiGenerator2 : InteractiveDataGUIGenerator2 init InteractiveDataGUIGenerator2.new
+		//var controllerGenerator2 : InteractiveDataControllerGenerator2 init InteractiveDataControllerGenerator2.new
 		var handlerGenerator : ProtocolHandlerGenerator init ProtocolHandlerGenerator.new
 		var simulatorTestGenerator : SimulatorTestGenerator init SimulatorTestGenerator.new
 		
@@ -75,23 +68,11 @@ class MainJavaProtocolGenerator
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"Protocol.java", pGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")
-	
-			/*stdio.writeln("IncomingMessageSuperGenerator")
-			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/in/Incoming"+t.name+"Message.java", imsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
-			stdio.writeln("")
-			
-			
-			stdio.writeln("OutgoingMessageSuperGenerator")
-			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/out/Outgoing"+t.name+"Message.java", omsGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
-			stdio.writeln("")*/		
 			
 			t.asType(Device).sends.each{ m |
 				stdio.writeln("IncomingMessageGenerator")
 				stdio.writeln("-----------------------")
 				file.writeTextFile(srcFolder+"/org/sintef/moderates/msg/"+m.name+".java", mGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
-				//file.writeTextFile(srcFolder+"/org/sintef/moderates/out/"+m.name+"_Out.java", mGenerator.generate("org.sintef.moderates", m, t.name))
 				stdio.writeln("")
 			}
 			
@@ -99,7 +80,6 @@ class MainJavaProtocolGenerator
 				stdio.writeln("OutgoingMessageGenerator")
 				stdio.writeln("-----------------------")
 				file.writeTextFile(srcFolder+"/org/sintef/moderates/msg/"+m.name+".java", mGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
-				//file.writeTextFile(srcFolder+"/org/sintef/moderates/out/"+m.name+"_Out.java", omGenerator.generate("org.sintef.moderates", m, t.name))
 				stdio.writeln("")
 			}
 			
@@ -110,22 +90,24 @@ class MainJavaProtocolGenerator
 			
 			stdio.writeln("InteractiveDataGUIGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device), ""))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), isKevoree))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), isKevoree, ""))
 			stdio.writeln("")
 			
-			stdio.writeln("InteractiveDataGUIGenerator2")
+			var reverse : Device init t.asType(Device).createReverse
+			
+			stdio.writeln("InteractiveDataGUIGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI2.java", guiGenerator2.generate("org.sintef.moderates", t.asType(Device)))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI2.java", guiGenerator.generate("org.sintef.moderates", reverse, "2"))
 			stdio.writeln("")
 			
-			stdio.writeln("InteractiveDataControllerGenerator2")
+			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController2.java", controllerGenerator2.generate("org.sintef.moderates", t.asType(Device), isKevoree))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController2.java", controllerGenerator.generate("org.sintef.moderates", reverse, isKevoree, "2"))
 			stdio.writeln("")
 			
 			stdio.writeln("SimulatorTestGenerator")

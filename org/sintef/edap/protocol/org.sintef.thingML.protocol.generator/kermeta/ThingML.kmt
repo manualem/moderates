@@ -31,6 +31,17 @@ aspect class Device {
 			result.add(t.asType(Enumeration))
 		}
 	end
+	
+	operation createReverse() : Device is
+	do
+		var res : Device init Device.new
+		
+		res.name := self.name
+		res.sends.addAll(self.receives)
+		res.receives.addAll(self.sends)
+		
+		result := res
+	end
 
 }
 
