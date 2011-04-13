@@ -57,6 +57,7 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 		dateFormat = new SimpleDateFormat("dd MMM yyy 'at' HH:mm:ss.SSS");
 		Interactive<%=device.name%>DataGUI2.init();
 		Interactive<%=device.name%>DataGUI2.addListener(this);	
+		Interactive<%=device.name%>DataGUI2.handler = this;
 	}
 	
 	<%if toKevoreeComponent then%>
@@ -168,6 +169,11 @@ public class Interactive<%=device.name%>DataController2 <%if toKevoreeComponent 
 	public void register(ProtocolHandler handler) {
 		handlers.add(handler);
 	}
+	
+	@Override
+	public void unregister(ProtocolHandler handler) {
+		handlers.remove(handler);
+	}	
 
 	@Override
 	public void receiveMsg(byte[] msg) {

@@ -34,7 +34,9 @@ _res.append("DataController.class.getName());\n\t\tdateFormat = new SimpleDateFo
 _res.append(device.name)
 _res.append("DataGUI2.init();\n\t\tInteractive")
 _res.append(device.name)
-_res.append("DataGUI2.addListener(this);\t\n\t}\n\t\n")
+_res.append("DataGUI2.addListener(this);\t\n\t\tInteractive")
+_res.append(device.name)
+_res.append("DataGUI2.handler = this;\n\t}\n\t\n")
 if toKevoreeComponent then
 _res.append("\t@Start\n    public void start() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
@@ -180,7 +182,7 @@ _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive
 _res.append(device.name)
 _res.append("DataController2 controller = new Interactive")
 _res.append(device.name)
-_res.append("DataController2();\n\t}\n\t\n\t@Override\n\tpublic void register(ProtocolHandler handler) {\n\t\thandlers.add(handler);\n\t}\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\n}")
+_res.append("DataController2();\n\t}\n\t\n\t@Override\n\tpublic void register(ProtocolHandler handler) {\n\t\thandlers.add(handler);\n\t}\n\t\n\t@Override\n\tpublic void unregister(ProtocolHandler handler) {\n\t\thandlers.remove(handler);\n\t}\t\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\n}")
 result := _res.toString
 end
 }

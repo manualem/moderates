@@ -56,7 +56,8 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 		log = Logger.getLogger(Interactive<%=device.name%>DataController.class.getName());
 		dateFormat = new SimpleDateFormat("dd MMM yyy 'at' HH:mm:ss.SSS");
 		Interactive<%=device.name%>DataGUI.init();
-		Interactive<%=device.name%>DataGUI.addListener(this);	
+		Interactive<%=device.name%>DataGUI.addListener(this);
+		Interactive<%=device.name%>DataGUI.handler = this;	
 	}
 	
 	<%if toKevoreeComponent then%>
@@ -168,6 +169,11 @@ public class Interactive<%=device.name%>DataController <%if toKevoreeComponent t
 	public void register(ProtocolHandler handler) {
 		handlers.add(handler);
 	}
+	
+	@Override
+	public void unregister(ProtocolHandler handler) {
+		handlers.remove(handler);
+	}	
 
 	@Override
 	public void receiveMsg(byte[] msg) {
