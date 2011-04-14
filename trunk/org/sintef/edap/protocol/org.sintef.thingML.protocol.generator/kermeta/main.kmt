@@ -20,6 +20,7 @@ require "./template/java/simulator/controller.kmt"
 require "./template/java/observer/deviceObserver.kmt"
 require "./template/java/observer/deviceSubject.kmt"
 require "./template/java/simulator/test.kmt"
+require "./template/java/comm/ZigBee/zigbee.kmt"
 
 using kermeta::standard
 using kermeta::io
@@ -53,6 +54,8 @@ class MainJavaProtocolGenerator
 		var deviceSubject : SubjectGenerator init SubjectGenerator.new
 		
 		var simulatorTestGenerator : SimulatorTestGenerator init SimulatorTestGenerator.new
+		
+		var zbGenerator : ZigBeeGenerator init ZigBeeGenerator.new
 		
 		var file : FileIO init FileIO.new
 		
@@ -134,6 +137,11 @@ class MainJavaProtocolGenerator
 			stdio.writeln("SimulatorTestGenerator")
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Test"+t.name+".java", simulatorTestGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			stdio.writeln("")
+			
+			stdio.writeln("XBeeGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/comm/ZigBee4"+t.name+".java", zbGenerator.generate("org.sintef.moderates", t.asType(Device)))
 			stdio.writeln("")		
 		}
 	end
