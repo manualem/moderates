@@ -1,0 +1,29 @@
+package thingML;
+require kermeta
+require "../../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class SubjectGenerator{
+operation generate(packageName:String, device:edap::Device, isClient:Boolean):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(".observer;\n\npublic interface ")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Subject {\n\tpublic void register(")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer observer);\n\tpublic void unregister(")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer observer);\n}\n")
+result := _res.toString
+end
+}

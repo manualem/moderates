@@ -1,0 +1,15 @@
+<%@ket
+package="thingML"
+require="../../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="SubjectGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, isClient:Boolean"
+%>
+package <%=packageName%>.observer;
+
+public interface <%=device.name%><%if isClient then%>Client<%end%>Subject {
+	public void register(<%=device.name%><%if isClient then%>Client<%end%>Observer observer);
+	public void unregister(<%=device.name%><%if isClient then%>Client<%end%>Observer observer);
+}

@@ -10,7 +10,7 @@ parameters="packageName:String, device:edap::Device"
 package <%=packageName%>.sim;
 
 import org.sintef.moderates.sim.Interactive<%=device.name%>DataController;
-import org.sintef.moderates.sim.Interactive<%=device.name%>DataController2;
+import org.sintef.moderates.sim.Interactive<%=device.name%>DataControllerClient;
 
 public class Test<%=device.name%> {
 
@@ -19,7 +19,7 @@ public class Test<%=device.name%> {
 	 */
 	public static void main(String[] args) {
 		Interactive<%=device.name%>DataController controller1 = new Interactive<%=device.name%>DataController();
-		Interactive<%=device.name%>DataController2 controller2 = new Interactive<%=device.name%>DataController2();
+		Interactive<%=device.name%>DataControllerClient controller2 = new Interactive<%=device.name%>DataControllerClient();
 		controller1.register(controller2);
 		controller2.register(controller1);
 	}

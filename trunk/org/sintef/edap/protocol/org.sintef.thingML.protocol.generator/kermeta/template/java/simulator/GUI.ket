@@ -5,12 +5,12 @@ using=""
 isAspectClass="false"
 class="InteractiveDataGUIGenerator"
 ismethod="false"operation="generate"
-parameters="packageName:String, device:edap::Device, modifier:String"
+parameters="packageName:String, device:edap::Device, isClient:Boolean"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 package <%=packageName%>.sim;
 
-import <%=packageName%>.<%=device.name%>Protocol;
+import <%=packageName%>.observer.<%=device.name%><%if isClient then%>Client<%end%>Observer;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,13 +35,14 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-public class Interactive<%=device.name%>DataGUI<%=modifier%> implements ActionListener {
+
+public class Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%> implements ActionListener {
 	
 	private static boolean init = false;
 	
-	private static final Interactive<%=device.name%>DataGUI<%=modifier%> _this = new Interactive<%=device.name%>DataGUI<%=modifier%>();
+	private static final Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%> _this = new Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>();
 	
-	public static ProtocolHandler handler;
+	public static Interactive<%=device.name%>DataController<%if isClient then%>Client<%end%> handler;
 	
 	private static JFrame frame;
 	private static JTextPane screen;
@@ -202,14 +203,14 @@ public class Interactive<%=device.name%>DataGUI<%=modifier%> implements ActionLi
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == clearButton){
 			screen.setText("");
-		} else if (ae.getSource() == logOwnEventsButton) {
+		} /*else if (ae.getSource() == logOwnEventsButton) {
 			if (logOwnEventsButton.getText().equals("Log Own Events (Click to Activate)")){
 				logOwnEventsButton.setText("Log Own Events (Click to De-activate)");
-				handler.register(handler);
+				handler.register((<%=device.name%><%if isClient then%>Client<%end%>Observer)handler);
 			} else {
 				logOwnEventsButton.setText("Log Own Events (Click to Activate)");
-				handler.unregister(handler);				
+				handler.unregister((<%=device.name%><%if isClient then%>Client<%end%>Observer)handler);				
 			}
-		}
+		}*/
 	}     
 }

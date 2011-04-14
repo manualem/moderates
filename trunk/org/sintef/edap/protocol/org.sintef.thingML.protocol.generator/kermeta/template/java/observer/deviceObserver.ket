@@ -1,0 +1,14 @@
+<%@ket
+package="thingML"
+require="../../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="ObserverGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, isClient:Boolean"
+%>
+package <%=packageName%>.observer;
+
+public interface <%=device.name%><%if isClient then%>Client<%end%>Observer {
+	public void receiveMsg(byte[] msg);
+}
