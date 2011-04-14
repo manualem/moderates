@@ -25,7 +25,10 @@
             <plugin>
                 <groupId>org.kevoree.tools</groupId>
                 <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
-                <version>1.0.0-RC4</version><!-- To modify on wiki -->
+                <version>1.1.0-BETA2</version><!-- To modify on wiki -->
+                 <configuration>
+                    <nodeTypeNames>JavaSENode</nodeTypeNames>
+                </configuration>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -60,12 +63,12 @@
         <dependency>
             <groupId>org.kevoree</groupId>
             <artifactId>org.kevoree.framework</artifactId>
-            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+            <version>1.1.0-BETA2</version><!-- To modify on wiki -->
         </dependency>
         <dependency>
             <groupId>org.kevoree.tools</groupId>
             <artifactId>org.kevoree.tools.annotation.api</artifactId>
-            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+            <version>1.1.0-BETA2</version><!-- To modify on wiki -->
         </dependency>
         <dependency>
             <groupId>org.jrobin</groupId>
