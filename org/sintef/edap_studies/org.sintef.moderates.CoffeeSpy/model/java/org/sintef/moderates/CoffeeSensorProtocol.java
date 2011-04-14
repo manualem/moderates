@@ -17,6 +17,7 @@ public abstract class CoffeeSensorProtocol {
 	public static final byte UNSUBSCRIBE_TEMPERATURE_CHANGE = 16; 
 	public static final byte SUBSCRIBE_RAW_DATA = 19; 
 	public static final byte GET_RAW_DATA = 20; 
+	public static final byte UNSUBSCRIBE_RAW_DATA = 22; 
 	public static final byte PING = 66; 
 	public static final byte TEMPERATURE_VALUE = 2; 
 	public static final byte DISTANCE_VALUE = 4; 
@@ -45,6 +46,7 @@ public abstract class CoffeeSensorProtocol {
 			case UNSUBSCRIBE_TEMPERATURE_CHANGE: result = new unsubscribeTemperatureChange(packet); break; 
 			case SUBSCRIBE_RAW_DATA: result = new subscribeRawData(packet); break; 
 			case GET_RAW_DATA: result = new getRawData(packet); break; 
+			case UNSUBSCRIBE_RAW_DATA: result = new unsubscribeRawData(packet); break; 
 			case PING: result = new ping(packet); break; 
 			case TEMPERATURE_VALUE: result = new TemperatureValue(packet); break; 
 			case DISTANCE_VALUE: result = new DistanceValue(packet); break; 
@@ -114,6 +116,11 @@ public abstract class CoffeeSensorProtocol {
 	
 	public static FixedSizePacket creategetRawData() {
 		getRawData result = new getRawData();
+		return result;
+	}
+	
+	public static FixedSizePacket createunsubscribeRawData() {
+		unsubscribeRawData result = new unsubscribeRawData();
 		return result;
 	}
 	

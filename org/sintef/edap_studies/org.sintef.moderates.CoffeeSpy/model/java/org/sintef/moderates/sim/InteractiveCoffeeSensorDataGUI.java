@@ -1,6 +1,6 @@
 package org.sintef.moderates.sim;
 
-import org.sintef.moderates.CoffeeSensorProtocol;
+import org.sintef.moderates.observer.CoffeeSensorObserver;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,13 +25,14 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
+
 public class InteractiveCoffeeSensorDataGUI implements ActionListener {
 	
 	private static boolean init = false;
 	
 	private static final InteractiveCoffeeSensorDataGUI _this = new InteractiveCoffeeSensorDataGUI();
 	
-	public static ProtocolHandler handler;
+	public static InteractiveCoffeeSensorDataController handler;
 	
 	private static JFrame frame;
 	private static JTextPane screen;
@@ -584,6 +585,8 @@ public class InteractiveCoffeeSensorDataGUI implements ActionListener {
         StyleConstants.setForeground(receivesubscribeRawDataStyle, new Color(rnd.nextInt(176), rnd.nextInt(176), rnd.nextInt(176)));	
 		Style receivegetRawDataStyle = doc.addStyle("receivegetRawDataStyle", def);
         StyleConstants.setForeground(receivegetRawDataStyle, new Color(rnd.nextInt(176), rnd.nextInt(176), rnd.nextInt(176)));	
+		Style receiveunsubscribeRawDataStyle = doc.addStyle("receiveunsubscribeRawDataStyle", def);
+        StyleConstants.setForeground(receiveunsubscribeRawDataStyle, new Color(rnd.nextInt(176), rnd.nextInt(176), rnd.nextInt(176)));	
 		Style receivepingStyle = doc.addStyle("receivepingStyle", def);
         StyleConstants.setForeground(receivepingStyle, new Color(rnd.nextInt(176), rnd.nextInt(176), rnd.nextInt(176)));	
         return editorScrollPane;
@@ -597,14 +600,14 @@ public class InteractiveCoffeeSensorDataGUI implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == clearButton){
 			screen.setText("");
-		} else if (ae.getSource() == logOwnEventsButton) {
+		} /*else if (ae.getSource() == logOwnEventsButton) {
 			if (logOwnEventsButton.getText().equals("Log Own Events (Click to Activate)")){
 				logOwnEventsButton.setText("Log Own Events (Click to De-activate)");
-				handler.register(handler);
+				handler.register((CoffeeSensorObserver)handler);
 			} else {
 				logOwnEventsButton.setText("Log Own Events (Click to Activate)");
-				handler.unregister(handler);				
+				handler.unregister((CoffeeSensorObserver)handler);				
 			}
-		}
+		}*/
 	}     
 }
