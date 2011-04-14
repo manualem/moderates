@@ -1,6 +1,7 @@
 package org.sintef.moderates.sim;
 
 import org.sintef.moderates.*;
+import org.sintef.moderates.observer.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,23 +13,19 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import java.nio.ByteBuffer;
 
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class InteractiveCoffeeSensorDataController implements ActionListener, ProtocolHandler {
 
-	private Logger log;
+public class InteractiveCoffeeSensorDataController implements ActionListener, CoffeeSensorClientObserver, CoffeeSensorSubject {
 
-	private List<ProtocolHandler> handlers;
+
+	private List<CoffeeSensorObserver> handlers;
 	
 	private SimpleDateFormat dateFormat;
 
 	public InteractiveCoffeeSensorDataController(){
-		handlers = new LinkedList<ProtocolHandler>();
-		log = Logger.getLogger(InteractiveCoffeeSensorDataController.class.getName());
+		handlers = new LinkedList<CoffeeSensorObserver>();
 		dateFormat = new SimpleDateFormat("dd MMM yyy 'at' HH:mm:ss.SSS");
 		InteractiveCoffeeSensorDataGUI.init();
 		InteractiveCoffeeSensorDataGUI.addListener(this);
@@ -40,7 +37,7 @@ public class InteractiveCoffeeSensorDataController implements ActionListener, Pr
 	private void doSend(FixedSizePacket data){
 		if (data != null) {
         	System.out.println(data+" --> "+data.getPacket());
-            for (ProtocolHandler h : handlers){
+            for (CoffeeSensorObserver h : handlers){
 				h.receiveMsg(data.getPacket());
 			}
         }
@@ -242,18 +239,21 @@ public class InteractiveCoffeeSensorDataController implements ActionListener, Pr
 		InteractiveCoffeeSensorDataController controller = new InteractiveCoffeeSensorDataController();
 	}
 	
-	@Override
-	public void register(ProtocolHandler handler) {
-		handlers.add(handler);
-	}
-	
-	@Override
-	public void unregister(ProtocolHandler handler) {
-		handlers.remove(handler);
-	}	
 
+
+	//Methods defined in the Observer pattern specific to CoffeeSensor 
 	@Override
 	public void receiveMsg(byte[] msg) {
 		receiveMessage(msg);
+	}
+	
+	@Override
+	public void register(CoffeeSensorObserver observer) {
+		handlers.add(observer);
+	}
+
+	@Override
+	public void unregister(CoffeeSensorObserver observer) {
+		handlers.remove(observer);
 	}
 }

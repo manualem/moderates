@@ -1,6 +1,6 @@
 package org.sintef.moderates.sim;
 
-import org.sintef.moderates.CoffeeSensorProtocol;
+import org.sintef.moderates.observer.CoffeeSensorClientObserver;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,13 +25,14 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-public class InteractiveCoffeeSensorDataGUI2 implements ActionListener {
+
+public class InteractiveCoffeeSensorDataGUIClient implements ActionListener {
 	
 	private static boolean init = false;
 	
-	private static final InteractiveCoffeeSensorDataGUI2 _this = new InteractiveCoffeeSensorDataGUI2();
+	private static final InteractiveCoffeeSensorDataGUIClient _this = new InteractiveCoffeeSensorDataGUIClient();
 	
-	public static ProtocolHandler handler;
+	public static InteractiveCoffeeSensorDataControllerClient handler;
 	
 	private static JFrame frame;
 	private static JTextPane screen;
@@ -72,6 +73,9 @@ public class InteractiveCoffeeSensorDataGUI2 implements ActionListener {
 	//Attributes related to getRawData
 	public static JButton sendButtongetRawData;
 		
+	//Attributes related to unsubscribeRawData
+	public static JButton sendButtonunsubscribeRawData;
+		
 	//Attributes related to ping
 	public static JButton sendButtonping;
 		
@@ -98,6 +102,7 @@ public class InteractiveCoffeeSensorDataGUI2 implements ActionListener {
 		sendButtonunsubscribeTemperatureChange.addActionListener(l);
 		sendButtonsubscribeRawData.addActionListener(l);
 		sendButtongetRawData.addActionListener(l);
+		sendButtonunsubscribeRawData.addActionListener(l);
 		sendButtonping.addActionListener(l);
 	}
 	
@@ -269,24 +274,38 @@ public class InteractiveCoffeeSensorDataGUI2 implements ActionListener {
 	 		sendButtongetRawData = createSendButton("getRawData");
 			frame.add(sendButtongetRawData, c);
 			
-			//GUI related to ping
+			//GUI related to unsubscribeRawData
 			c.gridy = 0;
 	 		c.gridx = 11;
-			frame.add(createLabel("ping"), c);
+			frame.add(createLabel("unsubscribeRawData"), c);
 			
 			c.gridy = 1;
 	 		c.gridx = 11;
-			frame.add(createpingPanel(), c);
+			frame.add(createunsubscribeRawDataPanel(), c);
 			
 			c.gridy = 2;
 	 		c.gridx = 11;
+	 		sendButtonunsubscribeRawData = createSendButton("unsubscribeRawData");
+			frame.add(sendButtonunsubscribeRawData, c);
+			
+			//GUI related to ping
+			c.gridy = 0;
+	 		c.gridx = 12;
+			frame.add(createLabel("ping"), c);
+			
+			c.gridy = 1;
+	 		c.gridx = 12;
+			frame.add(createpingPanel(), c);
+			
+			c.gridy = 2;
+	 		c.gridx = 12;
 	 		sendButtonping = createSendButton("ping");
 			frame.add(sendButtonping, c);
 			
 						
 			c.gridy = 3;
 			c.gridx = 0;
-			c.gridwidth = 12;
+			c.gridwidth = 13;
 			frame.add(createJTextPane(), c);
 			
 			c.gridy = 4;
@@ -452,6 +471,18 @@ public class InteractiveCoffeeSensorDataGUI2 implements ActionListener {
 		return panel;	
 	}
 	
+	public static JPanel createunsubscribeRawDataPanel(){
+
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		
+		JPanel panel = new JPanel(new GridBagLayout());
+
+			
+		return panel;	
+	}
+	
 	public static JPanel createpingPanel(){
 
 		GridBagConstraints c = new GridBagConstraints();
@@ -515,14 +546,14 @@ public class InteractiveCoffeeSensorDataGUI2 implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == clearButton){
 			screen.setText("");
-		} else if (ae.getSource() == logOwnEventsButton) {
+		} /*else if (ae.getSource() == logOwnEventsButton) {
 			if (logOwnEventsButton.getText().equals("Log Own Events (Click to Activate)")){
 				logOwnEventsButton.setText("Log Own Events (Click to De-activate)");
-				handler.register(handler);
+				handler.register((CoffeeSensorClientObserver)handler);
 			} else {
 				logOwnEventsButton.setText("Log Own Events (Click to Activate)");
-				handler.unregister(handler);				
+				handler.unregister((CoffeeSensorClientObserver)handler);				
 			}
-		}
+		}*/
 	}     
 }

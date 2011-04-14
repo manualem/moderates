@@ -1,10 +1,14 @@
 
 
-import org.apache.log4j.PropertyConfigurator;
-//import org.sintef.moderates.sim.InteractiveBrickLCDSensorDataController2;
-//import org.sintef.moderates.sim.InteractiveCoffeeSensorDataController;
-import org.sintef.moderates.sim.InteractiveCoffeeSensorDataController2;
-import org.sintef.moderates.sim.ProtocolHandler;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.sintef.moderates.observer.CoffeeSensorClientObserver;
+import org.sintef.moderates.observer.CoffeeSensorClientSubject;
+import org.sintef.moderates.observer.CoffeeSensorObserver;
+import org.sintef.moderates.observer.CoffeeSensorSubject;
+import org.sintef.moderates.sim.InteractiveCoffeeSensorDataController;
+import org.sintef.moderates.sim.InteractiveCoffeeSensorDataControllerClient;
 
 import com.rapplogic.xbee.api.ApiId;
 import com.rapplogic.xbee.api.XBee;
@@ -16,32 +20,18 @@ import com.rapplogic.xbee.api.zigbee.ZNetRxResponse;
 import com.rapplogic.xbee.api.zigbee.ZNetTxRequest;
 import com.rapplogic.xbee.util.ByteUtils;
 
-public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
+public class RemoteZigbeeDevice implements Runnable, CoffeeSensorClientObserver, CoffeeSensorSubject {
 
 	// The physical adress of the device
 	protected XBeeAddress64 addr64;
 	protected XBee xbee;
 	
-	protected ProtocolHandler dataController;
 	
-	public ProtocolHandler getDataController() {
-		return dataController;
-	}
-
-	public void setDataController(ProtocolHandler dataController) {
-		this.dataController = dataController;
-	}
-
+	
 	public RemoteZigbeeDevice(XBee local_xbee, XBeeAddress64 remote_addr64) {
 		this.addr64 = remote_addr64;
 		this.xbee = local_xbee;
 		new Thread(this).start();
-	}
-	
-	@Override
-	public void register(ProtocolHandler handler) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -78,7 +68,10 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 			response = receiveData();
 			if (response != null) {
 				// notify
-				dataController.receiveMsg(response);
+				for(CoffeeSensorObserver o : observers) {
+					o.receiveMsg(response);
+				}
+				
 			}
 			try {
 				// wait a bit then send another packet
@@ -112,13 +105,14 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 	public static void main(String[] args) throws XBeeException, InterruptedException  {
 		XBee xbee = new XBee();
 		try {
-			xbee.open("COM18", 9600);
+			xbee.open("COM17", 9600);
 			
 			//RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC3));
-			RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC6));
+			//RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x33, 0x1D, 0xC6));
+			RemoteZigbeeDevice device = new RemoteZigbeeDevice(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x3D, 0xDA, 0x5E));
 			//InteractiveBrickLCDSensorDataController2 controller2 = new InteractiveBrickLCDSensorDataController2();
-			InteractiveCoffeeSensorDataController2 controller2 = new InteractiveCoffeeSensorDataController2();
-			device.setDataController(controller2);
+			InteractiveCoffeeSensorDataControllerClient controller2 = new InteractiveCoffeeSensorDataControllerClient();
+			device.register(controller2);
 			controller2.register(device);
 			
 			
@@ -148,9 +142,15 @@ public class RemoteZigbeeDevice implements Runnable, ProtocolHandler {
 		}
 	}
 
+	Set<CoffeeSensorObserver> observers = new HashSet<CoffeeSensorObserver>();
+	
 	@Override
-	public void unregister(ProtocolHandler handler) {
-		// TODO Auto-generated method stub
-		
+	public void register(CoffeeSensorObserver observer) {
+		observers.add(observer);
+	}
+
+	@Override
+	public void unregister(CoffeeSensorObserver observer) {
+		observers.remove(observer);
 	}
 }
