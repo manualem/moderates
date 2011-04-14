@@ -4,7 +4,7 @@ require "../../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
 class InteractiveDataControllerGenerator{
-operation generate(packageName:String, device:edap::Device, toKevoreeComponent:Boolean, modifier:String):String is do
+operation generate(packageName:String, device:edap::Device, toKevoreeComponent:Boolean, isClient:Boolean):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
@@ -12,52 +12,98 @@ _res.append("package ")
 _res.append(packageName)
 _res.append(".sim;\n\nimport ")
 _res.append(packageName)
-_res.append(".*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\nimport java.text.SimpleDateFormat;\nimport java.util.Date;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\nimport java.nio.ByteBuffer;\n\n")
+_res.append(".*;\nimport ")
+_res.append(packageName)
+_res.append(".observer.*;\n\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.LinkedList;\nimport java.util.List;\nimport java.text.SimpleDateFormat;\nimport java.util.Date;\n\nimport javax.swing.JFrame;\nimport javax.swing.JOptionPane;\n\n\n")
 if toKevoreeComponent then
-_res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\n")
+_res.append("import org.kevoree.annotation.*;\nimport org.kevoree.framework.AbstractComponentType;\nimport org.kevoree.framework.MessagePort;\nimport java.util.logging.Level;\nimport java.util.logging.Logger;\n")
 end
-_res.append("\nimport java.util.logging.Level;\nimport java.util.logging.Logger;\n\n")
+_res.append("\n\n\n")
 if toKevoreeComponent then
 _res.append("@Provides({\n    @ProvidedPort(name = \"in\", type = PortType.MESSAGE)\n})\n@Requires({\n    @RequiredPort(name = \"out\", type = PortType.MESSAGE)\n})\n@Library(name = \"Moderates::Stub\")\n@ComponentType\n")
 end
 _res.append("public class Interactive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(" ")
 if toKevoreeComponent then
 _res.append("extends AbstractComponentType ")
 end
-_res.append("implements ActionListener, ProtocolHandler {\n\n\tprivate Logger log;\n\n\tprivate List<ProtocolHandler> handlers;\n\t\n\tprivate SimpleDateFormat dateFormat;\n\n\tpublic Interactive")
+_res.append("implements ActionListener, ")
+_res.append(device.name)
+if not(isClient) then
+_res.append("Client")
+end
+_res.append("Observer, ")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Subject {\n\n")
+if toKevoreeComponent then
+_res.append("\tprivate Logger log;\n")
+end
+_res.append("\n\tprivate List<")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer> handlers;\n\t\n\tprivate SimpleDateFormat dateFormat;\n\n\tpublic Interactive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
-_res.append("(){\n\t\thandlers = new LinkedList<ProtocolHandler>();\n\t\tlog = Logger.getLogger(Interactive")
+if isClient then
+_res.append("Client")
+end
+_res.append("(){\n\t\thandlers = new LinkedList<")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer>();\n")
+if toKevoreeComponent then
+_res.append("\t\tlog = Logger.getLogger(Interactive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
-_res.append(".class.getName());\n\t\tdateFormat = new SimpleDateFormat(\"dd MMM yyy 'at' HH:mm:ss.SSS\");\n\t\tInteractive")
+if isClient then
+_res.append("Client")
+end
+_res.append(".class.getName());\n")
+end
+_res.append("\t\tdateFormat = new SimpleDateFormat(\"dd MMM yyy 'at' HH:mm:ss.SSS\");\n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".init();\n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".addListener(this);\n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".handler = this;\t\n\t}\n\t\n")
 if toKevoreeComponent then
 _res.append("\t@Start\n    public void start() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(" has been started\");\n    }\n\n    @Stop\n    public void stop() {\n    \tlog.log(Level.INFO, \"Interactive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(" has been stopped\");\n    }\n\n    @Update\n    public void update() {\n    \n    }\n")
 end
 _res.append("\t\n\n\tprivate void doSend(FixedSizePacket data){\n\t\tif (data != null) {\n")
@@ -66,7 +112,12 @@ _res.append("\t\t\tif (this.isPortBinded(\"out\")) {\n           \t\tthis.getPor
 else
 _res.append("        \tSystem.out.println(data+\" --> \"+data.getPacket());\n")
 end
-_res.append("            for (ProtocolHandler h : handlers){\n\t\t\t\th.receiveMsg(data.getPacket());\n\t\t\t}\n        }\n        else {\n        \tSystem.out.println(\"Data is null\");\n        }\n\t}\n\n")
+_res.append("            for (")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer h : handlers){\n\t\t\t\th.receiveMsg(data.getPacket());\n\t\t\t}\n        }\n        else {\n        \tSystem.out.println(\"Data is null\");\n        }\n\t}\n\n")
 device.sends.each{ msg |
 _res.append("\tpublic void send")
 _res.append(msg.name)
@@ -95,7 +146,9 @@ _res.append(helper.firstToUpper(p.type.name))
 _res.append(")Interactive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".field")
 _res.append(msg.name+"_"+p.name)
 _res.append(".getSelectedItem()).getValue();\n")
@@ -105,7 +158,9 @@ _res.append(p.name)
 _res.append(" = Interactive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".field")
 _res.append(msg.name+"_"+p.name)
 _res.append(".getText();\n")
@@ -137,7 +192,9 @@ _res.append(helper.firstToUpper(p.type.name))
 _res.append(")Interactive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".field")
 _res.append(msg.name+"_"+p.name)
 _res.append(".getSelectedItem()).getValue());\n")
@@ -151,7 +208,9 @@ _res.append(helper.firstToUpper(helper.toJavaType(p.type)))
 _res.append("(Interactive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".field")
 _res.append(msg.name+"_"+p.name)
 _res.append(".getText());\n")
@@ -185,7 +244,9 @@ _res.append(device.name)
 _res.append("Protocol.createMessageFromPacket(packet);\n\t\tif (data != null) {\n\t\t\tInteractive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".print(data.getClass().getSimpleName(), \"[\"+dateFormat.format(new Date(System.currentTimeMillis()))+\"]: \"+data.toString()+\" --> \"+FixedSizePacket.toString(packet));\n\t\t}\n\t}\n\n\t@Override\n\tpublic void actionPerformed(ActionEvent ae) {\n")
 var l : Integer init 0
 _res.append("")
@@ -197,7 +258,9 @@ end
 _res.append("if ( ae.getSource() == Interactive")
 _res.append(device.name)
 _res.append("DataGUI")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(".sendButton")
 _res.append(msg.name)
 _res.append(") {\n\t\t \tsend")
@@ -209,12 +272,28 @@ _res.append("")
 _res.append("\t}\n\t\n\tpublic static void main(String args[]){\n\t\tInteractive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
+if isClient then
+_res.append("Client")
+end
 _res.append(" controller = new Interactive")
 _res.append(device.name)
 _res.append("DataController")
-_res.append(modifier)
-_res.append("();\n\t}\n\t\n\t@Override\n\tpublic void register(ProtocolHandler handler) {\n\t\thandlers.add(handler);\n\t}\n\t\n\t@Override\n\tpublic void unregister(ProtocolHandler handler) {\n\t\thandlers.remove(handler);\n\t}\t\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\n}")
+if isClient then
+_res.append("Client")
+end
+_res.append("();\n\t}\n\t\n\n\n\t//Methods defined in the Observer pattern specific to ")
+_res.append(device.name)
+_res.append(" \n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\treceiveMessage(msg);\n\t}\n\t\n\t@Override\n\tpublic void register(")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer observer) {\n\t\thandlers.add(observer);\n\t}\n\n\t@Override\n\tpublic void unregister(")
+_res.append(device.name)
+if isClient then
+_res.append("Client")
+end
+_res.append("Observer observer) {\n\t\thandlers.remove(observer);\n\t}\n}")
 result := _res.toString
 end
 }

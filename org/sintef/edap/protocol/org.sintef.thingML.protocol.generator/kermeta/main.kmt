@@ -17,7 +17,8 @@ require "./template/java/protocol.kmt"
 require "./template/java/message.kmt"
 require "./template/java/simulator/GUI.kmt"
 require "./template/java/simulator/controller.kmt"
-require "./template/java/simulator/handler.kmt"
+require "./template/java/observer/deviceObserver.kmt"
+require "./template/java/observer/deviceSubject.kmt"
 require "./template/java/simulator/test.kmt"
 
 using kermeta::standard
@@ -47,9 +48,10 @@ class MainJavaProtocolGenerator
 		
 		var guiGenerator : InteractiveDataGUIGenerator init InteractiveDataGUIGenerator.new
 		var controllerGenerator : InteractiveDataControllerGenerator init InteractiveDataControllerGenerator.new
-		//var guiGenerator2 : InteractiveDataGUIGenerator2 init InteractiveDataGUIGenerator2.new
-		//var controllerGenerator2 : InteractiveDataControllerGenerator2 init InteractiveDataControllerGenerator2.new
-		var handlerGenerator : ProtocolHandlerGenerator init ProtocolHandlerGenerator.new
+		
+		var deviceObserver : ObserverGenerator init ObserverGenerator.new
+		var deviceSubject : SubjectGenerator init SubjectGenerator.new
+		
 		var simulatorTestGenerator : SimulatorTestGenerator init SimulatorTestGenerator.new
 		
 		var file : FileIO init FileIO.new
@@ -83,31 +85,50 @@ class MainJavaProtocolGenerator
 				stdio.writeln("")
 			}
 			
-			stdio.writeln("ProtocolHandlerGenerator")
+			
+			
+			stdio.writeln("ClientObserverGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/ProtocolHandler.java", handlerGenerator.generate("org.sintef.moderates"))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/observer/"+t.name+"ClientObserver.java", deviceObserver.generate("org.sintef.moderates", t.asType(Device), true))
 			stdio.writeln("")
+			
+			stdio.writeln("ObserverGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/observer/"+t.name+"Observer.java", deviceObserver.generate("org.sintef.moderates", t.asType(Device), false))
+			stdio.writeln("")
+
+			stdio.writeln("ClientSubjectGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/observer/"+t.name+"ClientSubject.java", deviceSubject.generate("org.sintef.moderates", t.asType(Device), true))
+			stdio.writeln("")
+			
+			stdio.writeln("SubjectGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/observer/"+t.name+"Subject.java", deviceSubject.generate("org.sintef.moderates", t.asType(Device), false))
+			stdio.writeln("")
+			
+			
 			
 			stdio.writeln("InteractiveDataGUIGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device), ""))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI.java", guiGenerator.generate("org.sintef.moderates", t.asType(Device), false))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), isKevoree, ""))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController.java", controllerGenerator.generate("org.sintef.moderates", t.asType(Device), isKevoree, false))
 			stdio.writeln("")
 			
 			var reverse : Device init t.asType(Device).createReverse
 			
 			stdio.writeln("InteractiveDataGUIGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUI2.java", guiGenerator.generate("org.sintef.moderates", reverse, "2"))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataGUIClient.java", guiGenerator.generate("org.sintef.moderates", reverse, true))
 			stdio.writeln("")
 			
 			stdio.writeln("InteractiveDataControllerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataController2.java", controllerGenerator.generate("org.sintef.moderates", reverse, isKevoree, "2"))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/sim/Interactive"+t.name+"DataControllerClient.java", controllerGenerator.generate("org.sintef.moderates", reverse, isKevoree, true))
 			stdio.writeln("")
 			
 			stdio.writeln("SimulatorTestGenerator")
