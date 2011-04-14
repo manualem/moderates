@@ -42,9 +42,10 @@ device CoffeeSensor {
 
 	// Raw Data from the sensors
 	message subscribeRawData( interval : Integer ) @code "19";
+	message unsubscribeRawData() @code "22";
 	message getRawData() @code "20";
 	message rawData(temp : Integer, dist : Integer, light : Integer) @code "21";
-	receives subscribeRawData, getRawData
+	receives subscribeRawData, getRawData, unsubscribeRawData
 	sends rawData
 	
 	// Simple Ping
