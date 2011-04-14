@@ -1,0 +1,56 @@
+
+// Definition of some primitive types used throuout the application
+datatype Integer	
+	@c_type "int"
+	@java_type "short";
+	
+device CoffeeSensor {
+	
+	// Get the data from individual sensors
+	message GetTemperature() @code "1";
+	message TemperatureValue(v : Integer) @code "2";
+	message GetDistance() @code "3";
+	message DistanceValue(v : Integer) @code "4";
+	message GetLight() @code "5";
+	message LightValue(v : Integer) @code "6";
+	sends TemperatureValue, DistanceValue, LightValue
+	receives GetTemperature, GetDistance, GetLight
+	
+	// Motion detector based on the IR distance sensor
+	message subscribeMotion() @code "7";
+	message unsubscribeMotion() @code "8";
+	message approachingMotion() @code "9";
+	message leavingMotion( minimalDist : Integer ) @code "10";
+	receives subscribeMotion, unsubscribeMotion
+	sends approachingMotion, leavingMotion
+	
+	// Light Sensor
+	message subscribeLightChange() @code "11";
+	message unsubscribeLightChange() @code "12";
+	message lightON() @code "13";
+	message lightOFF() @code "14";
+	receives subscribeLightChange, unsubscribeLightChange
+	sends lightON, lightOFF
+	
+	// Temperature Sensor
+	message subscribeTemperatureChange() @code "15";
+	message unsubscribeTemperatureChange() @code "16";
+	message temperatureIncrease( before : Integer, current : Integer ) @code "17";
+	message temperatureDecrease( before : Integer, current : Integer ) @code "18";
+	receives subscribeTemperatureChange, unsubscribeTemperatureChange
+	sends temperatureIncrease, temperatureDecrease
+
+	// Raw Data from the sensors
+	message subscribeRawData( interval : Integer ) @code "19";
+	message getRawData() @code "20";
+	message rawData(temp : Integer, dist : Integer, light : Integer) @code "21";
+	receives subscribeRawData, getRawData
+	sends rawData
+	
+	// Simple Ping
+	message ping() @code "66";
+	message pong() @code "67";
+	receives ping
+	sends pong
+
+}
