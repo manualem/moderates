@@ -4,7 +4,7 @@
     <annotations name="c_type" value="int"/>
     <annotations name="java_type" value="short"/>
   </types>
-  <types xsi:type="edap:Device" name="CoffeeSensor" receives="//@types.1/@messages.0 //@types.1/@messages.2 //@types.1/@messages.4 //@types.1/@messages.6 //@types.1/@messages.7 //@types.1/@messages.10 //@types.1/@messages.11 //@types.1/@messages.14 //@types.1/@messages.15 //@types.1/@messages.18 //@types.1/@messages.19 //@types.1/@messages.21" sends="//@types.1/@messages.1 //@types.1/@messages.3 //@types.1/@messages.5 //@types.1/@messages.8 //@types.1/@messages.9 //@types.1/@messages.12 //@types.1/@messages.13 //@types.1/@messages.16 //@types.1/@messages.17 //@types.1/@messages.20 //@types.1/@messages.22">
+  <types xsi:type="edap:Device" name="CoffeeSensor" receives="//@types.1/@messages.0 //@types.1/@messages.2 //@types.1/@messages.4 //@types.1/@messages.6 //@types.1/@messages.7 //@types.1/@messages.10 //@types.1/@messages.11 //@types.1/@messages.14 //@types.1/@messages.15 //@types.1/@messages.18 //@types.1/@messages.20 //@types.1/@messages.19 //@types.1/@messages.22" sends="//@types.1/@messages.1 //@types.1/@messages.3 //@types.1/@messages.5 //@types.1/@messages.8 //@types.1/@messages.9 //@types.1/@messages.12 //@types.1/@messages.13 //@types.1/@messages.16 //@types.1/@messages.17 //@types.1/@messages.21 //@types.1/@messages.23">
     <messages name="GetTemperature">
       <annotations name="code" value="1"/>
     </messages>
@@ -70,6 +70,9 @@
     <messages name="subscribeRawData">
       <annotations name="code" value="19"/>
       <parameters name="interval" type="//@types.0"/>
+    </messages>
+    <messages name="unsubscribeRawData">
+      <annotations name="code" value="22"/>
     </messages>
     <messages name="getRawData">
       <annotations name="code" value="20"/>
