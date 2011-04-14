@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.sintef</groupId>
     <artifactId>org.sintef.moderates.twitter</artifactId>
-    <packaging>jar</packaging>
+    <packaging>bundle</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>org.sintef.moderates.twitter</name>
     <url>http://maven.apache.org</url>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.kevoree</groupId>
             <artifactId>org.kevoree.framework</artifactId>
-            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+            <version>1.1.0-BETA2</version><!-- To modify on wiki -->
         </dependency>
         <dependency>
             <groupId>org.kevoree.tools</groupId>
             <artifactId>org.kevoree.tools.annotation.api</artifactId>
-            <version>1.0.0-RC4</version><!-- To modify on wiki -->
+            <version>1.1.0-BETA2</version><!-- To modify on wiki -->
         </dependency>
     </dependencies>
 
@@ -70,7 +70,10 @@
             <plugin>
                 <groupId>org.kevoree.tools</groupId>
                 <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
-                <version>1.0.0-RC4</version><!-- To modify on wiki -->
+                <version>1.1.0-BETA2</version><!-- To modify on wiki -->
+                <configuration>
+                    <nodeTypeNames>JavaSENode</nodeTypeNames>
+                </configuration>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -90,20 +93,11 @@
 
                 <configuration>
                     <instructions>
-
-                        <Import-Package>!javax.imageio.*,!org.eclipse.swt.internal.*,!org.eclipse.swt.internal.win32.*,!org.eclipse.swt.widgets.*,!org.jvnet.winp.*,!org.kevoree.library.com.skype.*,!com.sun.*,*</Import-Package>
-                        <!-- <Private-Package>com.skype.*</Private-Package>-->
-                        <Export-Package>org.kevoree.library.com.skype.*</Export-Package>
-                        <Embed-Dependency>com.skype.linux</Embed-Dependency>
                         <Bundle-ClassPath>.,{maven-dependencies} </Bundle-ClassPath>
-                        <Bundle-NativeCode>
-							<!--nativelib/libskype32.so;
-							osname=Linux; processor=x86,-->
-                                                        nativelib/libskype.so;
-							osname=Linux; processor=x86-64,
-							nativelib/skype.dll;
-							osname=Win32; processor=x86
-                        </Bundle-NativeCode>
+                        <Import-Package>!org.apache.log4j,!org.apache.commons.logging,!org.sintef.org.sintef.moderates.twitter,!twitter4j.*,*</Import-Package>
+                        <!-- <Private-Package>com.skype.*</Private-Package>-->
+                        <Export-Package>org.sintef.org.sintef.moderates.twitter</Export-Package>
+                        <Embed-Dependency>twitter4j-core</Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>        <!-- Java compiler plugin -->
