@@ -1,0 +1,50 @@
+package thingML;
+require kermeta
+require "../../../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class ZigBeeGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(".comm;\n\nimport java.util.HashSet;\nimport java.util.Set;\n\nimport org.sintef.moderates.observer.")
+_res.append(device.name)
+_res.append("ClientObserver;\nimport org.sintef.moderates.observer.")
+_res.append(device.name)
+_res.append("Observer;\nimport org.sintef.moderates.observer.")
+_res.append(device.name)
+_res.append("Subject;\nimport org.sintef.moderates.sim.Interactive")
+_res.append(device.name)
+_res.append("DataControllerClient;\n\nimport com.rapplogic.xbee.api.ApiId;\nimport com.rapplogic.xbee.api.XBee;\nimport com.rapplogic.xbee.api.XBeeAddress64;\nimport com.rapplogic.xbee.api.XBeeException;\nimport com.rapplogic.xbee.api.XBeeResponse;\nimport com.rapplogic.xbee.api.XBeeTimeoutException;\nimport com.rapplogic.xbee.api.zigbee.ZNetRxResponse;\nimport com.rapplogic.xbee.api.zigbee.ZNetTxRequest;\nimport com.rapplogic.xbee.util.ByteUtils;\n\npublic class ZigBee4")
+_res.append(device.name)
+_res.append(" implements Runnable, ")
+_res.append(device.name)
+_res.append("ClientObserver, ")
+_res.append(device.name)
+_res.append("Subject {\n\n\t// The physical adress of the device\n\tprotected XBeeAddress64 addr64;\n\tprotected XBee xbee;\n\n\n\n\tpublic ZigBee4")
+_res.append(device.name)
+_res.append("(XBee local_xbee, XBeeAddress64 remote_addr64) {\n\t\tthis.addr64 = remote_addr64;\n\t\tthis.xbee = local_xbee;\n\t\tnew Thread(this).start();\n\t}\n\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\tsendData(msg);\n\t}\n\n\tprotected void sendData(byte[] payload) {\n\t\tint[] data = new int[payload.length];\n\t\tfor(int i=0; i<data.length; i++) {\n\t\t\tdata[i] = (int)payload[i];\n\t\t\t//System.out.println(\"data[\" + i + \"] = \" + data[i]);\n\t\t}\n\t\tZNetTxRequest request = new ZNetTxRequest(addr64, data);\n\t\ttry {\n\t\t\txbee.sendSynchronous(request, 500);\n\t\t} catch (XBeeTimeoutException e) {\n\t\t\te.printStackTrace();\n\t\t} catch (XBeeException e) {\n\t\t\te.printStackTrace();\n\t\t}\n\t}\n\n\tpublic void run() {\n\n\t\ttry {\n\t\t\t// wait a bit then send another packet\n\t\t\tThread.sleep(1000);\n\t\t} catch (InterruptedException e) {\n\t\t}\n\n\t\twhile (true) {\n\t\t\tbyte[] response;\n\t\t\tresponse = receiveData();\n\t\t\tif (response != null) {\n\t\t\t\t// notify\n\t\t\t\tfor(")
+_res.append(device.name)
+_res.append("Observer o : observers) {\n\t\t\t\t\to.receiveMsg(response);\n\t\t\t\t}\n\t\t\t}\n\t\t\ttry {\n\t\t\t\t// wait a bit then send another packet\n\t\t\t\tThread.sleep(50);\n\t\t\t} catch (InterruptedException e) {\n\t\t\t}\n\t\t}\n\n\t}\n\n\tprotected byte[] receiveData() {\n\t\tXBeeResponse response;\n\t\ttry {\n\t\t\tresponse = xbee.getResponse();\n\t\t\tif (response.getApiId() == ApiId.ZNET_RX_RESPONSE) {\n\t\t\t\tZNetRxResponse rx = (ZNetRxResponse) response;\n\t\t\t\tbyte[] data = new byte[rx.getData().length];\n\t\t\t\tfor(int i=0; i<data.length; i++) {\n\t\t\t\t\tdata[i] = (byte)rx.getData()[i];\n\t\t\t\t}\n\t\t\t\tSystem.out.println(\"Incoming message: \" + ByteUtils.toBase10(rx.getData()));\n\t\t\t\treturn data;\n\t\t\t}\n\t\t} catch (XBeeException e) {\n\t\t\te.printStackTrace();\n\t\t}\n\t\treturn null;\n\t}\n\n\n\tpublic static void main(String[] args) throws XBeeException, InterruptedException  {\n\t\tXBee xbee = new XBee();\n\t\ttry {\n\t\t\tString port = \"COM17\"; //to change with the COM port of the ZigBee\n\t\t\txbee.open(port, 9600);\n\n\t\t\tZigBee4")
+_res.append(device.name)
+_res.append(" device = new ZigBee4")
+_res.append(device.name)
+_res.append("(xbee, new XBeeAddress64(0, 0x13, 0xa2, 0, 0x40, 0x3D, 0xDA, 0x5E));\n\t\t\tInteractive")
+_res.append(device.name)
+_res.append("DataControllerClient controller2 = new Interactive")
+_res.append(device.name)
+_res.append("DataControllerClient();\n\t\t\tdevice.register(controller2);\n\t\t\tcontroller2.register(device);\n\t\t}\n\t\tcatch (Exception e) {\n\t\t\te.printStackTrace();\n\t\t} \n\t\tfinally {\n\t\t\txbee.close();\n\t\t}\n\t}\n\n\tSet<")
+_res.append(device.name)
+_res.append("Observer> observers = new HashSet<")
+_res.append(device.name)
+_res.append("Observer>();\n\n\t@Override\n\tpublic void register(")
+_res.append(device.name)
+_res.append("Observer observer) {\n\t\tobservers.add(observer);\n\t}\n\n\t@Override\n\tpublic void unregister(")
+_res.append(device.name)
+_res.append("Observer observer) {\n\t\tobservers.remove(observer);\n\t}\n}")
+result := _res.toString
+end
+}
