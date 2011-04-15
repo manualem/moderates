@@ -18,7 +18,7 @@ public class CoffeSpyLoggerTest {
 		controller2.register(controller);
 		controller.register(controller2);
 		
-		CoffeeSpyLogger logger = new CoffeeSpyLogger(controller2, controller, 5000);
+		CoffeeSpyLogger logger = new CoffeeSpyLogger(controller, 5000);
 		controller.register(logger);
 	}
 
