@@ -39,7 +39,7 @@ public class CoffeeSpyLogger implements CoffeeSensorObserver, CoffeeSensorClient
 		if (!isActive){
 			isLogActive = false;
 			css.unregister(this);
-			FixedSizePacket msg = CoffeeSensorProtocol.createunsubscribeRawData((short) 250);
+			FixedSizePacket msg = CoffeeSensorProtocol.createunsubscribeRawData();
 			csco.receiveMsg(msg.getPacket());
 		}
 	}
