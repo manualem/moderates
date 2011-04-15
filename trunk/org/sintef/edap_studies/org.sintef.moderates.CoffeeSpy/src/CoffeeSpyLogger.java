@@ -11,22 +11,20 @@ import org.sintef.moderates.observer.CoffeeSensorClientSubject;
 import org.sintef.moderates.observer.CoffeeSensorObserver;
 
 
-public class CoffeeSpyLogger implements CoffeeSensorObserver, CoffeeSensorClientObserver, CoffeeSensorClientSubject {
+public class CoffeeSpyLogger implements CoffeeSensorObserver, CoffeeSensorClientSubject {
 
 	private boolean isActive;
 	private boolean isLogActive;
 	private long delay;
 
-	private CoffeeSensorClientSubject css;
 	private CoffeeSensorClientObserver csco;
 
 	private Timer timer;
 
-	public CoffeeSpyLogger(CoffeeSensorClientSubject css, CoffeeSensorClientObserver csco, long delay){
+	public CoffeeSpyLogger(CoffeeSensorClientObserver csco, long delay){
 		this.delay = delay;
 		timer = new Timer();
 		register(csco);
-		this.css = css;
 		this.isLogActive = false;
 	}
 
@@ -38,21 +36,19 @@ public class CoffeeSpyLogger implements CoffeeSensorObserver, CoffeeSensorClient
 	private void doSuspendLog() {
 		if (!isActive){
 			isLogActive = false;
-			css.unregister(this);
 			FixedSizePacket msg = CoffeeSensorProtocol.createunsubscribeRawData();
 			csco.receiveMsg(msg.getPacket());
 		}
 	}
 
 	public void startLog() {
-		System.err.println("CoffeeSpyLogger: startLog()");
 		if (!isActive){
-			System.err.println("CoffeeSpyLogger: startLog() 1");
 			isActive = true;
-			isLogActive = true;
-			css.register(this);
-			FixedSizePacket msg = CoffeeSensorProtocol.createsubscribeRawData((short) 250);
-			csco.receiveMsg(msg.getPacket());
+			if (!isLogActive){
+				isLogActive = true;
+				FixedSizePacket msg = CoffeeSensorProtocol.createsubscribeRawData((short) 250);
+				csco.receiveMsg(msg.getPacket());
+			}
 		}
 	}
 
