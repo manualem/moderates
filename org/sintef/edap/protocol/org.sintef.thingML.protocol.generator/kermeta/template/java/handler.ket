@@ -1,0 +1,24 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="HandlerGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import <%=packageName%>.msg.*;
+
+public interface <%=device.name%>MessageHandler {
+
+	<%device.receives.each{msg | %>
+	public void handle<%=msg.name%>(<%=msg.name%> msg);
+	<%}%>
+	
+	<%device.sends.each{msg | %>
+	public void handle<%=msg.name%>(<%=msg.name%> msg);
+	<%}%>
+}

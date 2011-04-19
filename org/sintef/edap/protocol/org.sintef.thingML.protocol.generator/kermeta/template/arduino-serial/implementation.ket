@@ -1,0 +1,115 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt ../../CHelper.kmt"
+using="edap"
+isAspectClass="false"
+class="ArduinoCPPGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+<%var chelper : CHelper init CHelper.new.make%>
+// include core Wiring API
+#include "WProgram.h"
+
+// include this library's description file
+#include "<%=device.name%>.h"
+
+// Constructor /////////////////////////////////////////////////////////////////
+<%=device.name%>::<%=device.name%>() {
+	state = RCV_WAIT;
+	buffer_idx = 0;
+}
+
+// Public Methods //////////////////////////////////////////////////////////////
+void <%=device.name%>::init_<%=device.name%>(void) {
+	// init the serial port
+	Serial.begin(9600);
+}
+
+void <%=device.name%>::poll_<%=device.name%>(void) {	
+  uint8_t data;
+  while (Serial.available() > 0) {
+    data = Serial.read();
+    // we got a byte from the serial port
+    if (state == RCV_WAIT) {
+      // it should be a start byte or we just ignore it
+      if (data == START_BYTE)  {
+        state = RCV_MSG;
+        buffer_idx = 0;
+      }
+    }
+    else if (state == RCV_MSG) {
+      if (data == ESCAPE_BYTE) {
+        state = RCV_ESC;
+      }
+      else if (data == STOP_BYTE) {
+        // We got a complete frame
+        parseIncommingMessage(buffer, buffer_idx);
+        state = RCV_WAIT;
+      }
+      else if (data == START_BYTE) {
+        // Should not happen but we reset just in case
+        state = RCV_MSG;
+        buffer_idx = 0;
+      }
+      else { // it is just a byte to store
+        buffer[buffer_idx] = data;
+        buffer_idx++;
+      }
+    }
+    else if (state == RCV_ESC) {
+      // Store the byte without looking at it
+      buffer[buffer_idx] = data;
+      buffer_idx++;
+      state = RCV_MSG;
+    }
+  }
+}
+
+<%device.sends.each{out | %>
+void <%=device.name%>::send<%=out.name%>(<%=chelper.msgParamsDecl(out)%>) {
+   payload[0] = 0x01; // source addr (not used)
+   payload[1] = 0x00; // target addr (not used)
+   payload[2] = 0x00; // frame num (not used)
+   payload[3] = <%=chelper.msgTotalSize(out).toString%>; // length of the params
+   payload[4] = <%=out.annotations.select{a | a.name == "code"}.one.~value%>; // command code
+   // set params here
+   <% var idx : Integer init 5
+   out.parameters.each{ p |%>
+   <%=chelper.paramWriteBuffer(p, "payload", idx)%>
+   <%idx := idx + chelper.paramSize(p) }%>
+   // send the message
+   sendOutgoingMessage(payload, 16);
+}
+<%}%>
+
+// Private Methods /////////////////////////////////////////////////////////////
+void <%=device.name%>::parseIncommingMessage(uint8_t data[], uint8_t size) {
+
+  if (size < 5) return; // ignore incomplete packets
+	
+  switch(data[4]) // command code
+  {
+  <%device.receives.each{in | %>
+   case <%=in.annotations.select{a | a.name == "code"}.one.~value%>: receive<%=in.name%>(<%=chelper.msgParamsReadBuffer(in, "data", 5)%>); break;
+   <%}%>
+   default: break; 
+  }
+}
+
+void <%=device.name%>::sendOutgoingMessage(uint8_t data[], uint8_t size) {
+  uint8_t i = 0;
+  // send the start byte
+  Serial.write(START_BYTE);
+  // send data
+  for(i=0; i<size; i++) {
+    // escape special bytes
+    if(data[i] == START_BYTE || data[i] == STOP_BYTE || data[i] == ESCAPE_BYTE) {
+      Serial.write(ESCAPE_BYTE);
+    }
+    Serial.write(data[i]);
+  }
+  // send the stop byte
+  Serial.write(STOP_BYTE);
+}

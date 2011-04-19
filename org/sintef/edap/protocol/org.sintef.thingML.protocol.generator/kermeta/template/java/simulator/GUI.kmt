@@ -17,7 +17,9 @@ _res.append(device.name)
 if isClient then
 _res.append("Client")
 end
-_res.append("Observer;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JComboBox;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\n\npublic class Interactive")
+_res.append("Observer;\nimport ")
+_res.append(packageName)
+_res.append(".*;\n\nimport java.awt.Color;\nimport java.awt.Dimension;\nimport java.awt.GridBagConstraints;\nimport java.awt.GridBagLayout;\nimport java.awt.Insets;\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.util.Random;\n\nimport javax.swing.JButton;\nimport javax.swing.JComboBox;\nimport javax.swing.JFrame;\nimport javax.swing.JLabel;\nimport javax.swing.JPanel;\nimport javax.swing.JScrollPane;\nimport javax.swing.JTextField;\nimport javax.swing.JTextPane;\nimport javax.swing.text.BadLocationException;\nimport javax.swing.text.Style;\nimport javax.swing.text.StyleConstants;\nimport javax.swing.text.StyleContext;\nimport javax.swing.text.StyledDocument;\n\npublic class Interactive")
 _res.append(device.name)
 _res.append("DataGUI")
 if isClient then
@@ -120,8 +122,6 @@ _res.append(p.name)
 _res.append(", c);\n")
 if p.type.isKindOf(edap::Enumeration) then
 _res.append("\t\t")
-_res.append(device.name)
-_res.append("Protocol.")
 _res.append(helper.firstToUpper(p.type.name))
 _res.append("[] values")
 _res.append(msg.name+"_"+p.name)
@@ -129,8 +129,6 @@ _res.append(" = {")
 var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then
 _res.append(", ")
 end
-_res.append(device.name)
-_res.append("Protocol.")
 _res.append(helper.firstToUpper(p.type.name))
 _res.append(".")
 _res.append(l.name)

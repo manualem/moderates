@@ -65,12 +65,29 @@ class StringHelper
 		result := res
 	end	
 	
-	operation toJavaType(p : edap::Type) : String is
+	operation java_type_annotation(p : edap::Type) : String is
 	do
 		var a : edap::PlatformAnnotation init p.annotations.detect{a | a.name == "java_type"}
 		if a != void then
 			result := a.~value
 		else
+			result := p.name
+		end
+
+	end
+	
+	operation toJavaType(p : edap::Type) : String is
+	do
+		if p.isKindOf(edap::PrimitiveType) then
+	
+			var a : edap::PlatformAnnotation init p.annotations.detect{a | a.name == "java_type"}
+			if a != void then
+				result := a.~value
+			else
+				result := p.name
+			end
+		end
+		if p.isKindOf(edap::Enumeration) then
 			result := p.name
 		end
 	end

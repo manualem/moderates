@@ -116,14 +116,14 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-			<%=p.name%> = ((<%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+"_"+p.name%>.getSelectedItem()).getValue();
+			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+"_"+p.name%>.getSelectedItem();
 			<%else%>
 			<%=p.name%> = Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+"_"+p.name%>.getText();
 			<%end%>
 			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
 		<%else%>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(((<%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+"_"+p.name%>.getSelectedItem()).getValue());
+			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+"_"+p.name%>.getSelectedItem();
 			<%else%>
 			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+"_"+p.name%>.getText());
 			<%end%>

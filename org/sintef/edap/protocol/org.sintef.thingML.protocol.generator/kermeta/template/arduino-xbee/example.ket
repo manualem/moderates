@@ -1,0 +1,38 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt ../../CHelper.kmt"
+using="edap"
+isAspectClass="false"
+class="ArduinoXBeeExampleGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+<%var chelper : CHelper init CHelper.new.make%>
+#include <<%=device.name%>XBeeAPI.h>
+#include <XBee.h>
+
+// Replace the address by the actual address of the target XBee gateway
+<%=device.name%>XBeeAPI _<%=device.name%>XBeeAPI = <%=device.name%>XBeeAPI(0x0013a200, 0x40331dc5);
+
+<%device.receives.each{out | %>
+void receive<%=out.name%>(<%=chelper.msgParamsDecl(out)%>) {
+	// TODO: Implement the handler for message reception of the message <%=out.name%>
+}
+<%}%>
+
+void setup()
+{
+	// initialize the <%=device.name%>XBeeAPI protocol
+	_<%=device.name%>XBeeAPI.init_<%=device.name%>XBeeAPI();
+	
+	// TODO: Add your own setup code here
+}
+
+void loop()
+{
+	// check for incomming messages for the <%=device.name%>XBeeAPI protocol
+	_<%=device.name%>XBeeAPI.poll_<%=device.name%>XBeeAPI();
+	
+	// TODO: Add any additional loop code here.
+}

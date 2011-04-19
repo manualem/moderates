@@ -34,7 +34,14 @@
                class="org.sintef.thingml.protocol.generator.GenerateArduino"
                enablesFor="1"
                id="org.sintef.edap.generator.protocol.generateArduino"
-               label="Generate Arduino Library for Protocol"
+               label="Generate Arduino Library for Protocol (Serial)"
+               menubarPath="org.sintef.edap.generator.protocol.menu/group3">
+       </action>
+       <action
+               class="org.sintef.thingml.protocol.generator.GenerateArduinoXBeeAPI"
+               enablesFor="1"
+               id="org.sintef.edap.generator.protocol.generateArduinoXBeeAPI"
+               label="Generate Arduino Library for Protocol (Xbee API)"
                menubarPath="org.sintef.edap.generator.protocol.menu/group3">
        </action>
       </objectContribution>

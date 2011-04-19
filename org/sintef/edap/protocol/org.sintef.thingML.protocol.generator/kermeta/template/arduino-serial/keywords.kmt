@@ -1,0 +1,33 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+require "../../CHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class ArduinoKeywordsGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("#######################################\n# Syntax Coloring For ")
+_res.append(device.name)
+_res.append("\n#######################################\n\n#######################################\n# Datatypes (KEYWORD1)\n#######################################\n\n")
+_res.append(device.name)
+_res.append("\tKEYWORD1\n\n#######################################\n# Methods and Functions (KEYWORD2)\n#######################################\n\n")
+device.receives.each{out | 
+_res.append("receive")
+_res.append(out.name)
+_res.append("\tKEYWORD2\n")
+}
+_res.append("\n")
+device.sends.each{out | 
+_res.append("send")
+_res.append(out.name)
+_res.append("\tKEYWORD2\n")
+}
+_res.append("\n#######################################\n# Instances (KEYWORD2)\n#######################################\n\n#######################################\n# Constants (LITERAL1)\n#######################################\n\n")
+result := _res.toString
+end
+}

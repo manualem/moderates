@@ -1,0 +1,62 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt ../../CHelper.kmt"
+using="edap"
+isAspectClass="false"
+class="ArduinoXBeeHeaderGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+<%var chelper : CHelper init CHelper.new.make%>
+
+// ensure this library description is only included once
+#ifndef <%=device.name%>XBeeAPI_h
+#define <%=device.name%>XBeeAPI_h
+
+// include types & constants of Wiring core API
+#include "WConstants.h"
+#undef abs
+#undef round
+
+#include <inttypes.h>
+
+// include the Xbee lib
+#include "../XBee/XBee.h"
+
+<%device.all_enums.each{ e | e.literals.each { l |%>
+#define <%=e.name%>_<%=l.name%> <%=l.c_value%>
+<%}}%>
+
+// Operations which implements the logic to execute when messages are received.
+<%device.receives.each{out | %>
+extern void receive<%=out.name%>(<%=chelper.msgParamsDecl(out)%>);
+<%}%>
+
+class <%=device.name%>XBeeAPI
+{
+  public:
+	// Constructor which takes the address of the target XBee as parameter
+    <%=device.name%>XBeeAPI(uint32_t, uint32_t);
+	// Standard init and pool operations to be called in setup and loop
+	void init_<%=device.name%>XBeeAPI();
+	void poll_<%=device.name%>XBeeAPI();
+	// Operations for sending all messages
+	<%device.sends.each{in | %>
+    void send<%=in.name%>(<%=chelper.msgParamsDecl(in)%>);
+    <%}%>
+
+  private:
+	// the address of the target XBee
+	XBee xbee;
+	XBeeAddress64 addr64;
+	ZBTxRequest zbTx;
+	ZBTxStatusResponse txStatus;
+	ZBRxResponse rx;
+	uint8_t payload[16];
+	// private operation which parses incomming message and calls
+	// the corresponding exten functions
+    void parseIncommingMessage(uint8_t data[]);
+};
+
+#endif

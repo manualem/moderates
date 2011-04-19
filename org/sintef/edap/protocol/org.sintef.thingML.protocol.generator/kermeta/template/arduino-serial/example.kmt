@@ -1,0 +1,49 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+require "../../CHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class ArduinoExampleGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("")
+var chelper : CHelper init CHelper.new.make
+_res.append("#include <")
+_res.append(device.name)
+_res.append(".h>\n\n")
+_res.append(device.name)
+_res.append(" _")
+_res.append(device.name)
+_res.append(" = ")
+_res.append(device.name)
+_res.append("();\n\n")
+device.receives.each{out | 
+_res.append("void receive")
+_res.append(out.name)
+_res.append("(")
+_res.append(chelper.msgParamsDecl(out))
+_res.append(") {\n\t// TODO: Implement the handler for message reception of the message ")
+_res.append(out.name)
+_res.append("\n}\n")
+}
+_res.append("\nvoid setup()\n{\n\t// initialize the ")
+_res.append(device.name)
+_res.append(" protocol\n\t_")
+_res.append(device.name)
+_res.append(".init_")
+_res.append(device.name)
+_res.append("();\n\t\n\t// TODO: Add your own setup code here\n}\n\nvoid loop()\n{\n\t// check for incomming messages for the ")
+_res.append(device.name)
+_res.append(" protocol\n\t_")
+_res.append(device.name)
+_res.append(".poll_")
+_res.append(device.name)
+_res.append("();\n\t\n\t// TODO: Add any additional loop code here.\n}\n")
+result := _res.toString
+end
+}

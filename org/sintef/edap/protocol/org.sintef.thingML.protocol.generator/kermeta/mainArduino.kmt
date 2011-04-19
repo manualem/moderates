@@ -12,10 +12,14 @@ package thingML;
 require kermeta
 require "./helper.kmt"
 require "./CHelper.kmt"
-require "./template/arduino/header.kmt"
-require "./template/arduino/implementation.kmt"
-require "./template/arduino/example.kmt"
-require "./template/arduino/keywords.kmt"
+require "./template/arduino-xbee/header.kmt"
+require "./template/arduino-xbee/implementation.kmt"
+require "./template/arduino-xbee/example.kmt"
+require "./template/arduino-xbee/keywords.kmt"
+require "./template/arduino-serial/header.kmt"
+require "./template/arduino-serial/implementation.kmt"
+require "./template/arduino-serial/example.kmt"
+require "./template/arduino-serial/keywords.kmt"
 
 using kermeta::standard
 using kermeta::io
@@ -25,15 +29,7 @@ using edap
 class MainArduinoProtocolGenerator
 {
 
-operation mainArduino(thingMLuri : String, srcFolder : String) : Void is do 
-	main(thingMLuri, srcFolder)
-end
-
-operation mainKevoree(thingMLuri : String, srcFolder : String) : Void is do 
-	main(thingMLuri, srcFolder)
-end
-
-	operation main(thingMLuri : String, srcFolder : String) : Void is do 
+operation mainSerial(thingMLuri : String, srcFolder : String) : Void is do 
 		var helper : Helper init Helper.new
 		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
 		
@@ -71,4 +67,44 @@ end
 			
 		}
 	end
+	
+	operation mainXBee(thingMLuri : String, srcFolder : String) : Void is do 
+		var helper : Helper init Helper.new
+		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
+		
+		var header : ArduinoXBeeHeaderGenerator init ArduinoXBeeHeaderGenerator.new
+		var impl : ArduinoXBeeCPPGenerator init ArduinoXBeeCPPGenerator.new
+		var example: ArduinoXBeeExampleGenerator init ArduinoXBeeExampleGenerator.new
+		var keywds : ArduinoXBeeKeywordsGenerator init ArduinoXBeeKeywordsGenerator.new
+		
+		
+		var file : FileIO init FileIO.new
+		
+		thingMLmodel.types.select{t | t.isKindOf(Device)}.each{t |
+		
+			stdio.writeln("ArduinoHeaderGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"XBeeAPI/" +t.name+"XBeeAPI.h", header.generate(t.name, t.asType(Device)))
+			stdio.writeln("")
+			
+			
+			stdio.writeln("ArduinoCPPGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"XBeeAPI/" +t.name+"XBeeAPI.cpp", impl.generate(t.name, t.asType(Device)))
+			stdio.writeln("")
+	
+			stdio.writeln("ArduinoKeywordsGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"XBeeAPI/keywords.txt", keywds.generate(t.name, t.asType(Device)))
+			stdio.writeln("")
+			
+			
+			stdio.writeln("ArduinoExampleGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/"+t.name+"XBeeAPI/examples/" +t.name+ "XBeeAPIExample/"+t.name+"XBeeAPIExample.pde", example.generate(t.name, t.asType(Device)))
+			stdio.writeln("")		
+			
+		}
+	end
+	
 }

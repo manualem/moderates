@@ -1,0 +1,61 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class EnumGenerator{
+operation generate(packageName:String, enum:edap::Enumeration):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\nimport java.util.HashMap;\nimport java.util.Map;\n\npublic enum ")
+_res.append(enum.name)
+_res.append(" {\n\t")
+var x : Integer init 0 enum.literals.each{l | if x > 0 then
+_res.append(",\n\t")
+end
+_res.append(l.name)
+_res.append("((")
+_res.append(helper.java_type_annotation(enum))
+_res.append(")")
+_res.append(helper.getValue(l))
+_res.append(")")
+x := x+1}
+_res.append(";\n\n\tprivate final ")
+_res.append(helper.java_type_annotation(enum))
+_res.append(" value;\n\t\n\tprivate ")
+_res.append(enum.name)
+_res.append("(")
+_res.append(helper.java_type_annotation(enum))
+_res.append(" value){\n\t\tthis.value = value;\n\t}\n\t\n\tpublic ")
+_res.append(helper.java_type_annotation(enum))
+_res.append(" getValue(){\n\t\treturn value;\n\t}\n\t\n\tprivate static Map<")
+_res.append(helper.firstToUpper(helper.java_type_annotation(enum)))
+_res.append(", ")
+_res.append(enum.name)
+_res.append("> map;\n\t\n\tstatic {\n\t\tmap = new HashMap<")
+_res.append(helper.firstToUpper(helper.java_type_annotation(enum)))
+_res.append(", ")
+_res.append(enum.name)
+_res.append(">();\n")
+ enum.literals.each{l | 
+_res.append("\t\tmap.put((")
+_res.append(helper.java_type_annotation(enum))
+_res.append(")")
+_res.append(helper.getValue(l))
+_res.append(", ")
+_res.append(enum.name)
+_res.append(".")
+_res.append(l.name)
+_res.append(");\n")
+}
+_res.append("\t}\n\t\n\tpublic static ")
+_res.append(enum.name)
+_res.append(" fromValue(")
+_res.append(helper.java_type_annotation(enum))
+_res.append(" b) {\n\t\treturn map.get(b);\n\t}\n\t\n}\n")
+result := _res.toString
+end
+}

@@ -1,0 +1,57 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+require "../../CHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class ArduinoHeaderGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("")
+var chelper : CHelper init CHelper.new.make
+_res.append("\n// ensure this library description is only included once\n#ifndef ")
+_res.append(device.name)
+_res.append("_h\n#define ")
+_res.append(device.name)
+_res.append("_h\n\n// include types & constants of Wiring core API\n#include \"WConstants.h\"\n#undef abs\n#undef round\n\n#include <inttypes.h>\n\n#define MAX_PACKET_SIZE 32\n\n#define START_BYTE 0x12\n#define STOP_BYTE 0x13\n#define ESCAPE_BYTE 0x7D\n\n#define RCV_WAIT 0\n#define RCV_MSG 1\n#define RCV_ESC 2\n\n")
+device.all_enums.each{ e | e.literals.each { l |
+_res.append("#define ")
+_res.append(e.name)
+_res.append("_")
+_res.append(l.name)
+_res.append(" ")
+_res.append(l.c_value)
+_res.append("\n")
+}}
+_res.append("\n// Operations which implements the logic to execute when messages are received.\n")
+device.receives.each{out | 
+_res.append("extern void receive")
+_res.append(out.name)
+_res.append("(")
+_res.append(chelper.msgParamsDecl(out))
+_res.append(");\n")
+}
+_res.append("\nclass ")
+_res.append(device.name)
+_res.append("\n{\n  public:\n\t// Constructor\n    ")
+_res.append(device.name)
+_res.append("();\n\t// Standard init and pool operations to be called in setup and loop\n\tvoid init_")
+_res.append(device.name)
+_res.append("();\n\tvoid poll_")
+_res.append(device.name)
+_res.append("();\n\t// Operations for sending all messages\n")
+device.sends.each{in | 
+_res.append("    void send")
+_res.append(in.name)
+_res.append("(")
+_res.append(chelper.msgParamsDecl(in))
+_res.append(");\n")
+}
+_res.append("\n  private:\n\tuint8_t state;\n\tuint8_t buffer[MAX_PACKET_SIZE];\n\tuint8_t payload[MAX_PACKET_SIZE];\n\tuint8_t buffer_idx;\n\t// private operation which parses incomming message and calls\n\t// the corresponding exten functions\n    void parseIncommingMessage(uint8_t data[], uint8_t size);\n    void sendOutgoingMessage(uint8_t data[], uint8_t size);\n};\n\n#endif\n")
+result := _res.toString
+end
+}
