@@ -1,0 +1,68 @@
+package thingML;
+require kermeta
+require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "../../stringHelper.kmt"
+require "../../CHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+using edap
+class ArduinoCPPGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("")
+var chelper : CHelper init CHelper.new.make
+_res.append("// include core Wiring API\n#include \"WProgram.h\"\n\n// include this library's description file\n#include \"")
+_res.append(device.name)
+_res.append(".h\"\n\n// Constructor /////////////////////////////////////////////////////////////////\n")
+_res.append(device.name)
+_res.append("::")
+_res.append(device.name)
+_res.append("() {\n\tstate = RCV_WAIT;\n\tbuffer_idx = 0;\n}\n\n// Public Methods //////////////////////////////////////////////////////////////\nvoid ")
+_res.append(device.name)
+_res.append("::init_")
+_res.append(device.name)
+_res.append("(void) {\n\t// init the serial port\n\tSerial.begin(9600);\n}\n\nvoid ")
+_res.append(device.name)
+_res.append("::poll_")
+_res.append(device.name)
+_res.append("(void) {\t\n  uint8_t data;\n  while (Serial.available() > 0) {\n    data = Serial.read();\n    // we got a byte from the serial port\n    if (state == RCV_WAIT) {\n      // it should be a start byte or we just ignore it\n      if (data == START_BYTE)  {\n        state = RCV_MSG;\n        buffer_idx = 0;\n      }\n    }\n    else if (state == RCV_MSG) {\n      if (data == ESCAPE_BYTE) {\n        state = RCV_ESC;\n      }\n      else if (data == STOP_BYTE) {\n        // We got a complete frame\n        parseIncommingMessage(buffer, buffer_idx);\n        state = RCV_WAIT;\n      }\n      else if (data == START_BYTE) {\n        // Should not happen but we reset just in case\n        state = RCV_MSG;\n        buffer_idx = 0;\n      }\n      else { // it is just a byte to store\n        buffer[buffer_idx] = data;\n        buffer_idx++;\n      }\n    }\n    else if (state == RCV_ESC) {\n      // Store the byte without looking at it\n      buffer[buffer_idx] = data;\n      buffer_idx++;\n      state = RCV_MSG;\n    }\n  }\n}\n\n")
+device.sends.each{out | 
+_res.append("void ")
+_res.append(device.name)
+_res.append("::send")
+_res.append(out.name)
+_res.append("(")
+_res.append(chelper.msgParamsDecl(out))
+_res.append(") {\n   payload[0] = 0x01; // source addr (not used)\n   payload[1] = 0x00; // target addr (not used)\n   payload[2] = 0x00; // frame num (not used)\n   payload[3] = ")
+_res.append(chelper.msgTotalSize(out).toString)
+_res.append("; // length of the params\n   payload[4] = ")
+_res.append(out.annotations.select{a | a.name == "code"}.one.~value)
+_res.append("; // command code\n   // set params here\n")
+ var idx : Integer init 5
+   out.parameters.each{ p |
+_res.append("   ")
+_res.append(chelper.paramWriteBuffer(p, "payload", idx))
+_res.append("\n")
+idx := idx + chelper.paramSize(p) }
+_res.append("   // send the message\n   sendOutgoingMessage(payload, 16);\n}\n")
+}
+_res.append("\n// Private Methods /////////////////////////////////////////////////////////////\nvoid ")
+_res.append(device.name)
+_res.append("::parseIncommingMessage(uint8_t data[], uint8_t size) {\n\n  if (size < 5) return; // ignore incomplete packets\n\t\n  switch(data[4]) // command code\n  {\n")
+device.receives.each{in | 
+_res.append("   case ")
+_res.append(in.annotations.select{a | a.name == "code"}.one.~value)
+_res.append(": receive")
+_res.append(in.name)
+_res.append("(")
+_res.append(chelper.msgParamsReadBuffer(in, "data", 5))
+_res.append("); break;\n")
+}
+_res.append("   default: break; \n  }\n}\n\nvoid ")
+_res.append(device.name)
+_res.append("::sendOutgoingMessage(uint8_t data[], uint8_t size) {\n  uint8_t i = 0;\n  // send the start byte\n  Serial.write(START_BYTE);\n  // send data\n  for(i=0; i<size; i++) {\n    // escape special bytes\n    if(data[i] == START_BYTE || data[i] == STOP_BYTE || data[i] == ESCAPE_BYTE) {\n      Serial.write(ESCAPE_BYTE);\n    }\n    Serial.write(data[i]);\n  }\n  // send the stop byte\n  Serial.write(STOP_BYTE);\n}\n")
+result := _res.toString
+end
+}

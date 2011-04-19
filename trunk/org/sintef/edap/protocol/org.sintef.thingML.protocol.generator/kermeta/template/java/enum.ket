@@ -1,0 +1,42 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="EnumGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, enum:edap::Enumeration"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public enum <%=enum.name%> {
+	<%var x : Integer init 0 enum.literals.each{l | if x > 0 then%>,\n\t<%end%><%=l.name%>((<%=helper.java_type_annotation(enum)%>)<%=helper.getValue(l)%>)<%x := x+1}%>;
+
+	private final <%=helper.java_type_annotation(enum)%> value;
+	
+	private <%=enum.name%>(<%=helper.java_type_annotation(enum)%> value){
+		this.value = value;
+	}
+	
+	public <%=helper.java_type_annotation(enum)%> getValue(){
+		return value;
+	}
+	
+	private static Map<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>> map;
+	
+	static {
+		map = new HashMap<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>>();
+		<% enum.literals.each{l | %>
+		map.put((<%=helper.java_type_annotation(enum)%>)<%=helper.getValue(l)%>, <%=enum.name%>.<%=l.name%>);
+		<%}%>
+	}
+	
+	public static <%=enum.name%> fromValue(<%=helper.java_type_annotation(enum)%> b) {
+		return map.get(b);
+	}
+	
+}

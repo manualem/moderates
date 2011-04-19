@@ -23,7 +23,7 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 	public <%=msg.name%>(<%=helper.paramsToJava(msg)%>) {
 		setCommandID(<%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>);
 		<%msg.parameters.each{ p | %>
-		set<%=helper.firstToUpper(helper.toJavaType(p.type))%>Value(<%=p.name%>);
+		set<%=helper.firstToUpper(helper.java_type_annotation(p.type))%>Value(<%=p.name%><%if p.type.isKindOf(edap::Enumeration) then%>.getValue()<%end%>);
 		this.<%=p.name%> = <%=p.name%>;
 		<%}%>
 	}
@@ -42,15 +42,21 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 		}
 		position += <%=helper.getSize(p.type)%>;
 		<%else%>
-		<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
-		<%=p.name%> = bb.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
+		<%=p.name%> = <%if p.type.isKindOf(edap::Enumeration) then%> <%=p.type.name%>.fromValue(<%end%><% if helper.firstToUpper(helper.java_type_annotation(p.type)) != "Byte" then%>
+		bb.get<%=helper.firstToUpper(helper.java_type_annotation(p.type))%>()
 		<%else%>
-		<%=p.name%> = bb.get();
+		bb.get()
 		<%end%>
-		position += (int) (<%=helper.firstToUpper(helper.toJavaType(p.type))%>.SIZE/8);
+		<%if p.type.isKindOf(edap::Enumeration) then%>)<%end%>;
+		position += (int) (<%=helper.firstToUpper(helper.java_type_annotation(p.type))%>.SIZE/8);
 		<%end%>
 		<%}%>
 		
+	}
+	
+	@Override
+	public void acceptMessage(<%=device.name%>MessageHandler v) {
+		v.handle<%=msg.name%>(this);
 	}
 
 	@Override

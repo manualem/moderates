@@ -35,9 +35,12 @@ _res.append(helper.toJavaConstant(msg.name))
 _res.append(");\n")
 msg.parameters.each{ p | 
 _res.append("\t\tset")
-_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append(helper.firstToUpper(helper.java_type_annotation(p.type)))
 _res.append("Value(")
 _res.append(p.name)
+if p.type.isKindOf(edap::Enumeration) then
+_res.append(".getValue()")
+end
 _res.append(");\n\t\tthis.")
 _res.append(p.name)
 _res.append(" = ")
@@ -68,25 +71,36 @@ _res.append(" + (char)data[i];\n\t\t}\n\t\tposition += ")
 _res.append(helper.getSize(p.type))
 _res.append(";\n")
 else
-_res.append("")
- if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
 _res.append("\t\t")
 _res.append(p.name)
-_res.append(" = bb.get")
-_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
-_res.append("();\n")
-else
-_res.append("\t\t")
-_res.append(p.name)
-_res.append(" = bb.get();\n")
+_res.append(" = ")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append(" ")
+_res.append(p.type.name)
+_res.append(".fromValue(")
 end
-_res.append("\t\tposition += (int) (")
-_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+ if helper.firstToUpper(helper.java_type_annotation(p.type)) != "Byte" then
+_res.append("\n\t\tbb.get")
+_res.append(helper.firstToUpper(helper.java_type_annotation(p.type)))
+_res.append("()\n")
+else
+_res.append("\t\tbb.get()\n")
+end
+_res.append("\t\t")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append(")")
+end
+_res.append(";\n\t\tposition += (int) (")
+_res.append(helper.firstToUpper(helper.java_type_annotation(p.type)))
 _res.append(".SIZE/8);\n")
 end
 _res.append("")
 }
-_res.append("\t\t\n\t}\n\n\t@Override\n\tpublic String toString(){\n\t\tString myString = \"")
+_res.append("\t\t\n\t}\n\t\n\t@Override\n\tpublic void acceptMessage(")
+_res.append(device.name)
+_res.append("MessageHandler v) {\n\t\tv.handle")
+_res.append(msg.name)
+_res.append("(this);\n\t}\n\n\t@Override\n\tpublic String toString(){\n\t\tString myString = \"")
 _res.append(msg.name)
 _res.append(":\";\n")
 msg.parameters.each{ p | 

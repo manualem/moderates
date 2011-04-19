@@ -14,13 +14,16 @@ require "./helper.kmt"
 require "./template/java/fixedSizePackage.kmt"
 require "./template/java/protocolPacket.kmt"
 require "./template/java/protocol.kmt"
+require "./template/java/handler.kmt"
 require "./template/java/message.kmt"
+require "./template/java/enum.kmt"
 require "./template/java/simulator/GUI.kmt"
 require "./template/java/simulator/controller.kmt"
 require "./template/java/observer/deviceObserver.kmt"
 require "./template/java/observer/deviceSubject.kmt"
 require "./template/java/simulator/test.kmt"
 require "./template/java/comm/ZigBee/zigbee.kmt"
+require "./template/java/comm/Serial/serial.kmt"
 
 using kermeta::standard
 using kermeta::io
@@ -45,7 +48,10 @@ class MainJavaProtocolGenerator
 		var fspGenerator : FixedSizePackageGenerator init FixedSizePackageGenerator.new
 		var ppGenerator : ProtocolPacketGenerator init ProtocolPacketGenerator.new
 		var pGenerator : ProtocolGenerator init ProtocolGenerator.new 
+		var hGenerator : HandlerGenerator init HandlerGenerator.new
 		var mGenerator : MessageGenerator init MessageGenerator.new
+		
+		var eGenerator : EnumGenerator init EnumGenerator.new
 		
 		var guiGenerator : InteractiveDataGUIGenerator init InteractiveDataGUIGenerator.new
 		var controllerGenerator : InteractiveDataControllerGenerator init InteractiveDataControllerGenerator.new
@@ -56,10 +62,18 @@ class MainJavaProtocolGenerator
 		var simulatorTestGenerator : SimulatorTestGenerator init SimulatorTestGenerator.new
 		
 		var zbGenerator : ZigBeeGenerator init ZigBeeGenerator.new
+		var serialGenerator : SerialGenerator init SerialGenerator.new
 		
 		var file : FileIO init FileIO.new
 		
 		file.writeTextFile(srcFolder+"/org/sintef/moderates/FixedSizePacket.java", fspGenerator.generate("org.sintef.moderates"))
+		
+		thingMLmodel.types.select{t | t.isKindOf(Enumeration)}.each{e |
+			stdio.writeln("EnumGenerator")
+			stdio.writeln("---------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+e.name+".java", eGenerator.generate("org.sintef.moderates", e.asType(Enumeration)))
+			stdio.writeln("")
+		}
 		
 		thingMLmodel.types.select{t | t.isKindOf(Device)}.each{t |
 		
@@ -72,6 +86,11 @@ class MainJavaProtocolGenerator
 			stdio.writeln("ProtocolGenerator")
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"Protocol.java", pGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			stdio.writeln("")
+			
+			stdio.writeln("HandlerGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"MessageHandler.java", hGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")
 			
 			t.asType(Device).sends.each{ m |
@@ -142,6 +161,11 @@ class MainJavaProtocolGenerator
 			stdio.writeln("XBeeGenerator")
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/comm/ZigBee4"+t.name+".java", zbGenerator.generate("org.sintef.moderates", t.asType(Device)))
+			stdio.writeln("")	
+			
+			stdio.writeln("SerialGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/comm/Serial4"+t.name+".java", serialGenerator.generate("org.sintef.moderates", t.asType(Device)))
 			stdio.writeln("")		
 		}
 	end

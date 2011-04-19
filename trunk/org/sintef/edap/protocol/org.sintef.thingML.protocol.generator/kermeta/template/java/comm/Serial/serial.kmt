@@ -1,0 +1,50 @@
+package thingML;
+require kermeta
+require "../../../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class SerialGenerator{
+operation generate(packageName:String, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(".comm;\n\nimport org.sintef.moderates.observer.")
+_res.append(device.name)
+_res.append("ClientObserver;\nimport org.sintef.moderates.observer.")
+_res.append(device.name)
+_res.append("Observer;\nimport org.sintef.moderates.observer.")
+_res.append(device.name)
+_res.append("Subject;\nimport org.sintef.moderates.sim.Interactive")
+_res.append(device.name)
+_res.append("DataControllerClient;\n\nimport gnu.io.CommPort;\nimport gnu.io.CommPortIdentifier;\nimport gnu.io.PortInUseException;\nimport gnu.io.SerialPort;\nimport gnu.io.SerialPortEvent;\nimport gnu.io.SerialPortEventListener;\n\nimport java.io.IOException;\nimport java.io.InputStream;\nimport java.io.OutputStream;\nimport java.util.Enumeration;\nimport java.util.HashSet;\nimport java.util.Set;\n\npublic class Serial4")
+_res.append(device.name)
+_res.append(" implements ")
+_res.append(device.name)
+_res.append("ClientObserver, ")
+_res.append(device.name)
+_res.append("Subject {\n\n\tpublic static final byte START_BYTE = 0x12;\n\tpublic static final byte STOP_BYTE = 0x13;\n\tpublic static final byte ESCAPE_BYTE = 0x7D;\n\t\n\tprotected String port;\n\tprotected SerialPort serialPort;\n\n\tpublic Serial4")
+_res.append(device.name)
+_res.append("(String port) {\n\t\tthis.port = port;\n\t\tconnect(port);\n\t}\n\t\n\tvoid connect ( String portName )\n    {\n        try {\n\t\t\tCommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(portName);\n\t\t\tif ( portIdentifier.isCurrentlyOwned() )\n\t\t\t{\n\t\t\t    System.err.println(\"Error: Port \" + portName + \" is currently in use\");\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t    CommPort commPort = portIdentifier.open(this.getClass().getName(),2000);\n\t\t\t    \n\t\t\t    if ( commPort instanceof SerialPort )\n\t\t\t    {\n\t\t\t        SerialPort serialPort = (SerialPort) commPort;\n\t\t\t        serialPort.setSerialPortParams(9600, SerialPort.DATABITS_8,SerialPort.STOPBITS_1,SerialPort.PARITY_NONE);\n\t\t\t        \n\t\t\t        InputStream in = serialPort.getInputStream();\n\t\t\t        OutputStream out = serialPort.getOutputStream();\n\t\t\t                       \n\t\t\t        this.out = out;\n\t\t\t        \n\t\t\t        serialPort.addEventListener(new SerialReader(in));\n\t\t\t        serialPort.notifyOnDataAvailable(true);\n\n\t\t\t    }\n\t\t\t    else\n\t\t\t    {\n\t\t\t        System.err.println(\"Error: Port \" + portName + \" is not a valid serial port.\");\n\t\t\t    }\n\t\t\t}\n\t\t} catch (Exception e) {\n\t\t\te.printStackTrace();\n\t\t}\n    }\n\t\n\tpublic void close() {\n\t\tif (serialPort != null) {\n\t\t\tserialPort.notifyOnDataAvailable(false);\n\t\t\tserialPort.removeEventListener();\n\t\t\tserialPort.close();\n\t\t}\n\t}\n\n\t/* ***********************************************************************\n\t * Implementation of the CoffeeSensorClientObserver interface. \n\t * The receiveMsg method gets called with packets to send.\n\t *************************************************************************/\n\t@Override\n\tpublic void receiveMsg(byte[] msg) {\n\t\tsendData(msg);\n\t}\n\t\n\t/* ***********************************************************************\n\t * Implementation of the CoffeeSensorSubject interface. \n\t * The CoffeeSensor Observers get notified for each incoming packet.\n\t *************************************************************************/\n\tSet<")
+_res.append(device.name)
+_res.append("Observer> observers = new HashSet<")
+_res.append(device.name)
+_res.append("Observer>();\n\n\t@Override\n\tpublic void register(")
+_res.append(device.name)
+_res.append("Observer observer) {\n\t\tobservers.add(observer);\n\t}\n\n\t@Override\n\tpublic void unregister(")
+_res.append(device.name)
+_res.append("Observer observer) {\n\t\tobservers.remove(observer);\n\t}\n\n\t/* ***********************************************************************\n\t * Serial Port data send operation\n\t *************************************************************************/\n\tprotected OutputStream out;\n\tprotected void sendData(byte[] payload) {\n\t\ttry {\n\t\t\t// send the start byte\n\t\t\tout.write((int)START_BYTE);\n\t\t\t// send data\n\t\t\tfor(int i=0; i<payload.length; i++) {\n\t\t\t\t// escape special bytes\n\t\t\t\tif(payload[i] == START_BYTE || payload[i] == STOP_BYTE || payload[i] == ESCAPE_BYTE) {\n\t\t\t\t\tout.write((int)ESCAPE_BYTE);\n\t\t\t\t}\n\t\t\t\tout.write((int)payload[i]);\n\t\t\t}\n\t\t\t// send the stop byte\n\t\t\tout.write((int)STOP_BYTE);\n\t\t} catch (IOException e) {\n\t\t\t// TODO Auto-generated catch block\n\t\t\te.printStackTrace();\n\t\t}\n\t}\n\n\t/* ***********************************************************************\n\t * Serial Port Listener - reads packets from the serial line and\n\t * notifies listeners of incoming packets\n\t *************************************************************************/\n\tpublic class SerialReader implements SerialPortEventListener \n    {\n\t\tpublic static final int RCV_WAIT = 0;\n\t    public static final int RCV_MSG = 1;\n\t    public static final int RCV_ESC = 2;\n\t\t\n\t\tprotected InputStream in;\n        private byte[] buffer = new byte[256];\n        protected int buffer_idx = 0;\n        \n        protected int state = RCV_WAIT;\n        \n        public SerialReader ( InputStream in )\n        {\n            this.in = in;\n        }\n        \n        public void serialEvent(SerialPortEvent arg0) {\n            \n        \tbyte data;\n          \n            try\n            {\n                while ( ( data = (byte)in.read()) > -1 )\n                {\n                \t// we got a byte from the serial port\n                \tif (state == RCV_WAIT) { // it should be a start byte or we just ignore it\n                \t\tif (data == START_BYTE)  {\n                \t\t\tstate = RCV_MSG;\n                \t\t\tbuffer_idx = 0;\n                \t\t}\n                \t}\n                \telse if (state == RCV_MSG) {\n                \t\tif (data == ESCAPE_BYTE) {\n                \t\t\tstate = RCV_ESC;\n                \t\t}\n                \t\telse if (data == STOP_BYTE) {\n                \t\t\t// We got a complete frame\n                \t\t\tbyte[] packet = new byte[buffer_idx];\n                \t\t\tfor (int i = 0; i<buffer_idx; i++) packet[i] = buffer[i];\n                \t\t\tfor(")
+_res.append(device.name)
+_res.append("Observer o : observers) {\n            \t\t\t\t\to.receiveMsg(packet);\n            \t\t\t\t}\n                \t\t\tstate = RCV_WAIT;\n                \t\t}\n                \t\telse if (data == START_BYTE) {\n                \t\t\t// Should not happen but we reset just in case\n                \t\t\tstate = RCV_MSG;\n                \t\t\tbuffer_idx = 0;\n                \t\t}\n                \t\telse { // it is just a byte to store\n                \t\t\tbuffer[buffer_idx] = data;\n                \t\t\tbuffer_idx++;\n                \t\t}\n                \t}\n                \telse if (state == RCV_ESC) {\n                \t\t// Store the byte without looking at it\n                \t\tbuffer[buffer_idx] = data;\n            \t\t\tbuffer_idx++;\n            \t\t\tstate = RCV_MSG;\n                \t}\n                }\n            }\n            catch ( IOException e )\n            {\n                e.printStackTrace();\n            }             \n        }\n    }\n\t\n\t/* ***********************************************************************\n\t * Serial port utilities: listing\n\t *************************************************************************/\n\t\n\t/**\n     * @return    A HashSet containing the CommPortIdentifier for all serial ports that are not currently being used.\n     */\n    public static HashSet<CommPortIdentifier> getAvailableSerialPorts() {\n        HashSet<CommPortIdentifier> h = new HashSet<CommPortIdentifier>();\n        Enumeration thePorts = CommPortIdentifier.getPortIdentifiers();\n        while (thePorts.hasMoreElements()) {\n            CommPortIdentifier com = (CommPortIdentifier) thePorts.nextElement();\n            switch (com.getPortType()) {\n            case CommPortIdentifier.PORT_SERIAL:\n                try {\n                    CommPort thePort = com.open(\"CommUtil\", 50);\n                    thePort.close();\n                    h.add(com);\n                } catch (PortInUseException e) {\n                    System.out.println(\"Port, \"  + com.getName() + \", is in use.\");\n                } catch (Exception e) {\n                    System.err.println(\"Failed to open port \" +  com.getName());\n                    e.printStackTrace();\n                }\n            }\n        }\n        return h;\n    }\n\t\n\t/* ***********************************************************************\n\t * Main\n\t *************************************************************************/\n\tpublic static void main(String[] args) {\n\t\tSerial4")
+_res.append(device.name)
+_res.append(" device = null;\n\t\ttry {\n\t\t\t// TODO: Change this with the actual port of your arduino\n\t\t\tdevice = new Serial4")
+_res.append(device.name)
+_res.append("(\"COM21\");\n\t\t\tInteractive")
+_res.append(device.name)
+_res.append("DataControllerClient controller2 = new Interactive")
+_res.append(device.name)
+_res.append("DataControllerClient();\n\t\t\tdevice.register(controller2);\n\t\t\tcontroller2.register(device);\n\t\t}\n\t\tcatch (Exception e) {\n\t\t\te.printStackTrace();\n\t\t} \n\t\tfinally {\n\t\t\tdevice.close();\n\t\t}\t\n\t}\n}")
+result := _res.toString
+end
+}

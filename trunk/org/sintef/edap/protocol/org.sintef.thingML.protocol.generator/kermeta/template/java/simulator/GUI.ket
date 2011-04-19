@@ -11,6 +11,7 @@ parameters="packageName:String, device:edap::Device, isClient:Boolean"
 package <%=packageName%>.sim;
 
 import <%=packageName%>.observer.<%=device.name%><%if isClient then%>Client<%end%>Observer;
+import <%=packageName%>.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,7 +35,6 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-
 
 public class Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%> implements ActionListener {
 	
@@ -154,7 +154,7 @@ public class Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>
 		c.gridy = <%=y.toString%>;
  		panel.add(label<%=p.name%>, c);
 				<%if p.type.isKindOf(edap::Enumeration) then%>
-		<%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=device.name%>Protocol.<%=helper.firstToUpper(p.type.name)%>.<%=l.name%><%w := w+1}%>};
+		<%=helper.firstToUpper(p.type.name)%>[] values<%=msg.name+"_"+p.name%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=helper.firstToUpper(p.type.name)%>.<%=l.name%><%w := w+1}%>};
 		field<%=msg.name+"_"+p.name%> = new JComboBox(values<%=msg.name+"_"+p.name%>);		
 				<%else%>		
  		field<%=msg.name+"_"+p.name%> = new JTextField();

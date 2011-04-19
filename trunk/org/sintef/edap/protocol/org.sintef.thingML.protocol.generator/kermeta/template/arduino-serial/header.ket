@@ -1,0 +1,67 @@
+<%@ket
+package="thingML"
+require="platform:/lookup/org.sintef.edap.model/model/edap.ecore ../../stringHelper.kmt ../../CHelper.kmt"
+using="edap"
+isAspectClass="false"
+class="ArduinoHeaderGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+<%var chelper : CHelper init CHelper.new.make%>
+
+// ensure this library description is only included once
+#ifndef <%=device.name%>_h
+#define <%=device.name%>_h
+
+// include types & constants of Wiring core API
+#include "WConstants.h"
+#undef abs
+#undef round
+
+#include <inttypes.h>
+
+#define MAX_PACKET_SIZE 32
+
+#define START_BYTE 0x12
+#define STOP_BYTE 0x13
+#define ESCAPE_BYTE 0x7D
+
+#define RCV_WAIT 0
+#define RCV_MSG 1
+#define RCV_ESC 2
+
+<%device.all_enums.each{ e | e.literals.each { l |%>
+#define <%=e.name%>_<%=l.name%> <%=l.c_value%>
+<%}}%>
+
+// Operations which implements the logic to execute when messages are received.
+<%device.receives.each{out | %>
+extern void receive<%=out.name%>(<%=chelper.msgParamsDecl(out)%>);
+<%}%>
+
+class <%=device.name%>
+{
+  public:
+	// Constructor
+    <%=device.name%>();
+	// Standard init and pool operations to be called in setup and loop
+	void init_<%=device.name%>();
+	void poll_<%=device.name%>();
+	// Operations for sending all messages
+	<%device.sends.each{in | %>
+    void send<%=in.name%>(<%=chelper.msgParamsDecl(in)%>);
+    <%}%>
+
+  private:
+	uint8_t state;
+	uint8_t buffer[MAX_PACKET_SIZE];
+	uint8_t payload[MAX_PACKET_SIZE];
+	uint8_t buffer_idx;
+	// private operation which parses incomming message and calls
+	// the corresponding exten functions
+    void parseIncommingMessage(uint8_t data[], uint8_t size);
+    void sendOutgoingMessage(uint8_t data[], uint8_t size);
+};
+
+#endif

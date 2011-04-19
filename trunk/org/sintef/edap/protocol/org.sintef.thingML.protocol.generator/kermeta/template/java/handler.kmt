@@ -1,0 +1,36 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class HandlerGenerator{
+operation generate(packageName:String, device:edap::Device, root:edap::EdapModel):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\nimport ")
+_res.append(packageName)
+_res.append(".msg.*;\n\npublic interface ")
+_res.append(device.name)
+_res.append("MessageHandler {\n\n")
+device.receives.each{msg | 
+_res.append("\tpublic void handle")
+_res.append(msg.name)
+_res.append("(")
+_res.append(msg.name)
+_res.append(" msg);\n")
+}
+_res.append("\t\n")
+device.sends.each{msg | 
+_res.append("\tpublic void handle")
+_res.append(msg.name)
+_res.append("(")
+_res.append(msg.name)
+_res.append(" msg);\n")
+}
+_res.append("}\n")
+result := _res.toString
+end
+}

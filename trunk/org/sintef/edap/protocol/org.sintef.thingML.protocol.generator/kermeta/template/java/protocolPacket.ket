@@ -28,6 +28,8 @@ public abstract class <%=device.name%>ProtocolPacket extends FixedSizePacket {
 		return data[4];
 	}
 	
+	public abstract void acceptMessage(<%=device.name%>MessageHandler v);
+	
 	<%device.all_types.select{t | t.isKindOf(edap::PrimitiveType)}.each{ t | %>
 	protected void set<%=helper.firstToUpper(helper.toJavaType(t))%>Value(<%=helper.firstToUpper(helper.toJavaType(t))%> v) {
 		<%if helper.getJavaByteTypes.contains(t.name) then%>
