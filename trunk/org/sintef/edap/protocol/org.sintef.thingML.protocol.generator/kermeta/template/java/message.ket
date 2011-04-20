@@ -55,7 +55,7 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 	}
 	
 	@Override
-	public void acceptMessage(<%=device.name%>MessageHandler v) {
+	public void acceptHandler(<%=device.name%>MessageHandler v) {
 		v.handle<%=msg.name%>(this);
 	}
 

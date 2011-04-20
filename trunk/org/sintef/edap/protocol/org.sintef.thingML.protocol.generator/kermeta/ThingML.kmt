@@ -42,6 +42,34 @@ aspect class Device {
 		
 		result := res
 	end
+	
+	
+	property readonly receives_async : Sequence<Message>
+		getter is do
+			result := receives.select{ m | m.sync_response_annotation == void and m.sync_ack_annotation == void }
+		end
+	
+	property readonly receives_sync_ack : Sequence<Message>
+		getter is do
+			result := receives.select{ m | m.sync_ack_annotation != void }
+		end
+	
+	property readonly receives_sync_response : Sequence<Message>
+		getter is do
+			result := receives.select{ m | m.sync_response_annotation != void }
+		end
+		
+	property readonly sends_async : Sequence<Message>
+		getter is do
+			result := Sequence<Message>.new
+			result.addAll(sends)
+			receives_sync_ack.collect{ m | m.sync_ack_message}.each{ m |
+				result.remove(m)
+			}  
+			receives_sync_response.collect{ m | m.sync_response_message}.each{ m |
+				result.remove(m)
+			}  
+		end
 
 }
 
@@ -64,4 +92,73 @@ aspect class Type
 		end
 	end
 	
+}
+
+aspect class Message {
+	
+	property readonly timeout_annotation : String
+		getter is do
+			var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "timeout"}
+			if a!=void then result := a.~value
+			else result := "1000" // this is the default timeout it the annotation is not present
+			end
+		end
+		
+	property readonly retry_annotation : String
+		getter is do
+			var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "retry"}
+			if a!=void then result := a.~value
+			else result := "0" // No retries by default
+			end
+		end
+	
+	property readonly sync_response_annotation : String
+		getter is do
+			var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "sync_response"}
+			if a!=void then result := a.~value
+			else result := void
+			end
+		end
+	
+	property readonly sync_ack_annotation : String
+		getter is do
+			var a : edap::PlatformAnnotation init annotations.detect{a | a.name == "sync_ack"}
+			if a!=void then result := a.~value
+			else result := void
+			end
+		end
+	
+	property readonly sync_response_message : Message
+		getter is do
+			var a : String init sync_response_annotation
+			var msg : String init a.split("#").first
+			result := container.asType(Device).sends.detect{ m | m.name == msg }
+			if result == void then raise "VOID" end
+		rescue
+			stdio.writeln("ERROR: Cannot process annotation sync_response for message " + name + " (response message not found)")
+		end
+		
+	property readonly sync_ack_message : Message
+		getter is do
+			var a : String init sync_ack_annotation
+			result := container.asType(Device).sends.detect{ m | m.name == a }
+			if result == void then raise "VOID" end
+		rescue
+			stdio.writeln("ERROR: Cannot process annotation sync_ack for message " + name + " (ack message not found)")
+	end
+	
+	property readonly sync_response_parameter : Parameter
+		getter is do
+			
+			var a : String init sync_response_annotation
+			stdio.writeln("a = " + a)
+			var pn : String init a.split("#").elementAt(1)
+			stdio.writeln("pn = " + pn)
+			stdio.writeln("sync_response_message = " + sync_response_message.name)
+			result := sync_response_message.parameters.detect{ p | p.name == pn }
+			if result == void then raise "VOID" end
+		rescue
+			stdio.writeln("ERROR: Cannot process annotation sync_response for message " + name + " (result parameter not found)")
+		end
+
 }
