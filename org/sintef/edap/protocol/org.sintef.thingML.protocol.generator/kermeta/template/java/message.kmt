@@ -96,7 +96,7 @@ _res.append(".SIZE/8);\n")
 end
 _res.append("")
 }
-_res.append("\t\t\n\t}\n\t\n\t@Override\n\tpublic void acceptMessage(")
+_res.append("\t\t\n\t}\n\t\n\t@Override\n\tpublic void acceptHandler(")
 _res.append(device.name)
 _res.append("MessageHandler v) {\n\t\tv.handle")
 _res.append(msg.name)

@@ -150,6 +150,22 @@ class StringHelper
 		result := res
 	end
 	
+	operation paramsToGetterCall(m : edap::Message, varname : String) : String is
+	do
+		var res : String init ""
+		var i : Integer init 0
+		var uname : String
+		m.parameters.each{ p | 
+			if i > 0 then
+				res := res + ", "
+			end
+			uname := p.name.substring(0,1).toUpperCase + p.name.substring(1,p.name.size)
+			res := res + varname + ".get" + uname + "()"
+			i := i+1
+		}
+		result := res
+	end
+	
 	operation getValue(l : edap::EnumerationLiteral) : String is
 	do
 		var res : String init "" 

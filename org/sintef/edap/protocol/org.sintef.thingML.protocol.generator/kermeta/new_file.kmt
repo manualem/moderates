@@ -1,0 +1,37 @@
+/* $Id:$ 
+ * Creation : April 20, 2011
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            ffl
+ */
+@mainClass "root_package::Main"
+@mainOperation "main"
+
+
+package root_package;
+
+
+require kermeta
+
+using kermeta::standard
+
+class Main
+{
+	operation main() : Void is do 
+		
+		testSplit("analogReadResult value", " ")
+		testSplit("analogReadResult.value", ".")
+		testSplit("analogReadResult#value", "#")
+		testSplit("analogReadResult;value", ";")
+		
+	end
+	
+	operation testSplit(s : String, c : String) is do
+		stdio.writeln(s)
+		stdio.writeln("tokens : " + s.split(c).size.toString)
+		s.split(" ").each { sub |
+			stdio.writeln(" # " + sub)
+		}
+	end
+}

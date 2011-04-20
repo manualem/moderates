@@ -15,6 +15,8 @@ require "./template/java/fixedSizePackage.kmt"
 require "./template/java/protocolPacket.kmt"
 require "./template/java/protocol.kmt"
 require "./template/java/handler.kmt"
+require "./template/java/handlerclasses.kmt"
+require "./template/java/driver.kmt"
 require "./template/java/message.kmt"
 require "./template/java/enum.kmt"
 require "./template/java/simulator/GUI.kmt"
@@ -49,7 +51,10 @@ class MainJavaProtocolGenerator
 		var ppGenerator : ProtocolPacketGenerator init ProtocolPacketGenerator.new
 		var pGenerator : ProtocolGenerator init ProtocolGenerator.new 
 		var hGenerator : HandlerGenerator init HandlerGenerator.new
+		var hcGenerator : HandlerClassGenerator init HandlerClassGenerator.new
 		var mGenerator : MessageGenerator init MessageGenerator.new
+		
+		var dGenerator : DriverGenerator init DriverGenerator.new
 		
 		var eGenerator : EnumGenerator init EnumGenerator.new
 		
@@ -88,10 +93,22 @@ class MainJavaProtocolGenerator
 			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"Protocol.java", pGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")
 			
+			stdio.writeln("DriverGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/Abstract"+t.name+".java", dGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			stdio.writeln("")
+			
 			stdio.writeln("HandlerGenerator")
 			stdio.writeln("-----------------------")
-			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"MessageHandler.java", hGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/I"+t.name+"MessageHandler.java", hGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
 			stdio.writeln("")
+			
+			stdio.writeln("HandlerClassGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"MessageHandler.java", hcGenerator.generate("org.sintef.moderates", t.asType(Device), false))
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"ClientMessageHandler.java", hcGenerator.generate("org.sintef.moderates", t.asType(Device), true))
+			stdio.writeln("")
+			
 			
 			t.asType(Device).sends.each{ m |
 				stdio.writeln("IncomingMessageGenerator")

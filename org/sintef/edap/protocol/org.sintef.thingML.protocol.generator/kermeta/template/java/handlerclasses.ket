@@ -1,0 +1,25 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="HandlerClassGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, isClient:Boolean"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import <%=packageName%>.msg.*;
+
+public abstract class <%=device.name%><%if isClient then%>Client<%end%>MessageHandler implements I<%=device.name%>MessageHandler{
+	<%if isClient then%>
+	<%device.sends.each{msg | %>
+	public void handle<%=msg.name%>(<%=msg.name%> msg){ /* Nothing */ }
+	<%}%>
+	<%else%>
+	<%device.receives.each{msg | %>
+	public void handle<%=msg.name%>(<%=msg.name%> msg){ /* Nothing */ }
+	<%}%>
+	<%end%>
+}

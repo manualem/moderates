@@ -1,0 +1,154 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="DriverGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import <%=packageName%>.msg.*;
+import <%=packageName%>.comm.*;
+import <%=packageName%>.observer.*;
+
+public abstract class Abstract<%=device.name%> {
+
+	private <%=device.name%>DriverMessageHandler messageHandler;
+	private Serial4<%=device.name%> serial;
+
+	public Abstract<%=device.name%>(String port) {
+		serial = new Serial4<%=device.name%>(port);
+		messageHandler = new <%=device.name%>DriverMessageHandler();
+		serial.register(messageHandler);
+	}
+	
+	//*************************************************************************
+	// Asynchronous remote calls. No expected result or ack. "Send and forget" 
+	//*************************************************************************
+	<%device.receives_async.each{ m | %>
+	public void <%=m.name%>(<%=helper.paramsToJava(m)%>) {
+		// Create message using the factory
+		FixedSizePacket p = <%=device.name%>Protocol.create<%=m.name%>(<%=helper.paramsToJavaCall(m)%>);
+		// Send the message on the serial line
+		serial.receiveMsg(p.getPacket());
+	}
+	<%}%>
+	
+	//*************************************************************************
+	// Synchronous remote calls. Wait for the ack and return true if it comes
+	//*************************************************************************
+	<%device.receives_sync_ack.each{ m | %>
+	private boolean <%=m.name%>_ack_available;
+	private Object <%=m.name%>Monitor = "<%=m.name%>Monitor";
+	public boolean <%=m.name%>(<%=helper.paramsToJava(m)%>) {
+		<%=m.name%>_ack_available = false;
+		// Create message using the factory
+		FixedSizePacket p = <%=device.name%>Protocol.create<%=m.name%>(<%=helper.paramsToJavaCall(m)%>);
+		// Create message using the factory
+		serial.receiveMsg(p.getPacket());
+		try {
+			synchronized(<%=m.name%>Monitor) {
+				<%=m.name%>Monitor.wait(<%=m.timeout_annotation%>);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		if (<%=m.name%>_ack_available) return true;
+		else return false;
+	}
+	<%}%>
+	
+	//*************************************************************************
+	// Synchronous remote calls with result
+	//*************************************************************************
+	<%device.receives_sync_response.each{ m | %>
+	private <%=helper.toJavaType(m.sync_response_parameter.type)%> <%=m.name%>_result;
+	private boolean <%=m.name%>_result_available;
+	private Object <%=m.name%>Monitor = "<%=m.name%>Monitor";
+	public <%=helper.toJavaType(m.sync_response_parameter.type)%> <%=m.name%>(<%=helper.paramsToJava(m)%>) {
+		try {
+			synchronized(<%=m.name%>Monitor) {
+				<%=m.name%>_result_available = false;
+				// Create message using the factory
+				FixedSizePacket p = <%=device.name%>Protocol.create<%=m.name%>(<%=helper.paramsToJavaCall(m)%>);
+				// Create message using the factory
+				serial.receiveMsg(p.getPacket());
+				<%=m.name%>Monitor.wait(<%=m.timeout_annotation%>);
+				if (<%=m.name%>_result_available) return <%=m.name%>_result;
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		// The exception alternative
+		//throw new Error("<%=device.name%>: Timeout waiting for the result of <%=m.name%>");
+		// The error message alternative
+		System.err.println("<%=device.name%>: Timeout waiting for the result of <%=m.name%>");
+		<% if helper.getJavaByteTypes().contains(helper.toJavaType(m.sync_response_parameter.type)) then%>
+		return 0;
+		<%else%>
+		return null;
+		<%end%> 
+		
+	}
+	<%}%>
+	
+	/* ******************************************************
+	 * Handlers for the incoming messages
+	 ********************************************************/
+	<%device.sends_async.each{ m | %>
+	/**
+	 * Implement this method to handle the incoming message <%=m.name%>
+	 */
+	protected abstract void receive<%=m.name%>(<%=helper.paramsToJava(m)%>);
+	<%}%>
+	
+	private class <%=device.name%>DriverMessageHandler extends <%=device.name%>MessageHandler implements <%=device.name%>Observer {
+		
+		@Override
+		// Messages from the <%=device.name%> device arrive here
+		public void receiveMsg(byte[] msg) {
+			<%=device.name%>ProtocolPacket p = (<%=device.name%>ProtocolPacket)<%=device.name%>Protocol.createMessageFromPacket(msg);
+			p.acceptHandler(messageHandler);
+		}
+		
+		//*************************************************************************
+		// Results of Synchronous remote calls with results
+		//*************************************************************************
+		<%device.receives_sync_response.each{ m | %>
+		@Override
+		public void handle<%=m.sync_response_message.name%>(<%=m.sync_response_message.name%> msg) {
+			<%=m.name%>_result = msg.get<%=helper.firstToUpper(m.sync_response_parameter.name)%>();
+			<%=m.name%>_result_available = true;
+			synchronized(<%=m.name%>Monitor) {
+				<%=m.name%>Monitor.notify();
+			}
+		}
+		<%}%>
+		
+		//*************************************************************************
+		// Results of Synchronous remote calls with acks
+		//*************************************************************************
+		<%device.receives_sync_ack.each{ m | %>
+		@Override
+		public void handle<%=m.sync_ack_message.name%>(<%=m.sync_ack_message.name%> msg) {
+			synchronized(<%=m.name%>Monitor) {
+				<%=m.name%>_ack_available = true;
+				<%=m.name%>Monitor.notify();
+			}
+		}
+		<%}%>
+	
+		//*************************************************************************
+		// Asynchonous incoming messages
+		//*************************************************************************
+		<%device.sends_async.each{ m | %>
+		@Override
+		public void handle<%=m.name%>(<%=m.name%> msg) {
+			receive<%=m.name%>(<%=helper.paramsToGetterCall(m, "msg")%>);
+		}
+		<%}%>
+	}
+}

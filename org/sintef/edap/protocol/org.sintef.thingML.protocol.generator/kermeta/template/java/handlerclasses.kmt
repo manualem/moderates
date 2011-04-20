@@ -3,8 +3,8 @@ require kermeta
 require "../../stringHelper.kmt"
 using kermeta::standard
 using kermeta::utils
-class HandlerGenerator{
-operation generate(packageName:String, device:edap::Device, root:edap::EdapModel):String is do
+class HandlerClassGenerator{
+operation generate(packageName:String, device:edap::Device, isClient:Boolean):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
@@ -12,24 +12,35 @@ _res.append("package ")
 _res.append(packageName)
 _res.append(";\n\nimport ")
 _res.append(packageName)
-_res.append(".msg.*;\n\npublic interface I")
+_res.append(".msg.*;\n\npublic abstract class ")
 _res.append(device.name)
-_res.append("MessageHandler {\n\n")
-device.receives.each{msg | 
-_res.append("\tpublic void handle")
-_res.append(msg.name)
-_res.append("(")
-_res.append(msg.name)
-_res.append(" msg);\n")
-}
-_res.append("\t\n")
+if isClient then
+_res.append("Client")
+end
+_res.append("MessageHandler implements I")
+_res.append(device.name)
+_res.append("MessageHandler{\n")
+if isClient then
+_res.append("")
 device.sends.each{msg | 
 _res.append("\tpublic void handle")
 _res.append(msg.name)
 _res.append("(")
 _res.append(msg.name)
-_res.append(" msg);\n")
+_res.append(" msg){ /* Nothing */ }\n")
 }
+_res.append("")
+else
+_res.append("")
+device.receives.each{msg | 
+_res.append("\tpublic void handle")
+_res.append(msg.name)
+_res.append("(")
+_res.append(msg.name)
+_res.append(" msg){ /* Nothing */ }\n")
+}
+_res.append("")
+end
 _res.append("}\n")
 result := _res.toString
 end

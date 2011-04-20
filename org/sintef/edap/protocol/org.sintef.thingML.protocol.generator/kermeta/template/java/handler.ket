@@ -12,7 +12,7 @@ package <%=packageName%>;
 
 import <%=packageName%>.msg.*;
 
-public interface <%=device.name%>MessageHandler {
+public interface I<%=device.name%>MessageHandler {
 
 	<%device.receives.each{msg | %>
 	public void handle<%=msg.name%>(<%=msg.name%> msg);
