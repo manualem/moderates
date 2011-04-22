@@ -49,11 +49,9 @@ _res.append(";\n")
 }
 _res.append("\t}\n\t\n\tpublic ")
 _res.append(msg.name)
-_res.append("(byte[] packet) {\n\t\tsetPacketData(packet);\n\t\tint position = 5;\n")
+_res.append("(byte[] packet) {\n\t\tsetPacketData(packet);\n")
 if msg.parameters.exists{p | not helper.isJavaString(p.type)} then
-_res.append("\t\tByteBuffer bb = ByteBuffer.wrap(data, 5, 10);")
-//5 and 10 are magic numbers...
-_res.append("\n")
+_res.append("")
 end
 _res.append("")
 msg.parameters.each{ p | 
@@ -67,32 +65,21 @@ _res.append(", getLength()); i++) {\n\t\t\t ")
 _res.append(p.name)
 _res.append(" =  ")
 _res.append(p.name)
-_res.append(" + (char)data[i];\n\t\t}\n\t\tposition += ")
-_res.append(helper.getSize(p.type))
-_res.append(";\n")
+_res.append(" + (char)data[i];\n\t\t}\n")
+else
+_res.append("")
+ if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
+_res.append("\t\t")
+_res.append(p.name)
+_res.append(" = buffer.get")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append("();\n")
 else
 _res.append("\t\t")
 _res.append(p.name)
-_res.append(" = ")
-if p.type.isKindOf(edap::Enumeration) then
-_res.append(" ")
-_res.append(p.type.name)
-_res.append(".fromValue(")
+_res.append(" = buffer.get();\n")
 end
- if helper.firstToUpper(helper.java_type_annotation(p.type)) != "Byte" then
-_res.append("\n\t\tbb.get")
-_res.append(helper.firstToUpper(helper.java_type_annotation(p.type)))
-_res.append("()\n")
-else
-_res.append("\t\tbb.get()\n")
-end
-_res.append("\t\t")
-if p.type.isKindOf(edap::Enumeration) then
-_res.append(")")
-end
-_res.append(";\n\t\tposition += (int) (")
-_res.append(helper.firstToUpper(helper.java_type_annotation(p.type)))
-_res.append(".SIZE/8);\n")
+_res.append("")
 end
 _res.append("")
 }
