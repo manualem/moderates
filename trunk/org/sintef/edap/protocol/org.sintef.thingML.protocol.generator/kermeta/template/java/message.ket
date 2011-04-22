@@ -30,9 +30,7 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 	
 	public <%=msg.name%>(byte[] packet) {
 		setPacketData(packet);
-		int position = 5;
 		<%if msg.parameters.exists{p | not helper.isJavaString(p.type)} then%>
-		ByteBuffer bb = ByteBuffer.wrap(data, 5, 10);<%//5 and 10 are magic numbers...%>
 		<%end%>
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
@@ -40,15 +38,12 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 		for(int i=position; i<Math.min(position+<%=helper.getSize(p.type)%>, getLength()); i++) {
 			 <%=p.name%> =  <%=p.name%> + (char)data[i];
 		}
-		position += <%=helper.getSize(p.type)%>;
 		<%else%>
-		<%=p.name%> = <%if p.type.isKindOf(edap::Enumeration) then%> <%=p.type.name%>.fromValue(<%end%><% if helper.firstToUpper(helper.java_type_annotation(p.type)) != "Byte" then%>
-		bb.get<%=helper.firstToUpper(helper.java_type_annotation(p.type))%>()
+		<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
+		<%=p.name%> = buffer.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
 		<%else%>
-		bb.get()
+		<%=p.name%> = buffer.get();
 		<%end%>
-		<%if p.type.isKindOf(edap::Enumeration) then%>)<%end%>;
-		position += (int) (<%=helper.firstToUpper(helper.java_type_annotation(p.type))%>.SIZE/8);
 		<%end%>
 		<%}%>
 		
