@@ -23,6 +23,13 @@
                label="Generate Protocol API in JAVA"
                menubarPath="org.sintef.edap.generator.protocol.menu/group3">
        </action>
+         <action
+               class="org.sintef.thingml.protocol.generator.GenerateScala"
+               enablesFor="1"
+               id="org.sintef.edap.generator.protocol.generateScala"
+               label="Generate Protocol API in Scala"
+               menubarPath="org.sintef.edap.generator.protocol.menu/group3">
+         </action>
        <action
                class="org.sintef.thingml.protocol.generator.GenerateKevoree"
                enablesFor="1"
