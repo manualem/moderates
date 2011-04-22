@@ -10,9 +10,9 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("package ")
 _res.append(packageName)
-_res.append(";\n\nimport java.nio.ByteBuffer;\n\npublic abstract class ")
+_res.append(";\n\npublic abstract class ")
 _res.append(device.name)
-_res.append("ProtocolPacket extends FixedSizePacket {\n\t\n\tprivate int position = 5;\n\t\n\tpublic ")
+_res.append("ProtocolPacket extends FixedSizePacket {\n\t\n\tpublic ")
 _res.append(device.name)
 _res.append("ProtocolPacket() {\n\t\tsuper();\n\t}\n\t\n\tprotected void setCommandID(byte cmd) {\n\t\tdata[4] = cmd;\n\t}\n\t\n\tprotected byte getCommandID(){\n\t\treturn data[4];\n\t}\n\t\n\tpublic abstract void acceptHandler(")
 _res.append(device.name)
@@ -24,13 +24,11 @@ _res.append("Value(")
 _res.append(helper.firstToUpper(helper.toJavaType(t)))
 _res.append(" v) {\n")
 if helper.getJavaByteTypes.contains(t.name) then
-_res.append("\t\tint positionModifier = (int) (")
-_res.append(helper.firstToUpper(helper.toJavaType(t)))
-_res.append(".SIZE/8);\n\t\tByteBuffer bb = ByteBuffer.wrap(data, position, positionModifier);\n")
+_res.append("")
 if helper.isJavaByte(t) then
-_res.append("\t\tbb.put(v);\n")
+_res.append("\t\tbuffer.put(v);\n")
 else
-_res.append("\t\tbb.put")
+_res.append("\t\tbuffer.put")
 _res.append(helper.firstToUpper(helper.toJavaType(t)))
 _res.append("(v);\n")
 end
@@ -38,17 +36,15 @@ _res.append("")
 else
 _res.append("")
 if helper.isJavaString(t) then
-_res.append("\t\tint positionModifier = ")
-_res.append(helper.getSize(t))
-_res.append(";\n\t\tif (v.length() > ")
+_res.append("\t\tif (v.length() > ")
 _res.append(helper.getSize(t))
 _res.append(") v = v.substring(0, ")
 _res.append(helper.getSize(t))
-_res.append("-1);\n\t\tByteBuffer bb = ByteBuffer.wrap(data, position, positionModifier);\n\t\tbb.put(v.getBytes());\n")
+_res.append("-1);\n\t\tbuffer.put(v.getBytes());\n")
 end
 _res.append("")
 end
-_res.append("\t\tposition += positionModifier;\n\t}\n\t\n")
+_res.append("\t}\n\t\n")
 }
 _res.append("}")
 result := _res.toString
