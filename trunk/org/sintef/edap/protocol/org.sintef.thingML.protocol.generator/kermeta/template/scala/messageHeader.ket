@@ -1,0 +1,13 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="MessageHeaderGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>.msg;
+
+import <%=packageName%>._;

@@ -1,0 +1,48 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="ProtocolGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import <%=packageName%>.msg._;
+
+object <%=device.name%>Protocol {
+
+	<%device.all_types.select{t | t.isKindOf(edap::Enumeration)}.each{ e | %>
+	object <%=e.name%> extends Enumeration {	
+		<%e.asType(edap::Enumeration).literals.each{l | %>
+	  val <%=l.name%> = Value("<%=l.name%>")
+		<%}%>
+	<%}%>
+
+	<%device.receives.each{out | %>
+	val <%=helper.toJavaConstant(out.name)%> : Byte = <%=out.annotations.select{a | a.name == "code"}.one.~value%>; 
+	<%}%>
+	<%device.sends.each{in | %>
+	val <%=helper.toJavaConstant(in.name)%> : Byte = <%=in.annotations.select{a | a.name == "code"}.one.~value%>; 
+	<%}%>
+	
+	def createMessageFromPacket(packet : Array[Byte]) : FixedSizePacket = packet(4) match {
+		<%device.receives.each{out | %>
+		case <%=helper.toJavaConstant(out.name)%> => new <%=out.name%>(packet) 
+		<%}%>
+		<%device.sends.each{in | %>
+		case <%=helper.toJavaConstant(in.name)%> => new <%=in.name%>(packet) 
+		<%}%>
+		case _ => null
+	}
+
+	<%device.receives.each{out | %>
+	def create<%=out.name%>(<%=helper.paramsToScala(out)%>) : FixedSizePacket = <%=out.name%>(<%=helper.paramsToJavaCall(out)%>).setCommandID(<%=helper.toJavaConstant(out.name)%>)
+	<%}%>
+	
+	<%device.sends.each{out | %>
+	def create<%=out.name%>(<%=helper.paramsToScala(out)%>) : FixedSizePacket = <%=out.name%>(<%=helper.paramsToJavaCall(out)%>).setCommandID(<%=helper.toJavaConstant(out.name)%>)
+	<%}%>
+}

@@ -1,0 +1,52 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class MessageGenerator{
+operation generate(packageName:String, msg:edap::Message, device:edap::Device):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("\ncase class ")
+_res.append(msg.name)
+_res.append("(")
+_res.append(helper.paramsToScalaCase(msg))
+_res.append(") extends ")
+_res.append(device.name)
+_res.append("ProtocolPacket {\n\t\n\tdef this(packet : Array[Byte]) = {\n\t\tthis(")
+_res.append(helper.paramsToScalaCallNull(msg))
+_res.append(")\n\t\tsetPacketData(packet);\n")
+msg.parameters.each{ p | 
+_res.append("")
+if helper.isJavaString(p.type) then
+_res.append("\t\t ")
+_res.append(p.name)
+_res.append(" = \"\";\n\t\tfor(i <- position to Math.min(position+")
+_res.append(helper.getSize(p.type))
+_res.append(", getLength())) {\n\t\t\t")
+_res.append(p.name)
+_res.append(" = ")
+_res.append(p.name)
+_res.append(" + data(i)\n\t\t}\n")
+else
+_res.append("")
+ if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
+_res.append("\t\t")
+_res.append(p.name)
+_res.append(" = buffer.get")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append("()\n")
+else
+_res.append("\t\t")
+_res.append(p.name)
+_res.append(" = buffer.get()\n")
+end
+_res.append("")
+end
+_res.append("")
+}
+_res.append("\t}\n}\n")
+result := _res.toString
+end
+}

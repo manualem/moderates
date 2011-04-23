@@ -1,0 +1,94 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class ProtocolGenerator{
+operation generate(packageName:String, device:edap::Device, root:edap::EdapModel):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\nimport ")
+_res.append(packageName)
+_res.append(".msg._;\n\nobject ")
+_res.append(device.name)
+_res.append("Protocol {\n\n")
+device.all_types.select{t | t.isKindOf(edap::Enumeration)}.each{ e | 
+_res.append("\tobject ")
+_res.append(e.name)
+_res.append(" extends Enumeration {\t\n")
+e.asType(edap::Enumeration).literals.each{l | 
+_res.append("\t  val ")
+_res.append(l.name)
+_res.append(" = Value(\"")
+_res.append(l.name)
+_res.append("\")\n")
+}
+_res.append("")
+}
+_res.append("\n")
+device.receives.each{out | 
+_res.append("\tval ")
+_res.append(helper.toJavaConstant(out.name))
+_res.append(" : Byte = ")
+_res.append(out.annotations.select{a | a.name == "code"}.one.~value)
+_res.append("; \n")
+}
+_res.append("")
+device.sends.each{in | 
+_res.append("\tval ")
+_res.append(helper.toJavaConstant(in.name))
+_res.append(" : Byte = ")
+_res.append(in.annotations.select{a | a.name == "code"}.one.~value)
+_res.append("; \n")
+}
+_res.append("\t\n\tdef createMessageFromPacket(packet : Array[Byte]) : FixedSizePacket = packet(4) match {\n")
+device.receives.each{out | 
+_res.append("\t\tcase ")
+_res.append(helper.toJavaConstant(out.name))
+_res.append(" => new ")
+_res.append(out.name)
+_res.append("(packet) \n")
+}
+_res.append("")
+device.sends.each{in | 
+_res.append("\t\tcase ")
+_res.append(helper.toJavaConstant(in.name))
+_res.append(" => new ")
+_res.append(in.name)
+_res.append("(packet) \n")
+}
+_res.append("\t\tcase _ => null\n\t}\n\n")
+device.receives.each{out | 
+_res.append("\tdef create")
+_res.append(out.name)
+_res.append("(")
+_res.append(helper.paramsToScala(out))
+_res.append(") : FixedSizePacket = ")
+_res.append(out.name)
+_res.append("(")
+_res.append(helper.paramsToJavaCall(out))
+_res.append(").setCommandID(")
+_res.append(helper.toJavaConstant(out.name))
+_res.append(")\n")
+}
+_res.append("\t\n")
+device.sends.each{out | 
+_res.append("\tdef create")
+_res.append(out.name)
+_res.append("(")
+_res.append(helper.paramsToScala(out))
+_res.append(") : FixedSizePacket = ")
+_res.append(out.name)
+_res.append("(")
+_res.append(helper.paramsToJavaCall(out))
+_res.append(").setCommandID(")
+_res.append(helper.toJavaConstant(out.name))
+_res.append(")\n")
+}
+_res.append("}")
+result := _res.toString
+end
+}

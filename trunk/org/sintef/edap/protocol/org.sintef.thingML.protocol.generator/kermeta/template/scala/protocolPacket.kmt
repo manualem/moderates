@@ -1,0 +1,46 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class ProtocolPacketGenerator{
+operation generate(packageName:String, device:edap::Device, root:edap::EdapModel):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("\nabstract sealed class ")
+_res.append(device.name)
+_res.append("ProtocolPacket extends FixedSizePacket {\n\t\n\tvar position = 5\n\t\n\tdef setCommandID(cmd : Byte) : FixedSizePacket = {\n\t\tdata(4) = cmd\n\t\tthis\n\t}\n\t\n\tdef getCommandID() : Byte = data(4)\n\t\n")
+device.all_types.select{t | t.isKindOf(edap::PrimitiveType)}.each{ t | 
+_res.append("\tdef set")
+_res.append(helper.firstToUpper(helper.toJavaType(t)))
+_res.append("Value(v : ")
+_res.append(helper.firstToUpper(helper.toJavaType(t)))
+_res.append(") = {\n")
+if helper.getJavaByteTypes.contains(t.name) then
+_res.append("")
+if helper.isJavaByte(t) then
+_res.append("\t\tbuffer.put(v);\n")
+else
+_res.append("\t\tbuffer.put")
+_res.append(helper.firstToUpper(helper.toJavaType(t)))
+_res.append("(v);\n")
+end
+_res.append("")
+else
+_res.append("")
+if helper.isJavaString(t) then
+_res.append("\t\tif (v.length() > ")
+_res.append(helper.getSize(t))
+_res.append(") v = v.substring(0, ")
+_res.append(helper.getSize(t))
+_res.append("-1);\n\t\tbuffer.put(v.getBytes());\n")
+end
+_res.append("")
+end
+_res.append("\t}\n\t\n")
+}
+_res.append("}")
+result := _res.toString
+end
+}
