@@ -1,0 +1,40 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="ProtocolPacketGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, device:edap::Device, root:edap::EdapModel"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+
+abstract sealed class <%=device.name%>ProtocolPacket extends FixedSizePacket {
+	
+	var position = 5
+	
+	def setCommandID(cmd : Byte) : FixedSizePacket = {
+		data(4) = cmd
+		this
+	}
+	
+	def getCommandID() : Byte = data(4)
+	
+	<%device.all_types.select{t | t.isKindOf(edap::PrimitiveType)}.each{ t | %>
+	def set<%=helper.firstToUpper(helper.toJavaType(t))%>Value(v : <%=helper.firstToUpper(helper.toJavaType(t))%>) = {
+		<%if helper.getJavaByteTypes.contains(t.name) then%>
+			<%if helper.isJavaByte(t) then%>
+		buffer.put(v);
+			<%else%>
+		buffer.put<%=helper.firstToUpper(helper.toJavaType(t))%>(v);
+			<%end%>		
+		<%else%>
+			<%if helper.isJavaString(t) then%>
+		if (v.length() > <%=helper.getSize(t)%>) v = v.substring(0, <%=helper.getSize(t)%>-1);
+		buffer.put(v.getBytes());
+			<%end%>
+		<%end%>	
+	}
+	
+	<%}%>
+}

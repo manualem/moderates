@@ -1,0 +1,67 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="FixedSizePackageGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+package <%=packageName%>;
+
+import java.nio.ByteBuffer;
+
+abstract class FixedSizePacket {
+
+	var data : Array[Byte] = new Array[Byte](16)
+	var buffer : ByteBuffer = ByteBuffer.wrap(data, 5, 10)
+	
+	def getPacket() : Array[Byte] = data
+	
+	/*def this() = {
+		data = new Array[Byte](16)
+		buffer = ByteBuffer.wrap(data, 5, 10)
+	}*/
+	
+	def setPacketData(packet : Array[Byte]) = {
+		this.data = packet
+		buffer = ByteBuffer.wrap(data, 5, 10)
+	}
+	
+	def setSourceAddress(address : Byte) = data(0) = address
+	
+	def getSourceAddress() : Byte = data(0)
+	
+	def setTargetAddress(address : Byte) = data(1) = address
+	
+	def getTargetAddress() : Byte =	return data(1)
+	
+	def setFrameNumber(frame : Byte) = data(2) = frame
+	
+	def getFrameNumber() : Byte = data(2)
+	
+	def setLength(length : Byte) = {
+		val l = if (length > data.length - 5) (data.length - 5).asInstanceOf[Byte] else length
+		data(3) = l;
+	}
+	
+	def getLength() : Byte = return data(3)
+	
+	def getRawData() : Array[Byte] = {
+		var result : Array[Byte] = new Array[Byte](getLength());
+		for(i <- 0 to getLength()) {
+			result(i) = data(i+4)
+		}
+		return result;
+	}
+	
+	def setRawData(ndata : Array[Byte]) = {
+		var max = -1
+		for(i <- 0 to Math.min(ndata.length, 10)){
+			data(i+5) = ndata(i)
+			max = i
+		}
+		setLength(max.asInstanceOf[Byte])
+	}
+}

@@ -1,0 +1,86 @@
+/* $Id:$ 
+ * Creation : March 10, 2011
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            bmori
+ */
+
+package thingML;
+
+
+require kermeta
+require "./helper.kmt"
+require "./template/scala/fixedSizePackage.kmt"
+require "./template/scala/protocolPacket.kmt"
+require "./template/scala/protocol.kmt"
+require "./template/scala/message.kmt"
+require "./template/scala/messageHeader.kmt"
+
+using kermeta::standard
+using kermeta::utils
+using kermeta::io
+
+using edap
+
+class MainJavaProtocolGenerator
+{
+
+	operation mainJava(thingMLuri : String, srcFolder : String) : Void is do 
+		main(thingMLuri, srcFolder, false)
+	end
+
+	operation mainKevoree(thingMLuri : String, srcFolder : String) : Void is do 
+		main(thingMLuri, srcFolder, true)
+	end
+
+	operation main(thingMLuri : String, srcFolder : String, isKevoree: Boolean) : Void is do 
+		var helper : Helper init Helper.new
+		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
+		
+		var fspGenerator : FixedSizePackageGenerator init FixedSizePackageGenerator.new
+		var ppGenerator : ProtocolPacketGenerator init ProtocolPacketGenerator.new
+		var pGenerator : ProtocolGenerator init ProtocolGenerator.new 
+		var mGenerator : MessageGenerator init MessageGenerator.new
+		var mhGenerator : MessageHeaderGenerator init MessageHeaderGenerator.new
+				
+		var file : FileIO init FileIO.new
+		
+		file.writeTextFile(srcFolder+"/org/sintef/moderates/FixedSizePacket.scala", fspGenerator.generate("org.sintef.moderates"))
+		
+		thingMLmodel.types.select{t | t.isKindOf(Device)}.each{t |
+			
+			stdio.writeln("ProtocolGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"Protocol.scala", pGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			stdio.writeln("")
+			
+			var messages : StringBuffer init StringBuffer.new
+			messages.append(mhGenerator.generate("org.sintef.moderates"))
+
+			stdio.writeln("ProtocolPacketGenerator")
+			stdio.writeln("-----------------------")
+			messages.append(ppGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			//file.writeTextFile(srcFolder+"/org/sintef/moderates/"+t.name+"ProtocolPacket.scala", ppGenerator.generate("org.sintef.moderates", t.asType(Device), thingMLmodel))
+			stdio.writeln("")
+			
+			t.asType(Device).sends.each{ m |
+				stdio.writeln("IncomingMessageGenerator")
+				stdio.writeln("-----------------------")
+				messages.append(mGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
+				//file.writeTextFile(srcFolder+"/org/sintef/moderates/msg/"+m.name+".scala", mGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
+				stdio.writeln("")
+			}
+			
+			t.asType(Device).receives.each{ m |
+				stdio.writeln("OutgoingMessageGenerator")
+				stdio.writeln("-----------------------")
+				messages.append(mGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
+				//file.writeTextFile(srcFolder+"/org/sintef/moderates/msg/"+m.name+".scala", mGenerator.generate("org.sintef.moderates", m, t.asType(Device)))
+				stdio.writeln("")
+			}
+			
+			file.writeTextFile(srcFolder+"/org/sintef/moderates/msg/messages.scala", messages.toString)
+		}
+	end
+}

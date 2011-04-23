@@ -50,10 +50,6 @@ _res.append(";\n")
 _res.append("\t}\n\t\n\tpublic ")
 _res.append(msg.name)
 _res.append("(byte[] packet) {\n\t\tsetPacketData(packet);\n")
-if msg.parameters.exists{p | not helper.isJavaString(p.type)} then
-_res.append("")
-end
-_res.append("")
 msg.parameters.each{ p | 
 _res.append("")
 if helper.isJavaString(p.type) then

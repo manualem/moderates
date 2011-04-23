@@ -1,0 +1,32 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="MessageGenerator"
+ismethod="false"operation="generate"
+parameters="packageName:String, msg:edap::Message, device:edap::Device"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+
+case class <%=msg.name%>(<%=helper.paramsToScalaCase(msg)%>) extends <%=device.name%>ProtocolPacket {
+	
+	def this(packet : Array[Byte]) = {
+		this(<%=helper.paramsToScalaCallNull(msg)%>)
+		setPacketData(packet);
+		<%msg.parameters.each{ p | %>
+		<%if helper.isJavaString(p.type) then%>
+		 <%=p.name%> = "";
+		for(i <- position to Math.min(position+<%=helper.getSize(p.type)%>, getLength())) {
+			<%=p.name%> = <%=p.name%> + data(i)
+		}
+		<%else%>
+		<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
+		<%=p.name%> = buffer.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>()
+		<%else%>
+		<%=p.name%> = buffer.get()
+		<%end%>
+		<%end%>
+		<%}%>	
+	}
+}

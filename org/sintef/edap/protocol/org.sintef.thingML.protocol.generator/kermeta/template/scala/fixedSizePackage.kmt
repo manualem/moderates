@@ -1,0 +1,16 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class FixedSizePackageGenerator{
+operation generate(packageName:String):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("package ")
+_res.append(packageName)
+_res.append(";\n\nimport java.nio.ByteBuffer;\n\nabstract class FixedSizePacket {\n\n\tvar data : Array[Byte] = new Array[Byte](16)\n\tvar buffer : ByteBuffer = ByteBuffer.wrap(data, 5, 10)\n\t\n\tdef getPacket() : Array[Byte] = data\n\t\n\t/*def this() = {\n\t\tdata = new Array[Byte](16)\n\t\tbuffer = ByteBuffer.wrap(data, 5, 10)\n\t}*/\n\t\n\tdef setPacketData(packet : Array[Byte]) = {\n\t\tthis.data = packet\n\t\tbuffer = ByteBuffer.wrap(data, 5, 10)\n\t}\n\t\n\tdef setSourceAddress(address : Byte) = data(0) = address\n\t\n\tdef getSourceAddress() : Byte = data(0)\n\t\n\tdef setTargetAddress(address : Byte) = data(1) = address\n\t\n\tdef getTargetAddress() : Byte =\treturn data(1)\n\t\n\tdef setFrameNumber(frame : Byte) = data(2) = frame\n\t\n\tdef getFrameNumber() : Byte = data(2)\n\t\n\tdef setLength(length : Byte) = {\n\t\tval l = if (length > data.length - 5) (data.length - 5).asInstanceOf[Byte] else length\n\t\tdata(3) = l;\n\t}\n\t\n\tdef getLength() : Byte = return data(3)\n\t\n\tdef getRawData() : Array[Byte] = {\n\t\tvar result : Array[Byte] = new Array[Byte](getLength());\n\t\tfor(i <- 0 to getLength()) {\n\t\t\tresult(i) = data(i+4)\n\t\t}\n\t\treturn result;\n\t}\n\t\n\tdef setRawData(ndata : Array[Byte]) = {\n\t\tvar max = -1\n\t\tfor(i <- 0 to Math.min(ndata.length, 10)){\n\t\t\tdata(i+5) = ndata(i)\n\t\t\tmax = i\n\t\t}\n\t\tsetLength(max.asInstanceOf[Byte])\n\t}\n}\n")
+result := _res.toString
+end
+}

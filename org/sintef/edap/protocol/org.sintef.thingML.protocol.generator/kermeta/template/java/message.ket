@@ -30,8 +30,6 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 	
 	public <%=msg.name%>(byte[] packet) {
 		setPacketData(packet);
-		<%if msg.parameters.exists{p | not helper.isJavaString(p.type)} then%>
-		<%end%>
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
 		 <%=p.name%> = ""; 

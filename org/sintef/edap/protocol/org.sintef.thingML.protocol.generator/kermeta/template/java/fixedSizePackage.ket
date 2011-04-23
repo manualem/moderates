@@ -87,7 +87,7 @@ public abstract class FixedSizePacket {
 	public void setRawData(byte[] ndata) {
 		int i = 0;
 		while (i < ndata.length && i < 10) {
-			data[i+4] = ndata[i];
+			data[i+5] = ndata[i];
 			i++;
 		}
 		setLength((byte)i);
