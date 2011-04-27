@@ -148,7 +148,7 @@ if isClient then
 _res.append("Client")
 end
 _res.append(".field")
-_res.append(msg.name+"_"+p.name)
+_res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(".getSelectedItem();\n")
 else
 _res.append("\t\t\t")
@@ -160,7 +160,7 @@ if isClient then
 _res.append("Client")
 end
 _res.append(".field")
-_res.append(msg.name+"_"+p.name)
+_res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(".getText();\n")
 end
 _res.append("\t\t\tif (")
@@ -188,7 +188,7 @@ if isClient then
 _res.append("Client")
 end
 _res.append(".field")
-_res.append(msg.name+"_"+p.name)
+_res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(".getSelectedItem();\n")
 else
 _res.append("\t\t\t")
@@ -204,7 +204,7 @@ if isClient then
 _res.append("Client")
 end
 _res.append(".field")
-_res.append(msg.name+"_"+p.name)
+_res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(".getText());\n")
 end
 _res.append("")
