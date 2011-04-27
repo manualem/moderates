@@ -15,10 +15,10 @@ import <%=packageName%>.msg.*;
 public interface I<%=device.name%>MessageHandler {
 
 	<%device.receives.each{msg | %>
-	public void handle<%=msg.name%>(<%=msg.name%> msg);
+	void handle<%=msg.name%>(<%=msg.name%> msg);
 	<%}%>
 	
 	<%device.sends.each{msg | %>
-	public void handle<%=msg.name%>(<%=msg.name%> msg);
+	void handle<%=msg.name%>(<%=msg.name%> msg);
 	<%}%>
 }
