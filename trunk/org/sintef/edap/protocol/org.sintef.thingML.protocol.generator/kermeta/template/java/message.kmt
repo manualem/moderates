@@ -55,13 +55,31 @@ _res.append("")
 if helper.isJavaString(p.type) then
 _res.append("\t\t ")
 _res.append(p.name)
-_res.append(" = \"\"; \n\t\tfor(int i=position; i<Math.min(position+")
+_res.append(" = \"\"; \n\t\tfor(int i=0; i<Math.min(")
 _res.append(helper.getSize(p.type))
 _res.append(", getLength()); i++) {\n\t\t\t ")
 _res.append(p.name)
-_res.append(" =  ")
+_res.append(" +=  buffer.getChar();\n\t\t}\n")
+else
+_res.append("")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append("")
+ if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
+_res.append("\t\t")
 _res.append(p.name)
-_res.append(" + (char)data[i];\n\t\t}\n")
+_res.append(" = ")
+_res.append(helper.toJavaType(p.type))
+_res.append(".fromValue(buffer.get")
+_res.append(helper.firstToUpper(helper.toJavaType(p.type)))
+_res.append("());\n")
+else
+_res.append("\t\t")
+_res.append(p.name)
+_res.append(" = ")
+_res.append(helper.toJavaType(p.type))
+_res.append(".fromValue(buffer.get());\t\t\n")
+end
+_res.append("")
 else
 _res.append("")
  if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
@@ -74,6 +92,8 @@ else
 _res.append("\t\t")
 _res.append(p.name)
 _res.append(" = buffer.get();\n")
+end
+_res.append("")
 end
 _res.append("")
 end
