@@ -116,16 +116,16 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 		<%msg.parameters.each{ p | %>
 		<%if helper.isJavaString(p.type) then%>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+helper.firstToUpper(p.name)%>.getSelectedItem();
+			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getSelectedItem();
 			<%else%>
-			<%=p.name%> = Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+helper.firstToUpper(p.name)%>.getText();
+			<%=p.name%> = Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getText();
 			<%end%>
 			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
 		<%else%>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+helper.firstToUpper(p.name)%>.getSelectedItem();
+			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getSelectedItem();
 			<%else%>
-			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.field<%=msg.name+helper.firstToUpper(p.name)%>.getText());
+			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getText());
 			<%end%>
 		<%end%>
 		<%}%>
@@ -159,7 +159,7 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 	public void actionPerformed(ActionEvent ae) {
 		<%var l : Integer init 0%>
 		<%device.sends.each{msg |%>
-		 <%if l >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.sendButton<%=msg.name%>) {
+		 <%if l >0 then%>else <%end%>if ( ae.getSource() == Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getSendButton<%=msg.name%>()) {
 		 	send<%=msg.name%>();
 		 }
 		 <%l := l+1%>

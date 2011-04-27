@@ -147,9 +147,9 @@ _res.append("DataGUI")
 if isClient then
 _res.append("Client")
 end
-_res.append(".field")
+_res.append(".getField")
 _res.append(msg.name+helper.firstToUpper(p.name))
-_res.append(".getSelectedItem();\n")
+_res.append("().getSelectedItem();\n")
 else
 _res.append("\t\t\t")
 _res.append(p.name)
@@ -159,9 +159,9 @@ _res.append("DataGUI")
 if isClient then
 _res.append("Client")
 end
-_res.append(".field")
+_res.append(".getField")
 _res.append(msg.name+helper.firstToUpper(p.name))
-_res.append(".getText();\n")
+_res.append("().getText();\n")
 end
 _res.append("\t\t\tif (")
 _res.append(p.name)
@@ -187,9 +187,9 @@ _res.append("DataGUI")
 if isClient then
 _res.append("Client")
 end
-_res.append(".field")
+_res.append(".getField")
 _res.append(msg.name+helper.firstToUpper(p.name))
-_res.append(".getSelectedItem();\n")
+_res.append("().getSelectedItem();\n")
 else
 _res.append("\t\t\t")
 _res.append(p.name)
@@ -203,9 +203,9 @@ _res.append("DataGUI")
 if isClient then
 _res.append("Client")
 end
-_res.append(".field")
+_res.append(".getField")
 _res.append(msg.name+helper.firstToUpper(p.name))
-_res.append(".getText());\n")
+_res.append("().getText());\n")
 end
 _res.append("")
 end
@@ -253,9 +253,9 @@ _res.append("DataGUI")
 if isClient then
 _res.append("Client")
 end
-_res.append(".sendButton")
+_res.append(".getSendButton")
 _res.append(msg.name)
-_res.append(") {\n\t\t \tsend")
+_res.append("()) {\n\t\t \tsend")
 _res.append(msg.name)
 _res.append("();\n\t\t }\n")
 l := l+1
