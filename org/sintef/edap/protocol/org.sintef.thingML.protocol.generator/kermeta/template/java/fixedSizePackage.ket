@@ -43,7 +43,7 @@ public abstract class FixedSizePacket {
 	}
 	
 	public void setPacketData(byte[] packet) {
-		this.data = packet;
+		System.arraycopy(packet, 0, this.data, 0, packet.length);
 		buffer = ByteBuffer.wrap(data, 5, 10);
 	}
 	
