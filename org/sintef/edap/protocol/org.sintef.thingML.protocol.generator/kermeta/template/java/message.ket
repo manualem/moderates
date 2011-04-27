@@ -31,18 +31,26 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 	public <%=msg.name%>(byte[] packet) {
 		setPacketData(packet);
 		<%msg.parameters.each{ p | %>
-		<%if helper.isJavaString(p.type) then%>
+			<%if helper.isJavaString(p.type) then%>
 		 <%=p.name%> = ""; 
-		for(int i=position; i<Math.min(position+<%=helper.getSize(p.type)%>, getLength()); i++) {
-			 <%=p.name%> =  <%=p.name%> + (char)data[i];
+		for(int i=0; i<Math.min(<%=helper.getSize(p.type)%>, getLength()); i++) {
+			 <%=p.name%> +=  buffer.getChar();
 		}
-		<%else%>
-		<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
+			<%else%>
+				<%if p.type.isKindOf(edap::Enumeration) then%>
+					<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
+		<%=p.name%> = <%=helper.toJavaType(p.type)%>.fromValue(buffer.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>());
+					<%else%>
+		<%=p.name%> = <%=helper.toJavaType(p.type)%>.fromValue(buffer.get());		
+					<%end%>
+				<%else%>
+					<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
 		<%=p.name%> = buffer.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>();
-		<%else%>
+					<%else%>
 		<%=p.name%> = buffer.get();
-		<%end%>
-		<%end%>
+					<%end%>
+				<%end%>
+			<%end%>
 		<%}%>
 		
 	}
