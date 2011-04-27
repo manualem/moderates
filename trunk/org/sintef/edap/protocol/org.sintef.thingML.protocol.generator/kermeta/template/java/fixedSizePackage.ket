@@ -78,19 +78,14 @@ public abstract class FixedSizePacket {
 	
 	public byte[] getRawData() {
 		byte[] result = new byte[getLength()];
-		for(int i=0; i<getLength();i++) {
-			result[i] = data[i+4];
-		}
+        System.arraycopy(this.data, 5, result, 0, getLength());
 		return result;
 	}
 	
 	public void setRawData(byte[] ndata) {
-		int i = 0;
-		while (i < ndata.length && i < 10) {
-			data[i+5] = ndata[i];
-			i++;
-		}
-		setLength((byte)i);
+        int length = Math.min(10, ndata.length);
+        System.arraycopy(ndata, 0, this.data, 5, length);
+		setLength((byte)length);
 	}
 	
 }
