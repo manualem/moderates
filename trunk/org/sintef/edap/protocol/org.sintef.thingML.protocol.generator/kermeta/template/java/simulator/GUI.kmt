@@ -47,19 +47,41 @@ _res.append(" handler;\n\t\n\tprivate static JFrame frame;\n\tprivate static JTe
 device.sends.each{msg |
 _res.append("\t//Attributes related to ")
 _res.append(msg.name)
-_res.append("\n\tpublic static JButton sendButton")
+_res.append("\n\tprivate static JButton sendButton")
 _res.append(msg.name)
 _res.append(";\n")
 msg.parameters.each{ p | 
 _res.append("")
 if p.type.isKindOf(edap::Enumeration) then
-_res.append("\tpublic static JComboBox field")
+_res.append("\tprivate static JComboBox field")
 _res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(";\n")
 else
-_res.append("\tpublic static JTextField field")
+_res.append("\tprivate static JTextField field")
 _res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(";\n")
+end
+_res.append("")
+}
+_res.append("\t\n\tpublic static JButton getSendButton")
+_res.append(msg.name)
+_res.append("() {\n\t\treturn sendButton")
+_res.append(msg.name)
+_res.append(";\n\t}\n")
+msg.parameters.each{ p | 
+_res.append("")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append("\tpublic static JComboBox getField")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append("() {\n\t\treturn field")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(";\n\t}\n")
+else
+_res.append("\tpublic static JTextField getField")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append("() {\n\t\treturn field")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(";\n\t}\n")
 end
 _res.append("")
 }

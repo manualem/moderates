@@ -51,12 +51,27 @@ public class Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>
 	
 	<%device.sends.each{msg |%>
 	//Attributes related to <%=msg.name%>
-	public static JButton sendButton<%=msg.name%>;
+	private static JButton sendButton<%=msg.name%>;
 		<%msg.parameters.each{ p | %>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-	public static JComboBox field<%=msg.name+helper.firstToUpper(p.name)%>;
+	private static JComboBox field<%=msg.name+helper.firstToUpper(p.name)%>;
 			<%else%>
-	public static JTextField field<%=msg.name+helper.firstToUpper(p.name)%>;
+	private static JTextField field<%=msg.name+helper.firstToUpper(p.name)%>;
+			<%end%>
+		<%}%>
+	
+	public static JButton getSendButton<%=msg.name%>() {
+		return sendButton<%=msg.name%>;
+	}
+		<%msg.parameters.each{ p | %>
+			<%if p.type.isKindOf(edap::Enumeration) then%>
+	public static JComboBox getField<%=msg.name+helper.firstToUpper(p.name)%>() {
+		return field<%=msg.name+helper.firstToUpper(p.name)%>;
+	}
+			<%else%>
+	public static JTextField getField<%=msg.name+helper.firstToUpper(p.name)%>() {
+		return field<%=msg.name+helper.firstToUpper(p.name)%>;
+	}
 			<%end%>
 		<%}%>
 		
