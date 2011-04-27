@@ -105,7 +105,7 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 	}
 
 	<%device.sends.each{ msg |%>
-	public void send<%=msg.name%>() {
+	public final void send<%=msg.name%>() {
 		FixedSizePacket fsp = null;
 		<%if msg.parameters.size > 0 then%>
 		boolean valid = true;
@@ -148,7 +148,7 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 	<%if toKevoreeComponent then%>
 	@Port(name="in", method="receiveMessage")
 	<%end%>
-	public void receiveMessage(byte[] packet){
+	public final void receiveMessage(byte[] packet){
 		FixedSizePacket data = <%=device.name%>Protocol.createMessageFromPacket(packet);
 		if (data != null) {
 			Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.print(data.getClass().getSimpleName(), "["+dateFormat.format(new Date(System.currentTimeMillis()))+"]: "+data.toString()+" --> "+FixedSizePacket.toString(packet));
