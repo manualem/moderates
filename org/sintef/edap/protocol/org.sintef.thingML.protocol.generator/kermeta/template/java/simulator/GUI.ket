@@ -54,9 +54,9 @@ public class Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>
 	public static JButton sendButton<%=msg.name%>;
 		<%msg.parameters.each{ p | %>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-	public static JComboBox field<%=msg.name+helper.firstToUppder(p.name)%>;
+	public static JComboBox field<%=msg.name+helper.firstToUpper(p.name)%>;
 			<%else%>
-	public static JTextField field<%=msg.name+helper.firstToUppder(p.name)%>;
+	public static JTextField field<%=msg.name+helper.firstToUpper(p.name)%>;
 			<%end%>
 		<%}%>
 		

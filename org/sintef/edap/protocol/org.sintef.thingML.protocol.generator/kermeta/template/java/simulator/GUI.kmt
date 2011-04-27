@@ -54,11 +54,11 @@ msg.parameters.each{ p |
 _res.append("")
 if p.type.isKindOf(edap::Enumeration) then
 _res.append("\tpublic static JComboBox field")
-_res.append(msg.name+helper.firstToUppder(p.name))
+_res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(";\n")
 else
 _res.append("\tpublic static JTextField field")
-_res.append(msg.name+helper.firstToUppder(p.name))
+_res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(";\n")
 end
 _res.append("")
