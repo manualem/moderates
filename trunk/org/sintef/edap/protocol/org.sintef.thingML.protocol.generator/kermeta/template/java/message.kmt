@@ -64,7 +64,7 @@ else
 _res.append("")
 if p.type.isKindOf(edap::Enumeration) then
 _res.append("")
- if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then
+ if helper.firstToUpper(helper.enumToJavaType(p.type.asType(edap::Enumeration))) != "Byte" then
 _res.append("\t\t")
 _res.append(p.name)
 _res.append(" = ")
