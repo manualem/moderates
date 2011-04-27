@@ -10,5 +10,5 @@ parameters="packageName:String, device:edap::Device, isClient:Boolean"
 package <%=packageName%>.observer;
 
 public interface <%=device.name%><%if isClient then%>Client<%end%>Observer {
-	public void receiveMsg(byte[] msg);
+	void receiveMsg(byte[] msg);
 }

@@ -13,12 +13,12 @@ _res.append(device.name)
 if isClient then
 _res.append("Client")
 end
-_res.append("Subject {\n\tpublic void register(")
+_res.append("Subject {\n\tvoid register(")
 _res.append(device.name)
 if isClient then
 _res.append("Client")
 end
-_res.append("Observer observer);\n\tpublic void unregister(")
+_res.append("Observer observer);\n\tvoid unregister(")
 _res.append(device.name)
 if isClient then
 _res.append("Client")

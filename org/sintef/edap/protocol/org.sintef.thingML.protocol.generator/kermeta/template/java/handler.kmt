@@ -16,7 +16,7 @@ _res.append(".msg.*;\n\npublic interface I")
 _res.append(device.name)
 _res.append("MessageHandler {\n\n")
 device.receives.each{msg | 
-_res.append("\tpublic void handle")
+_res.append("\tvoid handle")
 _res.append(msg.name)
 _res.append("(")
 _res.append(msg.name)
@@ -24,7 +24,7 @@ _res.append(" msg);\n")
 }
 _res.append("\t\n")
 device.sends.each{msg | 
-_res.append("\tpublic void handle")
+_res.append("\tvoid handle")
 _res.append(msg.name)
 _res.append("(")
 _res.append(msg.name)

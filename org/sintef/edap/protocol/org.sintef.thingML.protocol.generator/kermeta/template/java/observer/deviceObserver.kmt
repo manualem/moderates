@@ -13,7 +13,7 @@ _res.append(device.name)
 if isClient then
 _res.append("Client")
 end
-_res.append("Observer {\n\tpublic void receiveMsg(byte[] msg);\n}\n")
+_res.append("Observer {\n\tvoid receiveMsg(byte[] msg);\n}\n")
 result := _res.toString
 end
 }
