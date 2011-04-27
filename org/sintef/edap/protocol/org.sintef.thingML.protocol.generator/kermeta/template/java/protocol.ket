@@ -14,6 +14,8 @@ import <%=packageName%>.msg.*;
 
 public abstract class <%=device.name%>Protocol {
 
+	private <%=device.name%>Protocol(){}
+
 	<%device.receives.each{out | %>
 	public static final byte <%=helper.toJavaConstant(out.name)%> = <%=out.annotations.select{a | a.name == "code"}.one.~value%>; 
 	<%}%>
