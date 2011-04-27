@@ -38,7 +38,7 @@ public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 		}
 			<%else%>
 				<%if p.type.isKindOf(edap::Enumeration) then%>
-					<% if helper.firstToUpper(helper.toJavaType(p.type)) != "Byte" then%>
+					<% if helper.firstToUpper(helper.enumToJavaType(p.type.asType(edap::Enumeration))) != "Byte" then%>
 		<%=p.name%> = <%=helper.toJavaType(p.type)%>.fromValue(buffer.get<%=helper.firstToUpper(helper.toJavaType(p.type))%>());
 					<%else%>
 		<%=p.name%> = <%=helper.toJavaType(p.type)%>.fromValue(buffer.get());		
