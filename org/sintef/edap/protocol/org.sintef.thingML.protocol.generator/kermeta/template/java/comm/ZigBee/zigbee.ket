@@ -30,10 +30,10 @@ package <%=packageName%>.comm;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.sintef.moderates.observer.<%=device.name%>ClientObserver;
-import org.sintef.moderates.observer.<%=device.name%>Observer;
-import org.sintef.moderates.observer.<%=device.name%>Subject;
-import org.sintef.moderates.sim.Interactive<%=device.name%>DataControllerClient;
+import <%=packageName%>.observer.<%=device.name%>ClientObserver;
+import <%=packageName%>.observer.<%=device.name%>Observer;
+import <%=packageName%>.observer.<%=device.name%>Subject;
+import <%=packageName%>.sim.Interactive<%=device.name%>DataControllerClient;
 
 import com.rapplogic.xbee.api.ApiId;
 import com.rapplogic.xbee.api.XBee;
