@@ -8,7 +8,7 @@ operation generate(packageName:String, device:edap::Device):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
-_res.append("package ")
+_res.append("/**\n * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Version 3, 29 June 2007;\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n * \thttp://www.gnu.org/licenses/lgpl-3.0.txt\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n *\n * Authors: Franck Fleurey and Brice Morin\n * Company: SINTEF IKT, Oslo, Norway\n * Date: 2011\n */\npackage ")
 _res.append(packageName)
 _res.append(".comm;\n\nimport org.sintef.moderates.observer.")
 _res.append(device.name)
