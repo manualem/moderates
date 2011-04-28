@@ -26,8 +26,8 @@ parameters="packageName:String, device:edap::Device"
  */
 package <%=packageName%>.sim;
 
-import org.sintef.moderates.sim.Interactive<%=device.name%>DataController;
-import org.sintef.moderates.sim.Interactive<%=device.name%>DataControllerClient;
+import <%=packageName%>.sim.Interactive<%=device.name%>DataController;
+import <%=packageName%>.sim.Interactive<%=device.name%>DataControllerClient;
 
 public class Test<%=device.name%> {
 
