@@ -59,7 +59,7 @@ public abstract class Abstract<%=device.name%> {
 	//*************************************************************************
 	<%device.receives_sync_ack.each{ m | %>
 	private boolean <%=m.name%>_ack_available;
-	private Object <%=m.name%>Monitor = "<%=m.name%>Monitor";
+	private final Object <%=m.name%>Monitor = "<%=m.name%>Monitor";
 	public boolean <%=m.name%>(<%=helper.paramsToJava(m)%>) {
 		<%=m.name%>_ack_available = false;
 		// Create message using the factory

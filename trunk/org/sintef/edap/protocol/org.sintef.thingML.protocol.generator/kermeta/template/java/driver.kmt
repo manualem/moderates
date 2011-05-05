@@ -46,7 +46,7 @@ _res.append("\t\n\t//***********************************************************
 device.receives_sync_ack.each{ m | 
 _res.append("\tprivate boolean ")
 _res.append(m.name)
-_res.append("_ack_available;\n\tprivate Object ")
+_res.append("_ack_available;\n\tprivate final Object ")
 _res.append(m.name)
 _res.append("Monitor = \"")
 _res.append(m.name)
