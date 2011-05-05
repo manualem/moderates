@@ -45,10 +45,10 @@ public abstract class <%=device.name%>Protocol {
 		FixedSizePacket result = null;
 		switch(packetType){
 			<%device.receives.each{out | %>
-			case <%=helper.toJavaConstant(out.name)%>: result = new <%=out.name%>(packet); break; 
+			case <%=helper.toJavaConstant(out.name)%>: result = new <%=helper.firstToUpper(out.name)%>(packet); break; 
 			<%}%>
 			<%device.sends.each{in | %>
-			case <%=helper.toJavaConstant(in.name)%>: result = new <%=in.name%>(packet); break; 
+			case <%=helper.toJavaConstant(in.name)%>: result = new <%=helper.firstToUpper(in.name)%>(packet); break; 
 			<%}%>
 			default: break;
 		}
@@ -56,15 +56,15 @@ public abstract class <%=device.name%>Protocol {
 	}
 
 	<%device.receives.each{out | %>
-	public static FixedSizePacket create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
-		return new <%=out.name%>(<%=helper.paramsToJavaCall(out)%>);
+	public static FixedSizePacket create<%=helper.firstToUpper(out.name)%>(<%=helper.paramsToJava(out)%>) {
+		return new <%=helper.firstToUpper(out.name)%>(<%=helper.paramsToJavaCall(out)%>);
 	}
 	
 	<%}%>
 	
 	<%device.sends.each{out | %>
-	public static FixedSizePacket create<%=out.name%>(<%=helper.paramsToJava(out)%>) {
-		return new <%=out.name%>(<%=helper.paramsToJavaCall(out)%>);
+	public static FixedSizePacket create<%=helper.firstToUpper(out.name)%>(<%=helper.paramsToJava(out)%>) {
+		return new <%=helper.firstToUpper(out.name)%>(<%=helper.paramsToJavaCall(out)%>);
 	}
 	
 	<%}%>
