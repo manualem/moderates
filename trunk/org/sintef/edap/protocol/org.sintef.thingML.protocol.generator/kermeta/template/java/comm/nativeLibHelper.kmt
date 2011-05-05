@@ -1,0 +1,11 @@
+package thingML;
+require kermeta
+using kermeta::standard
+using kermeta::utils
+class NativeLibHelperGenerator{
+operation generate():String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("package org.sintef.jarduino.comm;\n\nimport java.io.FileOutputStream;\nimport java.io.IOException;\nimport java.io.InputStream;\nimport java.io.OutputStream;\nimport java.util.logging.Level;\nimport java.util.logging.Logger;\n\n/**\n *\n * @author Francois Fouquet\n */\npublic class NativeLibUtil {\n\n    public static void copyFile(InputStream in, String to) {\n        OutputStream out = null;\n        try {\n            out = new FileOutputStream(to);\n            while (true) {\n                int data = in.read();\n                if (data == -1) {\n                    break;\n                }\n                out.write(data);\n            }\n            in.close();\n            out.close();\n        } catch (IOException ex) {\n            Logger.getLogger(NativeLibUtil.class.getName()).log(Level.SEVERE, null, ex);\n        } finally {\n            if (in != null) {\n                try {\n                    in.close();\n                } catch (IOException ex) {\n                    Logger.getLogger(NativeLibUtil.class.getName()).log(Level.SEVERE, null, ex);\n                }\n            }\n            if (out != null) {\n                try {\n                    out.close();\n                } catch (IOException ex) {\n                    Logger.getLogger(NativeLibUtil.class.getName()).log(Level.SEVERE, null, ex);\n                }\n            }\n        }\n    }\n}")
+result := _res.toString
+end
+}
