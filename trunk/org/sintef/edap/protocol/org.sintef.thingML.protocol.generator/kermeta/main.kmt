@@ -11,6 +11,7 @@ package thingML;
 
 require kermeta
 require "./helper.kmt"
+require "./stringHelper.kmt"
 require "./template/java/fixedSizePackage.kmt"
 require "./template/java/protocolPacket.kmt"
 require "./template/java/protocol.kmt"
@@ -46,6 +47,8 @@ class MainJavaProtocolGenerator
 
 	operation main(thingMLuri : String, srcFolder : String, isKevoree: Boolean) : Void is do 
 		var helper : Helper init Helper.new
+		var stringHelper : StringHelper init StringHelper.new
+		
 		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
 		
 		var fspGenerator : FixedSizePackageGenerator init FixedSizePackageGenerator.new
@@ -115,14 +118,14 @@ class MainJavaProtocolGenerator
 			t.asType(Device).sends.each{ m |
 				stdio.writeln("IncomingMessageGenerator")
 				stdio.writeln("-----------------------")
-				file.writeTextFile(srcFolder+"/org/sintef/jarduino/msg/"+m.name+".java", mGenerator.generate("org.sintef.jarduino", m, t.asType(Device)))
+				file.writeTextFile(srcFolder+"/org/sintef/jarduino/msg/"+stringHelper.firstToUpper(m.name)+".java", mGenerator.generate("org.sintef.jarduino", m, t.asType(Device)))
 				stdio.writeln("")
 			}
 			
 			t.asType(Device).receives.each{ m |
 				stdio.writeln("OutgoingMessageGenerator")
 				stdio.writeln("-----------------------")
-				file.writeTextFile(srcFolder+"/org/sintef/jarduino/msg/"+m.name+".java", mGenerator.generate("org.sintef.jarduino", m, t.asType(Device)))
+				file.writeTextFile(srcFolder+"/org/sintef/jarduino/msg/"+stringHelper.firstToUpper(m.name)+".java", mGenerator.generate("org.sintef.jarduino", m, t.asType(Device)))
 				stdio.writeln("")
 			}
 			
