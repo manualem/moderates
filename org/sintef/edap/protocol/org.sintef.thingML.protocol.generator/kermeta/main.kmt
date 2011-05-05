@@ -81,7 +81,7 @@ class MainJavaProtocolGenerator
 		thingMLmodel.types.select{t | t.isKindOf(Enumeration)}.each{e |
 			stdio.writeln("EnumGenerator")
 			stdio.writeln("---------------")
-			file.writeTextFile(srcFolder+"/org/sintef/jarduino/"+e.name+".java", eGenerator.generate("org.sintef.jarduino", e.asType(Enumeration)))
+			file.writeTextFile(srcFolder+"/org/sintef/jarduino/E"+e.name+".java", eGenerator.generate("org.sintef.jarduino", e.asType(Enumeration)))
 			stdio.writeln("")
 		}
 		

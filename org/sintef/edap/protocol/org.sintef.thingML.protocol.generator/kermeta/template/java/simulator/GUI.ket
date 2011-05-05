@@ -187,7 +187,7 @@ public class Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>
 		c.gridy = <%=y.toString%>;
  		panel.add(label<%=p.name%>, c);
 				<%if p.type.isKindOf(edap::Enumeration) then%>
-		<%=helper.firstToUpper(p.type.name)%>[] values<%=msg.name+helper.firstToUpper(p.name)%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=helper.firstToUpper(p.type.name)%>.<%=l.name%><%w := w+1}%>};
+		<%=helper.toJavaType(p.type)%>[] values<%=msg.name+helper.firstToUpper(p.name)%> = {<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=helper.toJavaType(p.type)%>.<%=l.name%><%w := w+1}%>};
 		field<%=msg.name+helper.firstToUpper(p.name)%> = new JComboBox(values<%=msg.name+helper.firstToUpper(p.name)%>);		
 				<%else%>		
  		field<%=msg.name+helper.firstToUpper(p.name)%> = new JTextField();

@@ -144,14 +144,14 @@ _res.append(p.name)
 _res.append(", c);\n")
 if p.type.isKindOf(edap::Enumeration) then
 _res.append("\t\t")
-_res.append(helper.firstToUpper(p.type.name))
+_res.append(helper.toJavaType(p.type))
 _res.append("[] values")
 _res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(" = {")
 var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then
 _res.append(", ")
 end
-_res.append(helper.firstToUpper(p.type.name))
+_res.append(helper.toJavaType(p.type))
 _res.append(".")
 _res.append(l.name)
 w := w+1}

@@ -87,7 +87,7 @@ class StringHelper
 			end
 		end
 		if p.isKindOf(edap::Enumeration) then
-				result := p.name
+				result := "E"+p.name
 		end
 	end
 	

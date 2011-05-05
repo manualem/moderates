@@ -32,10 +32,10 @@ import <%=packageName%>.msg.*;
 public interface I<%=device.name%>MessageHandler {
 
 	<%device.receives.each{msg | %>
-	void handle<%=msg.name%>(<%=helper.firstToUpper(msg.name)%> msg);
+	void handle<%=helper.firstToUpper(msg.name)%>(<%=helper.firstToUpper(msg.name)%> msg);
 	<%}%>
 	
 	<%device.sends.each{msg | %>
-	void handle<%=msg.name%>(<%=helper.firstToUpper(msg.name)%> msg);
+	void handle<%=helper.firstToUpper(msg.name)%>(<%=helper.firstToUpper(msg.name)%> msg);
 	<%}%>
 }

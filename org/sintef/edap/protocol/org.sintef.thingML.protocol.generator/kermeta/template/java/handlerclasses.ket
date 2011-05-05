@@ -32,11 +32,11 @@ import <%=packageName%>.msg.*;
 public abstract class <%=device.name%><%if isClient then%>Client<%end%>MessageHandler implements I<%=device.name%>MessageHandler{
 	<%if isClient then%>
 	<%device.sends.each{msg | %>
-	@Override public void handle<%=msg.name%>(<%=helper.firstToUpper(msg.name)%> msg){ /* Nothing */ }
+	@Override public void handle<%=helper.firstToUpper(msg.name)%>(<%=helper.firstToUpper(msg.name)%> msg){ /* Nothing */ }
 	<%}%>
 	<%else%>
 	<%device.receives.each{msg | %>
-	@Override public void handle<%=msg.name%>(<%=helper.firstToUpper(msg.name)%> msg){ /* Nothing */ }
+	@Override public void handle<%=helper.firstToUpper(msg.name)%>(<%=helper.firstToUpper(msg.name)%> msg){ /* Nothing */ }
 	<%}%>
 	<%end%>
 }
