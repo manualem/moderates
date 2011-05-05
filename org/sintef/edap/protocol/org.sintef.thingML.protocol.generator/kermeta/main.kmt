@@ -26,6 +26,7 @@ require "./template/java/observer/deviceSubject.kmt"
 require "./template/java/simulator/test.kmt"
 require "./template/java/comm/ZigBee/zigbee.kmt"
 require "./template/java/comm/Serial/serial.kmt"
+require "./template/java/comm/nativeLibHelper.kmt"
 
 using kermeta::standard
 using kermeta::io
@@ -68,6 +69,7 @@ class MainJavaProtocolGenerator
 		
 		var zbGenerator : ZigBeeGenerator init ZigBeeGenerator.new
 		var serialGenerator : SerialGenerator init SerialGenerator.new
+		var helperGenerator : NativeLibHelperGenerator init NativeLibHelperGenerator.new
 		
 		var file : FileIO init FileIO.new
 		
@@ -183,7 +185,12 @@ class MainJavaProtocolGenerator
 			stdio.writeln("SerialGenerator")
 			stdio.writeln("-----------------------")
 			file.writeTextFile(srcFolder+"/org/sintef/jarduino/comm/Serial4"+t.name+".java", serialGenerator.generate("org.sintef.jarduino", t.asType(Device)))
-			stdio.writeln("")		
+			stdio.writeln("")
+			
+			stdio.writeln("NativeLibHelperGenerator")
+			stdio.writeln("-----------------------")
+			file.writeTextFile(srcFolder+"/org/sintef/jarduino/comm/NativeLibUtil.java", helperGenerator.generate())
+			stdio.writeln("")			
 		}
 	end
 }
