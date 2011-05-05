@@ -19,7 +19,7 @@ device.receives.each{msg |
 _res.append("\tvoid handle")
 _res.append(msg.name)
 _res.append("(")
-_res.append(msg.name)
+_res.append(helper.firstToUpper(msg.name))
 _res.append(" msg);\n")
 }
 _res.append("\t\n")
@@ -27,7 +27,7 @@ device.sends.each{msg |
 _res.append("\tvoid handle")
 _res.append(msg.name)
 _res.append("(")
-_res.append(msg.name)
+_res.append(helper.firstToUpper(msg.name))
 _res.append(" msg);\n")
 }
 _res.append("}\n")

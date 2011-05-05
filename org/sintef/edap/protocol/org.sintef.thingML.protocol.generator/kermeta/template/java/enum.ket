@@ -43,7 +43,7 @@ public enum <%=enum.name%> {
 		return value;
 	}
 	
-	private static Map<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>> map;
+	private static final Map<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>> map;
 	
 	static {
 		map = new HashMap<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>>();

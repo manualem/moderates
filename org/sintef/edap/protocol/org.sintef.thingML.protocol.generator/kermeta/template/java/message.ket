@@ -29,7 +29,7 @@ package <%=packageName%>.msg;
 
 import <%=packageName%>.*;
 
-public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
+public class <%=helper.firstToUpper(msg.name)%> extends <%=device.name%>ProtocolPacket {
 
 	<%msg.parameters.each{ p | %>
 	private <%=helper.toJavaType(p.type)%> <%=p.name%>;

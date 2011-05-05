@@ -23,20 +23,20 @@ _res.append("MessageHandler{\n")
 if isClient then
 _res.append("")
 device.sends.each{msg | 
-_res.append("\tpublic void handle")
+_res.append("\t@Override public void handle")
 _res.append(msg.name)
 _res.append("(")
-_res.append(msg.name)
+_res.append(helper.firstToUpper(msg.name))
 _res.append(" msg){ /* Nothing */ }\n")
 }
 _res.append("")
 else
 _res.append("")
 device.receives.each{msg | 
-_res.append("\tpublic void handle")
+_res.append("\t@Override public void handle")
 _res.append(msg.name)
 _res.append("(")
-_res.append(msg.name)
+_res.append(helper.firstToUpper(msg.name))
 _res.append(" msg){ /* Nothing */ }\n")
 }
 _res.append("")
