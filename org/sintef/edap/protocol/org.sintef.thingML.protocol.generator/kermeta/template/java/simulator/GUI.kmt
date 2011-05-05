@@ -95,7 +95,7 @@ _res.append(".addActionListener(l);\n")
 }
 _res.append("\t}\n\t\n\tpublic static void init(){\n\t\tif (!init) {\n\t\t\tinit = true;\n\t\t\t\n\t\t\tclearButton = new JButton(\"Clear Console\");\n\t\t\tlogOwnEventsButton = new JButton(\"Log Own Events (Click to Activate)\");\n\t\t\tframe = new JFrame(\"Interactive ")
 _res.append(device.name)
-_res.append(" Data Simulator\");\n\t\t\tframe.setLayout(new GridBagLayout());\n\t\t\t\n\t\t\tGridBagConstraints c = new GridBagConstraints();\n\t\t\tc.gridwidth = 1;\n\t\t\tc.fill = GridBagConstraints.HORIZONTAL;\n\t\t\tc.insets = new Insets(0,3,0,3);\n\t\t\t\n")
+_res.append(" Data Simulator\");\n\t\t\tframe.setLayout(new GridBagLayout());\n\t\t\tframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n\t\t\t\n\t\t\tGridBagConstraints c = new GridBagConstraints();\n\t\t\tc.gridwidth = 1;\n\t\t\tc.fill = GridBagConstraints.HORIZONTAL;\n\t\t\tc.insets = new Insets(0,3,0,3);\n\t\t\t\n")
 var x : Integer init 0
 _res.append("")
 device.sends.each{msg |
