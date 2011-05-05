@@ -35,7 +35,7 @@ public class <%=helper.firstToUpper(msg.name)%> extends <%=device.name%>Protocol
 	private <%=helper.toJavaType(p.type)%> <%=p.name%>;
 	<%}%>
 	
-	public <%=msg.name%>(<%=helper.paramsToJava(msg)%>) {
+	public <%=helper.firstToUpper(msg.name)%>(<%=helper.paramsToJava(msg)%>) {
 		setCommandID(<%=device.name%>Protocol.<%=helper.toJavaConstant(msg.name)%>);
 		<%msg.parameters.each{ p | %>
 		set<%=helper.firstToUpper(helper.java_type_annotation(p.type))%>Value(<%=p.name%><%if p.type.isKindOf(edap::Enumeration) then%>.getValue()<%end%>);
@@ -43,7 +43,7 @@ public class <%=helper.firstToUpper(msg.name)%> extends <%=device.name%>Protocol
 		<%}%>
 	}
 	
-	public <%=msg.name%>(byte[] packet) {
+	public <%=helper.firstToUpper(msg.name)%>(byte[] packet) {
 		setPacketData(packet);
 		<%msg.parameters.each{ p | %>
 			<%if helper.isJavaString(p.type) then%>
@@ -72,7 +72,7 @@ public class <%=helper.firstToUpper(msg.name)%> extends <%=device.name%>Protocol
 	
 	@Override
 	public void acceptHandler(<%=device.name%>MessageHandler v) {
-		v.handle<%=msg.name%>(this);
+		v.handle<%=helper.firstToUpper(msg.name)%>(this);
 	}
 
 	@Override

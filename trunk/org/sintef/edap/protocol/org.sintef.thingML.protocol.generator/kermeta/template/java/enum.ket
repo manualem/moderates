@@ -30,12 +30,12 @@ package <%=packageName%>;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum <%=enum.name%> {
+public enum E<%=enum.name%> {
 	<%var x : Integer init 0 enum.literals.each{l | if x > 0 then%>,\n\t<%end%><%=l.name%>((<%=helper.java_type_annotation(enum)%>)<%=helper.getValue(l)%>)<%x := x+1}%>;
 
 	private final <%=helper.java_type_annotation(enum)%> value;
 	
-	private <%=enum.name%>(<%=helper.java_type_annotation(enum)%> value){
+	private E<%=enum.name%>(<%=helper.java_type_annotation(enum)%> value){
 		this.value = value;
 	}
 	
@@ -43,16 +43,16 @@ public enum <%=enum.name%> {
 		return value;
 	}
 	
-	private static final Map<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>> map;
+	private static final Map<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, E<%=enum.name%>> map;
 	
 	static {
-		map = new HashMap<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, <%=enum.name%>>();
+		map = new HashMap<<%=helper.firstToUpper(helper.java_type_annotation(enum))%>, E<%=enum.name%>>();
 		<% enum.literals.each{l | %>
-		map.put((<%=helper.java_type_annotation(enum)%>)<%=helper.getValue(l)%>, <%=enum.name%>.<%=l.name%>);
+		map.put((<%=helper.java_type_annotation(enum)%>)<%=helper.getValue(l)%>, E<%=enum.name%>.<%=l.name%>);
 		<%}%>
 	}
 	
-	public static <%=enum.name%> fromValue(<%=helper.java_type_annotation(enum)%> b) {
+	public static E<%=enum.name%> fromValue(<%=helper.java_type_annotation(enum)%> b) {
 		return map.get(b);
 	}
 	

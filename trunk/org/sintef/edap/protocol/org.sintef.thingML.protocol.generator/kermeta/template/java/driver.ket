@@ -48,7 +48,7 @@ public abstract class Abstract<%=device.name%> {
 	<%device.receives_async.each{ m | %>
 	public void <%=m.name%>(<%=helper.paramsToJava(m)%>) {
 		// Create message using the factory
-		FixedSizePacket p = <%=device.name%>Protocol.create<%=m.name%>(<%=helper.paramsToJavaCall(m)%>);
+		FixedSizePacket p = <%=device.name%>Protocol.create<%=helper.firstToUpper(m.name)%>(<%=helper.paramsToJavaCall(m)%>);
 		// Send the message on the serial line
 		serial.receiveMsg(p.getPacket());
 	}
@@ -63,7 +63,7 @@ public abstract class Abstract<%=device.name%> {
 	public boolean <%=m.name%>(<%=helper.paramsToJava(m)%>) {
 		<%=m.name%>_ack_available = false;
 		// Create message using the factory
-		FixedSizePacket p = <%=device.name%>Protocol.create<%=m.name%>(<%=helper.paramsToJavaCall(m)%>);
+		FixedSizePacket p = <%=device.name%>Protocol.create<%=helper.firstToUpper(m.name)%>(<%=helper.paramsToJavaCall(m)%>);
 		// Create message using the factory
 		serial.receiveMsg(p.getPacket());
 		try {
@@ -84,13 +84,13 @@ public abstract class Abstract<%=device.name%> {
 	<%device.receives_sync_response.each{ m | %>
 	private <%=helper.toJavaType(m.sync_response_parameter.type)%> <%=m.name%>_result;
 	private boolean <%=m.name%>_result_available;
-	private Object <%=m.name%>Monitor = "<%=m.name%>Monitor";
+	private final Object <%=m.name%>Monitor = "<%=m.name%>Monitor";
 	public <%=helper.toJavaType(m.sync_response_parameter.type)%> <%=m.name%>(<%=helper.paramsToJava(m)%>) {
 		try {
 			synchronized(<%=m.name%>Monitor) {
 				<%=m.name%>_result_available = false;
 				// Create message using the factory
-				FixedSizePacket p = <%=device.name%>Protocol.create<%=m.name%>(<%=helper.paramsToJavaCall(m)%>);
+				FixedSizePacket p = <%=device.name%>Protocol.create<%=helper.firstToUpper(m.name)%>(<%=helper.paramsToJavaCall(m)%>);
 				// Create message using the factory
 				serial.receiveMsg(p.getPacket());
 				<%=m.name%>Monitor.wait(<%=m.timeout_annotation%>);
@@ -119,7 +119,7 @@ public abstract class Abstract<%=device.name%> {
 	/**
 	 * Implement this method to handle the incoming message <%=m.name%>
 	 */
-	protected abstract void receive<%=m.name%>(<%=helper.paramsToJava(m)%>);
+	protected abstract void receive<%=helper.firstToUpper(m.name)%>(<%=helper.paramsToJava(m)%>);
 	<%}%>
 	
 	private class <%=device.name%>DriverMessageHandler extends <%=device.name%>MessageHandler implements <%=device.name%>Observer {
@@ -136,7 +136,7 @@ public abstract class Abstract<%=device.name%> {
 		//*************************************************************************
 		<%device.receives_sync_response.each{ m | %>
 		@Override
-		public void handle<%=m.sync_response_message.name%>(<%=m.sync_response_message.name%> msg) {
+		public void handle<%=helper.firstToUpper(m.sync_response_message.name)%>(<%=helper.firstToUpper(m.sync_response_message.name)%> msg) {
 			<%=m.name%>_result = msg.get<%=helper.firstToUpper(m.sync_response_parameter.name)%>();
 			<%=m.name%>_result_available = true;
 			synchronized(<%=m.name%>Monitor) {
@@ -150,7 +150,7 @@ public abstract class Abstract<%=device.name%> {
 		//*************************************************************************
 		<%device.receives_sync_ack.each{ m | %>
 		@Override
-		public void handle<%=m.sync_ack_message.name%>(<%=m.sync_ack_message.name%> msg) {
+		public void handle<%=helper.firstToUpper(m.sync_ack_message.name)%>(<%=helper.firstToUpper(m.sync_ack_message.name)%> msg) {
 			synchronized(<%=m.name%>Monitor) {
 				<%=m.name%>_ack_available = true;
 				<%=m.name%>Monitor.notify();
@@ -163,8 +163,8 @@ public abstract class Abstract<%=device.name%> {
 		//*************************************************************************
 		<%device.sends_async.each{ m | %>
 		@Override
-		public void handle<%=m.name%>(<%=m.name%> msg) {
-			receive<%=m.name%>(<%=helper.paramsToGetterCall(m, "msg")%>);
+		public void handle<%=helper.firstToUpper(m.name)%>(<%=helper.firstToUpper(m.name)%> msg) {
+			receive<%=helper.firstToUpper(m.name)%>(<%=helper.paramsToGetterCall(m, "msg")%>);
 		}
 		<%}%>
 	}

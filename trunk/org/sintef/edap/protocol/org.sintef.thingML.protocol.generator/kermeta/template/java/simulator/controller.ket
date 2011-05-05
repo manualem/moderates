@@ -140,7 +140,7 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 			if (<%=p.name%>.length() > <%=helper.getSize(p.type)%>) <%=p.name%> = <%=p.name%>.substring(0, <%=helper.getSize(p.type)%>-1);
 		<%else%>
 			<%if p.type.isKindOf(edap::Enumeration) then%>
-			<%=p.name%> = (<%=helper.firstToUpper(p.type.name)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getSelectedItem();
+			<%=p.name%> = (<%=helper.toJavaType(p.type)%>)Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getSelectedItem();
 			<%else%>
 			<%=p.name%> = <%=helper.firstToUpper(helper.toJavaType(p.type))%>.parse<%=helper.firstToUpper(helper.toJavaType(p.type))%>(Interactive<%=device.name%>DataGUI<%if isClient then%>Client<%end%>.getField<%=msg.name+helper.firstToUpper(p.name)%>().getText());
 			<%end%>
@@ -151,11 +151,11 @@ public class Interactive<%=device.name%>DataController<%if isClient then%>Client
 			valid = false;
 		}
 		if (valid){
-			fsp = <%=device.name%>Protocol.create<%=msg.name%>(<%=helper.paramsToJavaCall(msg)%>);
+			fsp = <%=device.name%>Protocol.create<%=helper.firstToUpper(msg.name)%>(<%=helper.paramsToJavaCall(msg)%>);
 			doSend(fsp);
 		}
 		<%else%>
-		fsp = <%=device.name%>Protocol.create<%=msg.name%>();	
+		fsp = <%=device.name%>Protocol.create<%=helper.firstToUpper(msg.name)%>();	
 		doSend(fsp);
 		<%end%>
 	}
