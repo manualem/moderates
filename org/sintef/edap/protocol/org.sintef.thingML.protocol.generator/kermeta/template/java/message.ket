@@ -29,8 +29,6 @@ package <%=packageName%>.msg;
 
 import <%=packageName%>.*;
 
-import java.nio.ByteBuffer;
-
 public class <%=msg.name%> extends <%=device.name%>ProtocolPacket {
 
 	<%msg.parameters.each{ p | %>

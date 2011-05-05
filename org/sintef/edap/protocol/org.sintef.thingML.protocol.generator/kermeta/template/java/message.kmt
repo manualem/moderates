@@ -12,7 +12,7 @@ _res.append("/**\n * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Versi
 _res.append(packageName)
 _res.append(".msg;\n\nimport ")
 _res.append(packageName)
-_res.append(".*;\n\nimport java.nio.ByteBuffer;\n\npublic class ")
+_res.append(".*;\n\npublic class ")
 _res.append(msg.name)
 _res.append(" extends ")
 _res.append(device.name)
