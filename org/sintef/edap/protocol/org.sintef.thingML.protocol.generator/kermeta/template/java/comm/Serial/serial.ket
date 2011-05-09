@@ -43,9 +43,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JOptionPane;
 
 public class Serial4<%=device.name%> implements <%=device.name%>ClientObserver, <%=device.name%>Subject {
 
@@ -308,7 +310,28 @@ public class Serial4<%=device.name%> implements <%=device.name%>ClientObserver, 
         }
         //System.out.println("javax.comm.rxtx.SerialPorts = " + prop);
     }    
-    
+
+	public static String selectSerialPort() {
+
+        ArrayList<String> possibilities = new ArrayList<String>();
+        for (Enumeration enumeration = CommPortIdentifier.getPortIdentifiers(); enumeration.hasMoreElements();) {
+            CommPortIdentifier commportidentifier = (CommPortIdentifier) enumeration.nextElement();
+            possibilities.add(commportidentifier.getName());
+
+        }
+
+
+        String s = (String) JOptionPane.showInputDialog(
+                null,
+                "JArduino",
+                "Select serial port",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities.toArray(),
+                possibilities.toArray()[0]);
+
+        return s;
+    }    
 	
 	/* ***********************************************************************
 	 * Main
