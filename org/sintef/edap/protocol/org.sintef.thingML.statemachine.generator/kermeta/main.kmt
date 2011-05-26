@@ -1,0 +1,70 @@
+/* $Id:$ 
+ * Creation : March 10, 2011
+ * Licence  : EPL 
+ * Copyright:
+ * Authors  : 
+ *            bmori
+ */
+
+package thingML;
+
+
+require kermeta
+require "./helper.kmt"
+require "./stringHelper.kmt"
+require "./template/scala/event.kmt"
+require "./template/scala/compositeState.kmt"
+require "./template/scala/state.kmt"
+require "./template/scala/transition.kmt"
+
+using kermeta::standard
+using kermeta::io
+
+using edap
+
+class Main
+{
+	operation main(thingMLuri : String, srcFolder : String) : Void is do 
+		var helper : Helper init Helper.new
+		var stringHelper : StringHelper init StringHelper.new
+		
+		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
+		
+		var eventGenerator : EventGenerator init EventGenerator.new
+		var stateGenerator : StateGenerator init StateGenerator.new
+		var compositeGenerator : CompositeGenerator init CompositeGenerator.new 
+		var transitionGenerator : TransitionGenerator init TransitionGenerator.new
+		
+		var file : FileIO init FileIO.new
+		
+		
+		thingMLmodel.types.select{t | t.isKindOf(SoftwareComponent)}.each{e |
+			var sw : SoftwareComponent
+			sw ?= e
+			
+			stdio.writeln(eventGenerator.generate(sw.behaviour))
+			
+			var states : Set<edap::State> init Set<edap::State>.new 
+			states.add(sw.behaviour)
+			from states
+			until states.isEmpty
+			loop
+				var tempStates : Set<edap::State> init Set<edap::State>.new
+				states.each{ s |
+					if s.isInstanceOf(CompositeState) then
+						tempStates.addAll(s.asType(CompositeState).substate)
+						stdio.writeln(compositeGenerator.generate(s.asType(CompositeState)))
+					else
+						stdio.writeln(stateGenerator.generate(s))
+					end
+					s.outgoing.each{ t |
+						stdio.writeln(transitionGenerator.generate(t))
+					}
+				}
+				
+				states.clear
+				states.addAll(tempStates)
+			end
+		}
+	end
+}

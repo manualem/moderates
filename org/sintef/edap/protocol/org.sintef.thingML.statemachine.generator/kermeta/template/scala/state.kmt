@@ -1,0 +1,16 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class StateGenerator{
+operation generate(state:edap::State):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("\ncase class ")
+_res.append(helper.firstToUpper(state.name))
+_res.append("(master : Orchestrator) extends State(master) {\n  override def onEntry() = {\n    //TODO: define actions here\n  }\n  \n  override def onExit() = {\n    //TODO: define actions here\n  }\n}")
+result := _res.toString
+end
+}

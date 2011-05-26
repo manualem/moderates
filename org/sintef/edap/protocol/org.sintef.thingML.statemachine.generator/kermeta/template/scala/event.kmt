@@ -1,0 +1,83 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class EventGenerator{
+operation generate(sm : edap::StateMachine):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("")
+var states : Set<edap::State> init Set<edap::State>.new
+states.addAll(sm.substate)
+_res.append("")
+from states  
+until states.isEmpty
+loop
+   	var tempStates : Set<edap::State> init Set<edap::State>.new
+_res.append("")
+states.each{s | 
+_res.append("")
+if s.isKindOf(edap::CompositeState) then
+_res.append("")
+tempStates.addAll(s.asType(edap::CompositeState).substate)
+_res.append("")
+end
+_res.append("")
+s.outgoing.each{ t |
+_res.append("")
+t.event.each{e |
+_res.append("")
+if e.isKindOf(edap::ReceiveMessage) then
+_res.append("")
+var m : edap::Message init e.asType(edap::ReceiveMessage).message
+_res.append("")
+if m.parameters.size == 0 then
+_res.append("case object ")
+_res.append(helper.firstToUpper(m.name))
+_res.append("Event extends Event {}\t\t\t\t\t\n")
+else
+_res.append("case class ")
+_res.append(helper.firstToUpper(m.name))
+_res.append("Event(")
+_res.append(helper.paramsToScala(m))
+_res.append(") extends Event {}\t\t\t\t\t\t\n")
+end
+_res.append("")
+end
+_res.append("")
+}
+_res.append("")
+if t.action.isKindOf(edap::SendAction) then
+_res.append("")
+var m : edap::Message init t.action.asType(edap::SendAction).message
+_res.append("")
+if m.parameters.size == 0 then
+_res.append("case object ")
+_res.append(helper.firstToUpper(m.name))
+_res.append("Event extends Event {}\t\t\t\t\t\n")
+else
+_res.append("case class ")
+_res.append(helper.firstToUpper(m.name))
+_res.append("Event(")
+_res.append(helper.paramsToScala(m))
+_res.append(") extends Event {}\t\t\t\t\t\t\n")
+end
+_res.append("")
+end
+_res.append("")
+}
+_res.append("")
+}
+_res.append("")
+
+	states.clear
+	states.addAll(tempStates)
+	
+_res.append("")
+end
+_res.append("\n")
+result := _res.toString
+end
+}
