@@ -1,0 +1,47 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="EventGenerator"
+ismethod="false"operation="generate"
+parameters="sm : edap::StateMachine"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+<%var states : Set<edap::State> init Set<edap::State>.new
+states.addAll(sm.substate)%>
+<%from states  
+until states.isEmpty
+loop
+   	var tempStates : Set<edap::State> init Set<edap::State>.new%>
+	<%states.each{s | %>
+		<%if s.isKindOf(edap::CompositeState) then%>
+			<%tempStates.addAll(s.asType(edap::CompositeState).substate)%>
+		<%end%>
+		<%s.outgoing.each{ t |%>
+			<%t.event.each{e |%>
+				<%if e.isKindOf(edap::ReceiveMessage) then%>
+					<%var m : edap::Message init e.asType(edap::ReceiveMessage).message%>
+					<%if m.parameters.size == 0 then%>
+case object <%=helper.firstToUpper(m.name)%>Event extends Event {}					
+					<%else%>
+case class <%=helper.firstToUpper(m.name)%>Event(<%=helper.paramsToScala(m)%>) extends Event {}						
+					<%end%>
+				<%end%>
+			<%}%>
+			<%if t.action.isKindOf(edap::SendAction) then%>
+				<%var m : edap::Message init t.action.asType(edap::SendAction).message%>
+				<%if m.parameters.size == 0 then%>
+case object <%=helper.firstToUpper(m.name)%>Event extends Event {}					
+				<%else%>
+case class <%=helper.firstToUpper(m.name)%>Event(<%=helper.paramsToScala(m)%>) extends Event {}						
+				<%end%>
+			<%end%>	
+		<%}%>
+	<%}%>
+	<%
+	states.clear
+	states.addAll(tempStates)
+	%>
+<%end%>
+

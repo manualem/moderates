@@ -1,0 +1,66 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class CompositeGenerator{
+operation generate(state:edap::CompositeState):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("\n")
+if state.isKindOf(edap::StateMachine) then
+_res.append("case class ")
+_res.append(helper.firstToUpper(state.name))
+_res.append("StateMachine(master : Orchestrator, keepHistory : Boolean) extends StateMachine(master, keepHistory) {\n")
+else
+_res.append("case class ")
+_res.append(helper.firstToUpper(state.name))
+_res.append("(master : Orchestrator, keepHistory : Boolean) extends CompositeState(master, keepHistory) {\n")
+end
+_res.append("\n  //create sub-states\n")
+state.substate.each{s | 
+_res.append("  val ")
+_res.append(s.name)
+_res.append(" = ")
+_res.append(helper.firstToUpper(s.name))
+_res.append("(master)\n")
+}
+_res.append("  override val substates = List(")
+_res.append(helper.statesToList(state))
+_res.append(")\n  override val initial = ")
+_res.append(state.initial.name)
+_res.append("\n  \n  //create transitions among sub-states\n")
+state.substate.each{ s | 
+_res.append("")
+s.outgoing.each{ t | 
+_res.append("  val ")
+_res.append(t.source.name)
+_res.append("_")
+_res.append(t.name)
+_res.append("_")
+_res.append(t.target.name)
+_res.append(" = ")
+_res.append(helper.firstToUpper(t.source.name))
+_res.append("_")
+_res.append(helper.firstToUpper(t.name))
+_res.append("_")
+_res.append(helper.firstToUpper(t.target.name))
+_res.append("(")
+_res.append(t.source.name)
+_res.append(", ")
+_res.append(t.target.name)
+_res.append(", master, List(")
+_res.append(helper.eventsToList(t))
+_res.append("))\n")
+}
+_res.append("")
+}
+_res.append("  override val outGoingTransitions = List(")
+_res.append(helper.transitionsToList(state))
+_res.append(")\n  override val initial = ")
+_res.append(state.initial.name)
+_res.append("       \n  \n\n  override def onEntry() = {\n    //TODO: define actions here\n  }\n  \n  override def onExit() = {\n    //TODO: define actions here\n  }\n}")
+result := _res.toString
+end
+}

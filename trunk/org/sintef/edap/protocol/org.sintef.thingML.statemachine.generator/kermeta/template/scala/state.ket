@@ -1,0 +1,20 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="StateGenerator"
+ismethod="false"operation="generate"
+parameters="state:edap::State"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+
+case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator) extends State(master) {
+  override def onEntry() = {
+    //TODO: define actions here
+  }
+  
+  override def onExit() = {
+    //TODO: define actions here
+  }
+}

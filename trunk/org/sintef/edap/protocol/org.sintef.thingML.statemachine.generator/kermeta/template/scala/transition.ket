@@ -1,0 +1,18 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="TransitionGenerator"
+ismethod="false"operation="generate"
+parameters="transition:edap::Transition"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+
+case class <%=helper.firstToUpper(transition.name)%>Transition(previous : State, next : State, master : Orchestrator, var events : List[Event]) extends Transition(previous, next, master, events) { 
+  def executeActions() = {
+    //TODO: define actions here
+  }
+  
+  def checkGuard : Boolean = true
+}
