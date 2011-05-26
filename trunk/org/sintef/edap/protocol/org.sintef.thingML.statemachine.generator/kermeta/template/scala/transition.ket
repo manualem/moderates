@@ -9,7 +9,7 @@ parameters="transition:edap::Transition"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 
-case class <%=helper.firstToUpper(transition.name)%>Transition(previous : State, next : State, master : Orchestrator, var events : List[Event]) extends Transition(previous, next, master, events) { 
+case class <%=helper.firstToUpper(transition.source.name)%>_<%=helper.firstToUpper(transition.name)%>_<%=helper.firstToUpper(transition.target.name)%>(previous : State, next : State, master : Orchestrator, var events : List[Event]) extends Transition(previous, next, master, events) { 
   def executeActions() = {
     //TODO: define actions here
   }
