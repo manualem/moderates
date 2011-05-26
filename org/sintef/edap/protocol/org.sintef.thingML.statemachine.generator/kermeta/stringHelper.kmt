@@ -166,7 +166,7 @@ class StringHelper
 			if i > 0 then
 				res := res + ", "
 			end
-			res := res + s.name
+			res := res + s.name+"_state"
 			i := i+1
 		}
 		result := res
@@ -181,7 +181,7 @@ class StringHelper
 				if i > 0 then
 					res := res + ", "
 				end
-				res := res + o.name+"Transition"
+				res := res + o.source.name+"_"+o.name+"_"+o.target.name+"_transition"
 				i := i+1
 			}
 		}

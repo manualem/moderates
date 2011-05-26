@@ -17,19 +17,18 @@ case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, keepHisto
 
   //create sub-states
 <%state.substate.each{s | %>
-  val <%=s.name%> = <%=helper.firstToUpper(s.name)%>(master)
+  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master)
 <%}%>
   override val substates = List(<%=helper.statesToList(state)%>)
-  override val initial = <%=state.initial.name%>
+  override val initial = <%=state.initial.name%>_state
   
   //create transitions among sub-states
 <%state.substate.each{ s | %>
 	<%s.outgoing.each{ t | %>
-  val <%=t.source.name%>_<%=t.name%>_<%=t.target.name%> = <%=helper.firstToUpper(t.source.name)%>_<%=helper.firstToUpper(t.name)%>_<%=helper.firstToUpper(t.target.name)%>(<%=t.source.name%>, <%=t.target.name%>, master, List(<%=helper.eventsToList(t)%>))
+  val <%=t.source.name%>_<%=t.name%>_<%=t.target.name%>_transition = <%=helper.firstToUpper(t.source.name)%>_<%=helper.firstToUpper(t.name)%>_<%=helper.firstToUpper(t.target.name)%>(<%=t.source.name%>_state, <%=t.target.name%>_state, master, List(<%=helper.eventsToList(t)%>))
 	<%}%>
 <%}%>  
-  override val outGoingTransitions = List(<%=helper.transitionsToList(state)%>)
-  override val initial = <%=state.initial.name%>       
+  override val outGoingTransitions = List(<%=helper.transitionsToList(state)%>)    
   
 
   override def onEntry() = {
