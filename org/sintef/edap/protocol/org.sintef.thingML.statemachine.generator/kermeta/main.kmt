@@ -37,34 +37,23 @@ class Main
 		
 		var file : FileIO init FileIO.new
 		
-		
+	
 		thingMLmodel.types.select{t | t.isKindOf(SoftwareComponent)}.each{e |
 			var sw : SoftwareComponent
 			sw ?= e
 			
 			stdio.writeln(eventGenerator.generate(sw.behaviour))
-			
-			var states : Set<edap::State> init Set<edap::State>.new 
-			states.add(sw.behaviour)
-			from states
-			until states.isEmpty
-			loop
-				var tempStates : Set<edap::State> init Set<edap::State>.new
-				states.each{ s |
-					if s.isInstanceOf(CompositeState) then
-						tempStates.addAll(s.asType(CompositeState).substate)
-						stdio.writeln(compositeGenerator.generate(s.asType(CompositeState)))
-					else
-						stdio.writeln(stateGenerator.generate(s))
-					end
-					s.outgoing.each{ t |
-						stdio.writeln(transitionGenerator.generate(t))
-					}
-				}
-				
-				states.clear
-				states.addAll(tempStates)
-			end
+
+			sw.behaviour.getAllStates.each{s |
+				if s.isInstanceOf(CompositeState) then
+					stdio.writeln(compositeGenerator.generate(s.asType(CompositeState)))
+				else
+					stdio.writeln(stateGenerator.generate(s))
+				end
+				s.outgoing.each{ t |
+					stdio.writeln(transitionGenerator.generate(t))
+				}			
+			}
 		}
 	end
 }

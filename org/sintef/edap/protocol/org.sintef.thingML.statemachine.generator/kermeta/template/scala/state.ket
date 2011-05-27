@@ -9,7 +9,7 @@ parameters="state:edap::State"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 
-case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator) extends State(master) {
+case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState) extends State(master, parent) {
   override def onEntry() = {
     //TODO: define actions here
   }
