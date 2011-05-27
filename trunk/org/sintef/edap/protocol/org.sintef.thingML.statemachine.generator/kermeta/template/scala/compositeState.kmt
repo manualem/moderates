@@ -8,23 +8,25 @@ operation generate(state:edap::CompositeState):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
-_res.append("\n")
-if state.isKindOf(edap::StateMachine) then
-_res.append("case class ")
+_res.append("\ncase class ")
 _res.append(helper.firstToUpper(state.name))
-_res.append("StateMachine(master : Orchestrator, keepHistory : Boolean) extends StateMachine(master, keepHistory) {\n")
-else
-_res.append("case class ")
-_res.append(helper.firstToUpper(state.name))
-_res.append("(master : Orchestrator, keepHistory : Boolean) extends CompositeState(master, keepHistory) {\n")
-end
-_res.append("\n  //create sub-states\n")
+_res.append("(master : Orchestrator, parent : CompositeState, keepHistory : Boolean) extends CompositeState(master, parent, keepHistory) {\n\n  //create sub-states\n")
 state.substate.each{s | 
+_res.append("")
+if s.isInstanceOf(edap::CompositeState) then
 _res.append("  val ")
 _res.append(s.name)
 _res.append("_state = ")
 _res.append(helper.firstToUpper(s.name))
-_res.append("(master)\n")
+_res.append("(master, this, false)\n")
+else
+_res.append("  val ")
+_res.append(s.name)
+_res.append("_state = ")
+_res.append(helper.firstToUpper(s.name))
+_res.append("(master, this)\n")
+end
+_res.append("")
 }
 _res.append("  override val substates = List(")
 _res.append(helper.statesToList(state))

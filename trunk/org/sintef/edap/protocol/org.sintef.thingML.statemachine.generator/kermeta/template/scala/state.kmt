@@ -10,7 +10,7 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("\ncase class ")
 _res.append(helper.firstToUpper(state.name))
-_res.append("(master : Orchestrator) extends State(master) {\n  override def onEntry() = {\n    //TODO: define actions here\n  }\n  \n  override def onExit() = {\n    //TODO: define actions here\n  }\n}")
+_res.append("(master : Orchestrator, parent : CompositeState) extends State(master, parent) {\n  override def onEntry() = {\n    //TODO: define actions here\n  }\n  \n  override def onExit() = {\n    //TODO: define actions here\n  }\n}")
 result := _res.toString
 end
 }

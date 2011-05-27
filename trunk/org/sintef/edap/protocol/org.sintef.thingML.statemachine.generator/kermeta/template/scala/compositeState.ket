@@ -9,15 +9,15 @@ parameters="state:edap::CompositeState"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 
-<%if state.isKindOf(edap::StateMachine) then%>
-case class <%=helper.firstToUpper(state.name)%>StateMachine(master : Orchestrator, keepHistory : Boolean) extends StateMachine(master, keepHistory) {
-<%else%>
-case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, keepHistory : Boolean) extends CompositeState(master, keepHistory) {
-<%end%>
+case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState, keepHistory : Boolean) extends CompositeState(master, parent, keepHistory) {
 
   //create sub-states
 <%state.substate.each{s | %>
-  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master)
+  <%if s.isInstanceOf(edap::CompositeState) then%>
+  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master, this, false)
+  <%else%>
+  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master, this)
+  <%end%>
 <%}%>
   override val substates = List(<%=helper.statesToList(state)%>)
   override val initial = <%=state.initial.name%>_state

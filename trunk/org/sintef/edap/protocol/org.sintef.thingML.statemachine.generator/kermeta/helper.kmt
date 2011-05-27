@@ -6,7 +6,7 @@
  */
 
 
-package thingML;
+package edap;
 
 
 require kermeta
@@ -17,6 +17,100 @@ using kermeta::standard
 using kermeta::persistence
 
 using edap
+
+aspect class State
+{
+	operation getAllStates() : Set<State> is
+	do
+		var states : Set<State> init Set<State>.new
+		states.add(self)
+		result := states
+	end
+}
+
+aspect class ReceiveMessage
+{
+
+}
+
+aspect class Action
+{
+	operation getAllActions() : Set<SendAction> is
+	do
+		var states : Set<SendAction> init Set<SendAction>.new
+		result := states
+	end
+}
+
+aspect class SendAction
+{
+	method getAllActions() : Set<SendAction> is
+	do
+		var states : Set<SendAction> init Set<SendAction>.new
+		states.add(self)
+		result := states
+	end
+}
+
+aspect class ActionBlock
+{
+	method getAllActions() : Set<SendAction> is
+	do
+		var states : Set<SendAction> init Set<SendAction>.new
+		self.actions.each{a | states.addAll(a.getAllActions.select{s | s.isKindOf(SendAction)})}
+		result := states
+	end
+
+}
+
+aspect class CompositeState
+{
+	operation getAllMessages() : Set<Message> is
+	do
+		var res : Set<Message> init Set<Message>.new
+		getAllReceivedMessage.each{e |
+			res.add(e.message)
+		}
+		getAllSentMessage.each{e | 
+			res.add(e.message)
+		}
+		result := res
+	end
+	
+	operation getAllReceivedMessage() : Set<ReceiveMessage> is
+	do
+		var events : Set<ReceiveMessage> init Set<ReceiveMessage>.new
+		getAllStates.each{ s |
+			s.outgoing.each{t |	
+				t.event.select{e | e.isKindOf(ReceiveMessage)}.each{ e | 
+				events.add(e.asType(ReceiveMessage))}
+			}
+		}
+		result := events
+	end
+
+	operation getAllSentMessage() : Set<SendAction> is
+	do
+		var events : Set<SendAction> init Set<SendAction>.new
+		getAllStates.each{ s |
+			s.outgoing.each{t | 
+				if (t.action != void) then
+					events.addAll(t.action.getAllActions)
+				end
+			}
+		}
+		result := events
+	end
+
+
+	method getAllStates() : Set<State> is
+	do
+		var states : Set<State> init Set<State>.new
+		self.substate.each{ s | states.addAll(s.getAllStates)}
+		states.add(self)
+		result := states
+	end
+}
 
 class Helper
 {
