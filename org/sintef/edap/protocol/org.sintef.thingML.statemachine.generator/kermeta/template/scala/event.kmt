@@ -5,12 +5,12 @@ require "../../helper.kmt"
 using kermeta::standard
 using kermeta::utils
 class EventGenerator{
-operation generate(sm : edap::StateMachine):String is do
+operation generate(sw : edap::SoftwareComponent):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("")
-sm.getAllMessages.each{m |
+sw.getAllMessages.each{m |
 _res.append("")
 if m.parameters.size == 0 then
 _res.append("case object ")

@@ -13,6 +13,7 @@ require kermeta
 require "./helper.kmt"
 require "./stringHelper.kmt"
 require "./template/scala/event.kmt"
+require "./template/scala/main.kmt"
 require "./template/scala/compositeState.kmt"
 require "./template/scala/state.kmt"
 require "./template/scala/transition.kmt"
@@ -31,6 +32,7 @@ class Main
 		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
 		
 		var eventGenerator : EventGenerator init EventGenerator.new
+		var mainGenerator : MainGenerator init MainGenerator.new
 		var stateGenerator : StateGenerator init StateGenerator.new
 		var compositeGenerator : CompositeGenerator init CompositeGenerator.new 
 		var transitionGenerator : TransitionGenerator init TransitionGenerator.new
@@ -42,7 +44,7 @@ class Main
 			var sw : SoftwareComponent
 			sw ?= e
 			
-			stdio.writeln(eventGenerator.generate(sw.behaviour))
+			stdio.writeln(eventGenerator.generate(sw))
 
 			sw.behaviour.getAllStates.each{s |
 				if s.isInstanceOf(CompositeState) then
@@ -54,6 +56,8 @@ class Main
 					stdio.writeln(transitionGenerator.generate(t))
 				}			
 			}
+			
+			stdio.writeln(mainGenerator.generate(sw.behaviour))
 		}
 	end
 }

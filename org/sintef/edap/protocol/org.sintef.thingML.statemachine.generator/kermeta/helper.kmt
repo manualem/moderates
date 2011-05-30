@@ -33,8 +33,21 @@ aspect class ReceiveMessage
 
 }
 
+aspect class ExternStatement
+{
+	method print() : String is
+	do
+		result := statement
+	end
+}
+
 aspect class Action
 {
+	operation print() : String is
+	do
+		result := ""
+	end
+
 	operation getAllActions() : Set<SendAction> is
 	do
 		var states : Set<SendAction> init Set<SendAction>.new
@@ -54,6 +67,14 @@ aspect class SendAction
 
 aspect class ActionBlock
 {
+	
+	method print() : String is
+	do
+		var res : String init ""
+		self.actions.each{a | res := res + a.print +"\n"}
+		result := res
+	end
+	
 	method getAllActions() : Set<SendAction> is
 	do
 		var states : Set<SendAction> init Set<SendAction>.new
@@ -61,6 +82,17 @@ aspect class ActionBlock
 		result := states
 	end
 
+}
+
+aspect class SoftwareComponent
+{
+	operation getAllMessages() : Set<Message> is
+	do
+		var res : Set<Message> init Set<Message>.new
+		res.addAll(sends)
+		res.addAll(receives)
+		result := res
+	end
 }
 
 aspect class CompositeState

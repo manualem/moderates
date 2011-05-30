@@ -1,0 +1,19 @@
+<%@ket
+package="thingML"
+require="../../helper.kmt"
+using=""
+isAspectClass="false"
+class="MainGenerator"
+ismethod="false"operation="generate"
+parameters="sm : edap::CompositeState"
+%>
+object Main{
+  def main(args: Array[String]): Unit = {   
+    println("START")
+    val master = new Orchestrator
+    master.start
+    
+    val sm = new <%=sm.name%>(master, null, false, true)
+    sm.startState
+  }
+}

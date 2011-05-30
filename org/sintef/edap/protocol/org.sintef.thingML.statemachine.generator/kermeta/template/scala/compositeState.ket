@@ -1,15 +1,16 @@
 <%@ket
 package="thingML"
-require="../../stringHelper.kmt"
+require="../../stringHelper.kmt ./GUI.kmt ../../helper.kmt"
 using=""
 isAspectClass="false"
 class="CompositeGenerator"
 ismethod="false"operation="generate"
 parameters="state:edap::CompositeState"
 %>
-<%var helper : StringHelper init StringHelper.new%>
+<%var helper : StringHelper init StringHelper.new
+var guiGenerator : GUIGenerator init GUIGenerator.new%>
 
-case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState, keepHistory : Boolean) extends CompositeState(master, parent, keepHistory) {
+case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState, keepHistory : Boolean<%if state.isKindOf(edap::StateMachine) then%>, withGUI : Boolean<%end%>) extends CompositeState(master, parent, keepHistory) {
 
   //create sub-states
 <%state.substate.each{s | %>
@@ -32,10 +33,24 @@ case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : 
   
 
   override def onEntry() = {
-    //TODO: define actions here
+  <%if state.entry != void then%>
+    <%=state.entry.print%>
+  <%end%>
   }
   
   override def onExit() = {
-    //TODO: define actions here
+  <%if state.exit != void then%>
+    <%=state.exit.print%>
+  <%end%>
   }
+  
+<%if state.isKindOf(edap::StateMachine) then%>
+  override def startState() = {
+    super.startState
+    if (withGUI)
+      <%=state.container.asType(edap::SoftwareComponent).name%>GUI.init
+  }
+  
+  <%_res.append(guiGenerator.generate(state.container.asType(edap::SoftwareComponent)))%>
+<%end%>
 }

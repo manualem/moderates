@@ -1,6 +1,8 @@
 package thingML;
 require kermeta
 require "../../stringHelper.kmt"
+require "./GUI.kmt"
+require "../../helper.kmt"
 using kermeta::standard
 using kermeta::utils
 class CompositeGenerator{
@@ -8,9 +10,14 @@ operation generate(state:edap::CompositeState):String is do
 var _res: StringBuffer init StringBuffer.new
 _res.append("")
 var helper : StringHelper init StringHelper.new
+var guiGenerator : GUIGenerator init GUIGenerator.new
 _res.append("\ncase class ")
 _res.append(helper.firstToUpper(state.name))
-_res.append("(master : Orchestrator, parent : CompositeState, keepHistory : Boolean) extends CompositeState(master, parent, keepHistory) {\n\n  //create sub-states\n")
+_res.append("(master : Orchestrator, parent : CompositeState, keepHistory : Boolean")
+if state.isKindOf(edap::StateMachine) then
+_res.append(", withGUI : Boolean")
+end
+_res.append(") extends CompositeState(master, parent, keepHistory) {\n\n  //create sub-states\n")
 state.substate.each{s | 
 _res.append("")
 if s.isInstanceOf(edap::CompositeState) then
@@ -60,7 +67,27 @@ _res.append("")
 }
 _res.append("  override val outGoingTransitions = List(")
 _res.append(helper.transitionsToList(state))
-_res.append(")    \n  \n\n  override def onEntry() = {\n    //TODO: define actions here\n  }\n  \n  override def onExit() = {\n    //TODO: define actions here\n  }\n}")
+_res.append(")    \n  \n\n  override def onEntry() = {\n")
+if state.entry != void then
+_res.append("    ")
+_res.append(state.entry.print)
+_res.append("\n")
+end
+_res.append("  }\n  \n  override def onExit() = {\n")
+if state.exit != void then
+_res.append("    ")
+_res.append(state.exit.print)
+_res.append("\n")
+end
+_res.append("  }\n  \n")
+if state.isKindOf(edap::StateMachine) then
+_res.append("  override def startState() = {\n    super.startState\n    if (withGUI)\n      ")
+_res.append(state.container.asType(edap::SoftwareComponent).name)
+_res.append("GUI.init\n  }\n  \n")
+_res.append(guiGenerator.generate(state.container.asType(edap::SoftwareComponent)))
+_res.append("")
+end
+_res.append("}")
 result := _res.toString
 end
 }

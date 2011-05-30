@@ -5,10 +5,10 @@ using=""
 isAspectClass="false"
 class="EventGenerator"
 ismethod="false"operation="generate"
-parameters="sm : edap::StateMachine"
+parameters="sw : edap::SoftwareComponent"
 %>
 <%var helper : StringHelper init StringHelper.new%>
-<%sm.getAllMessages.each{m |%>
+<%sw.getAllMessages.each{m |%>
 	<%if m.parameters.size == 0 then%>
 case object <%=helper.firstToUpper(m.name)%>Event extends Event {}					
 	<%else%>

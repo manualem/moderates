@@ -1,0 +1,106 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt"
+using=""
+isAspectClass="false"
+class="GUIGenerator"
+ismethod="false"operation="generate"
+parameters="device:edap::SoftwareComponent"
+%>
+<%var helper : StringHelper init StringHelper.new%>
+
+object <%=device.name%>GUI extends ActionListener {
+
+  val frame = new JFrame("<%=device.name%>")
+  val screen = new JTextPane()
+	
+<%device.receives.each{msg |%>
+  val send<%=msg.name%> : JButton = new JButton("Send")
+	<%msg.parameters.each{ p | %>
+		<%if p.type.isKindOf(edap::Enumeration) then%>
+  values<%=msg.name+helper.firstToUpper(p.name)%> : Array[<%=helper.toJavaType(p.type)%>] = Array(<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=helper.toJavaType(p.type)%>.<%=l.name%><%w := w+1}%>)
+  val field<%=msg.name+helper.firstToUpper(p.name)%> = JComboBox( values<%=msg.name+helper.firstToUpper(p.name)%>)
+		<%else%>
+  val field<%=msg.name+helper.firstToUpper(p.name)%> = JTextField("<%=p.name%>")
+		<%end%>
+	<%}%>
+<%}%>
+	
+  def init {
+    frame.setLayout(new GridBagLayout())
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+
+    var c : GridBagConstraints = new GridBagConstraints()
+    c.gridwidth = 1
+    c.fill = GridBagConstraints.HORIZONTAL
+    c.insets = new Insets(0,3,0,3)
+      
+<%
+var x : Integer init 0
+%>
+<%device.receives.each{msg |%>
+    //GUI related to <%=msg.name%>
+    c.gridy = 0
+    c.gridx = <%=x.toString%>
+    frame.add(new JLabel("<%=msg.name%>"), c)
+    
+    c.gridy = 1
+    c.gridx = <%=x.toString%>
+    frame.add(<%if msg.parameters.size == 0 then%>createPanel()<%else%>create<%=msg.name%>Panel()<%end%>, c)
+      
+    c.gridy = 2
+    c.gridx = <%=x.toString%>
+    frame.add(send<%=msg.name%>, c)
+    send<%=msg.name%>.addActionListener(this)
+    
+    <%x := x+1%>
+<%}%>
+
+    frame.pack
+    frame.setVisible(true)
+  }
+  
+  def createPanel() : JPanel = {
+    var c : GridBagConstraints = new GridBagConstraints()
+    c.fill = GridBagConstraints.HORIZONTAL
+    c.weightx = 0.5
+    new JPanel(new GridBagLayout())
+  }
+  
+<%device.receives.select{msg | msg.parameters.size > 0}.each{msg |%>
+<%var y : Integer init 0%>	
+  def create<%=msg.name%>Panel() : JPanel = {
+    var c : GridBagConstraints = new GridBagConstraints()
+    c.fill = GridBagConstraints.HORIZONTAL
+    c.weightx = 0.5
+    JPanel panel = new JPanel(new GridBagLayout())
+    
+<%msg.parameters.each{ p | %>
+    JLabel label<%=p.name%> = new JLabel();
+    label<%=p.name%>.setText("<%=p.name%>");
+    c.gridx = 0;
+    c.gridy = <%=y.toString%>;
+    panel.add(label<%=p.name%>, c);
+ 	c.gridx = 1;
+	c.gridy = <%=y.toString%>;
+ 	panel.add(field<%=msg.name+helper.firstToUpper(p.name)%>, c);
+ 	
+ 	<%y := y+1%>
+<%}%>
+			
+    return panel    
+  }
+  
+<%}%>
+
+  def actionPerformed(ae : ActionEvent) = {
+    ae.getSource match {
+      case b : JButton =>
+<%device.receives.each{msg |%>        
+        if (b == send<%=msg.name%>) {
+          master ! <%=helper.firstToUpper(msg.name)%>Event
+        }
+<%}%>
+    }
+  }    
+}
