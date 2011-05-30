@@ -1,11 +1,11 @@
 <%@ket
 package="thingML"
-require="../../helper.kmt"
+require=""
 using=""
 isAspectClass="false"
-class="MainGenerator"
+class="HeaderGenerator"
 ismethod="false"operation="generate"
-parameters="sm : edap::CompositeState, packageName : String"
+parameters="packageName : String"
 %>
 /**
  * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Version 3, 29 June 2007;
@@ -26,15 +26,14 @@ parameters="sm : edap::CompositeState, packageName : String"
  */
 package <%=packageName%>
 
+import java.awt.GridBagConstraints
+import java.awt.GridBagLayout
+import java.awt.Insets
+import java.awt.event.ActionEvent
+import java.awt.event.ActionListener
+import javax.swing.JButton
+import javax.swing.JFrame
+import javax.swing.JLabel
+import javax.swing.JPanel
+import javax.swing.JTextPane
 import org.sintef.smac._
-
-object Main{
-  def main(args: Array[String]): Unit = {   
-    println("START")
-    val master = new Orchestrator
-    master.start
-    
-    val sm = new <%=sm.name%>(master, null, false, true)
-    sm.startState
-  }
-}
