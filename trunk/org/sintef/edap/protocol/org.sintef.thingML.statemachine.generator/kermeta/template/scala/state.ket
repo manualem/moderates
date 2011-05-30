@@ -11,10 +11,14 @@ parameters="state:edap::State"
 
 case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState) extends State(master, parent) {
   override def onEntry() = {
-    //TODO: define actions here
+  	<%if state.entry != void then%>
+    <%=state.entry.print%>
+    <%end%>
   }
   
   override def onExit() = {
-    //TODO: define actions here
+  <%if state.exit != void then%>
+    <%=state.exit.print%>
+  <%end%>
   }
 }

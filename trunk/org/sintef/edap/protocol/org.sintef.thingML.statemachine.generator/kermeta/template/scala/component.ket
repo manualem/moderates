@@ -1,0 +1,10 @@
+<%@ket
+package="thingML"
+require="../../stringHelper.kmt ../../helper.kmt "
+using=""
+isAspectClass="false"
+class="ComponentGenerator"
+ismethod="false"operation="generate"
+parameters="sw : edap::SoftwareComponent"
+%>
+<%var helper : StringHelper init StringHelper.new%>

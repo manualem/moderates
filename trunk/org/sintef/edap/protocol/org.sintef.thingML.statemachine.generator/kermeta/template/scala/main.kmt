@@ -1,0 +1,14 @@
+package thingML;
+require kermeta
+require "../../helper.kmt"
+using kermeta::standard
+using kermeta::utils
+class MainGenerator{
+operation generate(sm : edap::CompositeState):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("object Main{\n  def main(args: Array[String]): Unit = {   \n    println(\"START\")\n    val master = new Orchestrator\n    master.start\n    \n    val sm = new ")
+_res.append(sm.name)
+_res.append("(master, null, false, true)\n    sm.startState\n  }\n}")
+result := _res.toString
+end
+}

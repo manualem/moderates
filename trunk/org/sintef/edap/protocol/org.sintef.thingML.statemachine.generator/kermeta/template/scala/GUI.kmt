@@ -1,0 +1,122 @@
+package thingML;
+require kermeta
+require "../../stringHelper.kmt"
+using kermeta::standard
+using kermeta::utils
+class GUIGenerator{
+operation generate(device:edap::SoftwareComponent):String is do
+var _res: StringBuffer init StringBuffer.new
+_res.append("")
+var helper : StringHelper init StringHelper.new
+_res.append("\nobject ")
+_res.append(device.name)
+_res.append("GUI extends ActionListener {\n\n  val frame = new JFrame(\"")
+_res.append(device.name)
+_res.append("\")\n  val screen = new JTextPane()\n\t\n")
+device.receives.each{msg |
+_res.append("  val send")
+_res.append(msg.name)
+_res.append(" : JButton = new JButton(\"Send\")\n")
+msg.parameters.each{ p | 
+_res.append("")
+if p.type.isKindOf(edap::Enumeration) then
+_res.append("  values")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(" : Array[")
+_res.append(helper.toJavaType(p.type))
+_res.append("] = Array(")
+var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then
+_res.append(", ")
+end
+_res.append(helper.toJavaType(p.type))
+_res.append(".")
+_res.append(l.name)
+w := w+1}
+_res.append(")\n  val field")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(" = JComboBox( values")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(")\n")
+else
+_res.append("  val field")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(" = JTextField(\"")
+_res.append(p.name)
+_res.append("\")\n")
+end
+_res.append("")
+}
+_res.append("")
+}
+_res.append("\t\n  def init {\n    frame.setLayout(new GridBagLayout())\n    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)\n\n    var c : GridBagConstraints = new GridBagConstraints()\n    c.gridwidth = 1\n    c.fill = GridBagConstraints.HORIZONTAL\n    c.insets = new Insets(0,3,0,3)\n      \n")
+
+var x : Integer init 0
+
+_res.append("")
+device.receives.each{msg |
+_res.append("    //GUI related to ")
+_res.append(msg.name)
+_res.append("\n    c.gridy = 0\n    c.gridx = ")
+_res.append(x.toString)
+_res.append("\n    frame.add(new JLabel(\"")
+_res.append(msg.name)
+_res.append("\"), c)\n    \n    c.gridy = 1\n    c.gridx = ")
+_res.append(x.toString)
+_res.append("\n    frame.add(")
+if msg.parameters.size == 0 then
+_res.append("createPanel()")
+else
+_res.append("create")
+_res.append(msg.name)
+_res.append("Panel()")
+end
+_res.append(", c)\n      \n    c.gridy = 2\n    c.gridx = ")
+_res.append(x.toString)
+_res.append("\n    frame.add(send")
+_res.append(msg.name)
+_res.append(", c)\n    send")
+_res.append(msg.name)
+_res.append(".addActionListener(this)\n    \n")
+x := x+1
+_res.append("")
+}
+_res.append("\n    frame.pack\n    frame.setVisible(true)\n  }\n  \n  def createPanel() : JPanel = {\n    var c : GridBagConstraints = new GridBagConstraints()\n    c.fill = GridBagConstraints.HORIZONTAL\n    c.weightx = 0.5\n    new JPanel(new GridBagLayout())\n  }\n  \n")
+device.receives.select{msg | msg.parameters.size > 0}.each{msg |
+_res.append("")
+var y : Integer init 0
+_res.append("  def create")
+_res.append(msg.name)
+_res.append("Panel() : JPanel = {\n    var c : GridBagConstraints = new GridBagConstraints()\n    c.fill = GridBagConstraints.HORIZONTAL\n    c.weightx = 0.5\n    JPanel panel = new JPanel(new GridBagLayout())\n    \n")
+msg.parameters.each{ p | 
+_res.append("    JLabel label")
+_res.append(p.name)
+_res.append(" = new JLabel();\n    label")
+_res.append(p.name)
+_res.append(".setText(\"")
+_res.append(p.name)
+_res.append("\");\n    c.gridx = 0;\n    c.gridy = ")
+_res.append(y.toString)
+_res.append(";\n    panel.add(label")
+_res.append(p.name)
+_res.append(", c);\n \tc.gridx = 1;\n\tc.gridy = ")
+_res.append(y.toString)
+_res.append(";\n \tpanel.add(field")
+_res.append(msg.name+helper.firstToUpper(p.name))
+_res.append(", c);\n \t\n")
+y := y+1
+_res.append("")
+}
+_res.append("\t\t\t\n    return panel    \n  }\n  \n")
+}
+_res.append("\n  def actionPerformed(ae : ActionEvent) = {\n    ae.getSource match {\n      case b : JButton =>\n")
+device.receives.each{msg |
+_res.append("        if (b == send")
+_res.append(msg.name)
+_res.append(") {\n          master ! ")
+_res.append(helper.firstToUpper(msg.name))
+_res.append("Event\n        }\n")
+}
+_res.append("    }\n  }    \n}")
+result := _res.toString
+end
+}
