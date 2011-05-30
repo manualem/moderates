@@ -12,6 +12,7 @@ package thingML;
 require kermeta
 require "./helper.kmt"
 require "./stringHelper.kmt"
+require "./template/scala/headers.kmt"
 require "./template/scala/event.kmt"
 require "./template/scala/main.kmt"
 require "./template/scala/compositeState.kmt"
@@ -25,12 +26,13 @@ using edap
 
 class Main
 {
-	operation main(thingMLuri : String, srcFolder : String) : Void is do 
+	operation main(thingMLuri : String, packageName : String) : Void is do 
 		var helper : Helper init Helper.new
 		var stringHelper : StringHelper init StringHelper.new
 		
 		var thingMLmodel : EdapModel init helper.loadThingML(thingMLuri)
 		
+		var headerGenerator : HeaderGenerator init HeaderGenerator.new
 		var eventGenerator : EventGenerator init EventGenerator.new
 		var mainGenerator : MainGenerator init MainGenerator.new
 		var stateGenerator : StateGenerator init StateGenerator.new
@@ -44,6 +46,7 @@ class Main
 			var sw : SoftwareComponent
 			sw ?= e
 			
+			stdio.writeln(headerGenerator.generate(packageName))
 			stdio.writeln(eventGenerator.generate(sw))
 
 			sw.behaviour.getAllStates.each{s |
@@ -57,7 +60,7 @@ class Main
 				}			
 			}
 			
-			stdio.writeln(mainGenerator.generate(sw.behaviour))
+			stdio.writeln(mainGenerator.generate(sw.behaviour, packageName))
 		}
 	end
 }
