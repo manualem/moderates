@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -10,8 +11,7 @@
     <version>1.0.0</version>
 
     <properties>
-        <emf.version>2.6.0</emf.version>
-        <scala.version>2.8.1</scala.version>
+        <kevoree.version>1.2.0-SNAPSHOT</kevoree.version> 
         <bundle.vendor>SINTEF IKT</bundle.vendor>
     </properties>
 
@@ -19,12 +19,12 @@
         <dependency>
             <groupId>org.kevoree</groupId>
             <artifactId>org.kevoree.framework</artifactId>
-            <version>1.1.0-BETA2</version>
+            <version>${kevoree.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kevoree.tools</groupId>
             <artifactId>org.kevoree.tools.annotation.api</artifactId>
-            <version>1.1.0-BETA2</version>
+            <version>${kevoree.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -34,23 +34,23 @@
         </dependency>
         <dependency>
             <groupId>com.google.gdata</groupId>
-            <artifactId>gdata-core-1.0</artifactId>
-            <version>1.41.5</version>
+            <artifactId>gdata-core</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.gdata</groupId>
-            <artifactId>gdata-calendar-2.0</artifactId>
-            <version>1.41.5</version>
+            <artifactId>gdata-calendar</artifactId>
+            <version>2.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.gdata</groupId>
-            <artifactId>gdata-client-1.0</artifactId>
-            <version>1.41.5</version>
+            <artifactId>gdata-client</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>r08</version>
+            <version>r09</version>
         </dependency>
     </dependencies>
 
@@ -92,22 +92,22 @@
                 </configuration>
             </plugin>
             <plugin>
-            <groupId>org.kevoree.tools</groupId>
-            <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
-            <configuration>
-                <nodeTypeNames>JavaSENode</nodeTypeNames>
-            </configuration>
-            <version>1.1.0-BETA2</version><!-- To modify on wiki -->
-            <extensions>true</extensions>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>generate</goal>
-                        <goal>compile</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+                <groupId>org.kevoree.tools</groupId>
+                <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
+                <version>${kevoree.version}</version>
+                <configuration>
+                    <nodeTypeNames>JavaSENode</nodeTypeNames>
+                </configuration>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
@@ -115,18 +115,25 @@
     <repositories>
         <repository>
             <id>kevoree-libs-release-local</id>
-            <url>http://maven.kevoree.org/libs-release-local</url>
+            <url>http://maven.kevoree.org/release</url>
         </repository>
         <repository>
-            <id>mandubian-mvn</id>
-            <url>http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository</url>
+            <id>kevoree-libs-snapshots-local</id>
+            <url>http://maven.kevoree.org/snapshots</url>
+        </repository>
+        <repository>
+            <id>jakubiak-gdata</id>
+            <url>http://jakubiak-gdata.googlecode.com/svn/trunk/jakubiak-gdata/repo</url>
         </repository>
     </repositories>
-
     <pluginRepositories>
         <pluginRepository>
             <id>plugin.kevoree-github</id>
-            <url>http://maven.kevoree.org/plugins-release-local</url>
+            <url>http://maven.kevoree.org/release</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>plugin2.kevoree-snapshots</id>
+            <url>http://maven.kevoree.org/snapshots</url>
         </pluginRepository>
     </pluginRepositories>
 
