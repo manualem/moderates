@@ -7,26 +7,27 @@
     <packaging>bundle</packaging>
     <version>1.0.0</version>
     <name>RXTX</name>
-    <url>http://maven.apache.org</url>
+    
+    <properties>
+      <kevoree.version>1.2.0-SNAPSHOT</kevoree.version>  
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.kevoree</groupId>
             <artifactId>org.kevoree.framework</artifactId>
-            <version>1.1.0-BETA2</version>
+            <version>${kevoree.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kevoree.tools</groupId>
             <artifactId>org.kevoree.tools.annotation.api</artifactId>
-            <version>1.1.0-BETA2</version>
+            <version>${kevoree.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kevoree.extra</groupId>
             <artifactId>org.kevoree.extra.osgi.rxtx</artifactId>
             <version>2.2.0</version>
-            <type>bundle</type>
-            <!-- <scope>system</scope>
-            <systemPath>C:/work/projects/MODERATES/development/netbeans_projects/dukeboard-kevoree-ff1260b/kevoree-extra/org.kevoree.extra.osgi.rxtx/target/org.kevoree.extra.osgi.rxtx-2.2.0.jar</systemPath>
-            -->
+            
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -37,27 +38,23 @@
     </dependencies>
     
     <repositories>
-       <!-- <repository>
-            <id>kevoree-github</id>
-            <url>http://dukeboard.github.com/kevoree/maven/</url>
-        </repository> -->
         <repository>
             <id>kevoree-libs-release-local</id>
-            <url>http://maven.kevoree.org/libs-release-local</url>
+            <url>http://maven.kevoree.org/release</url>
+        </repository>
+        <repository>
+            <id>kevoree-libs-snapshots-local</id>
+            <url>http://maven.kevoree.org/snapshots</url>
         </repository>
     </repositories>
     <pluginRepositories>
-        <!-- <pluginRepository>
-            <id>plugin.kevoree-github</id>
-            <url>http://dukeboard.github.com/kevoree/maven/</url>
-        </pluginRepository> -->
         <pluginRepository>
             <id>plugin.kevoree-github</id>
-            <url>http://maven.kevoree.org/plugins-release-local</url>
+            <url>http://maven.kevoree.org/release</url>
         </pluginRepository>
         <pluginRepository>
-            <id>plugin2.kevoree-github</id>
-            <url>http://maven.kevoree.org/libs-release-local</url>
+            <id>plugin2.kevoree-snapshots</id>
+            <url>http://maven.kevoree.org/snapshots</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -66,7 +63,7 @@
             <plugin>
                 <groupId>org.kevoree.tools</groupId>
                 <artifactId>org.kevoree.tools.annotation.mavenplugin</artifactId>
-                <version>1.1.0-BETA2</version><!-- To modify on wiki -->
+                <version>${kevoree.version}</version>
                 <configuration>
                     <nodeTypeNames>JavaSENode</nodeTypeNames>
                 </configuration>
@@ -84,7 +81,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.1.0</version> 
+                <version>2.3.4</version> 
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
