@@ -1,6 +1,7 @@
 package thingML;
 require kermeta
 require "../../stringHelper.kmt"
+require "../../helper.kmt"
 using kermeta::standard
 using kermeta::utils
 class StateGenerator{
@@ -10,7 +11,7 @@ _res.append("")
 var helper : StringHelper init StringHelper.new
 _res.append("\ncase class ")
 _res.append(helper.firstToUpper(state.name))
-_res.append("(master : Orchestrator, parent : CompositeState) extends State(master, parent) {\n  override def onEntry() = {\n")
+_res.append("(master : Orchestrator) extends State(master) {\n  override def onEntry() = {\n")
 if state.entry != void then
 _res.append("    ")
 _res.append(state.entry.print)

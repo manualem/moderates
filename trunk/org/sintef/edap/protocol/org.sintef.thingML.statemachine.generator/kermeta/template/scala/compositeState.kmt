@@ -3,6 +3,8 @@ require kermeta
 require "../../stringHelper.kmt"
 require "./GUI.kmt"
 require "../../helper.kmt"
+require "./state.kmt"
+require "./transition.kmt"
 using kermeta::standard
 using kermeta::utils
 class CompositeGenerator{
@@ -13,11 +15,11 @@ var helper : StringHelper init StringHelper.new
 var guiGenerator : GUIGenerator init GUIGenerator.new
 _res.append("\ncase class ")
 _res.append(helper.firstToUpper(state.name))
-_res.append("(master : Orchestrator, parent : CompositeState, keepHistory : Boolean")
+_res.append("(master : Orchestrator, keepHistory : Boolean")
 if state.isKindOf(edap::StateMachine) then
 _res.append(", withGUI : Boolean")
 end
-_res.append(") extends CompositeState(master, parent, keepHistory) {\n\n  //create sub-states\n")
+_res.append(") extends CompositeState(master, keepHistory) {\n\n  //create sub-states\n")
 state.substate.each{s | 
 _res.append("")
 if s.isInstanceOf(edap::CompositeState) then
@@ -25,31 +27,25 @@ _res.append("  val ")
 _res.append(s.name)
 _res.append("_state = ")
 _res.append(helper.firstToUpper(s.name))
-_res.append("(master, this, false)\n")
+_res.append("(master, keepHistory)\n")
 else
 _res.append("  val ")
 _res.append(s.name)
 _res.append("_state = ")
 _res.append(helper.firstToUpper(s.name))
-_res.append("(master, this)\n")
+_res.append("(master)\n")
 end
-_res.append("")
+_res.append("  addSubState(")
+_res.append(s.name)
+_res.append("_state)\n")
 }
-_res.append("  override val substates = List(")
-_res.append(helper.statesToList(state))
-_res.append(")\n  override val initial = ")
+_res.append("  setInitial(")
 _res.append(state.initial.name)
-_res.append("_state\n  \n  //create transitions among sub-states\n")
+_res.append("_state)\n  \n  //create transitions among sub-states\n")
 state.substate.each{ s | 
 _res.append("")
 s.outgoing.each{ t | 
-_res.append("  val ")
-_res.append(t.source.name)
-_res.append("_")
-_res.append(t.name)
-_res.append("_")
-_res.append(t.target.name)
-_res.append("_transition = ")
+_res.append("  addTransition(")
 _res.append(helper.firstToUpper(t.source.name))
 _res.append("_")
 _res.append(helper.firstToUpper(t.name))
@@ -61,13 +57,11 @@ _res.append("_state, ")
 _res.append(t.target.name)
 _res.append("_state, master, List(")
 _res.append(helper.eventsToList(t))
-_res.append("))\n")
+_res.append(")))\n")
 }
 _res.append("")
 }
-_res.append("  override val outGoingTransitions = List(")
-_res.append(helper.transitionsToList(state))
-_res.append(")    \n  \n\n  override def onEntry() = {\n")
+_res.append("  \n\n  override def onEntry() = {\n")
 if state.entry != void then
 _res.append("    ")
 _res.append(state.entry.print)
@@ -79,7 +73,32 @@ _res.append("    ")
 _res.append(state.exit.print)
 _res.append("\n")
 end
-_res.append("  }\n  \n")
+_res.append("  }\n\n")
+
+var stateGenerator : StateGenerator init StateGenerator.new
+var transitionGenerator : TransitionGenerator init TransitionGenerator.new
+
+_res.append("")
+state.substate.each{s | 
+_res.append("")
+if s.isInstanceOf(edap::CompositeState) then
+_res.append("")
+_res.append(self.generate(s.asType(edap::CompositeState)))
+_res.append("")
+else
+_res.append("")
+_res.append(stateGenerator.generate(s))
+_res.append("")
+end
+_res.append("")
+s.outgoing.each{ t | 
+_res.append("")
+_res.append(transitionGenerator.generate(t))
+_res.append("")
+}
+_res.append("")
+}
+_res.append("   \n  \n")
 if state.isKindOf(edap::StateMachine) then
 _res.append("  override def startState() = {\n    super.startState\n    if (withGUI)\n      ")
 _res.append(state.container.asType(edap::SoftwareComponent).name)

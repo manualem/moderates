@@ -34,7 +34,7 @@ object Main{
     val master = new Orchestrator
     master.start
     
-    val sm = new <%=sm.name%>(master, null, false, true)
+    val sm = new <%=sm.name%>(master, false, true)
     sm.startState
   }
 }

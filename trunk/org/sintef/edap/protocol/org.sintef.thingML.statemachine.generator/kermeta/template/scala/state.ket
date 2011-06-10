@@ -1,6 +1,6 @@
 <%@ket
 package="thingML"
-require="../../stringHelper.kmt"
+require="../../stringHelper.kmt ../../helper.kmt"
 using=""
 isAspectClass="false"
 class="StateGenerator"
@@ -9,7 +9,7 @@ parameters="state:edap::State"
 %>
 <%var helper : StringHelper init StringHelper.new%>
 
-case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState) extends State(master, parent) {
+case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator) extends State(master) {
   override def onEntry() = {
   	<%if state.entry != void then%>
     <%=state.entry.print%>

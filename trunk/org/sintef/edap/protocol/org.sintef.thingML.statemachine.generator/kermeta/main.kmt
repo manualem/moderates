@@ -35,9 +35,9 @@ class Main
 		var headerGenerator : HeaderGenerator init HeaderGenerator.new
 		var eventGenerator : EventGenerator init EventGenerator.new
 		var mainGenerator : MainGenerator init MainGenerator.new
-		var stateGenerator : StateGenerator init StateGenerator.new
+		//var stateGenerator : StateGenerator init StateGenerator.new
 		var compositeGenerator : CompositeGenerator init CompositeGenerator.new 
-		var transitionGenerator : TransitionGenerator init TransitionGenerator.new
+		//var transitionGenerator : TransitionGenerator init TransitionGenerator.new
 		
 		var file : FileIO init FileIO.new
 		
@@ -49,18 +49,20 @@ class Main
 			stdio.writeln(headerGenerator.generate(packageName))
 			stdio.writeln(eventGenerator.generate(sw))
 
-			sw.behaviour.getAllStates.each{s |
-				if s.isInstanceOf(CompositeState) then
-					stdio.writeln(compositeGenerator.generate(s.asType(CompositeState)))
-				else
-					stdio.writeln(stateGenerator.generate(s))
-				end
-				s.outgoing.each{ t |
-					stdio.writeln(transitionGenerator.generate(t))
-				}			
-			}
-			
-			stdio.writeln(mainGenerator.generate(sw.behaviour, packageName))
+			if sw.behaviour != void then
+				/*sw.behaviour.getAllStates.each{s |
+					if s.isInstanceOf(CompositeState) then
+						stdio.writeln(compositeGenerator.generate(s.asType(CompositeState)))
+					else
+						stdio.writeln(stateGenerator.generate(s))
+					end
+					s.outgoing.each{ t |
+						stdio.writeln(transitionGenerator.generate(t))
+					}			
+				}*/
+				stdio.writeln(compositeGenerator.generate(sw.behaviour))
+				stdio.writeln(mainGenerator.generate(sw.behaviour, packageName))
+			end
 		}
 	end
 }

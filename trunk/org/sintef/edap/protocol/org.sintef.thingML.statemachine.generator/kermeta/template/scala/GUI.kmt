@@ -34,13 +34,13 @@ _res.append(l.name)
 w := w+1}
 _res.append(")\n  val field")
 _res.append(msg.name+helper.firstToUpper(p.name))
-_res.append(" = JComboBox( values")
+_res.append(" = new JComboBox( values")
 _res.append(msg.name+helper.firstToUpper(p.name))
 _res.append(")\n")
 else
 _res.append("  val field")
 _res.append(msg.name+helper.firstToUpper(p.name))
-_res.append(" = JTextField(\"")
+_res.append(" = new JTextField(\"")
 _res.append(p.name)
 _res.append("\")\n")
 end
@@ -86,9 +86,9 @@ _res.append("")
 var y : Integer init 0
 _res.append("  def create")
 _res.append(msg.name)
-_res.append("Panel() : JPanel = {\n    var c : GridBagConstraints = new GridBagConstraints()\n    c.fill = GridBagConstraints.HORIZONTAL\n    c.weightx = 0.5\n    JPanel panel = new JPanel(new GridBagLayout())\n    \n")
+_res.append("Panel() : JPanel = {\n    var c : GridBagConstraints = new GridBagConstraints()\n    c.fill = GridBagConstraints.HORIZONTAL\n    c.weightx = 0.5\n    val panel = new JPanel(new GridBagLayout())\n    \n")
 msg.parameters.each{ p | 
-_res.append("    JLabel label")
+_res.append("    val label")
 _res.append(p.name)
 _res.append(" = new JLabel();\n    label")
 _res.append(p.name)
