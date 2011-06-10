@@ -19,9 +19,9 @@ object <%=device.name%>GUI extends ActionListener {
 	<%msg.parameters.each{ p | %>
 		<%if p.type.isKindOf(edap::Enumeration) then%>
   values<%=msg.name+helper.firstToUpper(p.name)%> : Array[<%=helper.toJavaType(p.type)%>] = Array(<%var w : Integer init 0 p.type.asType(edap::Enumeration).literals.each{l | if w > 0 then%>, <%end%><%=helper.toJavaType(p.type)%>.<%=l.name%><%w := w+1}%>)
-  val field<%=msg.name+helper.firstToUpper(p.name)%> = JComboBox( values<%=msg.name+helper.firstToUpper(p.name)%>)
+  val field<%=msg.name+helper.firstToUpper(p.name)%> = new JComboBox( values<%=msg.name+helper.firstToUpper(p.name)%>)
 		<%else%>
-  val field<%=msg.name+helper.firstToUpper(p.name)%> = JTextField("<%=p.name%>")
+  val field<%=msg.name+helper.firstToUpper(p.name)%> = new JTextField("<%=p.name%>")
 		<%end%>
 	<%}%>
 <%}%>
@@ -73,10 +73,10 @@ var x : Integer init 0
     var c : GridBagConstraints = new GridBagConstraints()
     c.fill = GridBagConstraints.HORIZONTAL
     c.weightx = 0.5
-    JPanel panel = new JPanel(new GridBagLayout())
+    val panel = new JPanel(new GridBagLayout())
     
 <%msg.parameters.each{ p | %>
-    JLabel label<%=p.name%> = new JLabel();
+    val label<%=p.name%> = new JLabel();
     label<%=p.name%>.setText("<%=p.name%>");
     c.gridx = 0;
     c.gridy = <%=y.toString%>;

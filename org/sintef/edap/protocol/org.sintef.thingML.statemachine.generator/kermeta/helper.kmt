@@ -12,11 +12,13 @@ package edap;
 require kermeta
 //require "http://edap"
 require "platform:/lookup/org.sintef.edap.model/model/edap.ecore"
+require "./stringHelper.kmt"
 
 using kermeta::standard
 using kermeta::persistence
 
 using edap
+using thingML
 
 aspect class State
 {
@@ -57,6 +59,11 @@ aspect class Action
 
 aspect class SendAction
 {
+	method print() : String is
+	do
+		result := "master ! "+self.message.name+"Event("+StringHelper.new.paramsToJavaCall(self.message)+")"
+	end
+
 	method getAllActions() : Set<SendAction> is
 	do
 		var states : Set<SendAction> init Set<SendAction>.new

@@ -10,7 +10,7 @@ _res.append("/**\n * Licensed under the GNU LESSER GENERAL PUBLIC LICENSE, Versi
 _res.append(packageName)
 _res.append("\n\nimport org.sintef.smac._\n\nobject Main{\n  def main(args: Array[String]): Unit = {   \n    println(\"START\")\n    val master = new Orchestrator\n    master.start\n    \n    val sm = new ")
 _res.append(sm.name)
-_res.append("(master, null, false, true)\n    sm.startState\n  }\n}")
+_res.append("(master, false, true)\n    sm.startState\n  }\n}")
 result := _res.toString
 end
 }

@@ -14,7 +14,13 @@ _res.append("_")
 _res.append(helper.firstToUpper(transition.name))
 _res.append("_")
 _res.append(helper.firstToUpper(transition.target.name))
-_res.append("(previous : State, next : State, master : Orchestrator, var events : List[Event]) extends Transition(previous, next, master, events) { \n  def executeActions() = {\n    //TODO: define actions here\n  }\n}")
+_res.append("(previous : State, next : State, master : Orchestrator, var events : List[Event]) extends Transition(previous, next, master, events) { \n  def executeActions() = {\n")
+if transition.action != void then
+_res.append("    ")
+_res.append(transition.action.print)
+_res.append("\n")
+end
+_res.append("  }\n}")
 result := _res.toString
 end
 }

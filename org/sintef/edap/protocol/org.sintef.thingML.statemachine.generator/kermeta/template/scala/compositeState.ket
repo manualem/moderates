@@ -1,6 +1,6 @@
 <%@ket
 package="thingML"
-require="../../stringHelper.kmt ./GUI.kmt ../../helper.kmt"
+require="../../stringHelper.kmt ./GUI.kmt ../../helper.kmt ./state.kmt ./transition.kmt"
 using=""
 isAspectClass="false"
 class="CompositeGenerator"
@@ -10,26 +10,25 @@ parameters="state:edap::CompositeState"
 <%var helper : StringHelper init StringHelper.new
 var guiGenerator : GUIGenerator init GUIGenerator.new%>
 
-case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : CompositeState, keepHistory : Boolean<%if state.isKindOf(edap::StateMachine) then%>, withGUI : Boolean<%end%>) extends CompositeState(master, parent, keepHistory) {
+case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, keepHistory : Boolean<%if state.isKindOf(edap::StateMachine) then%>, withGUI : Boolean<%end%>) extends CompositeState(master, keepHistory) {
 
   //create sub-states
 <%state.substate.each{s | %>
   <%if s.isInstanceOf(edap::CompositeState) then%>
-  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master, this, false)
+  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master, keepHistory)
   <%else%>
-  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master, this)
+  val <%=s.name%>_state = <%=helper.firstToUpper(s.name)%>(master)
   <%end%>
+  addSubState(<%=s.name%>_state)
 <%}%>
-  override val substates = List(<%=helper.statesToList(state)%>)
-  override val initial = <%=state.initial.name%>_state
+  setInitial(<%=state.initial.name%>_state)
   
   //create transitions among sub-states
 <%state.substate.each{ s | %>
 	<%s.outgoing.each{ t | %>
-  val <%=t.source.name%>_<%=t.name%>_<%=t.target.name%>_transition = <%=helper.firstToUpper(t.source.name)%>_<%=helper.firstToUpper(t.name)%>_<%=helper.firstToUpper(t.target.name)%>(<%=t.source.name%>_state, <%=t.target.name%>_state, master, List(<%=helper.eventsToList(t)%>))
+  addTransition(<%=helper.firstToUpper(t.source.name)%>_<%=helper.firstToUpper(t.name)%>_<%=helper.firstToUpper(t.target.name)%>(<%=t.source.name%>_state, <%=t.target.name%>_state, master, List(<%=helper.eventsToList(t)%>)))
 	<%}%>
-<%}%>  
-  override val outGoingTransitions = List(<%=helper.transitionsToList(state)%>)    
+<%}%>    
   
 
   override def onEntry() = {
@@ -43,6 +42,22 @@ case class <%=helper.firstToUpper(state.name)%>(master : Orchestrator, parent : 
     <%=state.exit.print%>
   <%end%>
   }
+
+<%
+var stateGenerator : StateGenerator init StateGenerator.new
+var transitionGenerator : TransitionGenerator init TransitionGenerator.new
+%>  
+<%state.substate.each{s | %>
+  <%if s.isInstanceOf(edap::CompositeState) then%>
+  	<%_res.append(self.generate(s.asType(edap::CompositeState)))%>
+  <%else%>
+  	<%_res.append(stateGenerator.generate(s))%>
+  <%end%>
+  	<%s.outgoing.each{ t | %>
+  		<%_res.append(transitionGenerator.generate(t))%>
+	<%}%>  
+<%}%>
+   
   
 <%if state.isKindOf(edap::StateMachine) then%>
   override def startState() = {
