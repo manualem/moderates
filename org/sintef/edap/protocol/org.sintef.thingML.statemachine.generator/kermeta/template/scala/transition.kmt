@@ -1,6 +1,7 @@
 package thingML;
 require kermeta
 require "../../stringHelper.kmt"
+require "../../helper.kmt"
 using kermeta::standard
 using kermeta::utils
 class TransitionGenerator{
@@ -14,7 +15,13 @@ _res.append("_")
 _res.append(helper.firstToUpper(transition.name))
 _res.append("_")
 _res.append(helper.firstToUpper(transition.target.name))
-_res.append("(previous : State, next : State, master : Orchestrator, var events : List[Event]) extends Transition(previous, next, master, events) { \n  def executeActions() = {\n")
+_res.append("(previous : State, next : State, master : Orchestrator) extends Transition(previous, next, master) { \n")
+transition.event.each{ e | 
+_res.append("  initEvent(")
+_res.append(helper.firstToUpper(e.asType(edap::ReceiveMessage).message.name)+"Event")
+_res.append(")\n")
+}
+_res.append("  \n  def executeActions() = {\n")
 if transition.action != void then
 _res.append("    ")
 _res.append(transition.action.print)
