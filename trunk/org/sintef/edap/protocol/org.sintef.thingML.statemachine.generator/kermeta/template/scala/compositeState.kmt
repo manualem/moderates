@@ -55,9 +55,7 @@ _res.append("(")
 _res.append(t.source.name)
 _res.append("_state, ")
 _res.append(t.target.name)
-_res.append("_state, master, List(")
-_res.append(helper.eventsToList(t))
-_res.append(")))\n")
+_res.append("_state, master))\n")
 }
 _res.append("")
 }
